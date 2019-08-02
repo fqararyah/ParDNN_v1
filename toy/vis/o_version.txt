@@ -1,0 +1,266 @@
+import utils
+import nodeProps
+import math
+import matplotlib.pyplot as plt
+import numpy as np
+import copy
+import collections
+import heapq
+
+# folder containing the work files
+io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/toy/'
+
+# input files
+in1 = io_folder_path + 'part_65_103_src_sink.dot'
+in2 = io_folder_path + 'timeline_step303_dfs.json'
+in3 = io_folder_path + 'part_65_103_src_sink_nodes_levels.txt'
+in4 = io_folder_path + 'rev_part_65_103_src_sink_nodes_levels.txt'
+
+#output file
+out1 = io_folder_path + 'ver_grouper_placement.place'
+
+#grouper parameters
+path_length_threshold = 10
+group_weight_threshold = 250
+
+
+reverse_levels = {}
+#get nodes levels
+with open(in4, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        node_and_level = line.split("::")
+        if len(node_and_level) > 1:
+            reverse_levels[node_and_level[0]] = node_and_level[1]
+
+
+# will contain the graph as an adgacency list
+graph = {}
+all_nodes = {}
+sink_node_name = 'snk'
+# initializing the nodes and adjacencies from the dot file
+with open(in1, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        splits = line.split("->")
+        if len(splits) > 1:
+            if not splits[0] in all_nodes:
+                all_nodes[splits[0]] = nodeProps.NodeProps()
+            if not splits[1] in all_nodes:
+                all_nodes[splits[1]] = nodeProps.NodeProps()
+
+            all_nodes[splits[1]].parents.append(all_nodes[splits[0]])
+            all_nodes[splits[1]].children.append(all_nodes[splits[1]])
+ 
+
+            if splits[0] in graph:
+                #graph[splits[0]].append(splits[1])
+                heapq.heappush(graph[splits[0]],( int(reverse_levels[splits[1]]), splits[1]))
+            else:
+                #graph[splits[0]] = [splits[1]]
+                graph[splits[0]] = []
+                heapq.heappush(graph[splits[0]],(int(reverse_levels[splits[1]]), splits[1]))
+                
+graph[sink_node_name] = []
+
+
+#change adjacents priority queues to lists
+for node, adjacents in graph.items():
+    ordered_adjacents_list = []
+    while adjacents:
+        ordered_adjacents_list.append(heapq.heappop(adjacents)[1])
+    graph[node] = ordered_adjacents_list
+
+
+#getting time (weight) info for nodes
+analysis_graph = utils.read_profiling_file(in2)
+
+for node, node_props in all_nodes.items():
+    if node in analysis_graph:
+        analysis_graph[node].parents = node_props.parents
+        analysis_graph[node].children = node_props.children
+    else:
+        analysis_graph[node] = node_props
+
+
+#extracting all vertical paths in the graph
+source_node_name = 'src'
+traversal_stack = [source_node_name]
+paths = []
+current_path = []
+visited = {}
+paths_weights = []
+current_path_weight = 0
+
+
+while len(traversal_stack) > 0:
+    current_node = traversal_stack.pop()
+    current_path.append(current_node)
+    current_path_weight = current_path_weight + analysis_graph[current_node].duration
+    adj_nodes = graph[current_node]
+    any_neighbor_visited = False
+    visited[current_node] = 1
+    #all_neighbors_visited = 0
+    #long_path = False
+    #poped_node = None
+    for adj_node in adj_nodes:
+        if adj_node in visited or adj_node == sink_node_name:
+            any_neighbor_visited = True
+    #        all_neighbors_visited = all_neighbors_visited + 1
+            current_path.append(adj_node)
+    #        if len(current_path) > path_length_threshold:
+            paths.append(copy.deepcopy(current_path))
+            poped_node = current_path.pop()
+            current_path_weight = current_path_weight - analysis_graph[poped_node].duration
+            paths_weights.append(current_path_weight)
+            #long_path = True
+            #else:
+            #    current_path.pop()
+        else:
+            traversal_stack.append(adj_node)
+    if any_neighbor_visited:
+        current_path = []
+        current_path_weight = 0
+
+
+#for i in range (0, len(paths)):
+    #print(paths[i])
+
+""" for node in graph:
+    if node not in visited:
+        traversal_stack = [node]
+        current_path_weight = 0
+        while len(traversal_stack) > 0:
+            current_node = traversal_stack.pop()
+            current_path.append(current_node)
+            current_path_weight = current_path_weight + analysis_graph[current_node].duration
+            adj_nodes = graph[current_node]
+            visited[current_node] = 1
+            any_neighbor_visited = False
+            for adj_node in adj_nodes:
+                if adj_node in visited or adj_node == sink_node_name:
+                    any_neighbor_visited = True
+                    current_path.append(adj_node)
+                    paths.append(copy.deepcopy(current_path))
+                    poped_node = current_path.pop()
+                    current_path_weight = current_path_weight - analysis_graph[poped_node].duration
+                    paths_weights.append(current_path_weight)
+                else:
+                    traversal_stack.append(adj_node)
+            if any_neighbor_visited:
+                current_path = []
+                current_path_weight = 0 """
+
+#get nodes levels
+with open(in3, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        node_and_level = line.split("::")
+        if len(node_and_level) > 1:
+            analysis_graph[node_and_level[0]].level = node_and_level[1]
+            
+
+#getting initial groups
+initial_groups = []
+groups_weights = []
+initial_groups.append(copy.deepcopy(paths[0])) 
+groups_weights.append(paths_weights[0])
+
+for i in range(1, len(paths)):
+    current_path = paths[i]
+    current_path_weight = paths_weights[i]
+    
+    common_node = current_path.pop()
+    if current_path_weight <= group_weight_threshold and len(current_path) <= path_length_threshold and common_node != sink_node_name:
+        for j in range(0, len(initial_groups)):
+            if common_node in initial_groups[j]:
+                initial_groups[j] = initial_groups[j] + copy.deepcopy(current_path)
+                groups_weights[j] = groups_weights[j] + current_path_weight - analysis_graph[common_node].duration
+                break
+    else:
+        initial_groups.append(copy.deepcopy(current_path)) 
+        groups_weights.append(current_path_weight)
+print(len(initial_groups))
+
+
+#parts work distribution over levels
+tasks_per_levels = []
+max_levels = [0]*len(initial_groups)
+min_levels = [20000]*len(initial_groups)
+
+for i in range(0, len(initial_groups)):
+    tasks_per_levels.append(collections.OrderedDict())
+    current_group = initial_groups[i]
+    for node in current_group:
+        node_props = analysis_graph[node]
+        node_level = int(node_props.level)
+        if node_level in tasks_per_levels[i].keys():
+            tasks_per_levels[i][node_level] = tasks_per_levels[i][node_level] + node_props.duration
+        else:
+            tasks_per_levels[i][node_level] = node_props.duration
+        
+        if node_level < min_levels[i]:
+            min_levels[i] = node_level
+        if node_level > max_levels[i]:
+            max_levels[i] = node_level
+
+
+
+
+no_of_desired_groups = 4
+
+while len(initial_groups) > no_of_desired_groups:
+    indx_min = 0
+    min_weight = groups_weights[indx_min]
+    for i in range(1, len(groups_weights)):
+        if len(initial_groups[i]) <= 2:
+            indx_min = i
+            break
+        if groups_weights[i] < min_weight:
+            min_weight = groups_weights[i]
+            indx_min = i
+    
+    min_weight_group = initial_groups[indx_min]
+    current_min_level = min_levels[indx_min]
+    current_max_level = max_levels[indx_min]
+    min_sum_in_targeted_levels = 1000000000
+    merge_destination_index = 0
+
+    for i in range(0, len(initial_groups)):
+        if i == indx_min:
+            continue
+        
+        sum_in_targeted_levels = 0
+        merge_min_level = min(current_min_level, min_levels[i])
+        merge_max_level = max(current_max_level, max_levels[i])
+        current_min_level = max(current_min_level, min_levels[i])
+        current_max_level = min(current_max_level, max_levels[i])
+
+        for level in range(current_min_level, current_max_level + 1):
+            if level in tasks_per_levels[i].keys():
+                sum_in_targeted_levels = sum_in_targeted_levels + tasks_per_levels[i][level]
+        if sum_in_targeted_levels < min_sum_in_targeted_levels:
+            min_sum_in_targeted_levels = sum_in_targeted_levels
+            merge_destination_index = i
+
+    groups_weights[merge_destination_index] = groups_weights[merge_destination_index]  + groups_weights[indx_min]
+    groups_weights.pop(indx_min)
+    initial_groups[merge_destination_index] = initial_groups[merge_destination_index] + initial_groups[indx_min]
+    initial_groups.pop(indx_min)
+    min_levels[merge_destination_index] = merge_min_level
+    max_levels[merge_destination_index] = merge_max_level
+    min_levels.pop(indx_min)
+    max_levels.pop(indx_min)
+    merge_src_levels_tasks = tasks_per_levels[indx_min]
+
+    for level, tasks_sum in merge_src_levels_tasks.items():
+        if level in tasks_per_levels[merge_destination_index].keys():
+            tasks_per_levels[merge_destination_index][level] = tasks_per_levels[merge_destination_index][level] + tasks_sum
+        else:
+            tasks_per_levels[merge_destination_index][level] = tasks_sum
+    tasks_per_levels.pop(indx_min)
+
+with open(out1, 'w') as f:
+    for i in range(0, len(initial_groups)):
+        for node in initial_groups[i]:
+            f.write(node + ' ' + str(i) + '\n')

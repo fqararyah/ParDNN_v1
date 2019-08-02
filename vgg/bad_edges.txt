@@ -1,0 +1,5 @@
+2019-03-0605:40:00.626515:Itensorflow/core/common_runtime/gpu/gpu_device.cc:1096]CreatedTensorFlowdevice(/job:localhost/replica:0/task:0/device:GPU:0with30375MBmemory) -> physicalGPU(device:0,name:TeslaV100-DGXS-32GB,pcibusid:0000:07:00.0,computecapability:7.0)  0
+2019-03-0605:40:01.060198:Itensorflow/core/common_runtime/gpu/gpu_device.cc:1096]CreatedTensorFlowdevice(/job:localhost/replica:0/task:0/device:GPU:1with30378MBmemory) -> physicalGPU(device:1,name:TeslaV100-DGXS-32GB,pcibusid:0000:08:00.0,computecapability:7.0)  0
+2019-03-0605:40:01.591291:Itensorflow/core/common_runtime/gpu/gpu_device.cc:1096]CreatedTensorFlowdevice(/job:localhost/replica:0/task:0/device:GPU:2with30378MBmemory) -> physicalGPU(device:2,name:TeslaV100-DGXS-32GB,pcibusid:0000:0e:00.0,computecapability:7.0)  0
+2019-03-0605:40:02.090274:Itensorflow/core/common_runtime/gpu/gpu_device.cc:1096]CreatedTensorFlowdevice(/job:localhost/replica:0/task:0/device:GPU:3with30378MBmemory) -> physicalGPU(device:3,name:TeslaV100-DGXS-32GB,pcibusid:0000:0f:00.0,computecapability:7.0)  0
+bad edges that are not in the first layer are:0 edges. They are: 

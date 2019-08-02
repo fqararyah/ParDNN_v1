@@ -1,0 +1,907 @@
+digraph{
+"68_3142\n200" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"68_3142\n200" -> "0_4235\n201"
+"0_4235\n201" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/group_deps"]
+"68_3142\n200" -> "0_4236\n202"
+"0_4236\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency"]
+"68_3142\n200" -> "0_4237\n202"
+"0_4237\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"68_3142\n200" -> "0_4238\n202"
+"0_4238\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"68_3142\n200" -> "0_4239\n202"
+"0_4239\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"68_3142\n200" -> "0_4240\n202"
+"0_4240\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4235\n201" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4235\n201" -> "0_4236\n202"
+"0_4236\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4235\n201" -> "0_4237\n202"
+"0_4237\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4235\n201" -> "0_4238\n202"
+"0_4238\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4235\n201" -> "0_4239\n202"
+"0_4239\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4235\n201" -> "0_4240\n202"
+"0_4240\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4236\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4236\n202" -> "47_4242\n203"
+"47_4242\n203" [style=filled, fillcolor = red tooltip="gradients/addn_15"]
+"0_4237\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4237\n202" -> "6_4254\n203"
+"6_4254\n203" [style=filled, fillcolor = red tooltip="gradients/addn_16"]
+"0_4238\n202" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_26/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4238\n202" -> "5_4255\n203"
+"5_4255\n203" [style=filled, fillcolor = red tooltip="gradients/addn_17"]
+"6_4254\n203" [style=filled, fillcolor = red tooltip="gradients/addn_16"]
+"6_4254\n203" -> "6_3082\n204"
+"6_3082\n204" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_26/gamma/resourceapplymomentum"]
+"5_4255\n203" [style=filled, fillcolor = red tooltip="gradients/addn_17"]
+"5_4255\n203" -> "6_3098\n204"
+"6_3098\n204" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_26/beta/resourceapplymomentum"]
+"47_4242\n203" [style=filled, fillcolor = red tooltip="gradients/addn_15"]
+"47_4242\n203" -> "0_4246\n204"
+"0_4246\n204" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/sum"]
+"47_4242\n203" -> "6_4247\n204"
+"6_4247\n204" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/sum_1"]
+"0_4246\n204" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/sum"]
+"0_4246\n204" -> "0_4244\n205"
+"0_4244\n205" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/reshape"]
+"6_4247\n204" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/sum_1"]
+"6_4247\n204" -> "0_4245\n205"
+"0_4245\n205" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/reshape_1"]
+"0_4244\n205" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/reshape"]
+"0_4244\n205" -> "0_4248\n206"
+"0_4248\n206" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/tuple/group_deps"]
+"0_4244\n205" -> "0_4249\n207"
+"0_4249\n207" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/tuple/control_dependency"]
+"0_4245\n205" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/reshape_1"]
+"0_4245\n205" -> "0_4248\n206"
+"0_4248\n206" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/tuple/group_deps"]
+"0_4245\n205" -> "0_4250\n207"
+"0_4250\n207" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/tuple/control_dependency_1"]
+"0_4248\n206" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/tuple/group_deps"]
+"0_4248\n206" -> "0_4249\n207"
+"0_4249\n207" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/tuple/control_dependency"]
+"0_4248\n206" -> "0_4250\n207"
+"0_4250\n207" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/tuple/control_dependency_1"]
+"0_4249\n207" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/tuple/control_dependency"]
+"0_4249\n207" -> "69_3071\n208"
+"69_3071\n208" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/conv2dbackpropfilter"]
+"0_4249\n207" -> "20_3073\n208"
+"20_3073\n208" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/conv2dbackpropinput"]
+"69_3071\n208" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/conv2dbackpropfilter"]
+"69_3071\n208" -> "0_4251\n209"
+"0_4251\n209" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/tuple/group_deps"]
+"69_3071\n208" -> "0_4253\n210"
+"0_4253\n210" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/tuple/control_dependency_1"]
+"20_3073\n208" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/conv2dbackpropinput"]
+"20_3073\n208" -> "0_4251\n209"
+"0_4251\n209" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/tuple/group_deps"]
+"20_3073\n208" -> "0_4252\n210"
+"0_4252\n210" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/tuple/control_dependency"]
+"0_4251\n209" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/tuple/group_deps"]
+"0_4251\n209" -> "0_4252\n210"
+"0_4252\n210" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/tuple/control_dependency"]
+"0_4251\n209" -> "0_4253\n210"
+"0_4253\n210" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/tuple/control_dependency_1"]
+"0_4252\n210" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/tuple/control_dependency"]
+"0_4252\n210" -> "56_3072\n211"
+"56_3072\n211" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_25_grad/relugrad"]
+"0_4253\n210" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/tuple/control_dependency_1"]
+"0_4253\n210" -> "9_4262\n211"
+"9_4262\n211" [style=filled, fillcolor = red tooltip="gradients/addn_18"]
+"56_3072\n211" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_25_grad/relugrad"]
+"56_3072\n211" -> "68_3029\n212"
+"68_3029\n212" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"9_4262\n211" [style=filled, fillcolor = red tooltip="gradients/addn_18"]
+"9_4262\n211" -> "8_3061\n212"
+"8_3061\n212" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_29/kernel/resourceapplymomentum"]
+"68_3029\n212" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"68_3029\n212" -> "0_4256\n213"
+"0_4256\n213" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/group_deps"]
+"68_3029\n212" -> "0_4257\n214"
+"0_4257\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency"]
+"68_3029\n212" -> "0_4258\n214"
+"0_4258\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"68_3029\n212" -> "0_4259\n214"
+"0_4259\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"68_3029\n212" -> "0_4260\n214"
+"0_4260\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"68_3029\n212" -> "0_4261\n214"
+"0_4261\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4256\n213" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4256\n213" -> "0_4257\n214"
+"0_4257\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4256\n213" -> "0_4258\n214"
+"0_4258\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4256\n213" -> "0_4259\n214"
+"0_4259\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4256\n213" -> "0_4260\n214"
+"0_4260\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4256\n213" -> "0_4261\n214"
+"0_4261\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4257\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4257\n214" -> "69_2961\n215"
+"69_2961\n215" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/conv2dbackpropfilter"]
+"0_4257\n214" -> "20_2963\n215"
+"20_2963\n215" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/conv2dbackpropinput"]
+"0_4258\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4258\n214" -> "6_4266\n215"
+"6_4266\n215" [style=filled, fillcolor = red tooltip="gradients/addn_19"]
+"0_4259\n214" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_25/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4259\n214" -> "5_4267\n215"
+"5_4267\n215" [style=filled, fillcolor = red tooltip="gradients/addn_20"]
+"6_4266\n215" [style=filled, fillcolor = red tooltip="gradients/addn_19"]
+"6_4266\n215" -> "6_2971\n216"
+"6_2971\n216" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_25/gamma/resourceapplymomentum"]
+"5_4267\n215" [style=filled, fillcolor = red tooltip="gradients/addn_20"]
+"5_4267\n215" -> "6_2987\n216"
+"6_2987\n216" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_25/beta/resourceapplymomentum"]
+"69_2961\n215" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/conv2dbackpropfilter"]
+"69_2961\n215" -> "0_4263\n216"
+"0_4263\n216" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/tuple/group_deps"]
+"69_2961\n215" -> "0_4265\n217"
+"0_4265\n217" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/tuple/control_dependency_1"]
+"20_2963\n215" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/conv2dbackpropinput"]
+"20_2963\n215" -> "0_4263\n216"
+"0_4263\n216" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/tuple/group_deps"]
+"20_2963\n215" -> "0_4264\n217"
+"0_4264\n217" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/tuple/control_dependency"]
+"0_4263\n216" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/tuple/group_deps"]
+"0_4263\n216" -> "0_4264\n217"
+"0_4264\n217" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/tuple/control_dependency"]
+"0_4263\n216" -> "0_4265\n217"
+"0_4265\n217" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/tuple/control_dependency_1"]
+"0_4264\n217" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/tuple/control_dependency"]
+"0_4264\n217" -> "56_2962\n218"
+"56_2962\n218" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_24_grad/relugrad"]
+"0_4265\n217" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/tuple/control_dependency_1"]
+"0_4265\n217" -> "9_4274\n218"
+"9_4274\n218" [style=filled, fillcolor = red tooltip="gradients/addn_21"]
+"56_2962\n218" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_24_grad/relugrad"]
+"56_2962\n218" -> "68_2919\n219"
+"68_2919\n219" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"9_4274\n218" [style=filled, fillcolor = red tooltip="gradients/addn_21"]
+"9_4274\n218" -> "8_2951\n219"
+"8_2951\n219" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_28/kernel/resourceapplymomentum"]
+"68_2919\n219" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"68_2919\n219" -> "0_4268\n220"
+"0_4268\n220" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/group_deps"]
+"68_2919\n219" -> "0_4269\n221"
+"0_4269\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency"]
+"68_2919\n219" -> "0_4270\n221"
+"0_4270\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"68_2919\n219" -> "0_4271\n221"
+"0_4271\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"68_2919\n219" -> "0_4272\n221"
+"0_4272\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"68_2919\n219" -> "0_4273\n221"
+"0_4273\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4268\n220" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4268\n220" -> "0_4269\n221"
+"0_4269\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4268\n220" -> "0_4270\n221"
+"0_4270\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4268\n220" -> "0_4271\n221"
+"0_4271\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4268\n220" -> "0_4272\n221"
+"0_4272\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4268\n220" -> "0_4273\n221"
+"0_4273\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4250\n207" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/tuple/control_dependency_1"]
+"0_4250\n207" -> "47_4275\n222"
+"47_4275\n222" [style=filled, fillcolor = red tooltip="gradients/addn_22"]
+"0_4269\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4269\n221" -> "47_4275\n222"
+"47_4275\n222" [style=filled, fillcolor = red tooltip="gradients/addn_22"]
+"0_4270\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4270\n221" -> "6_4287\n222"
+"6_4287\n222" [style=filled, fillcolor = red tooltip="gradients/addn_23"]
+"0_4271\n221" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_24/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4271\n221" -> "6_4288\n222"
+"6_4288\n222" [style=filled, fillcolor = red tooltip="gradients/addn_24"]
+"6_4287\n222" [style=filled, fillcolor = red tooltip="gradients/addn_23"]
+"6_4287\n222" -> "6_2859\n223"
+"6_2859\n223" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_24/gamma/resourceapplymomentum"]
+"6_4288\n222" [style=filled, fillcolor = red tooltip="gradients/addn_24"]
+"6_4288\n222" -> "6_2875\n223"
+"6_2875\n223" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_24/beta/resourceapplymomentum"]
+"47_4275\n222" [style=filled, fillcolor = red tooltip="gradients/addn_22"]
+"47_4275\n222" -> "0_4279\n223"
+"0_4279\n223" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/sum"]
+"47_4275\n222" -> "6_4280\n223"
+"6_4280\n223" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/sum_1"]
+"0_4279\n223" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/sum"]
+"0_4279\n223" -> "0_4277\n224"
+"0_4277\n224" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/reshape"]
+"6_4280\n223" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/sum_1"]
+"6_4280\n223" -> "0_4278\n224"
+"0_4278\n224" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/reshape_1"]
+"0_4277\n224" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/reshape"]
+"0_4277\n224" -> "0_4281\n225"
+"0_4281\n225" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/tuple/group_deps"]
+"0_4277\n224" -> "0_4282\n226"
+"0_4282\n226" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/tuple/control_dependency"]
+"0_4278\n224" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/reshape_1"]
+"0_4278\n224" -> "0_4281\n225"
+"0_4281\n225" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/tuple/group_deps"]
+"0_4278\n224" -> "0_4283\n226"
+"0_4283\n226" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/tuple/control_dependency_1"]
+"0_4281\n225" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/tuple/group_deps"]
+"0_4281\n225" -> "0_4282\n226"
+"0_4282\n226" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/tuple/control_dependency"]
+"0_4281\n225" -> "0_4283\n226"
+"0_4283\n226" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/tuple/control_dependency_1"]
+"0_4282\n226" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/tuple/control_dependency"]
+"0_4282\n226" -> "69_2848\n227"
+"69_2848\n227" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/conv2dbackpropfilter"]
+"0_4282\n226" -> "20_2850\n227"
+"20_2850\n227" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/conv2dbackpropinput"]
+"69_2848\n227" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/conv2dbackpropfilter"]
+"69_2848\n227" -> "0_4284\n228"
+"0_4284\n228" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/tuple/group_deps"]
+"69_2848\n227" -> "0_4286\n229"
+"0_4286\n229" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/tuple/control_dependency_1"]
+"20_2850\n227" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/conv2dbackpropinput"]
+"20_2850\n227" -> "0_4284\n228"
+"0_4284\n228" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/tuple/group_deps"]
+"20_2850\n227" -> "0_4285\n229"
+"0_4285\n229" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/tuple/control_dependency"]
+"0_4284\n228" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/tuple/group_deps"]
+"0_4284\n228" -> "0_4285\n229"
+"0_4285\n229" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/tuple/control_dependency"]
+"0_4284\n228" -> "0_4286\n229"
+"0_4286\n229" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/tuple/control_dependency_1"]
+"0_4285\n229" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/tuple/control_dependency"]
+"0_4285\n229" -> "56_2849\n230"
+"56_2849\n230" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_23_grad/relugrad"]
+"0_4286\n229" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/tuple/control_dependency_1"]
+"0_4286\n229" -> "9_4295\n230"
+"9_4295\n230" [style=filled, fillcolor = red tooltip="gradients/addn_25"]
+"56_2849\n230" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_23_grad/relugrad"]
+"56_2849\n230" -> "69_2806\n231"
+"69_2806\n231" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"9_4295\n230" [style=filled, fillcolor = red tooltip="gradients/addn_25"]
+"9_4295\n230" -> "8_2838\n231"
+"8_2838\n231" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_27/kernel/resourceapplymomentum"]
+"69_2806\n231" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"69_2806\n231" -> "0_4289\n232"
+"0_4289\n232" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/group_deps"]
+"69_2806\n231" -> "0_4290\n233"
+"0_4290\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency"]
+"69_2806\n231" -> "0_4291\n233"
+"0_4291\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"69_2806\n231" -> "0_4292\n233"
+"0_4292\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"69_2806\n231" -> "0_4293\n233"
+"0_4293\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"69_2806\n231" -> "0_4294\n233"
+"0_4294\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4289\n232" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4289\n232" -> "0_4290\n233"
+"0_4290\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4289\n232" -> "0_4291\n233"
+"0_4291\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4289\n232" -> "0_4292\n233"
+"0_4292\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4289\n232" -> "0_4293\n233"
+"0_4293\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4289\n232" -> "0_4294\n233"
+"0_4294\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4290\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4290\n233" -> "69_2738\n234"
+"69_2738\n234" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/conv2dbackpropfilter"]
+"0_4290\n233" -> "20_2740\n234"
+"20_2740\n234" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/conv2dbackpropinput"]
+"0_4291\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4291\n233" -> "6_4299\n234"
+"6_4299\n234" [style=filled, fillcolor = red tooltip="gradients/addn_26"]
+"0_4292\n233" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_23/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4292\n233" -> "6_4300\n234"
+"6_4300\n234" [style=filled, fillcolor = red tooltip="gradients/addn_27"]
+"6_4299\n234" [style=filled, fillcolor = red tooltip="gradients/addn_26"]
+"6_4299\n234" -> "6_2748\n235"
+"6_2748\n235" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_23/gamma/resourceapplymomentum"]
+"6_4300\n234" [style=filled, fillcolor = red tooltip="gradients/addn_27"]
+"6_4300\n234" -> "6_2764\n235"
+"6_2764\n235" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_23/beta/resourceapplymomentum"]
+"69_2738\n234" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/conv2dbackpropfilter"]
+"69_2738\n234" -> "0_4296\n235"
+"0_4296\n235" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/tuple/group_deps"]
+"69_2738\n234" -> "0_4298\n236"
+"0_4298\n236" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/tuple/control_dependency_1"]
+"20_2740\n234" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/conv2dbackpropinput"]
+"20_2740\n234" -> "0_4296\n235"
+"0_4296\n235" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/tuple/group_deps"]
+"20_2740\n234" -> "0_4297\n236"
+"0_4297\n236" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/tuple/control_dependency"]
+"0_4296\n235" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/tuple/group_deps"]
+"0_4296\n235" -> "0_4297\n236"
+"0_4297\n236" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/tuple/control_dependency"]
+"0_4296\n235" -> "0_4298\n236"
+"0_4298\n236" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/tuple/control_dependency_1"]
+"0_4297\n236" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/tuple/control_dependency"]
+"0_4297\n236" -> "56_2739\n237"
+"56_2739\n237" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_22_grad/relugrad"]
+"0_4298\n236" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/tuple/control_dependency_1"]
+"0_4298\n236" -> "9_4307\n237"
+"9_4307\n237" [style=filled, fillcolor = red tooltip="gradients/addn_28"]
+"56_2739\n237" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_22_grad/relugrad"]
+"56_2739\n237" -> "70_2696\n238"
+"70_2696\n238" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"9_4307\n237" [style=filled, fillcolor = red tooltip="gradients/addn_28"]
+"9_4307\n237" -> "8_2728\n238"
+"8_2728\n238" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_26/kernel/resourceapplymomentum"]
+"70_2696\n238" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"70_2696\n238" -> "0_4301\n239"
+"0_4301\n239" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/group_deps"]
+"70_2696\n238" -> "0_4302\n240"
+"0_4302\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency"]
+"70_2696\n238" -> "0_4303\n240"
+"0_4303\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"70_2696\n238" -> "0_4304\n240"
+"0_4304\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"70_2696\n238" -> "0_4305\n240"
+"0_4305\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"70_2696\n238" -> "0_4306\n240"
+"0_4306\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4301\n239" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4301\n239" -> "0_4302\n240"
+"0_4302\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4301\n239" -> "0_4303\n240"
+"0_4303\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4301\n239" -> "0_4304\n240"
+"0_4304\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4301\n239" -> "0_4305\n240"
+"0_4305\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4301\n239" -> "0_4306\n240"
+"0_4306\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4283\n226" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/tuple/control_dependency_1"]
+"0_4283\n226" -> "47_4308\n241"
+"47_4308\n241" [style=filled, fillcolor = red tooltip="gradients/addn_29"]
+"0_4302\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4302\n240" -> "47_4308\n241"
+"47_4308\n241" [style=filled, fillcolor = red tooltip="gradients/addn_29"]
+"0_4303\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4303\n240" -> "6_4323\n241"
+"6_4323\n241" [style=filled, fillcolor = red tooltip="gradients/addn_30"]
+"0_4304\n240" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_22/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4304\n240" -> "6_4324\n241"
+"6_4324\n241" [style=filled, fillcolor = red tooltip="gradients/addn_31"]
+"6_4323\n241" [style=filled, fillcolor = red tooltip="gradients/addn_30"]
+"6_4323\n241" -> "6_2636\n242"
+"6_2636\n242" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_22/gamma/resourceapplymomentum"]
+"6_4324\n241" [style=filled, fillcolor = red tooltip="gradients/addn_31"]
+"6_4324\n241" -> "6_2652\n242"
+"6_2652\n242" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_22/beta/resourceapplymomentum"]
+"47_4308\n241" [style=filled, fillcolor = red tooltip="gradients/addn_29"]
+"47_4308\n241" -> "0_4312\n242"
+"0_4312\n242" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/sum"]
+"47_4308\n241" -> "6_4313\n242"
+"6_4313\n242" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/sum_1"]
+"0_4312\n242" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/sum"]
+"0_4312\n242" -> "0_4310\n243"
+"0_4310\n243" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/reshape"]
+"6_4313\n242" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/sum_1"]
+"6_4313\n242" -> "0_4311\n243"
+"0_4311\n243" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/reshape_1"]
+"0_4310\n243" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/reshape"]
+"0_4310\n243" -> "0_4314\n244"
+"0_4314\n244" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/tuple/group_deps"]
+"0_4310\n243" -> "0_4315\n245"
+"0_4315\n245" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/tuple/control_dependency"]
+"0_4311\n243" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/reshape_1"]
+"0_4311\n243" -> "0_4314\n244"
+"0_4314\n244" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/tuple/group_deps"]
+"0_4311\n243" -> "0_4316\n245"
+"0_4316\n245" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/tuple/control_dependency_1"]
+"0_4314\n244" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/tuple/group_deps"]
+"0_4314\n244" -> "0_4315\n245"
+"0_4315\n245" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/tuple/control_dependency"]
+"0_4314\n244" -> "0_4316\n245"
+"0_4316\n245" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/tuple/control_dependency_1"]
+"0_4316\n245" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/tuple/control_dependency_1"]
+"0_4316\n245" -> "7_2487\n246"
+"7_2487\n246" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/conv2dbackpropfilter"]
+"0_4316\n245" -> "136_2488\n246"
+"136_2488\n246" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/conv2dbackpropinput"]
+"0_4315\n245" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_10_grad/tuple/control_dependency"]
+"0_4315\n245" -> "69_2623\n246"
+"69_2623\n246" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/conv2dbackpropfilter"]
+"0_4315\n245" -> "20_2625\n246"
+"20_2625\n246" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/conv2dbackpropinput"]
+"69_2623\n246" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/conv2dbackpropfilter"]
+"69_2623\n246" -> "0_4317\n247"
+"0_4317\n247" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/tuple/group_deps"]
+"69_2623\n246" -> "0_4319\n248"
+"0_4319\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/tuple/control_dependency_1"]
+"20_2625\n246" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/conv2dbackpropinput"]
+"20_2625\n246" -> "0_4317\n247"
+"0_4317\n247" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/tuple/group_deps"]
+"20_2625\n246" -> "0_4318\n248"
+"0_4318\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/tuple/control_dependency"]
+"7_2487\n246" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/conv2dbackpropfilter"]
+"7_2487\n246" -> "0_4320\n247"
+"0_4320\n247" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/tuple/group_deps"]
+"7_2487\n246" -> "0_4322\n248"
+"0_4322\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/tuple/control_dependency_1"]
+"136_2488\n246" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/conv2dbackpropinput"]
+"136_2488\n246" -> "0_4320\n247"
+"0_4320\n247" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/tuple/group_deps"]
+"136_2488\n246" -> "0_4321\n248"
+"0_4321\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/tuple/control_dependency"]
+"0_4317\n247" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/tuple/group_deps"]
+"0_4317\n247" -> "0_4318\n248"
+"0_4318\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/tuple/control_dependency"]
+"0_4317\n247" -> "0_4319\n248"
+"0_4319\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/tuple/control_dependency_1"]
+"0_4320\n247" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/tuple/group_deps"]
+"0_4320\n247" -> "0_4321\n248"
+"0_4321\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/tuple/control_dependency"]
+"0_4320\n247" -> "0_4322\n248"
+"0_4322\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/tuple/control_dependency_1"]
+"0_4318\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/tuple/control_dependency"]
+"0_4318\n248" -> "57_2624\n249"
+"57_2624\n249" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_21_grad/relugrad"]
+"0_4321\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/tuple/control_dependency"]
+"0_4321\n248" -> "6_4331\n249"
+"6_4331\n249" [style=filled, fillcolor = red tooltip="gradients/resnet_model/pad_2_grad/slice_1"]
+"0_4319\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/tuple/control_dependency_1"]
+"0_4319\n248" -> "9_4338\n249"
+"9_4338\n249" [style=filled, fillcolor = red tooltip="gradients/addn_32"]
+"0_4322\n248" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/tuple/control_dependency_1"]
+"0_4322\n248" -> "6_4339\n249"
+"6_4339\n249" [style=filled, fillcolor = red tooltip="gradients/addn_33"]
+"6_4339\n249" [style=filled, fillcolor = red tooltip="gradients/addn_33"]
+"6_4339\n249" -> "6_2477\n250"
+"6_2477\n250" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_23/kernel/resourceapplymomentum"]
+"57_2624\n249" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_21_grad/relugrad"]
+"57_2624\n249" -> "67_2581\n250"
+"67_2581\n250" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"9_4338\n249" [style=filled, fillcolor = red tooltip="gradients/addn_32"]
+"9_4338\n249" -> "8_2613\n250"
+"8_2613\n250" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_25/kernel/resourceapplymomentum"]
+"67_2581\n250" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"67_2581\n250" -> "0_4332\n251"
+"0_4332\n251" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/group_deps"]
+"67_2581\n250" -> "0_4333\n252"
+"0_4333\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency"]
+"67_2581\n250" -> "0_4334\n252"
+"0_4334\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"67_2581\n250" -> "0_4335\n252"
+"0_4335\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"67_2581\n250" -> "0_4336\n252"
+"0_4336\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"67_2581\n250" -> "0_4337\n252"
+"0_4337\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4332\n251" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4332\n251" -> "0_4333\n252"
+"0_4333\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4332\n251" -> "0_4334\n252"
+"0_4334\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4332\n251" -> "0_4335\n252"
+"0_4335\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4332\n251" -> "0_4336\n252"
+"0_4336\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4332\n251" -> "0_4337\n252"
+"0_4337\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4333\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4333\n252" -> "9_2514\n253"
+"9_2514\n253" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/conv2dbackpropfilter"]
+"0_4333\n252" -> "547_2515\n253"
+"547_2515\n253" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/conv2dbackpropinput"]
+"0_4334\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4334\n252" -> "6_4350\n253"
+"6_4350\n253" [style=filled, fillcolor = red tooltip="gradients/addn_34"]
+"0_4335\n252" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_21/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4335\n252" -> "5_4351\n253"
+"5_4351\n253" [style=filled, fillcolor = red tooltip="gradients/addn_35"]
+"6_4350\n253" [style=filled, fillcolor = red tooltip="gradients/addn_34"]
+"6_4350\n253" -> "6_2523\n254"
+"6_2523\n254" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_21/gamma/resourceapplymomentum"]
+"5_4351\n253" [style=filled, fillcolor = red tooltip="gradients/addn_35"]
+"5_4351\n253" -> "6_2539\n254"
+"6_2539\n254" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_21/beta/resourceapplymomentum"]
+"9_2514\n253" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/conv2dbackpropfilter"]
+"9_2514\n253" -> "0_4340\n254"
+"0_4340\n254" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/tuple/group_deps"]
+"9_2514\n253" -> "0_4342\n255"
+"0_4342\n255" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/tuple/control_dependency_1"]
+"547_2515\n253" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/conv2dbackpropinput"]
+"547_2515\n253" -> "0_4340\n254"
+"0_4340\n254" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/tuple/group_deps"]
+"547_2515\n253" -> "0_4341\n255"
+"0_4341\n255" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/tuple/control_dependency"]
+"0_4340\n254" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/tuple/group_deps"]
+"0_4340\n254" -> "0_4341\n255"
+"0_4341\n255" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/tuple/control_dependency"]
+"0_4340\n254" -> "0_4342\n255"
+"0_4342\n255" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/tuple/control_dependency_1"]
+"0_4341\n255" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/tuple/control_dependency"]
+"0_4341\n255" -> "95_4349\n256"
+"95_4349\n256" [style=filled, fillcolor = red tooltip="gradients/resnet_model/pad_3_grad/slice_1"]
+"0_4342\n255" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/tuple/control_dependency_1"]
+"0_4342\n255" -> "8_4353\n256"
+"8_4353\n256" [style=filled, fillcolor = red tooltip="gradients/addn_37"]
+"8_4353\n256" [style=filled, fillcolor = red tooltip="gradients/addn_37"]
+"8_4353\n256" -> "8_2504\n257"
+"8_2504\n257" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_24/kernel/resourceapplymomentum"]
+"6_4331\n249" [style=filled, fillcolor = red tooltip="gradients/resnet_model/pad_2_grad/slice_1"]
+"6_4331\n249" -> "99_4352\n257"
+"99_4352\n257" [style=filled, fillcolor = red tooltip="gradients/addn_36"]
+"95_4349\n256" [style=filled, fillcolor = red tooltip="gradients/resnet_model/pad_3_grad/slice_1"]
+"95_4349\n256" -> "99_4352\n257"
+"99_4352\n257" [style=filled, fillcolor = red tooltip="gradients/addn_36"]
+"99_4352\n257" [style=filled, fillcolor = red tooltip="gradients/addn_36"]
+"99_4352\n257" -> "109_2461\n258"
+"109_2461\n258" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_20_grad/relugrad"]
+"109_2461\n258" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_20_grad/relugrad"]
+"109_2461\n258" -> "185_2438\n259"
+"185_2438\n259" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"185_2438\n259" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"185_2438\n259" -> "0_4354\n260"
+"0_4354\n260" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/group_deps"]
+"185_2438\n259" -> "0_4355\n261"
+"0_4355\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency"]
+"185_2438\n259" -> "0_4356\n261"
+"0_4356\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"185_2438\n259" -> "0_4357\n261"
+"0_4357\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"185_2438\n259" -> "0_4358\n261"
+"0_4358\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"185_2438\n259" -> "0_4359\n261"
+"0_4359\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4354\n260" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4354\n260" -> "0_4355\n261"
+"0_4355\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4354\n260" -> "0_4356\n261"
+"0_4356\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4354\n260" -> "0_4357\n261"
+"0_4357\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4354\n260" -> "0_4358\n261"
+"0_4358\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4354\n260" -> "0_4359\n261"
+"0_4359\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4355\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4355\n261" -> "0_4363\n262"
+"0_4363\n262" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/sum"]
+"0_4355\n261" -> "7_4364\n262"
+"7_4364\n262" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/sum_1"]
+"0_4356\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4356\n261" -> "6_4368\n262"
+"6_4368\n262" [style=filled, fillcolor = red tooltip="gradients/addn_38"]
+"0_4357\n261" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_20/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4357\n261" -> "5_4369\n262"
+"5_4369\n262" [style=filled, fillcolor = red tooltip="gradients/addn_39"]
+"6_4368\n262" [style=filled, fillcolor = red tooltip="gradients/addn_38"]
+"6_4368\n262" -> "6_2380\n263"
+"6_2380\n263" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_20/gamma/resourceapplymomentum"]
+"5_4369\n262" [style=filled, fillcolor = red tooltip="gradients/addn_39"]
+"5_4369\n262" -> "6_2396\n263"
+"6_2396\n263" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_20/beta/resourceapplymomentum"]
+"0_4363\n262" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/sum"]
+"0_4363\n262" -> "0_4361\n263"
+"0_4361\n263" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/reshape"]
+"7_4364\n262" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/sum_1"]
+"7_4364\n262" -> "0_4362\n263"
+"0_4362\n263" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/reshape_1"]
+"0_4361\n263" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/reshape"]
+"0_4361\n263" -> "0_4365\n264"
+"0_4365\n264" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/tuple/group_deps"]
+"0_4361\n263" -> "0_4366\n265"
+"0_4366\n265" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/tuple/control_dependency"]
+"0_4362\n263" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/reshape_1"]
+"0_4362\n263" -> "0_4365\n264"
+"0_4365\n264" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/tuple/group_deps"]
+"0_4362\n263" -> "0_4367\n265"
+"0_4367\n265" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/tuple/control_dependency_1"]
+"0_4365\n264" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/tuple/group_deps"]
+"0_4365\n264" -> "0_4366\n265"
+"0_4366\n265" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/tuple/control_dependency"]
+"0_4365\n264" -> "0_4367\n265"
+"0_4367\n265" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/tuple/control_dependency_1"]
+"0_4366\n265" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/tuple/control_dependency"]
+"0_4366\n265" -> "8_2368\n266"
+"8_2368\n266" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/conv2dbackpropfilter"]
+"0_4366\n265" -> "472_2370\n266"
+"472_2370\n266" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/conv2dbackpropinput"]
+"8_2368\n266" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/conv2dbackpropfilter"]
+"8_2368\n266" -> "0_4370\n267"
+"0_4370\n267" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/tuple/group_deps"]
+"8_2368\n266" -> "0_4372\n268"
+"0_4372\n268" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/tuple/control_dependency_1"]
+"472_2370\n266" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/conv2dbackpropinput"]
+"472_2370\n266" -> "0_4370\n267"
+"0_4370\n267" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/tuple/group_deps"]
+"472_2370\n266" -> "0_4371\n268"
+"0_4371\n268" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/tuple/control_dependency"]
+"0_4370\n267" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/tuple/group_deps"]
+"0_4370\n267" -> "0_4371\n268"
+"0_4371\n268" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/tuple/control_dependency"]
+"0_4370\n267" -> "0_4372\n268"
+"0_4372\n268" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/tuple/control_dependency_1"]
+"0_4371\n268" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/tuple/control_dependency"]
+"0_4371\n268" -> "109_2369\n269"
+"109_2369\n269" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_19_grad/relugrad"]
+"0_4372\n268" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/tuple/control_dependency_1"]
+"0_4372\n268" -> "7_4379\n269"
+"7_4379\n269" [style=filled, fillcolor = red tooltip="gradients/addn_40"]
+"109_2369\n269" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_19_grad/relugrad"]
+"109_2369\n269" -> "184_2326\n270"
+"184_2326\n270" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"7_4379\n269" [style=filled, fillcolor = red tooltip="gradients/addn_40"]
+"7_4379\n269" -> "8_2358\n270"
+"8_2358\n270" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_22/kernel/resourceapplymomentum"]
+"184_2326\n270" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"184_2326\n270" -> "0_4373\n271"
+"0_4373\n271" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/group_deps"]
+"184_2326\n270" -> "0_4374\n272"
+"0_4374\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency"]
+"184_2326\n270" -> "0_4375\n272"
+"0_4375\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"184_2326\n270" -> "0_4376\n272"
+"0_4376\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"184_2326\n270" -> "0_4377\n272"
+"0_4377\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"184_2326\n270" -> "0_4378\n272"
+"0_4378\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4373\n271" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4373\n271" -> "0_4374\n272"
+"0_4374\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4373\n271" -> "0_4375\n272"
+"0_4375\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4373\n271" -> "0_4376\n272"
+"0_4376\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4373\n271" -> "0_4377\n272"
+"0_4377\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4373\n271" -> "0_4378\n272"
+"0_4378\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4374\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4374\n272" -> "8_2258\n273"
+"8_2258\n273" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/conv2dbackpropfilter"]
+"0_4374\n272" -> "470_2260\n273"
+"470_2260\n273" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/conv2dbackpropinput"]
+"0_4375\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4375\n272" -> "6_4383\n273"
+"6_4383\n273" [style=filled, fillcolor = red tooltip="gradients/addn_41"]
+"0_4376\n272" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_19/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4376\n272" -> "5_4384\n273"
+"5_4384\n273" [style=filled, fillcolor = red tooltip="gradients/addn_42"]
+"6_4383\n273" [style=filled, fillcolor = red tooltip="gradients/addn_41"]
+"6_4383\n273" -> "6_2268\n274"
+"6_2268\n274" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_19/gamma/resourceapplymomentum"]
+"5_4384\n273" [style=filled, fillcolor = red tooltip="gradients/addn_42"]
+"5_4384\n273" -> "6_2284\n274"
+"6_2284\n274" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_19/beta/resourceapplymomentum"]
+"8_2258\n273" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/conv2dbackpropfilter"]
+"8_2258\n273" -> "0_4380\n274"
+"0_4380\n274" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/tuple/group_deps"]
+"8_2258\n273" -> "0_4382\n275"
+"0_4382\n275" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/tuple/control_dependency_1"]
+"470_2260\n273" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/conv2dbackpropinput"]
+"470_2260\n273" -> "0_4380\n274"
+"0_4380\n274" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/tuple/group_deps"]
+"470_2260\n273" -> "0_4381\n275"
+"0_4381\n275" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/tuple/control_dependency"]
+"0_4380\n274" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/tuple/group_deps"]
+"0_4380\n274" -> "0_4381\n275"
+"0_4381\n275" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/tuple/control_dependency"]
+"0_4380\n274" -> "0_4382\n275"
+"0_4382\n275" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/tuple/control_dependency_1"]
+"0_4381\n275" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/tuple/control_dependency"]
+"0_4381\n275" -> "109_2259\n276"
+"109_2259\n276" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_18_grad/relugrad"]
+"0_4382\n275" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/tuple/control_dependency_1"]
+"0_4382\n275" -> "7_4391\n276"
+"7_4391\n276" [style=filled, fillcolor = red tooltip="gradients/addn_43"]
+"109_2259\n276" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_18_grad/relugrad"]
+"109_2259\n276" -> "184_2216\n277"
+"184_2216\n277" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"7_4391\n276" [style=filled, fillcolor = red tooltip="gradients/addn_43"]
+"7_4391\n276" -> "8_2248\n277"
+"8_2248\n277" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_21/kernel/resourceapplymomentum"]
+"184_2216\n277" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"184_2216\n277" -> "0_4385\n278"
+"0_4385\n278" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/group_deps"]
+"184_2216\n277" -> "0_4386\n279"
+"0_4386\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency"]
+"184_2216\n277" -> "0_4387\n279"
+"0_4387\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"184_2216\n277" -> "0_4388\n279"
+"0_4388\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"184_2216\n277" -> "0_4389\n279"
+"0_4389\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"184_2216\n277" -> "0_4390\n279"
+"0_4390\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4385\n278" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4385\n278" -> "0_4386\n279"
+"0_4386\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4385\n278" -> "0_4387\n279"
+"0_4387\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4385\n278" -> "0_4388\n279"
+"0_4388\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4385\n278" -> "0_4389\n279"
+"0_4389\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4385\n278" -> "0_4390\n279"
+"0_4390\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4367\n265" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/tuple/control_dependency_1"]
+"0_4367\n265" -> "99_4392\n280"
+"99_4392\n280" [style=filled, fillcolor = red tooltip="gradients/addn_44"]
+"0_4386\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4386\n279" -> "99_4392\n280"
+"99_4392\n280" [style=filled, fillcolor = red tooltip="gradients/addn_44"]
+"0_4387\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4387\n279" -> "6_4404\n280"
+"6_4404\n280" [style=filled, fillcolor = red tooltip="gradients/addn_45"]
+"0_4388\n279" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_18/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4388\n279" -> "5_4405\n280"
+"5_4405\n280" [style=filled, fillcolor = red tooltip="gradients/addn_46"]
+"6_4404\n280" [style=filled, fillcolor = red tooltip="gradients/addn_45"]
+"6_4404\n280" -> "6_2156\n281"
+"6_2156\n281" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_18/gamma/resourceapplymomentum"]
+"5_4405\n280" [style=filled, fillcolor = red tooltip="gradients/addn_46"]
+"5_4405\n280" -> "6_2172\n281"
+"6_2172\n281" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_18/beta/resourceapplymomentum"]
+"99_4392\n280" [style=filled, fillcolor = red tooltip="gradients/addn_44"]
+"99_4392\n280" -> "0_4396\n281"
+"0_4396\n281" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/sum"]
+"99_4392\n280" -> "6_4397\n281"
+"6_4397\n281" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/sum_1"]
+"0_4396\n281" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/sum"]
+"0_4396\n281" -> "0_4394\n282"
+"0_4394\n282" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/reshape"]
+"6_4397\n281" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/sum_1"]
+"6_4397\n281" -> "0_4395\n282"
+"0_4395\n282" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/reshape_1"]
+"0_4394\n282" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/reshape"]
+"0_4394\n282" -> "0_4398\n283"
+"0_4398\n283" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/tuple/group_deps"]
+"0_4394\n282" -> "0_4399\n284"
+"0_4399\n284" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/tuple/control_dependency"]
+"0_4395\n282" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/reshape_1"]
+"0_4395\n282" -> "0_4398\n283"
+"0_4398\n283" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/tuple/group_deps"]
+"0_4395\n282" -> "0_4400\n284"
+"0_4400\n284" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/tuple/control_dependency_1"]
+"0_4398\n283" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/tuple/group_deps"]
+"0_4398\n283" -> "0_4399\n284"
+"0_4399\n284" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/tuple/control_dependency"]
+"0_4398\n283" -> "0_4400\n284"
+"0_4400\n284" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/tuple/control_dependency_1"]
+"0_4399\n284" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/tuple/control_dependency"]
+"0_4399\n284" -> "8_2145\n285"
+"8_2145\n285" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/conv2dbackpropfilter"]
+"0_4399\n284" -> "471_2147\n285"
+"471_2147\n285" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/conv2dbackpropinput"]
+"8_2145\n285" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/conv2dbackpropfilter"]
+"8_2145\n285" -> "0_4401\n286"
+"0_4401\n286" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/tuple/group_deps"]
+"8_2145\n285" -> "0_4403\n287"
+"0_4403\n287" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/tuple/control_dependency_1"]
+"471_2147\n285" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/conv2dbackpropinput"]
+"471_2147\n285" -> "0_4401\n286"
+"0_4401\n286" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/tuple/group_deps"]
+"471_2147\n285" -> "0_4402\n287"
+"0_4402\n287" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/tuple/control_dependency"]
+"0_4401\n286" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/tuple/group_deps"]
+"0_4401\n286" -> "0_4402\n287"
+"0_4402\n287" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/tuple/control_dependency"]
+"0_4401\n286" -> "0_4403\n287"
+"0_4403\n287" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/tuple/control_dependency_1"]
+"0_4402\n287" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/tuple/control_dependency"]
+"0_4402\n287" -> "109_2146\n288"
+"109_2146\n288" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_17_grad/relugrad"]
+"0_4403\n287" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/tuple/control_dependency_1"]
+"0_4403\n287" -> "7_4412\n288"
+"7_4412\n288" [style=filled, fillcolor = red tooltip="gradients/addn_47"]
+"109_2146\n288" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_17_grad/relugrad"]
+"109_2146\n288" -> "184_2103\n289"
+"184_2103\n289" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"7_4412\n288" [style=filled, fillcolor = red tooltip="gradients/addn_47"]
+"7_4412\n288" -> "8_2135\n289"
+"8_2135\n289" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_20/kernel/resourceapplymomentum"]
+"184_2103\n289" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"184_2103\n289" -> "0_4406\n290"
+"0_4406\n290" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/group_deps"]
+"184_2103\n289" -> "0_4407\n291"
+"0_4407\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency"]
+"184_2103\n289" -> "0_4408\n291"
+"0_4408\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"184_2103\n289" -> "0_4409\n291"
+"0_4409\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"184_2103\n289" -> "0_4410\n291"
+"0_4410\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"184_2103\n289" -> "0_4411\n291"
+"0_4411\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4406\n290" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4406\n290" -> "0_4407\n291"
+"0_4407\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4406\n290" -> "0_4408\n291"
+"0_4408\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4406\n290" -> "0_4409\n291"
+"0_4409\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4406\n290" -> "0_4410\n291"
+"0_4410\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4406\n290" -> "0_4411\n291"
+"0_4411\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4407\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4407\n291" -> "8_2035\n292"
+"8_2035\n292" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/conv2dbackpropfilter"]
+"0_4407\n291" -> "470_2037\n292"
+"470_2037\n292" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/conv2dbackpropinput"]
+"0_4408\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4408\n291" -> "6_4416\n292"
+"6_4416\n292" [style=filled, fillcolor = red tooltip="gradients/addn_48"]
+"0_4409\n291" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_17/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4409\n291" -> "5_4417\n292"
+"5_4417\n292" [style=filled, fillcolor = red tooltip="gradients/addn_49"]
+"6_4416\n292" [style=filled, fillcolor = red tooltip="gradients/addn_48"]
+"6_4416\n292" -> "6_2045\n293"
+"6_2045\n293" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_17/gamma/resourceapplymomentum"]
+"5_4417\n292" [style=filled, fillcolor = red tooltip="gradients/addn_49"]
+"5_4417\n292" -> "6_2061\n293"
+"6_2061\n293" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/batch_normalization_17/beta/resourceapplymomentum"]
+"8_2035\n292" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/conv2dbackpropfilter"]
+"8_2035\n292" -> "0_4413\n293"
+"0_4413\n293" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/tuple/group_deps"]
+"8_2035\n292" -> "0_4415\n294"
+"0_4415\n294" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/tuple/control_dependency_1"]
+"470_2037\n292" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/conv2dbackpropinput"]
+"470_2037\n292" -> "0_4413\n293"
+"0_4413\n293" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/tuple/group_deps"]
+"470_2037\n292" -> "0_4414\n294"
+"0_4414\n294" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/tuple/control_dependency"]
+"0_4413\n293" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/tuple/group_deps"]
+"0_4413\n293" -> "0_4414\n294"
+"0_4414\n294" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/tuple/control_dependency"]
+"0_4413\n293" -> "0_4415\n294"
+"0_4415\n294" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/tuple/control_dependency_1"]
+"0_4414\n294" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/tuple/control_dependency"]
+"0_4414\n294" -> "109_2036\n295"
+"109_2036\n295" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_16_grad/relugrad"]
+"0_4415\n294" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/tuple/control_dependency_1"]
+"0_4415\n294" -> "7_4424\n295"
+"7_4424\n295" [style=filled, fillcolor = red tooltip="gradients/addn_50"]
+"109_2036\n295" [style=filled, fillcolor = red tooltip="gradients/resnet_model/relu_16_grad/relugrad"]
+"109_2036\n295" -> "185_1993\n296"
+"185_1993\n296" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"7_4424\n295" [style=filled, fillcolor = red tooltip="gradients/addn_50"]
+"7_4424\n295" -> "8_2025\n296"
+"8_2025\n296" [style=filled, fillcolor = red tooltip="momentum/update_resnet_model/conv2d_19/kernel/resourceapplymomentum"]
+"185_1993\n296" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/fusedbatchnormgrad"]
+"185_1993\n296" -> "0_4418\n297"
+"0_4418\n297" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/group_deps"]
+"185_1993\n296" -> "0_4419\n298"
+"0_4419\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency"]
+"185_1993\n296" -> "0_4420\n298"
+"0_4420\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"185_1993\n296" -> "0_4421\n298"
+"0_4421\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"185_1993\n296" -> "0_4422\n298"
+"0_4422\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"185_1993\n296" -> "0_4423\n298"
+"0_4423\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4418\n297" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/group_deps"]
+"0_4418\n297" -> "0_4419\n298"
+"0_4419\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4418\n297" -> "0_4420\n298"
+"0_4420\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4418\n297" -> "0_4421\n298"
+"0_4421\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4418\n297" -> "0_4422\n298"
+"0_4422\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_3"]
+"0_4418\n297" -> "0_4423\n298"
+"0_4423\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_4"]
+"0_4400\n284" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/tuple/control_dependency_1"]
+"0_4400\n284" -> "98_4425\n299"
+"98_4425\n299" [style=filled, fillcolor = red tooltip="gradients/addn_51"]
+"0_4419\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency"]
+"0_4419\n298" -> "98_4425\n299"
+"98_4425\n299" [style=filled, fillcolor = red tooltip="gradients/addn_51"]
+"0_4420\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_1"]
+"0_4420\n298" -> "6_4437\n299"
+"6_4437\n299" [style=filled, fillcolor = red tooltip="gradients/addn_52"]
+"0_4421\n298" [style=filled, fillcolor = red tooltip="gradients/resnet_model/batch_normalization_16/fusedbatchnorm_grad/tuple/control_dependency_2"]
+"0_4421\n298" -> "5_4438\n299"
+"5_4438\n299" [style=filled, fillcolor = red tooltip="gradients/addn_53"]
+}

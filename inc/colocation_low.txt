@@ -1,0 +1,2 @@
+tower_0/aux_loss/value/avg vs tower_0/avg/assignmovingavg_1
+tower_0/total_loss/avg vs tower_0/avg/assignmovingavg_2

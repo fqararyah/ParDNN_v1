@@ -1,0 +1,313 @@
+digraph{
+"60_0\n1" [style=filled, fillcolor = red]
+"60_0\n1" -> "109_1\n2"
+"109_1\n2" [style=filled, fillcolor = green]
+"60_0\n1" -> "115_21\n2"
+"115_21\n2" [style=filled, fillcolor = red]
+"60_0\n1" -> "42_81\n2"
+"42_81\n2" [style=filled, fillcolor = red]
+"60_0\n1" -> "0_87\n2"
+"0_87\n2" [style=filled, fillcolor = red]
+"60_0\n1" -> "0_88\n2"
+"0_88\n2" [style=filled, fillcolor = red]
+"60_0\n1" -> "3_99\n2"
+"3_99\n2" [style=filled, fillcolor = red]
+"60_0\n1" -> "1_104\n2"
+"1_104\n2" [style=filled, fillcolor = red]
+"109_1\n2" [style=filled, fillcolor = green]
+"109_1\n2" -> "18_2\n3"
+"18_2\n3" [style=filled, fillcolor = green]
+"109_1\n2" -> "18_4\n5"
+"18_4\n5" [style=filled, fillcolor = green]
+"109_1\n2" -> "19_97\n5"
+"19_97\n5" [style=filled, fillcolor = green]
+"109_1\n2" -> "18_16\n10"
+"18_16\n10" [style=filled, fillcolor = green]
+"115_21\n2" [style=filled, fillcolor = red]
+"115_21\n2" -> "37_22\n3"
+"37_22\n3" [style=filled, fillcolor = red]
+"115_21\n2" -> "18_24\n5"
+"18_24\n5" [style=filled, fillcolor = red]
+"115_21\n2" -> "24_103\n5"
+"24_103\n5" [style=filled, fillcolor = red]
+"115_21\n2" -> "18_36\n10"
+"18_36\n10" [style=filled, fillcolor = red]
+"0_88\n2" [style=filled, fillcolor = red]
+"0_88\n2" -> "0_89\n3"
+"0_89\n3" [style=filled, fillcolor = red]
+"18_2\n3" [style=filled, fillcolor = green]
+"18_2\n3" -> "0_3\n4"
+"0_3\n4" [style=filled, fillcolor = green]
+"18_2\n3" -> "5_6\n4"
+"5_6\n4" [style=filled, fillcolor = green]
+"37_22\n3" [style=filled, fillcolor = red]
+"37_22\n3" -> "0_23\n4"
+"0_23\n4" [style=filled, fillcolor = red]
+"37_22\n3" -> "8_26\n4"
+"8_26\n4" [style=filled, fillcolor = red]
+"0_89\n3" [style=filled, fillcolor = red]
+"0_89\n3" -> "0_90\n4"
+"0_90\n4" [style=filled, fillcolor = red]
+"0_3\n4" [style=filled, fillcolor = green]
+"0_3\n4" -> "18_4\n5"
+"18_4\n5" [style=filled, fillcolor = green]
+"0_3\n4" -> "19_97\n5"
+"19_97\n5" [style=filled, fillcolor = green]
+"5_6\n4" [style=filled, fillcolor = green]
+"5_6\n4" -> "17_8\n5"
+"17_8\n5" [style=filled, fillcolor = green]
+"5_6\n4" -> "17_17\n10"
+"17_17\n10" [style=filled, fillcolor = green]
+"0_23\n4" [style=filled, fillcolor = red]
+"0_23\n4" -> "18_24\n5"
+"18_24\n5" [style=filled, fillcolor = red]
+"0_23\n4" -> "24_103\n5"
+"24_103\n5" [style=filled, fillcolor = red]
+"8_26\n4" [style=filled, fillcolor = red]
+"8_26\n4" -> "16_28\n5"
+"16_28\n5" [style=filled, fillcolor = red]
+"8_26\n4" -> "19_37\n10"
+"19_37\n10" [style=filled, fillcolor = red]
+"0_90\n4" [style=filled, fillcolor = red]
+"0_90\n4" -> "0_91\n5"
+"0_91\n5" [style=filled, fillcolor = red]
+"18_4\n5" [style=filled, fillcolor = green]
+"18_4\n5" -> "18_5\n6"
+"18_5\n6" [style=filled, fillcolor = green]
+"17_8\n5" [style=filled, fillcolor = green]
+"17_8\n5" -> "16_9\n6"
+"16_9\n6" [style=filled, fillcolor = green]
+"18_24\n5" [style=filled, fillcolor = red]
+"18_24\n5" -> "33_25\n6"
+"33_25\n6" [style=filled, fillcolor = red]
+"16_28\n5" [style=filled, fillcolor = red]
+"16_28\n5" -> "14_29\n6"
+"14_29\n6" [style=filled, fillcolor = red]
+"18_5\n6" [style=filled, fillcolor = green]
+"18_5\n6" -> "5_7\n7"
+"5_7\n7" [style=filled, fillcolor = green]
+"16_9\n6" [style=filled, fillcolor = green]
+"16_9\n6" -> "16_10\n7"
+"16_10\n7" [style=filled, fillcolor = green]
+"33_25\n6" [style=filled, fillcolor = red]
+"33_25\n6" -> "6_27\n7"
+"6_27\n7" [style=filled, fillcolor = red]
+"14_29\n6" [style=filled, fillcolor = red]
+"14_29\n6" -> "24_30\n7"
+"24_30\n7" [style=filled, fillcolor = red]
+"5_7\n7" [style=filled, fillcolor = green]
+"5_7\n7" -> "16_11\n8"
+"16_11\n8" [style=filled, fillcolor = green]
+"5_7\n7" -> "18_14\n8"
+"18_14\n8" [style=filled, fillcolor = green]
+"6_27\n7" [style=filled, fillcolor = red]
+"6_27\n7" -> "18_31\n8"
+"18_31\n8" [style=filled, fillcolor = red]
+"6_27\n7" -> "22_34\n8"
+"22_34\n8" [style=filled, fillcolor = red]
+"16_11\n8" [style=filled, fillcolor = green]
+"16_11\n8" -> "20_12\n9"
+"20_12\n9" [style=filled, fillcolor = green]
+"18_14\n8" [style=filled, fillcolor = green]
+"18_14\n8" -> "14_15\n9"
+"14_15\n9" [style=filled, fillcolor = green]
+"18_31\n8" [style=filled, fillcolor = red]
+"18_31\n8" -> "19_32\n9"
+"19_32\n9" [style=filled, fillcolor = red]
+"22_34\n8" [style=filled, fillcolor = red]
+"22_34\n8" -> "15_35\n9"
+"15_35\n9" [style=filled, fillcolor = red]
+"14_15\n9" [style=filled, fillcolor = green]
+"14_15\n9" -> "18_16\n10"
+"18_16\n10" [style=filled, fillcolor = green]
+"14_15\n9" -> "17_17\n10"
+"17_17\n10" [style=filled, fillcolor = green]
+"20_12\n9" [style=filled, fillcolor = green]
+"20_12\n9" -> "15_13\n10"
+"15_13\n10" [style=filled, fillcolor = green]
+"15_35\n9" [style=filled, fillcolor = red]
+"15_35\n9" -> "18_36\n10"
+"18_36\n10" [style=filled, fillcolor = red]
+"15_35\n9" -> "19_37\n10"
+"19_37\n10" [style=filled, fillcolor = red]
+"19_32\n9" [style=filled, fillcolor = red]
+"19_32\n9" -> "14_33\n10"
+"14_33\n10" [style=filled, fillcolor = red]
+"17_17\n10" [style=filled, fillcolor = green]
+"17_17\n10" -> "20_18\n11"
+"20_18\n11" [style=filled, fillcolor = green]
+"19_37\n10" [style=filled, fillcolor = red]
+"19_37\n10" -> "18_38\n11"
+"18_38\n11" [style=filled, fillcolor = red]
+"18_16\n10" [style=filled, fillcolor = green]
+"18_16\n10" -> "18_19\n12"
+"18_19\n12" [style=filled, fillcolor = green]
+"20_18\n11" [style=filled, fillcolor = green]
+"20_18\n11" -> "18_19\n12"
+"18_19\n12" [style=filled, fillcolor = green]
+"18_36\n10" [style=filled, fillcolor = red]
+"18_36\n10" -> "18_39\n12"
+"18_39\n12" [style=filled, fillcolor = green]
+"18_38\n11" [style=filled, fillcolor = red]
+"18_38\n11" -> "18_39\n12"
+"18_39\n12" [style=filled, fillcolor = green]
+"18_19\n12" [style=filled, fillcolor = green]
+"18_19\n12" -> "15_20\n13"
+"15_20\n13" [style=filled, fillcolor = green]
+"18_39\n12" [style=filled, fillcolor = green]
+"18_39\n12" -> "16_40\n13"
+"16_40\n13" [style=filled, fillcolor = red]
+"16_40\n13" [style=filled, fillcolor = red]
+"16_40\n13" -> "92_41\n14"
+"92_41\n14" [style=filled, fillcolor = red]
+"16_40\n13" -> "2_102\n14"
+"2_102\n14" [style=filled, fillcolor = red]
+"92_41\n14" [style=filled, fillcolor = red]
+"92_41\n14" -> "30_42\n15"
+"30_42\n15" [style=filled, fillcolor = red]
+"92_41\n14" -> "19_44\n17"
+"19_44\n17" [style=filled, fillcolor = red]
+"92_41\n14" -> "22_101\n17"
+"22_101\n17" [style=filled, fillcolor = red]
+"92_41\n14" -> "18_56\n22"
+"18_56\n22" [style=filled, fillcolor = red]
+"30_42\n15" [style=filled, fillcolor = red]
+"30_42\n15" -> "0_43\n16"
+"0_43\n16" [style=filled, fillcolor = red]
+"30_42\n15" -> "7_46\n16"
+"7_46\n16" [style=filled, fillcolor = red]
+"0_43\n16" [style=filled, fillcolor = red]
+"0_43\n16" -> "19_44\n17"
+"19_44\n17" [style=filled, fillcolor = red]
+"0_43\n16" -> "22_101\n17"
+"22_101\n17" [style=filled, fillcolor = red]
+"7_46\n16" [style=filled, fillcolor = red]
+"7_46\n16" -> "18_48\n17"
+"18_48\n17" [style=filled, fillcolor = red]
+"7_46\n16" -> "17_57\n22"
+"17_57\n22" [style=filled, fillcolor = red]
+"19_44\n17" [style=filled, fillcolor = red]
+"19_44\n17" -> "26_45\n18"
+"26_45\n18" [style=filled, fillcolor = red]
+"18_48\n17" [style=filled, fillcolor = red]
+"18_48\n17" -> "16_49\n18"
+"16_49\n18" [style=filled, fillcolor = red]
+"26_45\n18" [style=filled, fillcolor = red]
+"26_45\n18" -> "5_47\n19"
+"5_47\n19" [style=filled, fillcolor = red]
+"16_49\n18" [style=filled, fillcolor = red]
+"16_49\n18" -> "17_50\n19"
+"17_50\n19" [style=filled, fillcolor = red]
+"5_47\n19" [style=filled, fillcolor = red]
+"5_47\n19" -> "16_51\n20"
+"16_51\n20" [style=filled, fillcolor = red]
+"5_47\n19" -> "16_54\n20"
+"16_54\n20" [style=filled, fillcolor = red]
+"16_51\n20" [style=filled, fillcolor = red]
+"16_51\n20" -> "16_52\n21"
+"16_52\n21" [style=filled, fillcolor = green]
+"16_54\n20" [style=filled, fillcolor = red]
+"16_54\n20" -> "14_55\n21"
+"14_55\n21" [style=filled, fillcolor = red]
+"14_55\n21" [style=filled, fillcolor = red]
+"14_55\n21" -> "18_56\n22"
+"18_56\n22" [style=filled, fillcolor = red]
+"14_55\n21" -> "17_57\n22"
+"17_57\n22" [style=filled, fillcolor = red]
+"16_52\n21" [style=filled, fillcolor = green]
+"16_52\n21" -> "14_53\n22"
+"14_53\n22" [style=filled, fillcolor = red]
+"17_57\n22" [style=filled, fillcolor = red]
+"17_57\n22" -> "16_58\n23"
+"16_58\n23" [style=filled, fillcolor = red]
+"18_56\n22" [style=filled, fillcolor = red]
+"18_56\n22" -> "18_59\n24"
+"18_59\n24" [style=filled, fillcolor = red]
+"16_58\n23" [style=filled, fillcolor = red]
+"16_58\n23" -> "18_59\n24"
+"18_59\n24" [style=filled, fillcolor = red]
+"18_59\n24" [style=filled, fillcolor = red]
+"18_59\n24" -> "20_60\n25"
+"20_60\n25" [style=filled, fillcolor = red]
+"20_60\n25" [style=filled, fillcolor = red]
+"20_60\n25" -> "124_61\n26"
+"124_61\n26" [style=filled, fillcolor = red]
+"20_60\n25" -> "3_100\n26"
+"3_100\n26" [style=filled, fillcolor = red]
+"124_61\n26" [style=filled, fillcolor = red]
+"124_61\n26" -> "20_62\n27"
+"20_62\n27" [style=filled, fillcolor = red]
+"124_61\n26" -> "20_64\n29"
+"20_64\n29" [style=filled, fillcolor = red]
+"124_61\n26" -> "20_98\n29"
+"20_98\n29" [style=filled, fillcolor = red]
+"124_61\n26" -> "19_76\n34"
+"19_76\n34" [style=filled, fillcolor = red]
+"20_62\n27" [style=filled, fillcolor = red]
+"20_62\n27" -> "0_63\n28"
+"0_63\n28" [style=filled, fillcolor = red]
+"20_62\n27" -> "6_66\n28"
+"6_66\n28" [style=filled, fillcolor = red]
+"0_63\n28" [style=filled, fillcolor = red]
+"0_63\n28" -> "20_64\n29"
+"20_64\n29" [style=filled, fillcolor = red]
+"0_63\n28" -> "20_98\n29"
+"20_98\n29" [style=filled, fillcolor = red]
+"6_66\n28" [style=filled, fillcolor = red]
+"6_66\n28" -> "16_68\n29"
+"16_68\n29" [style=filled, fillcolor = red]
+"6_66\n28" -> "18_77\n34"
+"18_77\n34" [style=filled, fillcolor = red]
+"20_64\n29" [style=filled, fillcolor = red]
+"20_64\n29" -> "18_65\n30"
+"18_65\n30" [style=filled, fillcolor = red]
+"16_68\n29" [style=filled, fillcolor = red]
+"16_68\n29" -> "17_69\n30"
+"17_69\n30" [style=filled, fillcolor = red]
+"18_65\n30" [style=filled, fillcolor = red]
+"18_65\n30" -> "6_67\n31"
+"6_67\n31" [style=filled, fillcolor = red]
+"17_69\n30" [style=filled, fillcolor = red]
+"17_69\n30" -> "24_70\n31"
+"24_70\n31" [style=filled, fillcolor = red]
+"6_67\n31" [style=filled, fillcolor = red]
+"6_67\n31" -> "14_71\n32"
+"14_71\n32" [style=filled, fillcolor = red]
+"6_67\n31" -> "20_74\n32"
+"20_74\n32" [style=filled, fillcolor = red]
+"14_71\n32" [style=filled, fillcolor = red]
+"14_71\n32" -> "17_72\n33"
+"17_72\n33" [style=filled, fillcolor = red]
+"20_74\n32" [style=filled, fillcolor = red]
+"20_74\n32" -> "16_75\n33"
+"16_75\n33" [style=filled, fillcolor = red]
+"16_75\n33" [style=filled, fillcolor = red]
+"16_75\n33" -> "19_76\n34"
+"19_76\n34" [style=filled, fillcolor = red]
+"16_75\n33" -> "18_77\n34"
+"18_77\n34" [style=filled, fillcolor = red]
+"17_72\n33" [style=filled, fillcolor = red]
+"17_72\n33" -> "18_73\n34"
+"18_73\n34" [style=filled, fillcolor = red]
+"18_77\n34" [style=filled, fillcolor = red]
+"18_77\n34" -> "18_78\n35"
+"18_78\n35" [style=filled, fillcolor = red]
+"19_76\n34" [style=filled, fillcolor = red]
+"19_76\n34" -> "18_79\n36"
+"18_79\n36" [style=filled, fillcolor = red]
+"18_78\n35" [style=filled, fillcolor = red]
+"18_78\n35" -> "18_79\n36"
+"18_79\n36" [style=filled, fillcolor = red]
+"18_79\n36" [style=filled, fillcolor = red]
+"18_79\n36" -> "15_80\n37"
+"15_80\n37" [style=filled, fillcolor = red]
+"42_81\n2" [style=filled, fillcolor = red]
+"42_81\n2" -> "50_82\n38"
+"50_82\n38" [style=filled, fillcolor = red]
+"15_20\n13" [style=filled, fillcolor = green]
+"15_20\n13" -> "50_82\n38"
+"50_82\n38" [style=filled, fillcolor = red]
+"15_80\n37" [style=filled, fillcolor = red]
+"15_80\n37" -> "50_82\n38"
+"50_82\n38" [style=filled, fillcolor = red]
+}

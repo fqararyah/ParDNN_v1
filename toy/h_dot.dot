@@ -1,0 +1,126 @@
+digraph {
+	"random_normal/shape" [label="random_normal/shape"]
+	"random_normal/mean" [label="random_normal/mean"]
+	"random_normal/stddev" [label="random_normal/stddev"]
+	"random_normal/RandomStandardNormal" [label="random_normal/RandomStandardNormal"]
+	"random_normal/shape" -> "random_normal/RandomStandardNormal"
+	"random_normal/mul" [label="random_normal/mul"]
+	"random_normal/RandomStandardNormal" -> "random_normal/mul"
+	"random_normal/stddev" -> "random_normal/mul"
+	random_normal [label=random_normal]
+	"random_normal/mul" -> random_normal
+	"random_normal/mean" -> random_normal
+	x [label=x]
+	"x/Assign" [label="x/Assign"]
+	x -> "x/Assign"
+	random_normal -> "x/Assign"
+	"x/read" [label="x/read"]
+	x -> "x/read"
+	"random_normal_1/shape" [label="random_normal_1/shape"]
+	"random_normal_1/mean" [label="random_normal_1/mean"]
+	"random_normal_1/stddev" [label="random_normal_1/stddev"]
+	"random_normal_1/RandomStandardNormal" [label="random_normal_1/RandomStandardNormal"]
+	"random_normal_1/shape" -> "random_normal_1/RandomStandardNormal"
+	"random_normal_1/mul" [label="random_normal_1/mul"]
+	"random_normal_1/RandomStandardNormal" -> "random_normal_1/mul"
+	"random_normal_1/stddev" -> "random_normal_1/mul"
+	random_normal_1 [label=random_normal_1]
+	"random_normal_1/mul" -> random_normal_1
+	"random_normal_1/mean" -> random_normal_1
+	x_1 [label=x_1]
+	"x_1/Assign" [label="x_1/Assign"]
+	x_1 -> "x_1/Assign"
+	random_normal_1 -> "x_1/Assign"
+	"x_1/read" [label="x_1/read"]
+	x_1 -> "x_1/read"
+	"random_normal_2/shape" [label="random_normal_2/shape"]
+	"random_normal_2/mean" [label="random_normal_2/mean"]
+	"random_normal_2/stddev" [label="random_normal_2/stddev"]
+	"random_normal_2/RandomStandardNormal" [label="random_normal_2/RandomStandardNormal"]
+	"random_normal_2/shape" -> "random_normal_2/RandomStandardNormal"
+	"random_normal_2/mul" [label="random_normal_2/mul"]
+	"random_normal_2/RandomStandardNormal" -> "random_normal_2/mul"
+	"random_normal_2/stddev" -> "random_normal_2/mul"
+	random_normal_2 [label=random_normal_2]
+	"random_normal_2/mul" -> random_normal_2
+	"random_normal_2/mean" -> random_normal_2
+	y [label=y]
+	"y/Assign" [label="y/Assign"]
+	y -> "y/Assign"
+	random_normal_2 -> "y/Assign"
+	"y/read" [label="y/read"]
+	y -> "y/read"
+	"random_normal_3/shape" [label="random_normal_3/shape"]
+	"random_normal_3/mean" [label="random_normal_3/mean"]
+	"random_normal_3/stddev" [label="random_normal_3/stddev"]
+	"random_normal_3/RandomStandardNormal" [label="random_normal_3/RandomStandardNormal"]
+	"random_normal_3/shape" -> "random_normal_3/RandomStandardNormal"
+	"random_normal_3/mul" [label="random_normal_3/mul"]
+	"random_normal_3/RandomStandardNormal" -> "random_normal_3/mul"
+	"random_normal_3/stddev" -> "random_normal_3/mul"
+	random_normal_3 [label=random_normal_3]
+	"random_normal_3/mul" -> random_normal_3
+	"random_normal_3/mean" -> random_normal_3
+	z [label=z]
+	"z/Assign" [label="z/Assign"]
+	z -> "z/Assign"
+	random_normal_3 -> "z/Assign"
+	"z/read" [label="z/read"]
+	z -> "z/read"
+	"random_normal_4/shape" [label="random_normal_4/shape"]
+	"random_normal_4/mean" [label="random_normal_4/mean"]
+	"random_normal_4/stddev" [label="random_normal_4/stddev"]
+	"random_normal_4/RandomStandardNormal" [label="random_normal_4/RandomStandardNormal"]
+	"random_normal_4/shape" -> "random_normal_4/RandomStandardNormal"
+	"random_normal_4/mul" [label="random_normal_4/mul"]
+	"random_normal_4/RandomStandardNormal" -> "random_normal_4/mul"
+	"random_normal_4/stddev" -> "random_normal_4/mul"
+	random_normal_4 [label=random_normal_4]
+	"random_normal_4/mul" -> random_normal_4
+	"random_normal_4/mean" -> random_normal_4
+	w [label=w]
+	"w/Assign" [label="w/Assign"]
+	w -> "w/Assign"
+	random_normal_4 -> "w/Assign"
+	"w/read" [label="w/read"]
+	w -> "w/read"
+	"result/MatMul" [label="result/MatMul"]
+	"x/read" -> "result/MatMul"
+	"y/read" -> "result/MatMul"
+	"result/MatMul_1" [label="result/MatMul_1"]
+	"x/read" -> "result/MatMul_1"
+	"z/read" -> "result/MatMul_1"
+	"result/add" [label="result/add"]
+	"result/MatMul" -> "result/add"
+	"result/MatMul_1" -> "result/add"
+	"result/MatMul_2" [label="result/MatMul_2"]
+	"x/read" -> "result/MatMul_2"
+	"w/read" -> "result/MatMul_2"
+	"result/add_1" [label="result/add_1"]
+	"result/add" -> "result/add_1"
+	"result/MatMul_2" -> "result/add_1"
+	"result/MatMul_3" [label="result/MatMul_3"]
+	"x_1/read" -> "result/MatMul_3"
+	"y/read" -> "result/MatMul_3"
+	"result/add_2" [label="result/add_2"]
+	"result/add_1" -> "result/add_2"
+	"result/MatMul_3" -> "result/add_2"
+	"result/MatMul_4" [label="result/MatMul_4"]
+	"x_1/read" -> "result/MatMul_4"
+	"z/read" -> "result/MatMul_4"
+	"result/add_3" [label="result/add_3"]
+	"result/add_2" -> "result/add_3"
+	"result/MatMul_4" -> "result/add_3"
+	"result/MatMul_5" [label="result/MatMul_5"]
+	"x_1/read" -> "result/MatMul_5"
+	"w/read" -> "result/MatMul_5"
+	"result/add_4" [label="result/add_4"]
+	"result/add_3" -> "result/add_4"
+	"result/MatMul_5" -> "result/add_4"
+	init [label=init]
+	"^w/Assign" -> init
+	"^x/Assign" -> init
+	"^x_1/Assign" -> init
+	"^y/Assign" -> init
+	"^z/Assign" -> init
+}

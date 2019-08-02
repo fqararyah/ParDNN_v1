@@ -1,0 +1,1394 @@
+digraph{
+"5_516\n20" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg/sub_1"]
+"5_516\n20" -> "5_523\n21"
+"5_523\n21" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg/mul"]
+"6_517\n20" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg_1/sub_1"]
+"6_517\n20" -> "6_526\n21"
+"6_526\n21" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg_1/mul"]
+"132_518\n20" [style=filled, fillcolor = red tooltip="resnet_model/relu_3"]
+"132_518\n20" -> "1138_548\n21"
+"1138_548\n21" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_5/conv2d"]
+"132_518\n20" -> "10_549\n21"
+"10_549\n21" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_5/conv2d_grad/shapen"]
+"0_3956\n20" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/switch"]
+"0_3956\n20" -> "0_3977\n21"
+"0_3977\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/switch_t"]
+"0_3956\n20" -> "0_3978\n21"
+"0_3978\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/switch_f"]
+"0_3957\n20" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/pred_id"]
+"0_3957\n20" -> "0_3980\n21"
+"0_3980\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/switch_3"]
+"0_3957\n20" -> "0_3981\n21"
+"0_3981\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch/switch_2"]
+"0_3957\n20" -> "0_3982\n21"
+"0_3982\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_3"]
+"0_3957\n20" -> "0_3983\n21"
+"0_3983\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_7"]
+"1138_548\n21" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_5/conv2d"]
+"1138_548\n21" -> "199_396\n22"
+"199_396\n22" [style=filled, fillcolor = red tooltip="resnet_model/add_1"]
+"1138_548\n21" -> "0_553\n22"
+"0_553\n22" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_1_grad/shape"]
+"5_523\n21" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg/mul"]
+"5_523\n21" -> "5_481\n22"
+"5_481\n22" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg/assignsubvariableop"]
+"6_526\n21" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg_1/mul"]
+"6_526\n21" -> "6_497\n22"
+"6_497\n22" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg_1/assignsubvariableop"]
+"0_3981\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch/switch_2"]
+"0_3981\n21" -> "0_3958\n22"
+"0_3958\n22" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch"]
+"0_3981\n21" -> "0_3959\n22"
+"0_3959\n22" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/pred_id"]
+"5_481\n22" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg/assignsubvariableop"]
+"5_481\n22" -> "0_482\n23"
+"0_482\n23" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg/readvariableop_1"]
+"6_497\n22" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg_1/assignsubvariableop"]
+"6_497\n22" -> "0_498\n23"
+"0_498\n23" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_3/assignmovingavg_1/readvariableop_1"]
+"199_396\n22" [style=filled, fillcolor = red tooltip="resnet_model/add_1"]
+"199_396\n22" -> "263_618\n23"
+"263_618\n23" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_4/fusedbatchnorm"]
+"199_396\n22" -> "0_620\n23"
+"0_620\n23" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_2_grad/shape_1"]
+"199_396\n22" -> "198_619\n29"
+"198_619\n29" [style=filled, fillcolor = red tooltip="resnet_model/add_2"]
+"0_3958\n22" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch"]
+"0_3958\n22" -> "0_3984\n23"
+"0_3984\n23" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_t"]
+"0_3958\n22" -> "0_3985\n23"
+"0_3985\n23" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_f"]
+"0_3982\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_3"]
+"0_3982\n21" -> "0_3987\n23"
+"0_3987\n23" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_4"]
+"0_3959\n22" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/pred_id"]
+"0_3959\n22" -> "0_3987\n23"
+"0_3987\n23" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_4"]
+"0_3959\n22" -> "0_3988\n23"
+"0_3988\n23" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_8"]
+"0_3983\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_7"]
+"0_3983\n21" -> "0_3988\n23"
+"0_3988\n23" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_8"]
+"0_553\n22" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_1_grad/shape"]
+"0_553\n22" -> "0_4642\n23"
+"0_4642\n23" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_1_grad/broadcastgradientargs"]
+"263_618\n23" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_4/fusedbatchnorm"]
+"263_618\n23" -> "5_629\n24"
+"5_629\n24" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg/sub_1"]
+"263_618\n23" -> "6_630\n24"
+"6_630\n24" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg_1/sub_1"]
+"263_618\n23" -> "131_631\n24"
+"131_631\n24" [style=filled, fillcolor = red tooltip="resnet_model/relu_4"]
+"263_618\n23" -> "0_632\n24"
+"0_632\n24" [style=filled, fillcolor = red tooltip="gradients/zeros_like_105"]
+"263_618\n23" -> "0_633\n24"
+"0_633\n24" [style=filled, fillcolor = red tooltip="gradients/zeros_like_106"]
+"263_618\n23" -> "0_634\n24"
+"0_634\n24" [style=filled, fillcolor = red tooltip="gradients/zeros_like_107"]
+"263_618\n23" -> "0_635\n24"
+"0_635\n24" [style=filled, fillcolor = red tooltip="gradients/zeros_like_108"]
+"0_3987\n23" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_4"]
+"0_3987\n23" -> "0_3989\n24"
+"0_3989\n24" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/merge"]
+"0_3988\n23" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/switch_8"]
+"0_3988\n23" -> "0_3989\n24"
+"0_3989\n24" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/merge"]
+"5_629\n24" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg/sub_1"]
+"5_629\n24" -> "5_636\n25"
+"5_636\n25" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg/mul"]
+"6_630\n24" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg_1/sub_1"]
+"6_630\n24" -> "6_639\n25"
+"6_639\n25" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg_1/mul"]
+"131_631\n24" [style=filled, fillcolor = red tooltip="resnet_model/relu_4"]
+"131_631\n24" -> "1139_661\n25"
+"1139_661\n25" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_6/conv2d"]
+"131_631\n24" -> "10_662\n25"
+"10_662\n25" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_6/conv2d_grad/shapen"]
+"0_3980\n21" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/switch_3"]
+"0_3980\n21" -> "0_3990\n25"
+"0_3990\n25" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/merge"]
+"0_3989\n24" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/cond/merge"]
+"0_3989\n24" -> "0_3990\n25"
+"0_3990\n25" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/merge"]
+"5_636\n25" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg/mul"]
+"5_636\n25" -> "5_592\n26"
+"5_592\n26" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg/assignsubvariableop"]
+"6_639\n25" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg_1/mul"]
+"6_639\n25" -> "6_608\n26"
+"6_608\n26" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg_1/assignsubvariableop"]
+"1139_661\n25" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_6/conv2d"]
+"1139_661\n25" -> "261_730\n26"
+"261_730\n26" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_5/fusedbatchnorm"]
+"0_3990\n25" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/cond/merge"]
+"0_3990\n25" -> "0_3991\n26"
+"0_3991\n26" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/merge"]
+"5_592\n26" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg/assignsubvariableop"]
+"5_592\n26" -> "0_593\n27"
+"0_593\n27" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg/readvariableop_1"]
+"6_608\n26" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg_1/assignsubvariableop"]
+"6_608\n26" -> "0_609\n27"
+"0_609\n27" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_4/assignmovingavg_1/readvariableop_1"]
+"261_730\n26" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_5/fusedbatchnorm"]
+"261_730\n26" -> "5_739\n27"
+"5_739\n27" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg/sub_1"]
+"261_730\n26" -> "6_740\n27"
+"6_740\n27" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg_1/sub_1"]
+"261_730\n26" -> "131_741\n27"
+"131_741\n27" [style=filled, fillcolor = red tooltip="resnet_model/relu_5"]
+"261_730\n26" -> "0_742\n27"
+"0_742\n27" [style=filled, fillcolor = red tooltip="gradients/zeros_like_101"]
+"261_730\n26" -> "0_743\n27"
+"0_743\n27" [style=filled, fillcolor = red tooltip="gradients/zeros_like_102"]
+"261_730\n26" -> "0_744\n27"
+"0_744\n27" [style=filled, fillcolor = red tooltip="gradients/zeros_like_103"]
+"261_730\n26" -> "0_745\n27"
+"0_745\n27" [style=filled, fillcolor = red tooltip="gradients/zeros_like_104"]
+"0_3991\n26" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/cond/merge"]
+"0_3991\n26" -> "10_3992\n27"
+"10_3992\n27" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/merge"]
+"5_739\n27" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg/sub_1"]
+"5_739\n27" -> "5_746\n28"
+"5_746\n28" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg/mul"]
+"6_740\n27" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg_1/sub_1"]
+"6_740\n27" -> "6_749\n28"
+"6_749\n28" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg_1/mul"]
+"131_741\n27" [style=filled, fillcolor = red tooltip="resnet_model/relu_5"]
+"131_741\n27" -> "1135_771\n28"
+"1135_771\n28" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_7/conv2d"]
+"131_741\n27" -> "10_772\n28"
+"10_772\n28" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_7/conv2d_grad/shapen"]
+"10_3992\n27" [style=filled, fillcolor = green tooltip="piecewiseconstant/case/cond/merge"]
+"10_3992\n27" -> "0_3993\n28"
+"0_3993\n28" [style=filled, fillcolor = green tooltip="learning_rate"]
+"10_3992\n27" -> "0_3994\n28"
+"0_3994\n28" [style=filled, fillcolor = green tooltip="learning_rate_1"]
+"1135_771\n28" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_7/conv2d"]
+"1135_771\n28" -> "198_619\n29"
+"198_619\n29" [style=filled, fillcolor = red tooltip="resnet_model/add_2"]
+"1135_771\n28" -> "0_776\n29"
+"0_776\n29" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_2_grad/shape"]
+"5_746\n28" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg/mul"]
+"5_746\n28" -> "5_704\n29"
+"5_704\n29" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg/assignsubvariableop"]
+"6_749\n28" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg_1/mul"]
+"6_749\n28" -> "6_720\n29"
+"6_720\n29" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg_1/assignsubvariableop"]
+"5_704\n29" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg/assignsubvariableop"]
+"5_704\n29" -> "0_705\n30"
+"0_705\n30" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg/readvariableop_1"]
+"6_720\n29" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg_1/assignsubvariableop"]
+"6_720\n29" -> "0_721\n30"
+"0_721\n30" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_5/assignmovingavg_1/readvariableop_1"]
+"198_619\n29" [style=filled, fillcolor = red tooltip="resnet_model/add_2"]
+"198_619\n29" -> "259_841\n30"
+"259_841\n30" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_6/fusedbatchnorm"]
+"198_619\n29" -> "0_843\n30"
+"0_843\n30" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_3_grad/shape_1"]
+"198_619\n29" -> "198_842\n36"
+"198_842\n36" [style=filled, fillcolor = red tooltip="resnet_model/add_3"]
+"0_620\n23" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_2_grad/shape_1"]
+"0_620\n23" -> "0_4609\n30"
+"0_4609\n30" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_2_grad/broadcastgradientargs"]
+"0_776\n29" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_2_grad/shape"]
+"0_776\n29" -> "0_4609\n30"
+"0_4609\n30" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_2_grad/broadcastgradientargs"]
+"259_841\n30" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_6/fusedbatchnorm"]
+"259_841\n30" -> "5_852\n31"
+"5_852\n31" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg/sub_1"]
+"259_841\n30" -> "6_853\n31"
+"6_853\n31" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg_1/sub_1"]
+"259_841\n30" -> "131_854\n31"
+"131_854\n31" [style=filled, fillcolor = red tooltip="resnet_model/relu_6"]
+"259_841\n30" -> "0_855\n31"
+"0_855\n31" [style=filled, fillcolor = red tooltip="gradients/zeros_like_97"]
+"259_841\n30" -> "0_856\n31"
+"0_856\n31" [style=filled, fillcolor = red tooltip="gradients/zeros_like_98"]
+"259_841\n30" -> "0_857\n31"
+"0_857\n31" [style=filled, fillcolor = red tooltip="gradients/zeros_like_99"]
+"259_841\n30" -> "0_858\n31"
+"0_858\n31" [style=filled, fillcolor = red tooltip="gradients/zeros_like_100"]
+"5_852\n31" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg/sub_1"]
+"5_852\n31" -> "5_859\n32"
+"5_859\n32" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg/mul"]
+"6_853\n31" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg_1/sub_1"]
+"6_853\n31" -> "6_862\n32"
+"6_862\n32" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg_1/mul"]
+"131_854\n31" [style=filled, fillcolor = red tooltip="resnet_model/relu_6"]
+"131_854\n31" -> "1136_884\n32"
+"1136_884\n32" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_8/conv2d"]
+"131_854\n31" -> "10_885\n32"
+"10_885\n32" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_8/conv2d_grad/shapen"]
+"5_859\n32" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg/mul"]
+"5_859\n32" -> "5_815\n33"
+"5_815\n33" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg/assignsubvariableop"]
+"6_862\n32" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg_1/mul"]
+"6_862\n32" -> "6_831\n33"
+"6_831\n33" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg_1/assignsubvariableop"]
+"1136_884\n32" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_8/conv2d"]
+"1136_884\n32" -> "259_953\n33"
+"259_953\n33" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_7/fusedbatchnorm"]
+"5_815\n33" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg/assignsubvariableop"]
+"5_815\n33" -> "0_816\n34"
+"0_816\n34" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg/readvariableop_1"]
+"6_831\n33" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg_1/assignsubvariableop"]
+"6_831\n33" -> "0_832\n34"
+"0_832\n34" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_6/assignmovingavg_1/readvariableop_1"]
+"259_953\n33" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_7/fusedbatchnorm"]
+"259_953\n33" -> "5_962\n34"
+"5_962\n34" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg/sub_1"]
+"259_953\n33" -> "6_963\n34"
+"6_963\n34" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg_1/sub_1"]
+"259_953\n33" -> "131_964\n34"
+"131_964\n34" [style=filled, fillcolor = red tooltip="resnet_model/relu_7"]
+"259_953\n33" -> "0_965\n34"
+"0_965\n34" [style=filled, fillcolor = red tooltip="gradients/zeros_like_93"]
+"259_953\n33" -> "0_966\n34"
+"0_966\n34" [style=filled, fillcolor = red tooltip="gradients/zeros_like_94"]
+"259_953\n33" -> "0_967\n34"
+"0_967\n34" [style=filled, fillcolor = red tooltip="gradients/zeros_like_95"]
+"259_953\n33" -> "0_968\n34"
+"0_968\n34" [style=filled, fillcolor = red tooltip="gradients/zeros_like_96"]
+"5_962\n34" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg/sub_1"]
+"5_962\n34" -> "5_969\n35"
+"5_969\n35" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg/mul"]
+"6_963\n34" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg_1/sub_1"]
+"6_963\n34" -> "5_972\n35"
+"5_972\n35" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg_1/mul"]
+"131_964\n34" [style=filled, fillcolor = red tooltip="resnet_model/relu_7"]
+"131_964\n34" -> "1136_994\n35"
+"1136_994\n35" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_9/conv2d"]
+"131_964\n34" -> "10_995\n35"
+"10_995\n35" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_9/conv2d_grad/shapen"]
+"1136_994\n35" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_9/conv2d"]
+"1136_994\n35" -> "198_842\n36"
+"198_842\n36" [style=filled, fillcolor = red tooltip="resnet_model/add_3"]
+"1136_994\n35" -> "0_999\n36"
+"0_999\n36" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_3_grad/shape"]
+"5_969\n35" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg/mul"]
+"5_969\n35" -> "5_927\n36"
+"5_927\n36" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg/assignsubvariableop"]
+"5_972\n35" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg_1/mul"]
+"5_972\n35" -> "6_943\n36"
+"6_943\n36" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg_1/assignsubvariableop"]
+"5_927\n36" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg/assignsubvariableop"]
+"5_927\n36" -> "0_928\n37"
+"0_928\n37" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg/readvariableop_1"]
+"6_943\n36" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg_1/assignsubvariableop"]
+"6_943\n36" -> "0_944\n37"
+"0_944\n37" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_7/assignmovingavg_1/readvariableop_1"]
+"198_842\n36" [style=filled, fillcolor = red tooltip="resnet_model/add_3"]
+"198_842\n36" -> "259_1064\n37"
+"259_1064\n37" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_8/fusedbatchnorm"]
+"198_842\n36" -> "0_1066\n37"
+"0_1066\n37" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_4_grad/shape_1"]
+"198_842\n36" -> "198_1065\n43"
+"198_1065\n43" [style=filled, fillcolor = red tooltip="resnet_model/add_4"]
+"0_843\n30" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_3_grad/shape_1"]
+"0_843\n30" -> "0_4576\n37"
+"0_4576\n37" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_3_grad/broadcastgradientargs"]
+"0_999\n36" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_3_grad/shape"]
+"0_999\n36" -> "0_4576\n37"
+"0_4576\n37" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_3_grad/broadcastgradientargs"]
+"259_1064\n37" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_8/fusedbatchnorm"]
+"259_1064\n37" -> "5_1075\n38"
+"5_1075\n38" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg/sub_1"]
+"259_1064\n37" -> "6_1076\n38"
+"6_1076\n38" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg_1/sub_1"]
+"259_1064\n37" -> "131_1077\n38"
+"131_1077\n38" [style=filled, fillcolor = red tooltip="resnet_model/relu_8"]
+"259_1064\n37" -> "0_1078\n38"
+"0_1078\n38" [style=filled, fillcolor = red tooltip="gradients/zeros_like_89"]
+"259_1064\n37" -> "0_1079\n38"
+"0_1079\n38" [style=filled, fillcolor = red tooltip="gradients/zeros_like_90"]
+"259_1064\n37" -> "0_1080\n38"
+"0_1080\n38" [style=filled, fillcolor = red tooltip="gradients/zeros_like_91"]
+"259_1064\n37" -> "0_1081\n38"
+"0_1081\n38" [style=filled, fillcolor = red tooltip="gradients/zeros_like_92"]
+"5_1075\n38" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg/sub_1"]
+"5_1075\n38" -> "5_1082\n39"
+"5_1082\n39" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg/mul"]
+"6_1076\n38" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg_1/sub_1"]
+"6_1076\n38" -> "5_1085\n39"
+"5_1085\n39" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg_1/mul"]
+"131_1077\n38" [style=filled, fillcolor = red tooltip="resnet_model/relu_8"]
+"131_1077\n38" -> "1136_1107\n39"
+"1136_1107\n39" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_10/conv2d"]
+"131_1077\n38" -> "11_1108\n39"
+"11_1108\n39" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_10/conv2d_grad/shapen"]
+"5_1082\n39" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg/mul"]
+"5_1082\n39" -> "5_1038\n40"
+"5_1038\n40" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg/assignsubvariableop"]
+"5_1085\n39" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg_1/mul"]
+"5_1085\n39" -> "6_1054\n40"
+"6_1054\n40" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg_1/assignsubvariableop"]
+"1136_1107\n39" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_10/conv2d"]
+"1136_1107\n39" -> "258_1176\n40"
+"258_1176\n40" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_9/fusedbatchnorm"]
+"5_1038\n40" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg/assignsubvariableop"]
+"5_1038\n40" -> "0_1039\n41"
+"0_1039\n41" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg/readvariableop_1"]
+"6_1054\n40" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg_1/assignsubvariableop"]
+"6_1054\n40" -> "0_1055\n41"
+"0_1055\n41" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_8/assignmovingavg_1/readvariableop_1"]
+"258_1176\n40" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_9/fusedbatchnorm"]
+"258_1176\n40" -> "5_1185\n41"
+"5_1185\n41" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg/sub_1"]
+"258_1176\n40" -> "6_1186\n41"
+"6_1186\n41" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg_1/sub_1"]
+"258_1176\n40" -> "131_1187\n41"
+"131_1187\n41" [style=filled, fillcolor = red tooltip="resnet_model/relu_9"]
+"258_1176\n40" -> "0_1188\n41"
+"0_1188\n41" [style=filled, fillcolor = red tooltip="gradients/zeros_like_85"]
+"258_1176\n40" -> "0_1189\n41"
+"0_1189\n41" [style=filled, fillcolor = red tooltip="gradients/zeros_like_86"]
+"258_1176\n40" -> "0_1190\n41"
+"0_1190\n41" [style=filled, fillcolor = red tooltip="gradients/zeros_like_87"]
+"258_1176\n40" -> "0_1191\n41"
+"0_1191\n41" [style=filled, fillcolor = red tooltip="gradients/zeros_like_88"]
+"5_1185\n41" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg/sub_1"]
+"5_1185\n41" -> "5_1192\n42"
+"5_1192\n42" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg/mul"]
+"6_1186\n41" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg_1/sub_1"]
+"6_1186\n41" -> "5_1195\n42"
+"5_1195\n42" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg_1/mul"]
+"131_1187\n41" [style=filled, fillcolor = red tooltip="resnet_model/relu_9"]
+"131_1187\n41" -> "1137_1217\n42"
+"1137_1217\n42" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_11/conv2d"]
+"131_1187\n41" -> "11_1218\n42"
+"11_1218\n42" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_11/conv2d_grad/shapen"]
+"1137_1217\n42" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_11/conv2d"]
+"1137_1217\n42" -> "198_1065\n43"
+"198_1065\n43" [style=filled, fillcolor = red tooltip="resnet_model/add_4"]
+"1137_1217\n42" -> "0_1222\n43"
+"0_1222\n43" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_4_grad/shape"]
+"5_1192\n42" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg/mul"]
+"5_1192\n42" -> "5_1150\n43"
+"5_1150\n43" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg/assignsubvariableop"]
+"5_1195\n42" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg_1/mul"]
+"5_1195\n42" -> "6_1166\n43"
+"6_1166\n43" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg_1/assignsubvariableop"]
+"5_1150\n43" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg/assignsubvariableop"]
+"5_1150\n43" -> "0_1151\n44"
+"0_1151\n44" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg/readvariableop_1"]
+"6_1166\n43" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg_1/assignsubvariableop"]
+"6_1166\n43" -> "0_1167\n44"
+"0_1167\n44" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_9/assignmovingavg_1/readvariableop_1"]
+"198_1065\n43" [style=filled, fillcolor = red tooltip="resnet_model/add_4"]
+"198_1065\n43" -> "0_1223\n44"
+"0_1223\n44" [style=filled, fillcolor = red tooltip="resnet_model/block_layer1"]
+"0_1066\n37" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_4_grad/shape_1"]
+"0_1066\n37" -> "0_4543\n44"
+"0_4543\n44" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_4_grad/broadcastgradientargs"]
+"0_1222\n43" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_4_grad/shape"]
+"0_1222\n43" -> "0_4543\n44"
+"0_4543\n44" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_4_grad/broadcastgradientargs"]
+"0_1223\n44" [style=filled, fillcolor = red tooltip="resnet_model/block_layer1"]
+"0_1223\n44" -> "259_1288\n45"
+"259_1288\n45" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_10/fusedbatchnorm"]
+"259_1288\n45" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_10/fusedbatchnorm"]
+"259_1288\n45" -> "5_1297\n46"
+"5_1297\n46" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg/sub_1"]
+"259_1288\n45" -> "6_1298\n46"
+"6_1298\n46" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg_1/sub_1"]
+"259_1288\n45" -> "131_1299\n46"
+"131_1299\n46" [style=filled, fillcolor = red tooltip="resnet_model/relu_10"]
+"259_1288\n45" -> "0_1300\n46"
+"0_1300\n46" [style=filled, fillcolor = red tooltip="gradients/zeros_like_81"]
+"259_1288\n45" -> "0_1301\n46"
+"0_1301\n46" [style=filled, fillcolor = red tooltip="gradients/zeros_like_82"]
+"259_1288\n45" -> "0_1302\n46"
+"0_1302\n46" [style=filled, fillcolor = red tooltip="gradients/zeros_like_83"]
+"259_1288\n45" -> "0_1303\n46"
+"0_1303\n46" [style=filled, fillcolor = red tooltip="gradients/zeros_like_84"]
+"5_1297\n46" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg/sub_1"]
+"5_1297\n46" -> "5_1304\n47"
+"5_1304\n47" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg/mul"]
+"6_1298\n46" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg_1/sub_1"]
+"6_1298\n46" -> "6_1307\n47"
+"6_1307\n47" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg_1/mul"]
+"131_1299\n46" [style=filled, fillcolor = red tooltip="resnet_model/relu_10"]
+"131_1299\n46" -> "0_1308\n47"
+"0_1308\n47" [style=filled, fillcolor = green tooltip="resnet_model/pad"]
+"131_1299\n46" -> "235_1309\n47"
+"235_1309\n47" [style=filled, fillcolor = red tooltip="resnet_model/pad_1"]
+"131_1299\n46" -> "0_1310\n47"
+"0_1310\n47" [style=filled, fillcolor = red tooltip="gradients/resnet_model/pad_grad/shape"]
+"131_1299\n46" -> "8_1311\n47"
+"8_1311\n47" [style=filled, fillcolor = red tooltip="gradients/resnet_model/pad_1_grad/shape"]
+"5_1304\n47" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg/mul"]
+"5_1304\n47" -> "5_1262\n48"
+"5_1262\n48" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg/assignsubvariableop"]
+"6_1307\n47" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg_1/mul"]
+"6_1307\n47" -> "6_1278\n48"
+"6_1278\n48" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg_1/assignsubvariableop"]
+"0_1308\n47" [style=filled, fillcolor = green tooltip="resnet_model/pad"]
+"0_1308\n47" -> "138_1336\n48"
+"138_1336\n48" [style=filled, fillcolor = green tooltip="resnet_model/conv2d_12/conv2d"]
+"0_1308\n47" -> "6_1337\n48"
+"6_1337\n48" [style=filled, fillcolor = green tooltip="gradients/resnet_model/conv2d_12/conv2d_grad/shapen"]
+"235_1309\n47" [style=filled, fillcolor = red tooltip="resnet_model/pad_1"]
+"235_1309\n47" -> "423_1363\n48"
+"423_1363\n48" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_13/conv2d"]
+"235_1309\n47" -> "11_1364\n48"
+"11_1364\n48" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_13/conv2d_grad/shapen"]
+"5_1262\n48" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg/assignsubvariableop"]
+"5_1262\n48" -> "0_1263\n49"
+"0_1263\n49" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg/readvariableop_1"]
+"6_1278\n48" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg_1/assignsubvariableop"]
+"6_1278\n48" -> "0_1279\n49"
+"0_1279\n49" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_10/assignmovingavg_1/readvariableop_1"]
+"423_1363\n48" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_13/conv2d"]
+"423_1363\n48" -> "115_1431\n49"
+"115_1431\n49" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_11/fusedbatchnorm"]
+"138_1336\n48" [style=filled, fillcolor = green tooltip="resnet_model/conv2d_12/conv2d"]
+"138_1336\n48" -> "0_1479\n49"
+"0_1479\n49" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_5_grad/shape_1"]
+"138_1336\n48" -> "99_1477\n52"
+"99_1477\n52" [style=filled, fillcolor = red tooltip="resnet_model/add_5"]
+"115_1431\n49" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_11/fusedbatchnorm"]
+"115_1431\n49" -> "5_1440\n50"
+"5_1440\n50" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg/sub_1"]
+"115_1431\n49" -> "6_1441\n50"
+"6_1441\n50" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg_1/sub_1"]
+"115_1431\n49" -> "63_1442\n50"
+"63_1442\n50" [style=filled, fillcolor = red tooltip="resnet_model/relu_11"]
+"115_1431\n49" -> "0_1443\n50"
+"0_1443\n50" [style=filled, fillcolor = red tooltip="gradients/zeros_like_77"]
+"115_1431\n49" -> "0_1444\n50"
+"0_1444\n50" [style=filled, fillcolor = red tooltip="gradients/zeros_like_78"]
+"115_1431\n49" -> "0_1445\n50"
+"0_1445\n50" [style=filled, fillcolor = red tooltip="gradients/zeros_like_79"]
+"115_1431\n49" -> "0_1446\n50"
+"0_1446\n50" [style=filled, fillcolor = red tooltip="gradients/zeros_like_80"]
+"5_1440\n50" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg/sub_1"]
+"5_1440\n50" -> "5_1447\n51"
+"5_1447\n51" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg/mul"]
+"6_1441\n50" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg_1/sub_1"]
+"6_1441\n50" -> "6_1450\n51"
+"6_1450\n51" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg_1/mul"]
+"63_1442\n50" [style=filled, fillcolor = red tooltip="resnet_model/relu_11"]
+"63_1442\n50" -> "472_1472\n51"
+"472_1472\n51" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_14/conv2d"]
+"63_1442\n50" -> "10_1473\n51"
+"10_1473\n51" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_14/conv2d_grad/shapen"]
+"5_1447\n51" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg/mul"]
+"5_1447\n51" -> "5_1405\n52"
+"5_1405\n52" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg/assignsubvariableop"]
+"6_1450\n51" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg_1/mul"]
+"6_1450\n51" -> "6_1421\n52"
+"6_1421\n52" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg_1/assignsubvariableop"]
+"472_1472\n51" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_14/conv2d"]
+"472_1472\n51" -> "99_1477\n52"
+"99_1477\n52" [style=filled, fillcolor = red tooltip="resnet_model/add_5"]
+"472_1472\n51" -> "0_1478\n52"
+"0_1478\n52" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_5_grad/shape"]
+"5_1405\n52" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg/assignsubvariableop"]
+"5_1405\n52" -> "0_1406\n53"
+"0_1406\n53" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg/readvariableop_1"]
+"6_1421\n52" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg_1/assignsubvariableop"]
+"6_1421\n52" -> "0_1422\n53"
+"0_1422\n53" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_11/assignmovingavg_1/readvariableop_1"]
+"99_1477\n52" [style=filled, fillcolor = red tooltip="resnet_model/add_5"]
+"99_1477\n52" -> "116_1544\n53"
+"116_1544\n53" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_12/fusedbatchnorm"]
+"99_1477\n52" -> "0_1546\n53"
+"0_1546\n53" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_6_grad/shape_1"]
+"99_1477\n52" -> "99_1545\n59"
+"99_1545\n59" [style=filled, fillcolor = red tooltip="resnet_model/add_6"]
+"0_1479\n49" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_5_grad/shape_1"]
+"0_1479\n49" -> "0_4492\n53"
+"0_4492\n53" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_5_grad/broadcastgradientargs"]
+"0_1478\n52" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_5_grad/shape"]
+"0_1478\n52" -> "0_4492\n53"
+"0_4492\n53" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_5_grad/broadcastgradientargs"]
+"116_1544\n53" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_12/fusedbatchnorm"]
+"116_1544\n53" -> "5_1555\n54"
+"5_1555\n54" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg/sub_1"]
+"116_1544\n53" -> "6_1556\n54"
+"6_1556\n54" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg_1/sub_1"]
+"116_1544\n53" -> "63_1557\n54"
+"63_1557\n54" [style=filled, fillcolor = red tooltip="resnet_model/relu_12"]
+"116_1544\n53" -> "0_1558\n54"
+"0_1558\n54" [style=filled, fillcolor = red tooltip="gradients/zeros_like_73"]
+"116_1544\n53" -> "0_1559\n54"
+"0_1559\n54" [style=filled, fillcolor = red tooltip="gradients/zeros_like_74"]
+"116_1544\n53" -> "0_1560\n54"
+"0_1560\n54" [style=filled, fillcolor = red tooltip="gradients/zeros_like_75"]
+"116_1544\n53" -> "0_1561\n54"
+"0_1561\n54" [style=filled, fillcolor = red tooltip="gradients/zeros_like_76"]
+"5_1555\n54" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg/sub_1"]
+"5_1555\n54" -> "5_1562\n55"
+"5_1562\n55" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg/mul"]
+"6_1556\n54" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg_1/sub_1"]
+"6_1556\n54" -> "5_1565\n55"
+"5_1565\n55" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg_1/mul"]
+"63_1557\n54" [style=filled, fillcolor = red tooltip="resnet_model/relu_12"]
+"63_1557\n54" -> "464_1587\n55"
+"464_1587\n55" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_15/conv2d"]
+"63_1557\n54" -> "9_1588\n55"
+"9_1588\n55" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_15/conv2d_grad/shapen"]
+"5_1562\n55" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg/mul"]
+"5_1562\n55" -> "5_1518\n56"
+"5_1518\n56" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg/assignsubvariableop"]
+"5_1565\n55" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg_1/mul"]
+"5_1565\n55" -> "6_1534\n56"
+"6_1534\n56" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg_1/assignsubvariableop"]
+"464_1587\n55" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_15/conv2d"]
+"464_1587\n55" -> "115_1656\n56"
+"115_1656\n56" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_13/fusedbatchnorm"]
+"5_1518\n56" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg/assignsubvariableop"]
+"5_1518\n56" -> "0_1519\n57"
+"0_1519\n57" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg/readvariableop_1"]
+"6_1534\n56" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg_1/assignsubvariableop"]
+"6_1534\n56" -> "0_1535\n57"
+"0_1535\n57" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_12/assignmovingavg_1/readvariableop_1"]
+"115_1656\n56" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_13/fusedbatchnorm"]
+"115_1656\n56" -> "5_1665\n57"
+"5_1665\n57" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg/sub_1"]
+"115_1656\n56" -> "6_1666\n57"
+"6_1666\n57" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg_1/sub_1"]
+"115_1656\n56" -> "64_1667\n57"
+"64_1667\n57" [style=filled, fillcolor = red tooltip="resnet_model/relu_13"]
+"115_1656\n56" -> "0_1668\n57"
+"0_1668\n57" [style=filled, fillcolor = red tooltip="gradients/zeros_like_69"]
+"115_1656\n56" -> "0_1669\n57"
+"0_1669\n57" [style=filled, fillcolor = red tooltip="gradients/zeros_like_70"]
+"115_1656\n56" -> "0_1670\n57"
+"0_1670\n57" [style=filled, fillcolor = red tooltip="gradients/zeros_like_71"]
+"115_1656\n56" -> "0_1671\n57"
+"0_1671\n57" [style=filled, fillcolor = red tooltip="gradients/zeros_like_72"]
+"5_1665\n57" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg/sub_1"]
+"5_1665\n57" -> "5_1672\n58"
+"5_1672\n58" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg/mul"]
+"6_1666\n57" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg_1/sub_1"]
+"6_1666\n57" -> "5_1675\n58"
+"5_1675\n58" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg_1/mul"]
+"64_1667\n57" [style=filled, fillcolor = red tooltip="resnet_model/relu_13"]
+"64_1667\n57" -> "464_1697\n58"
+"464_1697\n58" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_16/conv2d"]
+"64_1667\n57" -> "10_1698\n58"
+"10_1698\n58" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_16/conv2d_grad/shapen"]
+"464_1697\n58" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_16/conv2d"]
+"464_1697\n58" -> "99_1545\n59"
+"99_1545\n59" [style=filled, fillcolor = red tooltip="resnet_model/add_6"]
+"464_1697\n58" -> "0_1702\n59"
+"0_1702\n59" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_6_grad/shape"]
+"5_1672\n58" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg/mul"]
+"5_1672\n58" -> "5_1630\n59"
+"5_1630\n59" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg/assignsubvariableop"]
+"5_1675\n58" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg_1/mul"]
+"5_1675\n58" -> "6_1646\n59"
+"6_1646\n59" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg_1/assignsubvariableop"]
+"5_1630\n59" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg/assignsubvariableop"]
+"5_1630\n59" -> "0_1631\n60"
+"0_1631\n60" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg/readvariableop_1"]
+"6_1646\n59" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg_1/assignsubvariableop"]
+"6_1646\n59" -> "0_1647\n60"
+"0_1647\n60" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_13/assignmovingavg_1/readvariableop_1"]
+"99_1545\n59" [style=filled, fillcolor = red tooltip="resnet_model/add_6"]
+"99_1545\n59" -> "115_1767\n60"
+"115_1767\n60" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_14/fusedbatchnorm"]
+"99_1545\n59" -> "0_1769\n60"
+"0_1769\n60" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_7_grad/shape_1"]
+"99_1545\n59" -> "99_1768\n66"
+"99_1768\n66" [style=filled, fillcolor = red tooltip="resnet_model/add_7"]
+"0_1546\n53" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_6_grad/shape_1"]
+"0_1546\n53" -> "0_4459\n60"
+"0_4459\n60" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_6_grad/broadcastgradientargs"]
+"0_1702\n59" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_6_grad/shape"]
+"0_1702\n59" -> "0_4459\n60"
+"0_4459\n60" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_6_grad/broadcastgradientargs"]
+"115_1767\n60" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_14/fusedbatchnorm"]
+"115_1767\n60" -> "5_1778\n61"
+"5_1778\n61" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg/sub_1"]
+"115_1767\n60" -> "6_1779\n61"
+"6_1779\n61" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg_1/sub_1"]
+"115_1767\n60" -> "63_1780\n61"
+"63_1780\n61" [style=filled, fillcolor = red tooltip="resnet_model/relu_14"]
+"115_1767\n60" -> "0_1781\n61"
+"0_1781\n61" [style=filled, fillcolor = red tooltip="gradients/zeros_like_65"]
+"115_1767\n60" -> "0_1782\n61"
+"0_1782\n61" [style=filled, fillcolor = red tooltip="gradients/zeros_like_66"]
+"115_1767\n60" -> "0_1783\n61"
+"0_1783\n61" [style=filled, fillcolor = red tooltip="gradients/zeros_like_67"]
+"115_1767\n60" -> "0_1784\n61"
+"0_1784\n61" [style=filled, fillcolor = red tooltip="gradients/zeros_like_68"]
+"5_1778\n61" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg/sub_1"]
+"5_1778\n61" -> "5_1785\n62"
+"5_1785\n62" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg/mul"]
+"6_1779\n61" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg_1/sub_1"]
+"6_1779\n61" -> "5_1788\n62"
+"5_1788\n62" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg_1/mul"]
+"63_1780\n61" [style=filled, fillcolor = red tooltip="resnet_model/relu_14"]
+"63_1780\n61" -> "462_1810\n62"
+"462_1810\n62" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_17/conv2d"]
+"63_1780\n61" -> "10_1811\n62"
+"10_1811\n62" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_17/conv2d_grad/shapen"]
+"5_1785\n62" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg/mul"]
+"5_1785\n62" -> "5_1741\n63"
+"5_1741\n63" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg/assignsubvariableop"]
+"5_1788\n62" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg_1/mul"]
+"5_1788\n62" -> "6_1757\n63"
+"6_1757\n63" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg_1/assignsubvariableop"]
+"462_1810\n62" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_17/conv2d"]
+"462_1810\n62" -> "115_1879\n63"
+"115_1879\n63" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_15/fusedbatchnorm"]
+"5_1741\n63" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg/assignsubvariableop"]
+"5_1741\n63" -> "0_1742\n64"
+"0_1742\n64" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg/readvariableop_1"]
+"6_1757\n63" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg_1/assignsubvariableop"]
+"6_1757\n63" -> "0_1758\n64"
+"0_1758\n64" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_14/assignmovingavg_1/readvariableop_1"]
+"115_1879\n63" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_15/fusedbatchnorm"]
+"115_1879\n63" -> "5_1888\n64"
+"5_1888\n64" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg/sub_1"]
+"115_1879\n63" -> "6_1889\n64"
+"6_1889\n64" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg_1/sub_1"]
+"115_1879\n63" -> "64_1890\n64"
+"64_1890\n64" [style=filled, fillcolor = red tooltip="resnet_model/relu_15"]
+"115_1879\n63" -> "0_1891\n64"
+"0_1891\n64" [style=filled, fillcolor = red tooltip="gradients/zeros_like_61"]
+"115_1879\n63" -> "0_1892\n64"
+"0_1892\n64" [style=filled, fillcolor = red tooltip="gradients/zeros_like_62"]
+"115_1879\n63" -> "0_1893\n64"
+"0_1893\n64" [style=filled, fillcolor = red tooltip="gradients/zeros_like_63"]
+"115_1879\n63" -> "0_1894\n64"
+"0_1894\n64" [style=filled, fillcolor = red tooltip="gradients/zeros_like_64"]
+"5_1888\n64" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg/sub_1"]
+"5_1888\n64" -> "5_1895\n65"
+"5_1895\n65" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg/mul"]
+"6_1889\n64" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg_1/sub_1"]
+"6_1889\n64" -> "5_1898\n65"
+"5_1898\n65" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg_1/mul"]
+"64_1890\n64" [style=filled, fillcolor = red tooltip="resnet_model/relu_15"]
+"64_1890\n64" -> "465_1920\n65"
+"465_1920\n65" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_18/conv2d"]
+"64_1890\n64" -> "9_1921\n65"
+"9_1921\n65" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_18/conv2d_grad/shapen"]
+"465_1920\n65" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_18/conv2d"]
+"465_1920\n65" -> "99_1768\n66"
+"99_1768\n66" [style=filled, fillcolor = red tooltip="resnet_model/add_7"]
+"465_1920\n65" -> "0_1925\n66"
+"0_1925\n66" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_7_grad/shape"]
+"5_1895\n65" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg/mul"]
+"5_1895\n65" -> "5_1853\n66"
+"5_1853\n66" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg/assignsubvariableop"]
+"5_1898\n65" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg_1/mul"]
+"5_1898\n65" -> "6_1869\n66"
+"6_1869\n66" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg_1/assignsubvariableop"]
+"5_1853\n66" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg/assignsubvariableop"]
+"5_1853\n66" -> "0_1854\n67"
+"0_1854\n67" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg/readvariableop_1"]
+"6_1869\n66" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg_1/assignsubvariableop"]
+"6_1869\n66" -> "0_1870\n67"
+"0_1870\n67" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_15/assignmovingavg_1/readvariableop_1"]
+"99_1768\n66" [style=filled, fillcolor = red tooltip="resnet_model/add_7"]
+"99_1768\n66" -> "116_1990\n67"
+"116_1990\n67" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_16/fusedbatchnorm"]
+"99_1768\n66" -> "0_1992\n67"
+"0_1992\n67" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/shape_1"]
+"99_1768\n66" -> "99_1991\n73"
+"99_1991\n73" [style=filled, fillcolor = red tooltip="resnet_model/add_8"]
+"0_1769\n60" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_7_grad/shape_1"]
+"0_1769\n60" -> "0_4426\n67"
+"0_4426\n67" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_7_grad/broadcastgradientargs"]
+"0_1925\n66" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_7_grad/shape"]
+"0_1925\n66" -> "0_4426\n67"
+"0_4426\n67" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_7_grad/broadcastgradientargs"]
+"116_1990\n67" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_16/fusedbatchnorm"]
+"116_1990\n67" -> "5_2001\n68"
+"5_2001\n68" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg/sub_1"]
+"116_1990\n67" -> "6_2002\n68"
+"6_2002\n68" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg_1/sub_1"]
+"116_1990\n67" -> "64_2003\n68"
+"64_2003\n68" [style=filled, fillcolor = red tooltip="resnet_model/relu_16"]
+"116_1990\n67" -> "0_2004\n68"
+"0_2004\n68" [style=filled, fillcolor = red tooltip="gradients/zeros_like_57"]
+"116_1990\n67" -> "0_2005\n68"
+"0_2005\n68" [style=filled, fillcolor = red tooltip="gradients/zeros_like_58"]
+"116_1990\n67" -> "0_2006\n68"
+"0_2006\n68" [style=filled, fillcolor = red tooltip="gradients/zeros_like_59"]
+"116_1990\n67" -> "0_2007\n68"
+"0_2007\n68" [style=filled, fillcolor = red tooltip="gradients/zeros_like_60"]
+"5_2001\n68" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg/sub_1"]
+"5_2001\n68" -> "5_2008\n69"
+"5_2008\n69" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg/mul"]
+"6_2002\n68" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg_1/sub_1"]
+"6_2002\n68" -> "5_2011\n69"
+"5_2011\n69" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg_1/mul"]
+"64_2003\n68" [style=filled, fillcolor = red tooltip="resnet_model/relu_16"]
+"64_2003\n68" -> "464_2033\n69"
+"464_2033\n69" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_19/conv2d"]
+"64_2003\n68" -> "10_2034\n69"
+"10_2034\n69" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_19/conv2d_grad/shapen"]
+"5_2008\n69" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg/mul"]
+"5_2008\n69" -> "5_1964\n70"
+"5_1964\n70" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg/assignsubvariableop"]
+"5_2011\n69" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg_1/mul"]
+"5_2011\n69" -> "6_1980\n70"
+"6_1980\n70" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg_1/assignsubvariableop"]
+"464_2033\n69" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_19/conv2d"]
+"464_2033\n69" -> "115_2102\n70"
+"115_2102\n70" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_17/fusedbatchnorm"]
+"5_1964\n70" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg/assignsubvariableop"]
+"5_1964\n70" -> "0_1965\n71"
+"0_1965\n71" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg/readvariableop_1"]
+"6_1980\n70" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg_1/assignsubvariableop"]
+"6_1980\n70" -> "0_1981\n71"
+"0_1981\n71" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_16/assignmovingavg_1/readvariableop_1"]
+"115_2102\n70" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_17/fusedbatchnorm"]
+"115_2102\n70" -> "6_2111\n71"
+"6_2111\n71" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg/sub_1"]
+"115_2102\n70" -> "6_2112\n71"
+"6_2112\n71" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg_1/sub_1"]
+"115_2102\n70" -> "64_2113\n71"
+"64_2113\n71" [style=filled, fillcolor = red tooltip="resnet_model/relu_17"]
+"115_2102\n70" -> "0_2114\n71"
+"0_2114\n71" [style=filled, fillcolor = red tooltip="gradients/zeros_like_53"]
+"115_2102\n70" -> "0_2115\n71"
+"0_2115\n71" [style=filled, fillcolor = red tooltip="gradients/zeros_like_54"]
+"115_2102\n70" -> "0_2116\n71"
+"0_2116\n71" [style=filled, fillcolor = red tooltip="gradients/zeros_like_55"]
+"115_2102\n70" -> "0_2117\n71"
+"0_2117\n71" [style=filled, fillcolor = red tooltip="gradients/zeros_like_56"]
+"6_2111\n71" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg/sub_1"]
+"6_2111\n71" -> "5_2118\n72"
+"5_2118\n72" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg/mul"]
+"6_2112\n71" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg_1/sub_1"]
+"6_2112\n71" -> "5_2121\n72"
+"5_2121\n72" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg_1/mul"]
+"64_2113\n71" [style=filled, fillcolor = red tooltip="resnet_model/relu_17"]
+"64_2113\n71" -> "463_2143\n72"
+"463_2143\n72" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_20/conv2d"]
+"64_2113\n71" -> "10_2144\n72"
+"10_2144\n72" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_20/conv2d_grad/shapen"]
+"463_2143\n72" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_20/conv2d"]
+"463_2143\n72" -> "99_1991\n73"
+"99_1991\n73" [style=filled, fillcolor = red tooltip="resnet_model/add_8"]
+"463_2143\n72" -> "0_2148\n73"
+"0_2148\n73" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_8_grad/shape"]
+"5_2118\n72" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg/mul"]
+"5_2118\n72" -> "5_2076\n73"
+"5_2076\n73" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg/assignsubvariableop"]
+"5_2121\n72" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg_1/mul"]
+"5_2121\n72" -> "6_2092\n73"
+"6_2092\n73" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg_1/assignsubvariableop"]
+"5_2076\n73" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg/assignsubvariableop"]
+"5_2076\n73" -> "0_2077\n74"
+"0_2077\n74" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg/readvariableop_1"]
+"6_2092\n73" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg_1/assignsubvariableop"]
+"6_2092\n73" -> "0_2093\n74"
+"0_2093\n74" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_17/assignmovingavg_1/readvariableop_1"]
+"99_1991\n73" [style=filled, fillcolor = red tooltip="resnet_model/add_8"]
+"99_1991\n73" -> "116_2213\n74"
+"116_2213\n74" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_18/fusedbatchnorm"]
+"99_1991\n73" -> "0_2215\n74"
+"0_2215\n74" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/shape_1"]
+"99_1991\n73" -> "99_2214\n80"
+"99_2214\n80" [style=filled, fillcolor = red tooltip="resnet_model/add_9"]
+"0_1992\n67" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_8_grad/shape_1"]
+"0_1992\n67" -> "0_4393\n74"
+"0_4393\n74" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_8_grad/broadcastgradientargs"]
+"0_2148\n73" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_8_grad/shape"]
+"0_2148\n73" -> "0_4393\n74"
+"0_4393\n74" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_8_grad/broadcastgradientargs"]
+"116_2213\n74" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_18/fusedbatchnorm"]
+"116_2213\n74" -> "5_2224\n75"
+"5_2224\n75" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg/sub_1"]
+"116_2213\n74" -> "6_2225\n75"
+"6_2225\n75" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg_1/sub_1"]
+"116_2213\n74" -> "64_2226\n75"
+"64_2226\n75" [style=filled, fillcolor = red tooltip="resnet_model/relu_18"]
+"116_2213\n74" -> "0_2227\n75"
+"0_2227\n75" [style=filled, fillcolor = red tooltip="gradients/zeros_like_49"]
+"116_2213\n74" -> "0_2228\n75"
+"0_2228\n75" [style=filled, fillcolor = red tooltip="gradients/zeros_like_50"]
+"116_2213\n74" -> "0_2229\n75"
+"0_2229\n75" [style=filled, fillcolor = red tooltip="gradients/zeros_like_51"]
+"116_2213\n74" -> "0_2230\n75"
+"0_2230\n75" [style=filled, fillcolor = red tooltip="gradients/zeros_like_52"]
+"5_2224\n75" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg/sub_1"]
+"5_2224\n75" -> "5_2231\n76"
+"5_2231\n76" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg/mul"]
+"6_2225\n75" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg_1/sub_1"]
+"6_2225\n75" -> "5_2234\n76"
+"5_2234\n76" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg_1/mul"]
+"64_2226\n75" [style=filled, fillcolor = red tooltip="resnet_model/relu_18"]
+"64_2226\n75" -> "463_2256\n76"
+"463_2256\n76" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_21/conv2d"]
+"64_2226\n75" -> "10_2257\n76"
+"10_2257\n76" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_21/conv2d_grad/shapen"]
+"5_2231\n76" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg/mul"]
+"5_2231\n76" -> "5_2187\n77"
+"5_2187\n77" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg/assignsubvariableop"]
+"5_2234\n76" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg_1/mul"]
+"5_2234\n76" -> "6_2203\n77"
+"6_2203\n77" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg_1/assignsubvariableop"]
+"463_2256\n76" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_21/conv2d"]
+"463_2256\n76" -> "115_2325\n77"
+"115_2325\n77" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_19/fusedbatchnorm"]
+"5_2187\n77" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg/assignsubvariableop"]
+"5_2187\n77" -> "0_2188\n78"
+"0_2188\n78" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg/readvariableop_1"]
+"6_2203\n77" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg_1/assignsubvariableop"]
+"6_2203\n77" -> "0_2204\n78"
+"0_2204\n78" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_18/assignmovingavg_1/readvariableop_1"]
+"115_2325\n77" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_19/fusedbatchnorm"]
+"115_2325\n77" -> "5_2334\n78"
+"5_2334\n78" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg/sub_1"]
+"115_2325\n77" -> "6_2335\n78"
+"6_2335\n78" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg_1/sub_1"]
+"115_2325\n77" -> "64_2336\n78"
+"64_2336\n78" [style=filled, fillcolor = red tooltip="resnet_model/relu_19"]
+"115_2325\n77" -> "0_2337\n78"
+"0_2337\n78" [style=filled, fillcolor = red tooltip="gradients/zeros_like_45"]
+"115_2325\n77" -> "0_2338\n78"
+"0_2338\n78" [style=filled, fillcolor = red tooltip="gradients/zeros_like_46"]
+"115_2325\n77" -> "0_2339\n78"
+"0_2339\n78" [style=filled, fillcolor = red tooltip="gradients/zeros_like_47"]
+"115_2325\n77" -> "0_2340\n78"
+"0_2340\n78" [style=filled, fillcolor = red tooltip="gradients/zeros_like_48"]
+"5_2334\n78" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg/sub_1"]
+"5_2334\n78" -> "5_2341\n79"
+"5_2341\n79" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg/mul"]
+"6_2335\n78" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg_1/sub_1"]
+"6_2335\n78" -> "5_2344\n79"
+"5_2344\n79" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg_1/mul"]
+"64_2336\n78" [style=filled, fillcolor = red tooltip="resnet_model/relu_19"]
+"64_2336\n78" -> "465_2366\n79"
+"465_2366\n79" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_22/conv2d"]
+"64_2336\n78" -> "10_2367\n79"
+"10_2367\n79" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_22/conv2d_grad/shapen"]
+"465_2366\n79" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_22/conv2d"]
+"465_2366\n79" -> "99_2214\n80"
+"99_2214\n80" [style=filled, fillcolor = red tooltip="resnet_model/add_9"]
+"465_2366\n79" -> "0_2371\n80"
+"0_2371\n80" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_9_grad/shape"]
+"5_2341\n79" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg/mul"]
+"5_2341\n79" -> "5_2299\n80"
+"5_2299\n80" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg/assignsubvariableop"]
+"5_2344\n79" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg_1/mul"]
+"5_2344\n79" -> "6_2315\n80"
+"6_2315\n80" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg_1/assignsubvariableop"]
+"5_2299\n80" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg/assignsubvariableop"]
+"5_2299\n80" -> "0_2300\n81"
+"0_2300\n81" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg/readvariableop_1"]
+"6_2315\n80" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg_1/assignsubvariableop"]
+"6_2315\n80" -> "0_2316\n81"
+"0_2316\n81" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_19/assignmovingavg_1/readvariableop_1"]
+"99_2214\n80" [style=filled, fillcolor = red tooltip="resnet_model/add_9"]
+"99_2214\n80" -> "0_2372\n81"
+"0_2372\n81" [style=filled, fillcolor = red tooltip="resnet_model/block_layer2"]
+"0_2215\n74" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_9_grad/shape_1"]
+"0_2215\n74" -> "0_4360\n81"
+"0_4360\n81" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_9_grad/broadcastgradientargs"]
+"0_2371\n80" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_9_grad/shape"]
+"0_2371\n80" -> "0_4360\n81"
+"0_4360\n81" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_9_grad/broadcastgradientargs"]
+"0_2372\n81" [style=filled, fillcolor = red tooltip="resnet_model/block_layer2"]
+"0_2372\n81" -> "115_2437\n82"
+"115_2437\n82" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_20/fusedbatchnorm"]
+"115_2437\n82" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_20/fusedbatchnorm"]
+"115_2437\n82" -> "5_2446\n83"
+"5_2446\n83" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg/sub_1"]
+"115_2437\n82" -> "6_2447\n83"
+"6_2447\n83" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg_1/sub_1"]
+"115_2437\n82" -> "64_2448\n83"
+"64_2448\n83" [style=filled, fillcolor = red tooltip="resnet_model/relu_20"]
+"115_2437\n82" -> "0_2449\n83"
+"0_2449\n83" [style=filled, fillcolor = red tooltip="gradients/zeros_like_41"]
+"115_2437\n82" -> "0_2450\n83"
+"0_2450\n83" [style=filled, fillcolor = red tooltip="gradients/zeros_like_42"]
+"115_2437\n82" -> "0_2451\n83"
+"0_2451\n83" [style=filled, fillcolor = red tooltip="gradients/zeros_like_43"]
+"115_2437\n82" -> "0_2452\n83"
+"0_2452\n83" [style=filled, fillcolor = red tooltip="gradients/zeros_like_44"]
+"5_2446\n83" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg/sub_1"]
+"5_2446\n83" -> "5_2453\n84"
+"5_2453\n84" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg/mul"]
+"6_2447\n83" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg_1/sub_1"]
+"6_2447\n83" -> "5_2456\n84"
+"5_2456\n84" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg_1/mul"]
+"64_2448\n83" [style=filled, fillcolor = red tooltip="resnet_model/relu_20"]
+"64_2448\n83" -> "0_2457\n84"
+"0_2457\n84" [style=filled, fillcolor = green tooltip="resnet_model/pad_2"]
+"64_2448\n83" -> "161_2458\n84"
+"161_2458\n84" [style=filled, fillcolor = red tooltip="resnet_model/pad_3"]
+"64_2448\n83" -> "0_2459\n84"
+"0_2459\n84" [style=filled, fillcolor = red tooltip="gradients/resnet_model/pad_2_grad/shape"]
+"64_2448\n83" -> "8_2460\n84"
+"8_2460\n84" [style=filled, fillcolor = red tooltip="gradients/resnet_model/pad_3_grad/shape"]
+"5_2453\n84" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg/mul"]
+"5_2453\n84" -> "5_2411\n85"
+"5_2411\n85" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg/assignsubvariableop"]
+"5_2456\n84" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg_1/mul"]
+"5_2456\n84" -> "6_2427\n85"
+"6_2427\n85" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg_1/assignsubvariableop"]
+"0_2457\n84" [style=filled, fillcolor = green tooltip="resnet_model/pad_2"]
+"0_2457\n84" -> "103_2485\n85"
+"103_2485\n85" [style=filled, fillcolor = green tooltip="resnet_model/conv2d_23/conv2d"]
+"0_2457\n84" -> "6_2486\n85"
+"6_2486\n85" [style=filled, fillcolor = green tooltip="gradients/resnet_model/conv2d_23/conv2d_grad/shapen"]
+"161_2458\n84" [style=filled, fillcolor = red tooltip="resnet_model/pad_3"]
+"161_2458\n84" -> "423_2512\n85"
+"423_2512\n85" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_24/conv2d"]
+"161_2458\n84" -> "10_2513\n85"
+"10_2513\n85" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_24/conv2d_grad/shapen"]
+"5_2411\n85" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg/assignsubvariableop"]
+"5_2411\n85" -> "0_2412\n86"
+"0_2412\n86" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg/readvariableop_1"]
+"6_2427\n85" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg_1/assignsubvariableop"]
+"6_2427\n85" -> "0_2428\n86"
+"0_2428\n86" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_20/assignmovingavg_1/readvariableop_1"]
+"423_2512\n85" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_24/conv2d"]
+"423_2512\n85" -> "57_2580\n86"
+"57_2580\n86" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_21/fusedbatchnorm"]
+"103_2485\n85" [style=filled, fillcolor = green tooltip="resnet_model/conv2d_23/conv2d"]
+"103_2485\n85" -> "0_2628\n86"
+"0_2628\n86" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_10_grad/shape_1"]
+"103_2485\n85" -> "48_2626\n89"
+"48_2626\n89" [style=filled, fillcolor = red tooltip="resnet_model/add_10"]
+"57_2580\n86" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_21/fusedbatchnorm"]
+"57_2580\n86" -> "6_2589\n87"
+"6_2589\n87" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg/sub_1"]
+"57_2580\n86" -> "6_2590\n87"
+"6_2590\n87" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg_1/sub_1"]
+"57_2580\n86" -> "27_2591\n87"
+"27_2591\n87" [style=filled, fillcolor = red tooltip="resnet_model/relu_21"]
+"57_2580\n86" -> "0_2592\n87"
+"0_2592\n87" [style=filled, fillcolor = red tooltip="gradients/zeros_like_37"]
+"57_2580\n86" -> "0_2593\n87"
+"0_2593\n87" [style=filled, fillcolor = red tooltip="gradients/zeros_like_38"]
+"57_2580\n86" -> "0_2594\n87"
+"0_2594\n87" [style=filled, fillcolor = red tooltip="gradients/zeros_like_39"]
+"57_2580\n86" -> "0_2595\n87"
+"0_2595\n87" [style=filled, fillcolor = red tooltip="gradients/zeros_like_40"]
+"6_2589\n87" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg/sub_1"]
+"6_2589\n87" -> "5_2596\n88"
+"5_2596\n88" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg/mul"]
+"6_2590\n87" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg_1/sub_1"]
+"6_2590\n87" -> "6_2599\n88"
+"6_2599\n88" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg_1/mul"]
+"27_2591\n87" [style=filled, fillcolor = red tooltip="resnet_model/relu_21"]
+"27_2591\n87" -> "20_2621\n88"
+"20_2621\n88" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_25/conv2d"]
+"27_2591\n87" -> "11_2622\n88"
+"11_2622\n88" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_25/conv2d_grad/shapen"]
+"5_2596\n88" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg/mul"]
+"5_2596\n88" -> "6_2554\n89"
+"6_2554\n89" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg/assignsubvariableop"]
+"6_2599\n88" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg_1/mul"]
+"6_2599\n88" -> "6_2570\n89"
+"6_2570\n89" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg_1/assignsubvariableop"]
+"20_2621\n88" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_25/conv2d"]
+"20_2621\n88" -> "48_2626\n89"
+"48_2626\n89" [style=filled, fillcolor = red tooltip="resnet_model/add_10"]
+"20_2621\n88" -> "0_2627\n89"
+"0_2627\n89" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_10_grad/shape"]
+"6_2554\n89" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg/assignsubvariableop"]
+"6_2554\n89" -> "0_2555\n90"
+"0_2555\n90" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg/readvariableop_1"]
+"6_2570\n89" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg_1/assignsubvariableop"]
+"6_2570\n89" -> "0_2571\n90"
+"0_2571\n90" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_21/assignmovingavg_1/readvariableop_1"]
+"48_2626\n89" [style=filled, fillcolor = red tooltip="resnet_model/add_10"]
+"48_2626\n89" -> "55_2693\n90"
+"55_2693\n90" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_22/fusedbatchnorm"]
+"48_2626\n89" -> "0_2695\n90"
+"0_2695\n90" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/shape_1"]
+"48_2626\n89" -> "47_2694\n96"
+"47_2694\n96" [style=filled, fillcolor = red tooltip="resnet_model/add_11"]
+"0_2628\n86" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_10_grad/shape_1"]
+"0_2628\n86" -> "0_4309\n90"
+"0_4309\n90" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_10_grad/broadcastgradientargs"]
+"0_2627\n89" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_10_grad/shape"]
+"0_2627\n89" -> "0_4309\n90"
+"0_4309\n90" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_10_grad/broadcastgradientargs"]
+"55_2693\n90" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_22/fusedbatchnorm"]
+"55_2693\n90" -> "6_2704\n91"
+"6_2704\n91" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg/sub_1"]
+"55_2693\n90" -> "6_2705\n91"
+"6_2705\n91" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg_1/sub_1"]
+"55_2693\n90" -> "26_2706\n91"
+"26_2706\n91" [style=filled, fillcolor = red tooltip="resnet_model/relu_22"]
+"55_2693\n90" -> "0_2707\n91"
+"0_2707\n91" [style=filled, fillcolor = red tooltip="gradients/zeros_like_33"]
+"55_2693\n90" -> "0_2708\n91"
+"0_2708\n91" [style=filled, fillcolor = red tooltip="gradients/zeros_like_34"]
+"55_2693\n90" -> "0_2709\n91"
+"0_2709\n91" [style=filled, fillcolor = red tooltip="gradients/zeros_like_35"]
+"55_2693\n90" -> "0_2710\n91"
+"0_2710\n91" [style=filled, fillcolor = red tooltip="gradients/zeros_like_36"]
+"6_2704\n91" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg/sub_1"]
+"6_2704\n91" -> "5_2711\n92"
+"5_2711\n92" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg/mul"]
+"6_2705\n91" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg_1/sub_1"]
+"6_2705\n91" -> "6_2714\n92"
+"6_2714\n92" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg_1/mul"]
+"26_2706\n91" [style=filled, fillcolor = red tooltip="resnet_model/relu_22"]
+"26_2706\n91" -> "21_2736\n92"
+"21_2736\n92" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_26/conv2d"]
+"26_2706\n91" -> "11_2737\n92"
+"11_2737\n92" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_26/conv2d_grad/shapen"]
+"5_2711\n92" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg/mul"]
+"5_2711\n92" -> "6_2667\n93"
+"6_2667\n93" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg/assignsubvariableop"]
+"6_2714\n92" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg_1/mul"]
+"6_2714\n92" -> "6_2683\n93"
+"6_2683\n93" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg_1/assignsubvariableop"]
+"21_2736\n92" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_26/conv2d"]
+"21_2736\n92" -> "56_2805\n93"
+"56_2805\n93" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_23/fusedbatchnorm"]
+"6_2667\n93" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg/assignsubvariableop"]
+"6_2667\n93" -> "0_2668\n94"
+"0_2668\n94" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg/readvariableop_1"]
+"6_2683\n93" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg_1/assignsubvariableop"]
+"6_2683\n93" -> "0_2684\n94"
+"0_2684\n94" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_22/assignmovingavg_1/readvariableop_1"]
+"56_2805\n93" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_23/fusedbatchnorm"]
+"56_2805\n93" -> "6_2814\n94"
+"6_2814\n94" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg/sub_1"]
+"56_2805\n93" -> "6_2815\n94"
+"6_2815\n94" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg_1/sub_1"]
+"56_2805\n93" -> "27_2816\n94"
+"27_2816\n94" [style=filled, fillcolor = red tooltip="resnet_model/relu_23"]
+"56_2805\n93" -> "0_2817\n94"
+"0_2817\n94" [style=filled, fillcolor = red tooltip="gradients/zeros_like_29"]
+"56_2805\n93" -> "0_2818\n94"
+"0_2818\n94" [style=filled, fillcolor = red tooltip="gradients/zeros_like_30"]
+"56_2805\n93" -> "0_2819\n94"
+"0_2819\n94" [style=filled, fillcolor = red tooltip="gradients/zeros_like_31"]
+"56_2805\n93" -> "0_2820\n94"
+"0_2820\n94" [style=filled, fillcolor = red tooltip="gradients/zeros_like_32"]
+"6_2814\n94" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg/sub_1"]
+"6_2814\n94" -> "5_2821\n95"
+"5_2821\n95" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg/mul"]
+"6_2815\n94" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg_1/sub_1"]
+"6_2815\n94" -> "6_2824\n95"
+"6_2824\n95" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg_1/mul"]
+"27_2816\n94" [style=filled, fillcolor = red tooltip="resnet_model/relu_23"]
+"27_2816\n94" -> "20_2846\n95"
+"20_2846\n95" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_27/conv2d"]
+"27_2816\n94" -> "11_2847\n95"
+"11_2847\n95" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_27/conv2d_grad/shapen"]
+"20_2846\n95" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_27/conv2d"]
+"20_2846\n95" -> "47_2694\n96"
+"47_2694\n96" [style=filled, fillcolor = red tooltip="resnet_model/add_11"]
+"20_2846\n95" -> "0_2851\n96"
+"0_2851\n96" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_11_grad/shape"]
+"5_2821\n95" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg/mul"]
+"5_2821\n95" -> "6_2779\n96"
+"6_2779\n96" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg/assignsubvariableop"]
+"6_2824\n95" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg_1/mul"]
+"6_2824\n95" -> "6_2795\n96"
+"6_2795\n96" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg_1/assignsubvariableop"]
+"6_2779\n96" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg/assignsubvariableop"]
+"6_2779\n96" -> "0_2780\n97"
+"0_2780\n97" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg/readvariableop_1"]
+"6_2795\n96" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg_1/assignsubvariableop"]
+"6_2795\n96" -> "0_2796\n97"
+"0_2796\n97" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_23/assignmovingavg_1/readvariableop_1"]
+"47_2694\n96" [style=filled, fillcolor = red tooltip="resnet_model/add_11"]
+"47_2694\n96" -> "56_2916\n97"
+"56_2916\n97" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_24/fusedbatchnorm"]
+"47_2694\n96" -> "0_2918\n97"
+"0_2918\n97" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/shape_1"]
+"47_2694\n96" -> "47_2917\n103"
+"47_2917\n103" [style=filled, fillcolor = red tooltip="resnet_model/add_12"]
+"0_2695\n90" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_11_grad/shape_1"]
+"0_2695\n90" -> "0_4276\n97"
+"0_4276\n97" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_11_grad/broadcastgradientargs"]
+"0_2851\n96" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_11_grad/shape"]
+"0_2851\n96" -> "0_4276\n97"
+"0_4276\n97" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_11_grad/broadcastgradientargs"]
+"56_2916\n97" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_24/fusedbatchnorm"]
+"56_2916\n97" -> "6_2927\n98"
+"6_2927\n98" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg/sub_1"]
+"56_2916\n97" -> "6_2928\n98"
+"6_2928\n98" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg_1/sub_1"]
+"56_2916\n97" -> "27_2929\n98"
+"27_2929\n98" [style=filled, fillcolor = red tooltip="resnet_model/relu_24"]
+"56_2916\n97" -> "0_2930\n98"
+"0_2930\n98" [style=filled, fillcolor = red tooltip="gradients/zeros_like_25"]
+"56_2916\n97" -> "0_2931\n98"
+"0_2931\n98" [style=filled, fillcolor = red tooltip="gradients/zeros_like_26"]
+"56_2916\n97" -> "0_2932\n98"
+"0_2932\n98" [style=filled, fillcolor = red tooltip="gradients/zeros_like_27"]
+"56_2916\n97" -> "0_2933\n98"
+"0_2933\n98" [style=filled, fillcolor = red tooltip="gradients/zeros_like_28"]
+"6_2927\n98" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg/sub_1"]
+"6_2927\n98" -> "5_2934\n99"
+"5_2934\n99" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg/mul"]
+"6_2928\n98" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg_1/sub_1"]
+"6_2928\n98" -> "6_2937\n99"
+"6_2937\n99" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg_1/mul"]
+"27_2929\n98" [style=filled, fillcolor = red tooltip="resnet_model/relu_24"]
+"27_2929\n98" -> "21_2959\n99"
+"21_2959\n99" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_28/conv2d"]
+"27_2929\n98" -> "11_2960\n99"
+"11_2960\n99" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_28/conv2d_grad/shapen"]
+"5_2934\n99" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg/mul"]
+"5_2934\n99" -> "5_2890\n100"
+"5_2890\n100" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg/assignsubvariableop"]
+"6_2937\n99" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg_1/mul"]
+"6_2937\n99" -> "6_2906\n100"
+"6_2906\n100" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg_1/assignsubvariableop"]
+"21_2959\n99" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_28/conv2d"]
+"21_2959\n99" -> "56_3028\n100"
+"56_3028\n100" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_25/fusedbatchnorm"]
+"5_2890\n100" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg/assignsubvariableop"]
+"5_2890\n100" -> "0_2891\n101"
+"0_2891\n101" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg/readvariableop_1"]
+"6_2906\n100" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg_1/assignsubvariableop"]
+"6_2906\n100" -> "0_2907\n101"
+"0_2907\n101" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_24/assignmovingavg_1/readvariableop_1"]
+"56_3028\n100" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_25/fusedbatchnorm"]
+"56_3028\n100" -> "6_3037\n101"
+"6_3037\n101" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg/sub_1"]
+"56_3028\n100" -> "6_3038\n101"
+"6_3038\n101" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg_1/sub_1"]
+"56_3028\n100" -> "27_3039\n101"
+"27_3039\n101" [style=filled, fillcolor = red tooltip="resnet_model/relu_25"]
+"56_3028\n100" -> "0_3040\n101"
+"0_3040\n101" [style=filled, fillcolor = red tooltip="gradients/zeros_like_21"]
+"56_3028\n100" -> "0_3041\n101"
+"0_3041\n101" [style=filled, fillcolor = red tooltip="gradients/zeros_like_22"]
+"56_3028\n100" -> "0_3042\n101"
+"0_3042\n101" [style=filled, fillcolor = red tooltip="gradients/zeros_like_23"]
+"56_3028\n100" -> "0_3043\n101"
+"0_3043\n101" [style=filled, fillcolor = red tooltip="gradients/zeros_like_24"]
+"6_3037\n101" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg/sub_1"]
+"6_3037\n101" -> "5_3044\n102"
+"5_3044\n102" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg/mul"]
+"6_3038\n101" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg_1/sub_1"]
+"6_3038\n101" -> "6_3047\n102"
+"6_3047\n102" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg_1/mul"]
+"27_3039\n101" [style=filled, fillcolor = red tooltip="resnet_model/relu_25"]
+"27_3039\n101" -> "20_3069\n102"
+"20_3069\n102" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_29/conv2d"]
+"27_3039\n101" -> "11_3070\n102"
+"11_3070\n102" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_29/conv2d_grad/shapen"]
+"20_3069\n102" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_29/conv2d"]
+"20_3069\n102" -> "47_2917\n103"
+"47_2917\n103" [style=filled, fillcolor = red tooltip="resnet_model/add_12"]
+"20_3069\n102" -> "0_3074\n103"
+"0_3074\n103" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_12_grad/shape"]
+"5_3044\n102" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg/mul"]
+"5_3044\n102" -> "5_3002\n103"
+"5_3002\n103" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg/assignsubvariableop"]
+"6_3047\n102" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg_1/mul"]
+"6_3047\n102" -> "6_3018\n103"
+"6_3018\n103" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg_1/assignsubvariableop"]
+"5_3002\n103" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg/assignsubvariableop"]
+"5_3002\n103" -> "0_3003\n104"
+"0_3003\n104" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg/readvariableop_1"]
+"6_3018\n103" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg_1/assignsubvariableop"]
+"6_3018\n103" -> "0_3019\n104"
+"0_3019\n104" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_25/assignmovingavg_1/readvariableop_1"]
+"47_2917\n103" [style=filled, fillcolor = red tooltip="resnet_model/add_12"]
+"47_2917\n103" -> "55_3139\n104"
+"55_3139\n104" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_26/fusedbatchnorm"]
+"47_2917\n103" -> "0_3141\n104"
+"0_3141\n104" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_13_grad/shape_1"]
+"47_2917\n103" -> "47_3140\n110"
+"47_3140\n110" [style=filled, fillcolor = red tooltip="resnet_model/add_13"]
+"0_2918\n97" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_12_grad/shape_1"]
+"0_2918\n97" -> "0_4243\n104"
+"0_4243\n104" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_12_grad/broadcastgradientargs"]
+"0_3074\n103" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_12_grad/shape"]
+"0_3074\n103" -> "0_4243\n104"
+"0_4243\n104" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_12_grad/broadcastgradientargs"]
+"55_3139\n104" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_26/fusedbatchnorm"]
+"55_3139\n104" -> "6_3150\n105"
+"6_3150\n105" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg/sub_1"]
+"55_3139\n104" -> "6_3151\n105"
+"6_3151\n105" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg_1/sub_1"]
+"55_3139\n104" -> "26_3152\n105"
+"26_3152\n105" [style=filled, fillcolor = red tooltip="resnet_model/relu_26"]
+"55_3139\n104" -> "0_3153\n105"
+"0_3153\n105" [style=filled, fillcolor = red tooltip="gradients/zeros_like_17"]
+"55_3139\n104" -> "0_3154\n105"
+"0_3154\n105" [style=filled, fillcolor = red tooltip="gradients/zeros_like_18"]
+"55_3139\n104" -> "0_3155\n105"
+"0_3155\n105" [style=filled, fillcolor = red tooltip="gradients/zeros_like_19"]
+"55_3139\n104" -> "0_3156\n105"
+"0_3156\n105" [style=filled, fillcolor = red tooltip="gradients/zeros_like_20"]
+"6_3150\n105" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg/sub_1"]
+"6_3150\n105" -> "5_3157\n106"
+"5_3157\n106" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg/mul"]
+"6_3151\n105" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg_1/sub_1"]
+"6_3151\n105" -> "6_3160\n106"
+"6_3160\n106" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg_1/mul"]
+"26_3152\n105" [style=filled, fillcolor = red tooltip="resnet_model/relu_26"]
+"26_3152\n105" -> "20_3182\n106"
+"20_3182\n106" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_30/conv2d"]
+"26_3152\n105" -> "11_3183\n106"
+"11_3183\n106" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_30/conv2d_grad/shapen"]
+"5_3157\n106" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg/mul"]
+"5_3157\n106" -> "5_3113\n107"
+"5_3113\n107" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg/assignsubvariableop"]
+"6_3160\n106" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg_1/mul"]
+"6_3160\n106" -> "6_3129\n107"
+"6_3129\n107" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg_1/assignsubvariableop"]
+"20_3182\n106" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_30/conv2d"]
+"20_3182\n106" -> "57_3251\n107"
+"57_3251\n107" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_27/fusedbatchnorm"]
+"5_3113\n107" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg/assignsubvariableop"]
+"5_3113\n107" -> "0_3114\n108"
+"0_3114\n108" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg/readvariableop_1"]
+"6_3129\n107" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg_1/assignsubvariableop"]
+"6_3129\n107" -> "0_3130\n108"
+"0_3130\n108" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_26/assignmovingavg_1/readvariableop_1"]
+"57_3251\n107" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_27/fusedbatchnorm"]
+"57_3251\n107" -> "6_3260\n108"
+"6_3260\n108" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg/sub_1"]
+"57_3251\n107" -> "6_3261\n108"
+"6_3261\n108" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg_1/sub_1"]
+"57_3251\n107" -> "27_3262\n108"
+"27_3262\n108" [style=filled, fillcolor = red tooltip="resnet_model/relu_27"]
+"57_3251\n107" -> "0_3263\n108"
+"0_3263\n108" [style=filled, fillcolor = red tooltip="gradients/zeros_like_13"]
+"57_3251\n107" -> "0_3264\n108"
+"0_3264\n108" [style=filled, fillcolor = red tooltip="gradients/zeros_like_14"]
+"57_3251\n107" -> "0_3265\n108"
+"0_3265\n108" [style=filled, fillcolor = red tooltip="gradients/zeros_like_15"]
+"57_3251\n107" -> "0_3266\n108"
+"0_3266\n108" [style=filled, fillcolor = red tooltip="gradients/zeros_like_16"]
+"6_3260\n108" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg/sub_1"]
+"6_3260\n108" -> "5_3267\n109"
+"5_3267\n109" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg/mul"]
+"6_3261\n108" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg_1/sub_1"]
+"6_3261\n108" -> "6_3270\n109"
+"6_3270\n109" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg_1/mul"]
+"27_3262\n108" [style=filled, fillcolor = red tooltip="resnet_model/relu_27"]
+"27_3262\n108" -> "20_3292\n109"
+"20_3292\n109" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_31/conv2d"]
+"27_3262\n108" -> "10_3293\n109"
+"10_3293\n109" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_31/conv2d_grad/shapen"]
+"20_3292\n109" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_31/conv2d"]
+"20_3292\n109" -> "47_3140\n110"
+"47_3140\n110" [style=filled, fillcolor = red tooltip="resnet_model/add_13"]
+"20_3292\n109" -> "0_3297\n110"
+"0_3297\n110" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_13_grad/shape"]
+"5_3267\n109" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg/mul"]
+"5_3267\n109" -> "5_3225\n110"
+"5_3225\n110" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg/assignsubvariableop"]
+"6_3270\n109" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg_1/mul"]
+"6_3270\n109" -> "6_3241\n110"
+"6_3241\n110" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg_1/assignsubvariableop"]
+"5_3225\n110" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg/assignsubvariableop"]
+"5_3225\n110" -> "0_3226\n111"
+"0_3226\n111" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg/readvariableop_1"]
+"6_3241\n110" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg_1/assignsubvariableop"]
+"6_3241\n110" -> "0_3242\n111"
+"0_3242\n111" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_27/assignmovingavg_1/readvariableop_1"]
+"47_3140\n110" [style=filled, fillcolor = red tooltip="resnet_model/add_13"]
+"47_3140\n110" -> "54_3362\n111"
+"54_3362\n111" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_28/fusedbatchnorm"]
+"47_3140\n110" -> "0_3364\n111"
+"0_3364\n111" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_14_grad/shape_1"]
+"47_3140\n110" -> "48_3363\n117"
+"48_3363\n117" [style=filled, fillcolor = red tooltip="resnet_model/add_14"]
+"0_3141\n104" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_13_grad/shape_1"]
+"0_3141\n104" -> "0_4210\n111"
+"0_4210\n111" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_13_grad/broadcastgradientargs"]
+"0_3297\n110" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_13_grad/shape"]
+"0_3297\n110" -> "0_4210\n111"
+"0_4210\n111" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_13_grad/broadcastgradientargs"]
+"54_3362\n111" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_28/fusedbatchnorm"]
+"54_3362\n111" -> "6_3373\n112"
+"6_3373\n112" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg/sub_1"]
+"54_3362\n111" -> "6_3374\n112"
+"6_3374\n112" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg_1/sub_1"]
+"54_3362\n111" -> "27_3375\n112"
+"27_3375\n112" [style=filled, fillcolor = red tooltip="resnet_model/relu_28"]
+"54_3362\n111" -> "0_3376\n112"
+"0_3376\n112" [style=filled, fillcolor = red tooltip="gradients/zeros_like_9"]
+"54_3362\n111" -> "0_3377\n112"
+"0_3377\n112" [style=filled, fillcolor = red tooltip="gradients/zeros_like_10"]
+"54_3362\n111" -> "0_3378\n112"
+"0_3378\n112" [style=filled, fillcolor = red tooltip="gradients/zeros_like_11"]
+"54_3362\n111" -> "0_3379\n112"
+"0_3379\n112" [style=filled, fillcolor = red tooltip="gradients/zeros_like_12"]
+"6_3373\n112" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg/sub_1"]
+"6_3373\n112" -> "5_3380\n113"
+"5_3380\n113" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg/mul"]
+"6_3374\n112" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg_1/sub_1"]
+"6_3374\n112" -> "6_3383\n113"
+"6_3383\n113" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg_1/mul"]
+"27_3375\n112" [style=filled, fillcolor = red tooltip="resnet_model/relu_28"]
+"27_3375\n112" -> "20_3405\n113"
+"20_3405\n113" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_32/conv2d"]
+"27_3375\n112" -> "12_3406\n113"
+"12_3406\n113" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_32/conv2d_grad/shapen"]
+"5_3380\n113" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg/mul"]
+"5_3380\n113" -> "5_3336\n114"
+"5_3336\n114" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg/assignsubvariableop"]
+"6_3383\n113" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg_1/mul"]
+"6_3383\n113" -> "6_3352\n114"
+"6_3352\n114" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg_1/assignsubvariableop"]
+"20_3405\n113" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_32/conv2d"]
+"20_3405\n113" -> "57_3474\n114"
+"57_3474\n114" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_29/fusedbatchnorm"]
+"5_3336\n114" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg/assignsubvariableop"]
+"5_3336\n114" -> "0_3337\n115"
+"0_3337\n115" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg/readvariableop_1"]
+"6_3352\n114" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg_1/assignsubvariableop"]
+"6_3352\n114" -> "0_3353\n115"
+"0_3353\n115" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_28/assignmovingavg_1/readvariableop_1"]
+"57_3474\n114" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_29/fusedbatchnorm"]
+"57_3474\n114" -> "6_3483\n115"
+"6_3483\n115" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg/sub_1"]
+"57_3474\n114" -> "6_3484\n115"
+"6_3484\n115" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg_1/sub_1"]
+"57_3474\n114" -> "27_3485\n115"
+"27_3485\n115" [style=filled, fillcolor = red tooltip="resnet_model/relu_29"]
+"57_3474\n114" -> "0_3486\n115"
+"0_3486\n115" [style=filled, fillcolor = red tooltip="gradients/zeros_like_5"]
+"57_3474\n114" -> "0_3487\n115"
+"0_3487\n115" [style=filled, fillcolor = red tooltip="gradients/zeros_like_6"]
+"57_3474\n114" -> "0_3488\n115"
+"0_3488\n115" [style=filled, fillcolor = red tooltip="gradients/zeros_like_7"]
+"57_3474\n114" -> "0_3489\n115"
+"0_3489\n115" [style=filled, fillcolor = red tooltip="gradients/zeros_like_8"]
+"6_3483\n115" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg/sub_1"]
+"6_3483\n115" -> "5_3490\n116"
+"5_3490\n116" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg/mul"]
+"6_3484\n115" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg_1/sub_1"]
+"6_3484\n115" -> "6_3493\n116"
+"6_3493\n116" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg_1/mul"]
+"27_3485\n115" [style=filled, fillcolor = red tooltip="resnet_model/relu_29"]
+"27_3485\n115" -> "20_3515\n116"
+"20_3515\n116" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_33/conv2d"]
+"27_3485\n115" -> "11_3516\n116"
+"11_3516\n116" [style=filled, fillcolor = red tooltip="gradients/resnet_model/conv2d_33/conv2d_grad/shapen"]
+"20_3515\n116" [style=filled, fillcolor = red tooltip="resnet_model/conv2d_33/conv2d"]
+"20_3515\n116" -> "48_3363\n117"
+"48_3363\n117" [style=filled, fillcolor = red tooltip="resnet_model/add_14"]
+"20_3515\n116" -> "0_3520\n117"
+"0_3520\n117" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_14_grad/shape"]
+"5_3490\n116" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg/mul"]
+"5_3490\n116" -> "5_3448\n117"
+"5_3448\n117" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg/assignsubvariableop"]
+"6_3493\n116" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg_1/mul"]
+"6_3493\n116" -> "6_3464\n117"
+"6_3464\n117" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg_1/assignsubvariableop"]
+"5_3448\n117" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg/assignsubvariableop"]
+"5_3448\n117" -> "0_3449\n118"
+"0_3449\n118" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg/readvariableop_1"]
+"6_3464\n117" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg_1/assignsubvariableop"]
+"6_3464\n117" -> "0_3465\n118"
+"0_3465\n118" [style=filled, fillcolor = green tooltip="resnet_model/batch_normalization_29/assignmovingavg_1/readvariableop_1"]
+"48_3363\n117" [style=filled, fillcolor = red tooltip="resnet_model/add_14"]
+"48_3363\n117" -> "0_3521\n118"
+"0_3521\n118" [style=filled, fillcolor = red tooltip="resnet_model/block_layer3"]
+"0_3364\n111" [style=filled, fillcolor = red tooltip="gradients/resnet_model/add_14_grad/shape_1"]
+"0_3364\n111" -> "0_4177\n118"
+"0_4177\n118" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_14_grad/broadcastgradientargs"]
+"0_3520\n117" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_14_grad/shape"]
+"0_3520\n117" -> "0_4177\n118"
+"0_4177\n118" [style=filled, fillcolor = green tooltip="gradients/resnet_model/add_14_grad/broadcastgradientargs"]
+"0_3521\n118" [style=filled, fillcolor = red tooltip="resnet_model/block_layer3"]
+"0_3521\n118" -> "55_3586\n119"
+"55_3586\n119" [style=filled, fillcolor = red tooltip="resnet_model/batch_normalization_30/fusedbatchnorm"]
+}

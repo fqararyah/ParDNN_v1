@@ -1,0 +1,1682 @@
+digraph{
+"4_24790\n1100" [style=filled, fillcolor = red tooltip="mean_108"]
+"4_24790\n1100" -> "25_27688\n1101"
+"25_27688\n1101" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768d/branch7x7dbl/conv/weights/applyrmsprop"]
+"4_24790\n1100" -> "0_25446\n1101"
+"0_25446\n1101" [style=filled, fillcolor = white tooltip="mixed_17x17x768d/branch7x7dbl/conv/weights/gradients"]
+"14_17413\n1100" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/relu_grad/relugrad"]
+"14_17413\n1100" -> "0_17420\n1101"
+"0_17420\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/sum"]
+"14_17413\n1100" -> "20_17422\n1101"
+"20_17422\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/sum_1"]
+"12_17414\n1100" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/relu_grad/relugrad"]
+"12_17414\n1100" -> "0_17434\n1101"
+"0_17434\n1101" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/sum"]
+"12_17414\n1100" -> "16_17436\n1101"
+"16_17436\n1101" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/sum_1"]
+"12_17415\n1100" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/relu_grad/relugrad"]
+"12_17415\n1100" -> "0_17448\n1101"
+"0_17448\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/sum"]
+"12_17415\n1100" -> "16_17450\n1101"
+"16_17450\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/sum_1"]
+"12_17416\n1100" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/relu_grad/relugrad"]
+"12_17416\n1100" -> "0_17462\n1101"
+"0_17462\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/sum"]
+"12_17416\n1100" -> "15_17464\n1101"
+"15_17464\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/sum_1"]
+"0_17420\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/sum"]
+"0_17420\n1101" -> "0_17421\n1102"
+"0_17421\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/reshape"]
+"20_17422\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/sum_1"]
+"20_17422\n1101" -> "0_17424\n1102"
+"0_17424\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17434\n1101" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/sum"]
+"0_17434\n1101" -> "0_17435\n1102"
+"0_17435\n1102" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/reshape"]
+"16_17436\n1101" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/sum_1"]
+"16_17436\n1101" -> "0_17438\n1102"
+"0_17438\n1102" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17448\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/sum"]
+"0_17448\n1101" -> "0_17449\n1102"
+"0_17449\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/reshape"]
+"16_17450\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/sum_1"]
+"16_17450\n1101" -> "0_17452\n1102"
+"0_17452\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17462\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/sum"]
+"0_17462\n1101" -> "0_17463\n1102"
+"0_17463\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/reshape"]
+"15_17464\n1101" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/sum_1"]
+"15_17464\n1101" -> "0_17466\n1102"
+"0_17466\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17421\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/reshape"]
+"0_17421\n1102" -> "0_17428\n1103"
+"0_17428\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17424\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17424\n1102" -> "0_17430\n1103"
+"0_17430\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17435\n1102" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/reshape"]
+"0_17435\n1102" -> "0_17442\n1103"
+"0_17442\n1103" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17438\n1102" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17438\n1102" -> "0_17444\n1103"
+"0_17444\n1103" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17449\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/reshape"]
+"0_17449\n1102" -> "0_17456\n1103"
+"0_17456\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17452\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17452\n1102" -> "0_17458\n1103"
+"0_17458\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17463\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/reshape"]
+"0_17463\n1102" -> "0_17470\n1103"
+"0_17470\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17466\n1102" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17466\n1102" -> "0_17472\n1103"
+"0_17472\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17428\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17428\n1103" -> "14_17479\n1104"
+"14_17479\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/mul_1"]
+"0_17428\n1103" -> "16_17476\n1104"
+"16_17476\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/mul"]
+"0_17442\n1103" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17442\n1103" -> "13_17502\n1104"
+"13_17502\n1104" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/mul_1"]
+"0_17442\n1103" -> "14_17499\n1104"
+"14_17499\n1104" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/mul"]
+"0_17456\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17456\n1103" -> "12_17525\n1104"
+"12_17525\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/mul_1"]
+"0_17456\n1103" -> "12_17522\n1104"
+"12_17522\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/mul"]
+"0_17470\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17470\n1103" -> "12_17548\n1104"
+"12_17548\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/mul_1"]
+"0_17470\n1103" -> "12_17545\n1104"
+"12_17545\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/mul"]
+"0_17430\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17430\n1103" -> "13_17489\n1104"
+"13_17489\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/sub_grad/neg"]
+"0_17430\n1103" -> "0_17493\n1104"
+"0_17493\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_17444\n1103" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17444\n1103" -> "12_17512\n1104"
+"12_17512\n1104" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/sub_grad/neg"]
+"0_17444\n1103" -> "0_17516\n1104"
+"0_17516\n1104" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_17458\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17458\n1103" -> "12_17535\n1104"
+"12_17535\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/sub_grad/neg"]
+"0_17458\n1103" -> "0_17539\n1104"
+"0_17539\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_17472\n1103" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17472\n1103" -> "11_17558\n1104"
+"11_17558\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/sub_grad/neg"]
+"0_17472\n1103" -> "0_17562\n1104"
+"0_17562\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"16_17476\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/mul"]
+"16_17476\n1104" -> "0_17477\n1105"
+"0_17477\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/sum"]
+"14_17479\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/mul_1"]
+"14_17479\n1104" -> "18_17480\n1105"
+"18_17480\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/sum_1"]
+"13_17489\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/sub_grad/neg"]
+"13_17489\n1104" -> "0_17495\n1105"
+"0_17495\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"14_17499\n1104" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/mul"]
+"14_17499\n1104" -> "0_17500\n1105"
+"0_17500\n1105" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/sum"]
+"13_17502\n1104" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/mul_1"]
+"13_17502\n1104" -> "17_17503\n1105"
+"17_17503\n1105" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/sum_1"]
+"12_17512\n1104" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/sub_grad/neg"]
+"12_17512\n1104" -> "6_17518\n1105"
+"6_17518\n1105" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"12_17522\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/mul"]
+"12_17522\n1104" -> "0_17523\n1105"
+"0_17523\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/sum"]
+"12_17525\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/mul_1"]
+"12_17525\n1104" -> "16_17526\n1105"
+"16_17526\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/sum_1"]
+"12_17535\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/sub_grad/neg"]
+"12_17535\n1104" -> "0_17541\n1105"
+"0_17541\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"12_17545\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/mul"]
+"12_17545\n1104" -> "0_17546\n1105"
+"0_17546\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/sum"]
+"12_17548\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/mul_1"]
+"12_17548\n1104" -> "17_17549\n1105"
+"17_17549\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/sum_1"]
+"11_17558\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/sub_grad/neg"]
+"11_17558\n1104" -> "0_17564\n1105"
+"0_17564\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_17493\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_17493\n1104" -> "4_24652\n1105"
+"4_24652\n1105" [style=filled, fillcolor = red tooltip="expanddims_81"]
+"0_17516\n1104" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_17516\n1104" -> "3_24682\n1105"
+"3_24682\n1105" [style=filled, fillcolor = green tooltip="expanddims_87"]
+"0_17539\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_17539\n1104" -> "4_24732\n1105"
+"4_24732\n1105" [style=filled, fillcolor = red tooltip="expanddims_97"]
+"0_17562\n1104" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_17562\n1104" -> "4_24742\n1105"
+"4_24742\n1105" [style=filled, fillcolor = red tooltip="expanddims_99"]
+"0_17495\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_17495\n1105" -> "11_17566\n1106"
+"11_17566\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"0_17495\n1105" -> "10_17565\n1106"
+"10_17565\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_1_grad/mul"]
+"6_17518\n1105" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"6_17518\n1105" -> "11_17574\n1106"
+"11_17574\n1106" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"6_17518\n1105" -> "10_17573\n1106"
+"10_17573\n1106" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_1_grad/mul"]
+"0_17541\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_17541\n1105" -> "11_17582\n1106"
+"11_17582\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"0_17541\n1105" -> "10_17581\n1106"
+"10_17581\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_1_grad/mul"]
+"0_17564\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_17564\n1105" -> "12_17590\n1106"
+"12_17590\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"0_17564\n1105" -> "10_17589\n1106"
+"10_17589\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_1_grad/mul"]
+"0_17477\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/sum"]
+"0_17477\n1105" -> "0_17478\n1106"
+"0_17478\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/reshape"]
+"18_17480\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/sum_1"]
+"18_17480\n1105" -> "0_17482\n1106"
+"0_17482\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_17500\n1105" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/sum"]
+"0_17500\n1105" -> "0_17501\n1106"
+"0_17501\n1106" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/reshape"]
+"17_17503\n1105" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/sum_1"]
+"17_17503\n1105" -> "0_17505\n1106"
+"0_17505\n1106" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_17523\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/sum"]
+"0_17523\n1105" -> "0_17524\n1106"
+"0_17524\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/reshape"]
+"16_17526\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/sum_1"]
+"16_17526\n1105" -> "0_17528\n1106"
+"0_17528\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_17546\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/sum"]
+"0_17546\n1105" -> "0_17547\n1106"
+"0_17547\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/reshape"]
+"17_17549\n1105" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/sum_1"]
+"17_17549\n1105" -> "0_17551\n1106"
+"0_17551\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/reshape_1"]
+"4_24652\n1105" [style=filled, fillcolor = red tooltip="expanddims_81"]
+"4_24652\n1105" -> "0_24654\n1106"
+"0_24654\n1106" [style=filled, fillcolor = red tooltip="concat_81"]
+"3_24682\n1105" [style=filled, fillcolor = green tooltip="expanddims_87"]
+"3_24682\n1105" -> "0_24684\n1106"
+"0_24684\n1106" [style=filled, fillcolor = green tooltip="concat_87"]
+"4_24732\n1105" [style=filled, fillcolor = red tooltip="expanddims_97"]
+"4_24732\n1105" -> "0_24734\n1106"
+"0_24734\n1106" [style=filled, fillcolor = red tooltip="concat_97"]
+"4_24742\n1105" [style=filled, fillcolor = red tooltip="expanddims_99"]
+"4_24742\n1105" -> "0_24744\n1106"
+"0_24744\n1106" [style=filled, fillcolor = red tooltip="concat_99"]
+"0_17478\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/reshape"]
+"0_17478\n1106" -> "0_17486\n1107"
+"0_17486\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17482\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_17482\n1106" -> "0_17488\n1107"
+"0_17488\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_17501\n1106" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/reshape"]
+"0_17501\n1106" -> "0_17509\n1107"
+"0_17509\n1107" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17505\n1106" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_17505\n1106" -> "0_17511\n1107"
+"0_17511\n1107" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_17524\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/reshape"]
+"0_17524\n1106" -> "0_17532\n1107"
+"0_17532\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17528\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_17528\n1106" -> "0_17534\n1107"
+"0_17534\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_17547\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/reshape"]
+"0_17547\n1106" -> "0_17555\n1107"
+"0_17555\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17551\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_17551\n1106" -> "0_17557\n1107"
+"0_17557\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"10_17565\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_1_grad/mul"]
+"10_17565\n1106" -> "0_17570\n1107"
+"0_17570\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"11_17566\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"11_17566\n1106" -> "0_17572\n1107"
+"0_17572\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"10_17573\n1106" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_1_grad/mul"]
+"10_17573\n1106" -> "0_17578\n1107"
+"0_17578\n1107" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"11_17574\n1106" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"11_17574\n1106" -> "0_17580\n1107"
+"0_17580\n1107" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"10_17581\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_1_grad/mul"]
+"10_17581\n1106" -> "0_17586\n1107"
+"0_17586\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"11_17582\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"11_17582\n1106" -> "0_17588\n1107"
+"0_17588\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"10_17589\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_1_grad/mul"]
+"10_17589\n1106" -> "0_17594\n1107"
+"0_17594\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"12_17590\n1106" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"12_17590\n1106" -> "0_17596\n1107"
+"0_17596\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_24654\n1106" [style=filled, fillcolor = red tooltip="concat_81"]
+"0_24654\n1106" -> "3_24655\n1107"
+"3_24655\n1107" [style=filled, fillcolor = red tooltip="mean_81"]
+"0_24684\n1106" [style=filled, fillcolor = green tooltip="concat_87"]
+"0_24684\n1106" -> "3_24685\n1107"
+"3_24685\n1107" [style=filled, fillcolor = green tooltip="mean_87"]
+"0_24734\n1106" [style=filled, fillcolor = red tooltip="concat_97"]
+"0_24734\n1106" -> "2_24735\n1107"
+"2_24735\n1107" [style=filled, fillcolor = red tooltip="mean_97"]
+"0_24744\n1106" [style=filled, fillcolor = red tooltip="concat_99"]
+"0_24744\n1106" -> "3_24745\n1107"
+"3_24745\n1107" [style=filled, fillcolor = red tooltip="mean_99"]
+"3_24655\n1107" [style=filled, fillcolor = red tooltip="mean_81"]
+"3_24655\n1107" -> "24_27661\n1108"
+"24_27661\n1108" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch1x1/conv/batchnorm/beta/applyrmsprop"]
+"3_24655\n1107" -> "0_25392\n1108"
+"0_25392\n1108" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch1x1/conv/batchnorm/beta/gradients"]
+"3_24685\n1107" [style=filled, fillcolor = green tooltip="mean_87"]
+"3_24685\n1107" -> "21_27667\n1108"
+"21_27667\n1108" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7/conv_2/batchnorm/beta/applyrmsprop"]
+"3_24685\n1107" -> "0_25404\n1108"
+"0_25404\n1108" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7/conv_2/batchnorm/beta/gradients"]
+"2_24735\n1107" [style=filled, fillcolor = red tooltip="mean_97"]
+"2_24735\n1107" -> "21_27677\n1108"
+"21_27677\n1108" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/beta/applyrmsprop"]
+"2_24735\n1107" -> "0_25424\n1108"
+"0_25424\n1108" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/beta/gradients"]
+"3_24745\n1107" [style=filled, fillcolor = red tooltip="mean_99"]
+"3_24745\n1107" -> "21_27679\n1108"
+"21_27679\n1108" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch_pool/conv/batchnorm/beta/applyrmsprop"]
+"3_24745\n1107" -> "0_25428\n1108"
+"0_25428\n1108" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch_pool/conv/batchnorm/beta/gradients"]
+"0_17570\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"0_17570\n1107" -> "3_17597\n1108"
+"3_17597\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squeeze_grad/reshape"]
+"0_17488\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_17488\n1107" -> "12_17599\n1108"
+"12_17599\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_149"]
+"0_17572\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_17572\n1107" -> "12_17599\n1108"
+"12_17599\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_149"]
+"0_17578\n1107" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"0_17578\n1107" -> "3_17601\n1108"
+"3_17601\n1108" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squeeze_grad/reshape"]
+"0_17511\n1107" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_17511\n1107" -> "11_17603\n1108"
+"11_17603\n1108" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_150"]
+"0_17580\n1107" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_17580\n1107" -> "11_17603\n1108"
+"11_17603\n1108" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_150"]
+"0_17586\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"0_17586\n1107" -> "3_17605\n1108"
+"3_17605\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squeeze_grad/reshape"]
+"0_17534\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_17534\n1107" -> "11_17607\n1108"
+"11_17607\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_151"]
+"0_17588\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_17588\n1107" -> "11_17607\n1108"
+"11_17607\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_151"]
+"0_17594\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"0_17594\n1107" -> "3_17609\n1108"
+"3_17609\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squeeze_grad/reshape"]
+"0_17557\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_17557\n1107" -> "11_17611\n1108"
+"11_17611\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_152"]
+"0_17596\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_17596\n1107" -> "11_17611\n1108"
+"11_17611\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_152"]
+"12_17599\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_149"]
+"12_17599\n1108" -> "11_17600\n1109"
+"11_17600\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"11_17603\n1108" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_150"]
+"11_17603\n1108" -> "11_17604\n1109"
+"11_17604\n1109" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"11_17607\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_151"]
+"11_17607\n1108" -> "11_17608\n1109"
+"11_17608\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"11_17611\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_152"]
+"11_17611\n1108" -> "12_17612\n1109"
+"12_17612\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"3_17597\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squeeze_grad/reshape"]
+"3_17597\n1108" -> "0_17843\n1109"
+"0_17843\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/mean_grad/reshape"]
+"3_17601\n1108" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squeeze_grad/reshape"]
+"3_17601\n1108" -> "0_17861\n1109"
+"0_17861\n1109" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/mean_grad/reshape"]
+"3_17605\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squeeze_grad/reshape"]
+"3_17605\n1108" -> "0_17879\n1109"
+"0_17879\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/mean_grad/reshape"]
+"3_17609\n1108" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squeeze_grad/reshape"]
+"3_17609\n1108" -> "0_17897\n1109"
+"0_17897\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/mean_grad/reshape"]
+"11_17600\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"11_17600\n1109" -> "0_17616\n1110"
+"0_17616\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/sum"]
+"11_17600\n1109" -> "0_17618\n1110"
+"0_17618\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/sum_1"]
+"11_17604\n1109" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"11_17604\n1109" -> "0_17630\n1110"
+"0_17630\n1110" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/sum"]
+"11_17604\n1109" -> "0_17632\n1110"
+"0_17632\n1110" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/sum_1"]
+"11_17608\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"11_17608\n1109" -> "0_17644\n1110"
+"0_17644\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/sum"]
+"11_17608\n1109" -> "0_17646\n1110"
+"0_17646\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/sum_1"]
+"12_17612\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"12_17612\n1109" -> "0_17658\n1110"
+"0_17658\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/sum"]
+"12_17612\n1109" -> "0_17660\n1110"
+"0_17660\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/sum_1"]
+"0_17843\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/mean_grad/reshape"]
+"0_17843\n1109" -> "14_17844\n1110"
+"14_17844\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/mean_grad/tile"]
+"0_17861\n1109" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/mean_grad/reshape"]
+"0_17861\n1109" -> "13_17862\n1110"
+"13_17862\n1110" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/mean_grad/tile"]
+"0_17879\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/mean_grad/reshape"]
+"0_17879\n1109" -> "12_17880\n1110"
+"12_17880\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/mean_grad/tile"]
+"0_17897\n1109" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/mean_grad/reshape"]
+"0_17897\n1109" -> "13_17898\n1110"
+"13_17898\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/mean_grad/tile"]
+"0_17616\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/sum"]
+"0_17616\n1110" -> "0_17617\n1111"
+"0_17617\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/reshape"]
+"0_17618\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/sum_1"]
+"0_17618\n1110" -> "0_17620\n1111"
+"0_17620\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_17630\n1110" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/sum"]
+"0_17630\n1110" -> "0_17631\n1111"
+"0_17631\n1111" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/reshape"]
+"0_17632\n1110" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/sum_1"]
+"0_17632\n1110" -> "0_17634\n1111"
+"0_17634\n1111" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_17644\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/sum"]
+"0_17644\n1110" -> "0_17645\n1111"
+"0_17645\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/reshape"]
+"0_17646\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/sum_1"]
+"0_17646\n1110" -> "0_17648\n1111"
+"0_17648\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_17658\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/sum"]
+"0_17658\n1110" -> "0_17659\n1111"
+"0_17659\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/reshape"]
+"0_17660\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/sum_1"]
+"0_17660\n1110" -> "0_17662\n1111"
+"0_17662\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/reshape_1"]
+"14_17844\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/mean_grad/tile"]
+"14_17844\n1110" -> "12_17845\n1111"
+"12_17845\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/mean_grad/truediv"]
+"13_17862\n1110" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/mean_grad/tile"]
+"13_17862\n1110" -> "10_17863\n1111"
+"10_17863\n1111" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/mean_grad/truediv"]
+"12_17880\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/mean_grad/tile"]
+"12_17880\n1110" -> "10_17881\n1111"
+"10_17881\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/mean_grad/truediv"]
+"13_17898\n1110" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/mean_grad/tile"]
+"13_17898\n1110" -> "10_17899\n1111"
+"10_17899\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/mean_grad/truediv"]
+"0_17617\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/reshape"]
+"0_17617\n1111" -> "0_17624\n1112"
+"0_17624\n1112" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_17620\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_17620\n1111" -> "0_17626\n1112"
+"0_17626\n1112" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/tuple/control_dependency_1"]
+"0_17631\n1111" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/reshape"]
+"0_17631\n1111" -> "0_17638\n1112"
+"0_17638\n1112" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_17634\n1111" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_17634\n1111" -> "0_17640\n1112"
+"0_17640\n1112" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/tuple/control_dependency_1"]
+"0_17645\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/reshape"]
+"0_17645\n1111" -> "0_17652\n1112"
+"0_17652\n1112" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_17648\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_17648\n1111" -> "0_17654\n1112"
+"0_17654\n1112" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/tuple/control_dependency_1"]
+"0_17659\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/reshape"]
+"0_17659\n1111" -> "0_17666\n1112"
+"0_17666\n1112" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_17662\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_17662\n1111" -> "0_17668\n1112"
+"0_17668\n1112" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/tuple/control_dependency_1"]
+"0_17624\n1112" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_17624\n1112" -> "3_17669\n1113"
+"3_17669\n1113" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squeeze_1_grad/reshape"]
+"0_17638\n1112" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_17638\n1112" -> "3_17671\n1113"
+"3_17671\n1113" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squeeze_1_grad/reshape"]
+"0_17652\n1112" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_17652\n1112" -> "3_17673\n1113"
+"3_17673\n1113" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squeeze_1_grad/reshape"]
+"0_17666\n1112" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_17666\n1112" -> "3_17675\n1113"
+"3_17675\n1113" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squeeze_1_grad/reshape"]
+"3_17669\n1113" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squeeze_1_grad/reshape"]
+"3_17669\n1113" -> "0_17691\n1114"
+"0_17691\n1114" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/variance_grad/reshape"]
+"3_17671\n1113" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squeeze_1_grad/reshape"]
+"3_17671\n1113" -> "0_17709\n1114"
+"0_17709\n1114" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/variance_grad/reshape"]
+"3_17673\n1113" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squeeze_1_grad/reshape"]
+"3_17673\n1113" -> "0_17727\n1114"
+"0_17727\n1114" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/variance_grad/reshape"]
+"3_17675\n1113" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squeeze_1_grad/reshape"]
+"3_17675\n1113" -> "0_17745\n1114"
+"0_17745\n1114" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/variance_grad/reshape"]
+"0_17691\n1114" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/variance_grad/reshape"]
+"0_17691\n1114" -> "16_17692\n1115"
+"16_17692\n1115" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/variance_grad/tile"]
+"0_17709\n1114" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/variance_grad/reshape"]
+"0_17709\n1114" -> "13_17710\n1115"
+"13_17710\n1115" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/variance_grad/tile"]
+"0_17727\n1114" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/variance_grad/reshape"]
+"0_17727\n1114" -> "14_17728\n1115"
+"14_17728\n1115" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/variance_grad/tile"]
+"0_17745\n1114" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/variance_grad/reshape"]
+"0_17745\n1114" -> "13_17746\n1115"
+"13_17746\n1115" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/variance_grad/tile"]
+"16_17692\n1115" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/variance_grad/tile"]
+"16_17692\n1115" -> "0_17693\n1116"
+"0_17693\n1116" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/variance_grad/truediv"]
+"13_17710\n1115" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/variance_grad/tile"]
+"13_17710\n1115" -> "17_17711\n1116"
+"17_17711\n1116" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/variance_grad/truediv"]
+"14_17728\n1115" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/variance_grad/tile"]
+"14_17728\n1115" -> "0_17729\n1116"
+"0_17729\n1116" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/variance_grad/truediv"]
+"13_17746\n1115" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/variance_grad/tile"]
+"13_17746\n1115" -> "0_17747\n1116"
+"0_17747\n1116" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/variance_grad/truediv"]
+"0_17693\n1116" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/variance_grad/truediv"]
+"0_17693\n1116" -> "13_17754\n1117"
+"13_17754\n1117" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/mul"]
+"17_17711\n1116" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/variance_grad/truediv"]
+"17_17711\n1116" -> "12_17774\n1117"
+"12_17774\n1117" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/mul"]
+"0_17729\n1116" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/variance_grad/truediv"]
+"0_17729\n1116" -> "10_17794\n1117"
+"10_17794\n1117" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/mul"]
+"0_17747\n1116" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/variance_grad/truediv"]
+"0_17747\n1116" -> "11_17814\n1117"
+"11_17814\n1117" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/mul"]
+"13_17754\n1117" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/mul"]
+"13_17754\n1117" -> "13_17756\n1118"
+"13_17756\n1118" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/mul_1"]
+"12_17774\n1117" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/mul"]
+"12_17774\n1117" -> "14_17776\n1118"
+"14_17776\n1118" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/mul_1"]
+"10_17794\n1117" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/mul"]
+"10_17794\n1117" -> "13_17796\n1118"
+"13_17796\n1118" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/mul_1"]
+"11_17814\n1117" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/mul"]
+"11_17814\n1117" -> "13_17816\n1118"
+"13_17816\n1118" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/mul_1"]
+"13_17756\n1118" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/mul_1"]
+"13_17756\n1118" -> "0_17757\n1119"
+"0_17757\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/sum"]
+"13_17756\n1118" -> "0_17759\n1119"
+"0_17759\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/sum_1"]
+"14_17776\n1118" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/mul_1"]
+"14_17776\n1118" -> "0_17777\n1119"
+"0_17777\n1119" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/sum"]
+"14_17776\n1118" -> "0_17779\n1119"
+"0_17779\n1119" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/sum_1"]
+"13_17796\n1118" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/mul_1"]
+"13_17796\n1118" -> "0_17797\n1119"
+"0_17797\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/sum"]
+"13_17796\n1118" -> "0_17799\n1119"
+"0_17799\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/sum_1"]
+"13_17816\n1118" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/mul_1"]
+"13_17816\n1118" -> "0_17817\n1119"
+"0_17817\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/sum"]
+"13_17816\n1118" -> "0_17819\n1119"
+"0_17819\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_17757\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/sum"]
+"0_17757\n1119" -> "0_17758\n1120"
+"0_17758\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/reshape"]
+"0_17759\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_17759\n1119" -> "0_17761\n1120"
+"0_17761\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_17777\n1119" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/sum"]
+"0_17777\n1119" -> "0_17778\n1120"
+"0_17778\n1120" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/reshape"]
+"0_17779\n1119" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_17779\n1119" -> "0_17781\n1120"
+"0_17781\n1120" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_17797\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/sum"]
+"0_17797\n1119" -> "0_17798\n1120"
+"0_17798\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/reshape"]
+"0_17799\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_17799\n1119" -> "0_17801\n1120"
+"0_17801\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_17817\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/sum"]
+"0_17817\n1119" -> "0_17818\n1120"
+"0_17818\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/reshape"]
+"0_17819\n1119" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_17819\n1119" -> "0_17821\n1120"
+"0_17821\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_17761\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_17761\n1120" -> "0_17762\n1121"
+"0_17762\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/neg"]
+"0_17758\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/reshape"]
+"0_17758\n1120" -> "0_17766\n1121"
+"0_17766\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_17781\n1120" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_17781\n1120" -> "0_17782\n1121"
+"0_17782\n1121" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/neg"]
+"0_17778\n1120" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/reshape"]
+"0_17778\n1120" -> "0_17786\n1121"
+"0_17786\n1121" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_17801\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_17801\n1120" -> "0_17802\n1121"
+"0_17802\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/neg"]
+"0_17798\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/reshape"]
+"0_17798\n1120" -> "0_17806\n1121"
+"0_17806\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_17821\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_17821\n1120" -> "0_17822\n1121"
+"0_17822\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/neg"]
+"0_17818\n1120" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/reshape"]
+"0_17818\n1120" -> "0_17826\n1121"
+"0_17826\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_17762\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/neg"]
+"0_17762\n1121" -> "0_17768\n1122"
+"0_17768\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/tuple/control_dependency_1"]
+"0_17782\n1121" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/neg"]
+"0_17782\n1121" -> "0_17788\n1122"
+"0_17788\n1122" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/tuple/control_dependency_1"]
+"0_17802\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/neg"]
+"0_17802\n1121" -> "0_17808\n1122"
+"0_17808\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/tuple/control_dependency_1"]
+"0_17822\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/neg"]
+"0_17822\n1121" -> "0_17828\n1122"
+"0_17828\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/tuple/control_dependency_1"]
+"0_17486\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17486\n1107" -> "13_17901\n1122"
+"13_17901\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_153"]
+"12_17845\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/mean_grad/truediv"]
+"12_17845\n1111" -> "13_17901\n1122"
+"13_17901\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_153"]
+"0_17766\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_17766\n1121" -> "13_17901\n1122"
+"13_17901\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_153"]
+"0_17509\n1107" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17509\n1107" -> "12_17912\n1122"
+"12_17912\n1122" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_154"]
+"10_17863\n1111" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/mean_grad/truediv"]
+"10_17863\n1111" -> "12_17912\n1122"
+"12_17912\n1122" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_154"]
+"0_17786\n1121" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_17786\n1121" -> "12_17912\n1122"
+"12_17912\n1122" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_154"]
+"0_17532\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17532\n1107" -> "11_17923\n1122"
+"11_17923\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_155"]
+"10_17881\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/mean_grad/truediv"]
+"10_17881\n1111" -> "11_17923\n1122"
+"11_17923\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_155"]
+"0_17806\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_17806\n1121" -> "11_17923\n1122"
+"11_17923\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_155"]
+"0_17555\n1107" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17555\n1107" -> "12_17934\n1122"
+"12_17934\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_156"]
+"10_17899\n1111" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/mean_grad/truediv"]
+"10_17899\n1111" -> "12_17934\n1122"
+"12_17934\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_156"]
+"0_17826\n1121" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_17826\n1121" -> "12_17934\n1122"
+"12_17934\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_156"]
+"13_17901\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_153"]
+"13_17901\n1122" -> "76_17903\n1123"
+"76_17903\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/conv2d_grad/conv2dbackpropinput"]
+"13_17901\n1122" -> "75_17904\n1123"
+"75_17904\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/conv2d_grad/conv2dbackpropfilter"]
+"12_17912\n1122" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_154"]
+"12_17912\n1122" -> "89_17914\n1123"
+"89_17914\n1123" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/conv2d_grad/conv2dbackpropinput"]
+"12_17912\n1122" -> "61_17915\n1123"
+"61_17915\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/conv2d_grad/conv2dbackpropfilter"]
+"11_17923\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_155"]
+"11_17923\n1122" -> "86_17925\n1123"
+"86_17925\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/conv2d_grad/conv2dbackpropinput"]
+"11_17923\n1122" -> "66_17926\n1123"
+"66_17926\n1123" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/conv2d_grad/conv2dbackpropfilter"]
+"12_17934\n1122" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_156"]
+"12_17934\n1122" -> "72_17936\n1123"
+"72_17936\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/conv2d_grad/conv2dbackpropinput"]
+"12_17934\n1122" -> "66_17937\n1123"
+"66_17937\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/conv2d_grad/conv2dbackpropfilter"]
+"76_17903\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/conv2d_grad/conv2dbackpropinput"]
+"76_17903\n1123" -> "0_17909\n1124"
+"0_17909\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/conv2d_grad/tuple/control_dependency"]
+"75_17904\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/conv2d_grad/conv2dbackpropfilter"]
+"75_17904\n1123" -> "0_17911\n1124"
+"0_17911\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/conv2d_grad/tuple/control_dependency_1"]
+"89_17914\n1123" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/conv2d_grad/conv2dbackpropinput"]
+"89_17914\n1123" -> "0_17920\n1124"
+"0_17920\n1124" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/conv2d_grad/tuple/control_dependency"]
+"61_17915\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/conv2d_grad/conv2dbackpropfilter"]
+"61_17915\n1123" -> "0_17922\n1124"
+"0_17922\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/conv2d_grad/tuple/control_dependency_1"]
+"86_17925\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/conv2d_grad/conv2dbackpropinput"]
+"86_17925\n1123" -> "0_17931\n1124"
+"0_17931\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/conv2d_grad/tuple/control_dependency"]
+"66_17926\n1123" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/conv2d_grad/conv2dbackpropfilter"]
+"66_17926\n1123" -> "0_17933\n1124"
+"0_17933\n1124" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/conv2d_grad/tuple/control_dependency_1"]
+"72_17936\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/conv2d_grad/conv2dbackpropinput"]
+"72_17936\n1123" -> "0_17942\n1124"
+"0_17942\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/conv2d_grad/tuple/control_dependency"]
+"66_17937\n1123" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/conv2d_grad/conv2dbackpropfilter"]
+"66_17937\n1123" -> "0_17944\n1124"
+"0_17944\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/conv2d_grad/tuple/control_dependency_1"]
+"0_17920\n1124" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/conv2d_grad/tuple/control_dependency"]
+"0_17920\n1124" -> "15_17946\n1125"
+"15_17946\n1125" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/relu_grad/relugrad"]
+"0_17931\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/conv2d_grad/tuple/control_dependency"]
+"0_17931\n1124" -> "74_17948\n1125"
+"74_17948\n1125" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/relu_grad/relugrad"]
+"0_17911\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch1x1/conv/conv2d_grad/tuple/control_dependency_1"]
+"0_17911\n1124" -> "17_17945\n1125"
+"17_17945\n1125" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_157"]
+"0_17922\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_2/conv2d_grad/tuple/control_dependency_1"]
+"0_17922\n1124" -> "7564_17947\n1125"
+"7564_17947\n1125" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_158"]
+"0_17933\n1124" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_4/conv2d_grad/tuple/control_dependency_1"]
+"0_17933\n1124" -> "25994_17949\n1125"
+"25994_17949\n1125" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_159"]
+"0_17942\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/conv2d_grad/tuple/control_dependency"]
+"0_17942\n1124" -> "15200_17951\n1125"
+"15200_17951\n1125" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/avgpool/avgpool_grad/avgpoolgrad"]
+"0_17944\n1124" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch_pool/conv/conv2d_grad/tuple/control_dependency_1"]
+"0_17944\n1124" -> "158_17952\n1125"
+"158_17952\n1125" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_160"]
+"15_17946\n1125" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/relu_grad/relugrad"]
+"15_17946\n1125" -> "0_17956\n1126"
+"0_17956\n1126" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/sum"]
+"15_17946\n1125" -> "122_17958\n1126"
+"122_17958\n1126" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/sum_1"]
+"74_17948\n1125" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/relu_grad/relugrad"]
+"74_17948\n1125" -> "0_17970\n1126"
+"0_17970\n1126" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/sum"]
+"74_17948\n1125" -> "123_17972\n1126"
+"123_17972\n1126" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/sum_1"]
+"17_17945\n1125" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_157"]
+"17_17945\n1125" -> "6_24647\n1126"
+"6_24647\n1126" [style=filled, fillcolor = red tooltip="expanddims_80"]
+"7564_17947\n1125" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_158"]
+"7564_17947\n1125" -> "5_24677\n1126"
+"5_24677\n1126" [style=filled, fillcolor = red tooltip="expanddims_86"]
+"25994_17949\n1125" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_159"]
+"25994_17949\n1125" -> "4_24727\n1126"
+"4_24727\n1126" [style=filled, fillcolor = green tooltip="expanddims_96"]
+"158_17952\n1125" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_160"]
+"158_17952\n1125" -> "3_24737\n1126"
+"3_24737\n1126" [style=filled, fillcolor = red tooltip="expanddims_98"]
+"0_17956\n1126" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/sum"]
+"0_17956\n1126" -> "0_17957\n1127"
+"0_17957\n1127" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/reshape"]
+"122_17958\n1126" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/sum_1"]
+"122_17958\n1126" -> "0_17960\n1127"
+"0_17960\n1127" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17970\n1126" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/sum"]
+"0_17970\n1126" -> "0_17971\n1127"
+"0_17971\n1127" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/reshape"]
+"123_17972\n1126" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/sum_1"]
+"123_17972\n1126" -> "0_17974\n1127"
+"0_17974\n1127" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"6_24647\n1126" [style=filled, fillcolor = red tooltip="expanddims_80"]
+"6_24647\n1126" -> "0_24649\n1127"
+"0_24649\n1127" [style=filled, fillcolor = red tooltip="concat_80"]
+"5_24677\n1126" [style=filled, fillcolor = red tooltip="expanddims_86"]
+"5_24677\n1126" -> "0_24679\n1127"
+"0_24679\n1127" [style=filled, fillcolor = red tooltip="concat_86"]
+"4_24727\n1126" [style=filled, fillcolor = green tooltip="expanddims_96"]
+"4_24727\n1126" -> "0_24729\n1127"
+"0_24729\n1127" [style=filled, fillcolor = green tooltip="concat_96"]
+"3_24737\n1126" [style=filled, fillcolor = red tooltip="expanddims_98"]
+"3_24737\n1126" -> "0_24739\n1127"
+"0_24739\n1127" [style=filled, fillcolor = red tooltip="concat_98"]
+"0_17957\n1127" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/reshape"]
+"0_17957\n1127" -> "0_17964\n1128"
+"0_17964\n1128" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17960\n1127" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17960\n1127" -> "0_17966\n1128"
+"0_17966\n1128" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17971\n1127" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/reshape"]
+"0_17971\n1127" -> "0_17978\n1128"
+"0_17978\n1128" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17974\n1127" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_17974\n1127" -> "0_17980\n1128"
+"0_17980\n1128" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_24649\n1127" [style=filled, fillcolor = red tooltip="concat_80"]
+"0_24649\n1127" -> "4_24650\n1128"
+"4_24650\n1128" [style=filled, fillcolor = red tooltip="mean_80"]
+"0_24679\n1127" [style=filled, fillcolor = red tooltip="concat_86"]
+"0_24679\n1127" -> "4_24680\n1128"
+"4_24680\n1128" [style=filled, fillcolor = red tooltip="mean_86"]
+"0_24729\n1127" [style=filled, fillcolor = green tooltip="concat_96"]
+"0_24729\n1127" -> "4_24730\n1128"
+"4_24730\n1128" [style=filled, fillcolor = green tooltip="mean_96"]
+"0_24739\n1127" [style=filled, fillcolor = red tooltip="concat_98"]
+"0_24739\n1127" -> "3_24740\n1128"
+"3_24740\n1128" [style=filled, fillcolor = red tooltip="mean_98"]
+"4_24650\n1128" [style=filled, fillcolor = red tooltip="mean_80"]
+"4_24650\n1128" -> "26603_27660\n1129"
+"26603_27660\n1129" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch1x1/conv/weights/applyrmsprop"]
+"4_24650\n1128" -> "0_25390\n1129"
+"0_25390\n1129" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch1x1/conv/weights/gradients"]
+"0_17964\n1128" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17964\n1128" -> "14_17987\n1129"
+"14_17987\n1129" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/mul_1"]
+"0_17964\n1128" -> "17_17984\n1129"
+"17_17984\n1129" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/mul"]
+"4_24680\n1128" [style=filled, fillcolor = red tooltip="mean_86"]
+"4_24680\n1128" -> "32776_27666\n1129"
+"32776_27666\n1129" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7/conv_2/weights/applyrmsprop"]
+"4_24680\n1128" -> "0_25402\n1129"
+"0_25402\n1129" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7/conv_2/weights/gradients"]
+"0_17978\n1128" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_17978\n1128" -> "12_18010\n1129"
+"12_18010\n1129" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/mul_1"]
+"0_17978\n1128" -> "13_18007\n1129"
+"13_18007\n1129" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/mul"]
+"4_24730\n1128" [style=filled, fillcolor = green tooltip="mean_96"]
+"4_24730\n1128" -> "315_27676\n1129"
+"315_27676\n1129" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7dbl/conv_4/weights/applyrmsprop"]
+"4_24730\n1128" -> "0_25422\n1129"
+"0_25422\n1129" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7dbl/conv_4/weights/gradients"]
+"3_24740\n1128" [style=filled, fillcolor = red tooltip="mean_98"]
+"3_24740\n1128" -> "527_27678\n1129"
+"527_27678\n1129" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch_pool/conv/weights/applyrmsprop"]
+"3_24740\n1128" -> "0_25426\n1129"
+"0_25426\n1129" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch_pool/conv/weights/gradients"]
+"0_17966\n1128" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17966\n1128" -> "13_17997\n1129"
+"13_17997\n1129" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/sub_grad/neg"]
+"0_17966\n1128" -> "0_18001\n1129"
+"0_18001\n1129" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_17980\n1128" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_17980\n1128" -> "11_18020\n1129"
+"11_18020\n1129" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/sub_grad/neg"]
+"0_17980\n1128" -> "0_18024\n1129"
+"0_18024\n1129" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"17_17984\n1129" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/mul"]
+"17_17984\n1129" -> "0_17985\n1130"
+"0_17985\n1130" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/sum"]
+"14_17987\n1129" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/mul_1"]
+"14_17987\n1129" -> "11332_17988\n1130"
+"11332_17988\n1130" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/sum_1"]
+"13_17997\n1129" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/sub_grad/neg"]
+"13_17997\n1129" -> "6_18003\n1130"
+"6_18003\n1130" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"13_18007\n1129" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/mul"]
+"13_18007\n1129" -> "0_18008\n1130"
+"0_18008\n1130" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/sum"]
+"12_18010\n1129" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/mul_1"]
+"12_18010\n1129" -> "297_18011\n1130"
+"297_18011\n1130" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/sum_1"]
+"11_18020\n1129" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/sub_grad/neg"]
+"11_18020\n1129" -> "0_18026\n1130"
+"0_18026\n1130" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_18001\n1129" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_18001\n1129" -> "6_24672\n1130"
+"6_24672\n1130" [style=filled, fillcolor = green tooltip="expanddims_85"]
+"0_18024\n1129" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_18024\n1129" -> "6_24722\n1130"
+"6_24722\n1130" [style=filled, fillcolor = red tooltip="expanddims_95"]
+"6_18003\n1130" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"6_18003\n1130" -> "176_18028\n1131"
+"176_18028\n1131" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"6_18003\n1130" -> "195_18027\n1131"
+"195_18027\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_1_grad/mul"]
+"0_18026\n1130" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_18026\n1130" -> "163_18036\n1131"
+"163_18036\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"0_18026\n1130" -> "172_18035\n1131"
+"172_18035\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_1_grad/mul"]
+"0_17985\n1130" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/sum"]
+"0_17985\n1130" -> "0_17986\n1131"
+"0_17986\n1131" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/reshape"]
+"11332_17988\n1130" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/sum_1"]
+"11332_17988\n1130" -> "0_17990\n1131"
+"0_17990\n1131" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_18008\n1130" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/sum"]
+"0_18008\n1130" -> "0_18009\n1131"
+"0_18009\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/reshape"]
+"297_18011\n1130" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/sum_1"]
+"297_18011\n1130" -> "0_18013\n1131"
+"0_18013\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/reshape_1"]
+"6_24672\n1130" [style=filled, fillcolor = green tooltip="expanddims_85"]
+"6_24672\n1130" -> "0_24674\n1131"
+"0_24674\n1131" [style=filled, fillcolor = green tooltip="concat_85"]
+"6_24722\n1130" [style=filled, fillcolor = red tooltip="expanddims_95"]
+"6_24722\n1130" -> "0_24724\n1131"
+"0_24724\n1131" [style=filled, fillcolor = red tooltip="concat_95"]
+"0_17986\n1131" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/reshape"]
+"0_17986\n1131" -> "0_17994\n1132"
+"0_17994\n1132" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17990\n1131" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_17990\n1131" -> "0_17996\n1132"
+"0_17996\n1132" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_18009\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/reshape"]
+"0_18009\n1131" -> "0_18017\n1132"
+"0_18017\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_18013\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_18013\n1131" -> "0_18019\n1132"
+"0_18019\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"195_18027\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_1_grad/mul"]
+"195_18027\n1131" -> "0_18032\n1132"
+"0_18032\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"176_18028\n1131" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"176_18028\n1131" -> "0_18034\n1132"
+"0_18034\n1132" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"172_18035\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_1_grad/mul"]
+"172_18035\n1131" -> "0_18040\n1132"
+"0_18040\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"163_18036\n1131" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"163_18036\n1131" -> "0_18042\n1132"
+"0_18042\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_24674\n1131" [style=filled, fillcolor = green tooltip="concat_85"]
+"0_24674\n1131" -> "3_24675\n1132"
+"3_24675\n1132" [style=filled, fillcolor = green tooltip="mean_85"]
+"0_24724\n1131" [style=filled, fillcolor = red tooltip="concat_95"]
+"0_24724\n1131" -> "4_24725\n1132"
+"4_24725\n1132" [style=filled, fillcolor = red tooltip="mean_95"]
+"3_24675\n1132" [style=filled, fillcolor = green tooltip="mean_85"]
+"3_24675\n1132" -> "952_27665\n1133"
+"952_27665\n1133" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7/conv_1/batchnorm/beta/applyrmsprop"]
+"3_24675\n1132" -> "0_25400\n1133"
+"0_25400\n1133" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7/conv_1/batchnorm/beta/gradients"]
+"4_24725\n1132" [style=filled, fillcolor = red tooltip="mean_95"]
+"4_24725\n1132" -> "1112_27675\n1133"
+"1112_27675\n1133" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/beta/applyrmsprop"]
+"4_24725\n1132" -> "0_25420\n1133"
+"0_25420\n1133" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/beta/gradients"]
+"0_18032\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"0_18032\n1132" -> "5_18043\n1133"
+"5_18043\n1133" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squeeze_grad/reshape"]
+"0_17996\n1132" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_17996\n1132" -> "39279_18045\n1133"
+"39279_18045\n1133" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_161"]
+"0_18034\n1132" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_18034\n1132" -> "39279_18045\n1133"
+"39279_18045\n1133" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_161"]
+"0_18040\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"0_18040\n1132" -> "6_18047\n1133"
+"6_18047\n1133" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squeeze_grad/reshape"]
+"0_18019\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_18019\n1132" -> "147_18049\n1133"
+"147_18049\n1133" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_162"]
+"0_18042\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_18042\n1132" -> "147_18049\n1133"
+"147_18049\n1133" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_162"]
+"39279_18045\n1133" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_161"]
+"39279_18045\n1133" -> "187_18046\n1134"
+"187_18046\n1134" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"147_18049\n1133" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_162"]
+"147_18049\n1133" -> "60_18050\n1134"
+"60_18050\n1134" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"5_18043\n1133" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squeeze_grad/reshape"]
+"5_18043\n1133" -> "0_18173\n1134"
+"0_18173\n1134" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/mean_grad/reshape"]
+"6_18047\n1133" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squeeze_grad/reshape"]
+"6_18047\n1133" -> "0_18191\n1134"
+"0_18191\n1134" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/mean_grad/reshape"]
+"187_18046\n1134" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"187_18046\n1134" -> "0_18054\n1135"
+"0_18054\n1135" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/sum"]
+"187_18046\n1134" -> "0_18056\n1135"
+"0_18056\n1135" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/sum_1"]
+"60_18050\n1134" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"60_18050\n1134" -> "0_18068\n1135"
+"0_18068\n1135" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/sum"]
+"60_18050\n1134" -> "0_18070\n1135"
+"0_18070\n1135" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/sum_1"]
+"0_18173\n1134" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/mean_grad/reshape"]
+"0_18173\n1134" -> "178_18174\n1135"
+"178_18174\n1135" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/mean_grad/tile"]
+"0_18191\n1134" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/mean_grad/reshape"]
+"0_18191\n1134" -> "195_18192\n1135"
+"195_18192\n1135" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/mean_grad/tile"]
+"0_18054\n1135" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/sum"]
+"0_18054\n1135" -> "0_18055\n1136"
+"0_18055\n1136" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/reshape"]
+"0_18056\n1135" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/sum_1"]
+"0_18056\n1135" -> "0_18058\n1136"
+"0_18058\n1136" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_18068\n1135" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/sum"]
+"0_18068\n1135" -> "0_18069\n1136"
+"0_18069\n1136" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/reshape"]
+"0_18070\n1135" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/sum_1"]
+"0_18070\n1135" -> "0_18072\n1136"
+"0_18072\n1136" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/reshape_1"]
+"178_18174\n1135" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/mean_grad/tile"]
+"178_18174\n1135" -> "60_18175\n1136"
+"60_18175\n1136" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/mean_grad/truediv"]
+"195_18192\n1135" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/mean_grad/tile"]
+"195_18192\n1135" -> "1134_18193\n1136"
+"1134_18193\n1136" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/mean_grad/truediv"]
+"0_18055\n1136" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/reshape"]
+"0_18055\n1136" -> "0_18062\n1137"
+"0_18062\n1137" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18058\n1136" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_18058\n1136" -> "0_18064\n1137"
+"0_18064\n1137" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/tuple/control_dependency_1"]
+"0_18069\n1136" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/reshape"]
+"0_18069\n1136" -> "0_18076\n1137"
+"0_18076\n1137" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18072\n1136" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_18072\n1136" -> "0_18078\n1137"
+"0_18078\n1137" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/tuple/control_dependency_1"]
+"0_18062\n1137" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18062\n1137" -> "4_18079\n1138"
+"4_18079\n1138" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squeeze_1_grad/reshape"]
+"0_18076\n1137" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18076\n1137" -> "4_18081\n1138"
+"4_18081\n1138" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squeeze_1_grad/reshape"]
+"4_18079\n1138" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squeeze_1_grad/reshape"]
+"4_18079\n1138" -> "0_18097\n1139"
+"0_18097\n1139" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/variance_grad/reshape"]
+"4_18081\n1138" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squeeze_1_grad/reshape"]
+"4_18081\n1138" -> "0_18115\n1139"
+"0_18115\n1139" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/variance_grad/reshape"]
+"0_18097\n1139" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/variance_grad/reshape"]
+"0_18097\n1139" -> "49_18098\n1140"
+"49_18098\n1140" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/variance_grad/tile"]
+"0_18115\n1139" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/variance_grad/reshape"]
+"0_18115\n1139" -> "73_18116\n1140"
+"73_18116\n1140" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/variance_grad/tile"]
+"49_18098\n1140" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/variance_grad/tile"]
+"49_18098\n1140" -> "16_18099\n1141"
+"16_18099\n1141" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/variance_grad/truediv"]
+"73_18116\n1140" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/variance_grad/tile"]
+"73_18116\n1140" -> "0_18117\n1141"
+"0_18117\n1141" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/variance_grad/truediv"]
+"16_18099\n1141" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/variance_grad/truediv"]
+"16_18099\n1141" -> "38_18124\n1142"
+"38_18124\n1142" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/mul"]
+"0_18117\n1141" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/variance_grad/truediv"]
+"0_18117\n1141" -> "55_18144\n1142"
+"55_18144\n1142" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/mul"]
+"38_18124\n1142" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/mul"]
+"38_18124\n1142" -> "70_18126\n1143"
+"70_18126\n1143" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/mul_1"]
+"55_18144\n1142" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/mul"]
+"55_18144\n1142" -> "116_18146\n1143"
+"116_18146\n1143" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/mul_1"]
+"70_18126\n1143" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/mul_1"]
+"70_18126\n1143" -> "0_18127\n1144"
+"0_18127\n1144" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/sum"]
+"70_18126\n1143" -> "0_18129\n1144"
+"0_18129\n1144" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/sum_1"]
+"116_18146\n1143" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/mul_1"]
+"116_18146\n1143" -> "0_18147\n1144"
+"0_18147\n1144" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/sum"]
+"116_18146\n1143" -> "0_18149\n1144"
+"0_18149\n1144" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_18127\n1144" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/sum"]
+"0_18127\n1144" -> "0_18128\n1145"
+"0_18128\n1145" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18129\n1144" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_18129\n1144" -> "0_18131\n1145"
+"0_18131\n1145" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18147\n1144" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/sum"]
+"0_18147\n1144" -> "0_18148\n1145"
+"0_18148\n1145" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18149\n1144" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_18149\n1144" -> "0_18151\n1145"
+"0_18151\n1145" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18131\n1145" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18131\n1145" -> "0_18132\n1146"
+"0_18132\n1146" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/neg"]
+"0_18128\n1145" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18128\n1145" -> "0_18136\n1146"
+"0_18136\n1146" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18151\n1145" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18151\n1145" -> "0_18152\n1146"
+"0_18152\n1146" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/neg"]
+"0_18148\n1145" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18148\n1145" -> "0_18156\n1146"
+"0_18156\n1146" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18132\n1146" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/neg"]
+"0_18132\n1146" -> "0_18138\n1147"
+"0_18138\n1147" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/tuple/control_dependency_1"]
+"0_18152\n1146" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/neg"]
+"0_18152\n1146" -> "0_18158\n1147"
+"0_18158\n1147" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/tuple/control_dependency_1"]
+"0_17994\n1132" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_17994\n1132" -> "159_18195\n1147"
+"159_18195\n1147" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_163"]
+"60_18175\n1136" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/mean_grad/truediv"]
+"60_18175\n1136" -> "159_18195\n1147"
+"159_18195\n1147" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_163"]
+"0_18136\n1146" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18136\n1146" -> "159_18195\n1147"
+"159_18195\n1147" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_163"]
+"0_18017\n1132" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_18017\n1132" -> "111_18206\n1147"
+"111_18206\n1147" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_164"]
+"1134_18193\n1136" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/mean_grad/truediv"]
+"1134_18193\n1136" -> "111_18206\n1147"
+"111_18206\n1147" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_164"]
+"0_18156\n1146" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18156\n1146" -> "111_18206\n1147"
+"111_18206\n1147" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_164"]
+"159_18195\n1147" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_163"]
+"159_18195\n1147" -> "127_18197\n1148"
+"127_18197\n1148" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/conv2d_grad/conv2dbackpropinput"]
+"159_18195\n1147" -> "164_18198\n1148"
+"164_18198\n1148" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/conv2d_grad/conv2dbackpropfilter"]
+"111_18206\n1147" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_164"]
+"111_18206\n1147" -> "85_18208\n1148"
+"85_18208\n1148" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/conv2d_grad/conv2dbackpropinput"]
+"111_18206\n1147" -> "71_18209\n1148"
+"71_18209\n1148" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/conv2d_grad/conv2dbackpropfilter"]
+"127_18197\n1148" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/conv2d_grad/conv2dbackpropinput"]
+"127_18197\n1148" -> "0_18203\n1149"
+"0_18203\n1149" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/conv2d_grad/tuple/control_dependency"]
+"164_18198\n1148" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/conv2d_grad/conv2dbackpropfilter"]
+"164_18198\n1148" -> "0_18205\n1149"
+"0_18205\n1149" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/conv2d_grad/tuple/control_dependency_1"]
+"85_18208\n1148" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/conv2d_grad/conv2dbackpropinput"]
+"85_18208\n1148" -> "0_18214\n1149"
+"0_18214\n1149" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/conv2d_grad/tuple/control_dependency"]
+"71_18209\n1148" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/conv2d_grad/conv2dbackpropfilter"]
+"71_18209\n1148" -> "0_18216\n1149"
+"0_18216\n1149" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/conv2d_grad/tuple/control_dependency_1"]
+"0_18203\n1149" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/conv2d_grad/tuple/control_dependency"]
+"0_18203\n1149" -> "22_18217\n1150"
+"22_18217\n1150" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/relu_grad/relugrad"]
+"0_18214\n1149" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/conv2d_grad/tuple/control_dependency"]
+"0_18214\n1149" -> "14_18219\n1150"
+"14_18219\n1150" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/relu_grad/relugrad"]
+"0_18205\n1149" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv_1/conv2d_grad/tuple/control_dependency_1"]
+"0_18205\n1149" -> "13_18218\n1150"
+"13_18218\n1150" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_165"]
+"0_18216\n1149" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_3/conv2d_grad/tuple/control_dependency_1"]
+"0_18216\n1149" -> "20_18220\n1150"
+"20_18220\n1150" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_166"]
+"22_18217\n1150" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/relu_grad/relugrad"]
+"22_18217\n1150" -> "0_18224\n1151"
+"0_18224\n1151" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/sum"]
+"22_18217\n1150" -> "45_18226\n1151"
+"45_18226\n1151" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/sum_1"]
+"14_18219\n1150" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/relu_grad/relugrad"]
+"14_18219\n1150" -> "5_18238\n1151"
+"5_18238\n1151" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/sum"]
+"14_18219\n1150" -> "55_18240\n1151"
+"55_18240\n1151" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/sum_1"]
+"13_18218\n1150" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_165"]
+"13_18218\n1150" -> "6_24667\n1151"
+"6_24667\n1151" [style=filled, fillcolor = green tooltip="expanddims_84"]
+"20_18220\n1150" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_166"]
+"20_18220\n1150" -> "4_24717\n1151"
+"4_24717\n1151" [style=filled, fillcolor = green tooltip="expanddims_94"]
+"0_18224\n1151" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/sum"]
+"0_18224\n1151" -> "0_18225\n1152"
+"0_18225\n1152" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/reshape"]
+"45_18226\n1151" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/sum_1"]
+"45_18226\n1151" -> "0_18228\n1152"
+"0_18228\n1152" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"5_18238\n1151" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/sum"]
+"5_18238\n1151" -> "0_18239\n1152"
+"0_18239\n1152" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/reshape"]
+"55_18240\n1151" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/sum_1"]
+"55_18240\n1151" -> "0_18242\n1152"
+"0_18242\n1152" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"6_24667\n1151" [style=filled, fillcolor = green tooltip="expanddims_84"]
+"6_24667\n1151" -> "0_24669\n1152"
+"0_24669\n1152" [style=filled, fillcolor = green tooltip="concat_84"]
+"4_24717\n1151" [style=filled, fillcolor = green tooltip="expanddims_94"]
+"4_24717\n1151" -> "0_24719\n1152"
+"0_24719\n1152" [style=filled, fillcolor = green tooltip="concat_94"]
+"0_18225\n1152" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/reshape"]
+"0_18225\n1152" -> "0_18232\n1153"
+"0_18232\n1153" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_18228\n1152" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_18228\n1152" -> "0_18234\n1153"
+"0_18234\n1153" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_18239\n1152" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/reshape"]
+"0_18239\n1152" -> "6_18246\n1153"
+"6_18246\n1153" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_18242\n1152" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_18242\n1152" -> "0_18248\n1153"
+"0_18248\n1153" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_24669\n1152" [style=filled, fillcolor = green tooltip="concat_84"]
+"0_24669\n1152" -> "5_24670\n1153"
+"5_24670\n1153" [style=filled, fillcolor = green tooltip="mean_84"]
+"0_24719\n1152" [style=filled, fillcolor = green tooltip="concat_94"]
+"0_24719\n1152" -> "5_24720\n1153"
+"5_24720\n1153" [style=filled, fillcolor = green tooltip="mean_94"]
+"0_18232\n1153" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_18232\n1153" -> "58_18255\n1154"
+"58_18255\n1154" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/mul_1"]
+"0_18232\n1153" -> "65_18252\n1154"
+"65_18252\n1154" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/mul"]
+"5_24670\n1153" [style=filled, fillcolor = green tooltip="mean_84"]
+"5_24670\n1153" -> "132_27664\n1154"
+"132_27664\n1154" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7/conv_1/weights/applyrmsprop"]
+"5_24670\n1153" -> "0_25398\n1154"
+"0_25398\n1154" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7/conv_1/weights/gradients"]
+"6_18246\n1153" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"6_18246\n1153" -> "61_18278\n1154"
+"61_18278\n1154" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/mul_1"]
+"6_18246\n1153" -> "1612_18275\n1154"
+"1612_18275\n1154" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/mul"]
+"5_24720\n1153" [style=filled, fillcolor = green tooltip="mean_94"]
+"5_24720\n1153" -> "1205_27674\n1154"
+"1205_27674\n1154" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7dbl/conv_3/weights/applyrmsprop"]
+"5_24720\n1153" -> "0_25418\n1154"
+"0_25418\n1154" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7dbl/conv_3/weights/gradients"]
+"0_18234\n1153" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_18234\n1153" -> "81_18265\n1154"
+"81_18265\n1154" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/sub_grad/neg"]
+"0_18234\n1153" -> "0_18269\n1154"
+"0_18269\n1154" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_18248\n1153" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_18248\n1153" -> "1302_18288\n1154"
+"1302_18288\n1154" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/sub_grad/neg"]
+"0_18248\n1153" -> "0_18292\n1154"
+"0_18292\n1154" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"65_18252\n1154" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/mul"]
+"65_18252\n1154" -> "0_18253\n1155"
+"0_18253\n1155" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/sum"]
+"58_18255\n1154" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/mul_1"]
+"58_18255\n1154" -> "90_18256\n1155"
+"90_18256\n1155" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/sum_1"]
+"81_18265\n1154" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/sub_grad/neg"]
+"81_18265\n1154" -> "7_18271\n1155"
+"7_18271\n1155" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"1612_18275\n1154" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/mul"]
+"1612_18275\n1154" -> "0_18276\n1155"
+"0_18276\n1155" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/sum"]
+"61_18278\n1154" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/mul_1"]
+"61_18278\n1154" -> "52_18279\n1155"
+"52_18279\n1155" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/sum_1"]
+"1302_18288\n1154" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/sub_grad/neg"]
+"1302_18288\n1154" -> "0_18294\n1155"
+"0_18294\n1155" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_18269\n1154" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_18269\n1154" -> "5_24662\n1155"
+"5_24662\n1155" [style=filled, fillcolor = green tooltip="expanddims_83"]
+"0_18292\n1154" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_18292\n1154" -> "4_24712\n1155"
+"4_24712\n1155" [style=filled, fillcolor = red tooltip="expanddims_93"]
+"7_18271\n1155" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"7_18271\n1155" -> "36_18296\n1156"
+"36_18296\n1156" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"7_18271\n1155" -> "331_18295\n1156"
+"331_18295\n1156" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_1_grad/mul"]
+"0_18294\n1155" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_18294\n1155" -> "61_18304\n1156"
+"61_18304\n1156" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"0_18294\n1155" -> "44_18303\n1156"
+"44_18303\n1156" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_1_grad/mul"]
+"0_18253\n1155" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/sum"]
+"0_18253\n1155" -> "0_18254\n1156"
+"0_18254\n1156" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/reshape"]
+"90_18256\n1155" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/sum_1"]
+"90_18256\n1155" -> "0_18258\n1156"
+"0_18258\n1156" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_18276\n1155" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/sum"]
+"0_18276\n1155" -> "0_18277\n1156"
+"0_18277\n1156" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/reshape"]
+"52_18279\n1155" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/sum_1"]
+"52_18279\n1155" -> "0_18281\n1156"
+"0_18281\n1156" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/reshape_1"]
+"5_24662\n1155" [style=filled, fillcolor = green tooltip="expanddims_83"]
+"5_24662\n1155" -> "0_24664\n1156"
+"0_24664\n1156" [style=filled, fillcolor = green tooltip="concat_83"]
+"4_24712\n1155" [style=filled, fillcolor = red tooltip="expanddims_93"]
+"4_24712\n1155" -> "0_24714\n1156"
+"0_24714\n1156" [style=filled, fillcolor = red tooltip="concat_93"]
+"0_18254\n1156" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/reshape"]
+"0_18254\n1156" -> "0_18262\n1157"
+"0_18262\n1157" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_18258\n1156" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_18258\n1156" -> "0_18264\n1157"
+"0_18264\n1157" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_18277\n1156" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/reshape"]
+"0_18277\n1156" -> "5_18285\n1157"
+"5_18285\n1157" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_18281\n1156" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_18281\n1156" -> "6_18287\n1157"
+"6_18287\n1157" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"331_18295\n1156" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_1_grad/mul"]
+"331_18295\n1156" -> "0_18300\n1157"
+"0_18300\n1157" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"36_18296\n1156" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"36_18296\n1156" -> "0_18302\n1157"
+"0_18302\n1157" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"44_18303\n1156" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_1_grad/mul"]
+"44_18303\n1156" -> "0_18308\n1157"
+"0_18308\n1157" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"61_18304\n1156" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"61_18304\n1156" -> "0_18310\n1157"
+"0_18310\n1157" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_24664\n1156" [style=filled, fillcolor = green tooltip="concat_83"]
+"0_24664\n1156" -> "3_24665\n1157"
+"3_24665\n1157" [style=filled, fillcolor = green tooltip="mean_83"]
+"0_24714\n1156" [style=filled, fillcolor = red tooltip="concat_93"]
+"0_24714\n1156" -> "2_24715\n1157"
+"2_24715\n1157" [style=filled, fillcolor = red tooltip="mean_93"]
+"3_24665\n1157" [style=filled, fillcolor = green tooltip="mean_83"]
+"3_24665\n1157" -> "85_27663\n1158"
+"85_27663\n1158" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7/conv/batchnorm/beta/applyrmsprop"]
+"3_24665\n1157" -> "0_25396\n1158"
+"0_25396\n1158" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7/conv/batchnorm/beta/gradients"]
+"2_24715\n1157" [style=filled, fillcolor = red tooltip="mean_93"]
+"2_24715\n1157" -> "54_27673\n1158"
+"54_27673\n1158" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/beta/applyrmsprop"]
+"2_24715\n1157" -> "0_25416\n1158"
+"0_25416\n1158" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/beta/gradients"]
+"0_18300\n1157" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"0_18300\n1157" -> "5_18311\n1158"
+"5_18311\n1158" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squeeze_grad/reshape"]
+"0_18264\n1157" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_18264\n1157" -> "16_18313\n1158"
+"16_18313\n1158" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_167"]
+"0_18302\n1157" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_18302\n1157" -> "16_18313\n1158"
+"16_18313\n1158" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_167"]
+"0_18308\n1157" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"0_18308\n1157" -> "3_18315\n1158"
+"3_18315\n1158" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squeeze_grad/reshape"]
+"6_18287\n1157" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"6_18287\n1157" -> "11_18317\n1158"
+"11_18317\n1158" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_168"]
+"0_18310\n1157" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_18310\n1157" -> "11_18317\n1158"
+"11_18317\n1158" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_168"]
+"16_18313\n1158" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_167"]
+"16_18313\n1158" -> "31_18314\n1159"
+"31_18314\n1159" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"11_18317\n1158" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_168"]
+"11_18317\n1158" -> "11_18318\n1159"
+"11_18318\n1159" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"5_18311\n1158" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squeeze_grad/reshape"]
+"5_18311\n1158" -> "0_18441\n1159"
+"0_18441\n1159" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/mean_grad/reshape"]
+"3_18315\n1158" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squeeze_grad/reshape"]
+"3_18315\n1158" -> "0_18459\n1159"
+"0_18459\n1159" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/mean_grad/reshape"]
+"31_18314\n1159" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"31_18314\n1159" -> "0_18322\n1160"
+"0_18322\n1160" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/sum"]
+"31_18314\n1159" -> "0_18324\n1160"
+"0_18324\n1160" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/sum_1"]
+"11_18318\n1159" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"11_18318\n1159" -> "0_18336\n1160"
+"0_18336\n1160" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/sum"]
+"11_18318\n1159" -> "0_18338\n1160"
+"0_18338\n1160" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/sum_1"]
+"0_18441\n1159" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/mean_grad/reshape"]
+"0_18441\n1159" -> "23_18442\n1160"
+"23_18442\n1160" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/mean_grad/tile"]
+"0_18459\n1159" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/mean_grad/reshape"]
+"0_18459\n1159" -> "14_18460\n1160"
+"14_18460\n1160" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/mean_grad/tile"]
+"0_18322\n1160" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/sum"]
+"0_18322\n1160" -> "0_18323\n1161"
+"0_18323\n1161" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/reshape"]
+"0_18324\n1160" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/sum_1"]
+"0_18324\n1160" -> "0_18326\n1161"
+"0_18326\n1161" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_18336\n1160" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/sum"]
+"0_18336\n1160" -> "0_18337\n1161"
+"0_18337\n1161" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/reshape"]
+"0_18338\n1160" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/sum_1"]
+"0_18338\n1160" -> "0_18340\n1161"
+"0_18340\n1161" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/reshape_1"]
+"23_18442\n1160" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/mean_grad/tile"]
+"23_18442\n1160" -> "24_18443\n1161"
+"24_18443\n1161" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/mean_grad/truediv"]
+"14_18460\n1160" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/mean_grad/tile"]
+"14_18460\n1160" -> "11_18461\n1161"
+"11_18461\n1161" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/mean_grad/truediv"]
+"0_18323\n1161" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/reshape"]
+"0_18323\n1161" -> "0_18330\n1162"
+"0_18330\n1162" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18326\n1161" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_18326\n1161" -> "0_18332\n1162"
+"0_18332\n1162" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/tuple/control_dependency_1"]
+"0_18337\n1161" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/reshape"]
+"0_18337\n1161" -> "0_18344\n1162"
+"0_18344\n1162" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18340\n1161" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_18340\n1161" -> "0_18346\n1162"
+"0_18346\n1162" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/tuple/control_dependency_1"]
+"0_18330\n1162" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18330\n1162" -> "4_18347\n1163"
+"4_18347\n1163" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squeeze_1_grad/reshape"]
+"0_18344\n1162" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18344\n1162" -> "3_18349\n1163"
+"3_18349\n1163" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squeeze_1_grad/reshape"]
+"4_18347\n1163" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squeeze_1_grad/reshape"]
+"4_18347\n1163" -> "0_18365\n1164"
+"0_18365\n1164" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/variance_grad/reshape"]
+"3_18349\n1163" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squeeze_1_grad/reshape"]
+"3_18349\n1163" -> "0_18383\n1164"
+"0_18383\n1164" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/variance_grad/reshape"]
+"0_18365\n1164" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/variance_grad/reshape"]
+"0_18365\n1164" -> "16_18366\n1165"
+"16_18366\n1165" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/variance_grad/tile"]
+"0_18383\n1164" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/variance_grad/reshape"]
+"0_18383\n1164" -> "13_18384\n1165"
+"13_18384\n1165" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/variance_grad/tile"]
+"16_18366\n1165" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/variance_grad/tile"]
+"16_18366\n1165" -> "20_18367\n1166"
+"20_18367\n1166" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/variance_grad/truediv"]
+"13_18384\n1165" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/variance_grad/tile"]
+"13_18384\n1165" -> "0_18385\n1166"
+"0_18385\n1166" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/variance_grad/truediv"]
+"20_18367\n1166" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/variance_grad/truediv"]
+"20_18367\n1166" -> "13_18392\n1167"
+"13_18392\n1167" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/mul"]
+"0_18385\n1166" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/variance_grad/truediv"]
+"0_18385\n1166" -> "10_18412\n1167"
+"10_18412\n1167" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/mul"]
+"13_18392\n1167" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/mul"]
+"13_18392\n1167" -> "13_18394\n1168"
+"13_18394\n1168" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/mul_1"]
+"10_18412\n1167" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/mul"]
+"10_18412\n1167" -> "12_18414\n1168"
+"12_18414\n1168" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/mul_1"]
+"13_18394\n1168" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/mul_1"]
+"13_18394\n1168" -> "0_18395\n1169"
+"0_18395\n1169" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/sum"]
+"13_18394\n1168" -> "0_18397\n1169"
+"0_18397\n1169" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/sum_1"]
+"12_18414\n1168" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/mul_1"]
+"12_18414\n1168" -> "0_18415\n1169"
+"0_18415\n1169" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/sum"]
+"12_18414\n1168" -> "0_18417\n1169"
+"0_18417\n1169" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_18395\n1169" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/sum"]
+"0_18395\n1169" -> "0_18396\n1170"
+"0_18396\n1170" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18397\n1169" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_18397\n1169" -> "0_18399\n1170"
+"0_18399\n1170" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18415\n1169" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/sum"]
+"0_18415\n1169" -> "0_18416\n1170"
+"0_18416\n1170" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18417\n1169" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_18417\n1169" -> "0_18419\n1170"
+"0_18419\n1170" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18399\n1170" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18399\n1170" -> "0_18400\n1171"
+"0_18400\n1171" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/neg"]
+"0_18396\n1170" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18396\n1170" -> "0_18404\n1171"
+"0_18404\n1171" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18419\n1170" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18419\n1170" -> "0_18420\n1171"
+"0_18420\n1171" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/neg"]
+"0_18416\n1170" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18416\n1170" -> "0_18424\n1171"
+"0_18424\n1171" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18400\n1171" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/neg"]
+"0_18400\n1171" -> "0_18406\n1172"
+"0_18406\n1172" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/tuple/control_dependency_1"]
+"0_18420\n1171" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/neg"]
+"0_18420\n1171" -> "0_18426\n1172"
+"0_18426\n1172" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/tuple/control_dependency_1"]
+"0_18262\n1157" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_18262\n1157" -> "13_18463\n1172"
+"13_18463\n1172" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_169"]
+"24_18443\n1161" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/mean_grad/truediv"]
+"24_18443\n1161" -> "13_18463\n1172"
+"13_18463\n1172" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_169"]
+"0_18404\n1171" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18404\n1171" -> "13_18463\n1172"
+"13_18463\n1172" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_169"]
+"5_18285\n1157" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"5_18285\n1157" -> "12_18474\n1172"
+"12_18474\n1172" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_170"]
+"11_18461\n1161" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/mean_grad/truediv"]
+"11_18461\n1161" -> "12_18474\n1172"
+"12_18474\n1172" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_170"]
+"0_18424\n1171" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18424\n1171" -> "12_18474\n1172"
+"12_18474\n1172" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_170"]
+"13_18463\n1172" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_169"]
+"13_18463\n1172" -> "98_18466\n1173"
+"98_18466\n1173" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/conv2d_grad/conv2dbackpropfilter"]
+"13_18463\n1172" -> "94_18465\n1173"
+"94_18465\n1173" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/conv2d_grad/conv2dbackpropinput"]
+"12_18474\n1172" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_170"]
+"12_18474\n1172" -> "185_18476\n1173"
+"185_18476\n1173" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/conv2d_grad/conv2dbackpropinput"]
+"12_18474\n1172" -> "84_18477\n1173"
+"84_18477\n1173" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/conv2d_grad/conv2dbackpropfilter"]
+"94_18465\n1173" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/conv2d_grad/conv2dbackpropinput"]
+"94_18465\n1173" -> "6_18471\n1174"
+"6_18471\n1174" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/conv2d_grad/tuple/control_dependency"]
+"98_18466\n1173" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/conv2d_grad/conv2dbackpropfilter"]
+"98_18466\n1173" -> "0_18473\n1174"
+"0_18473\n1174" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/conv2d_grad/tuple/control_dependency_1"]
+"185_18476\n1173" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/conv2d_grad/conv2dbackpropinput"]
+"185_18476\n1173" -> "0_18482\n1174"
+"0_18482\n1174" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/conv2d_grad/tuple/control_dependency"]
+"84_18477\n1173" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/conv2d_grad/conv2dbackpropfilter"]
+"84_18477\n1173" -> "0_18484\n1174"
+"0_18484\n1174" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/conv2d_grad/tuple/control_dependency_1"]
+"0_18482\n1174" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/conv2d_grad/tuple/control_dependency"]
+"0_18482\n1174" -> "1654_18486\n1175"
+"1654_18486\n1175" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/relu_grad/relugrad"]
+"0_18473\n1174" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7/conv/conv2d_grad/tuple/control_dependency_1"]
+"0_18473\n1174" -> "23_18485\n1175"
+"23_18485\n1175" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_171"]
+"0_18484\n1174" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_2/conv2d_grad/tuple/control_dependency_1"]
+"0_18484\n1174" -> "165_18487\n1175"
+"165_18487\n1175" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_172"]
+"1654_18486\n1175" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/relu_grad/relugrad"]
+"1654_18486\n1175" -> "0_18491\n1176"
+"0_18491\n1176" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/sum"]
+"1654_18486\n1175" -> "63_18493\n1176"
+"63_18493\n1176" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/sum_1"]
+"23_18485\n1175" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_171"]
+"23_18485\n1175" -> "6_24657\n1176"
+"6_24657\n1176" [style=filled, fillcolor = green tooltip="expanddims_82"]
+"165_18487\n1175" [style=filled, fillcolor = green tooltip="tower_0/gradients/addn_172"]
+"165_18487\n1175" -> "5_24707\n1176"
+"5_24707\n1176" [style=filled, fillcolor = green tooltip="expanddims_92"]
+"0_18491\n1176" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/sum"]
+"0_18491\n1176" -> "0_18492\n1177"
+"0_18492\n1177" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/reshape"]
+"63_18493\n1176" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/sum_1"]
+"63_18493\n1176" -> "0_18495\n1177"
+"0_18495\n1177" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"6_24657\n1176" [style=filled, fillcolor = green tooltip="expanddims_82"]
+"6_24657\n1176" -> "0_24659\n1177"
+"0_24659\n1177" [style=filled, fillcolor = green tooltip="concat_82"]
+"5_24707\n1176" [style=filled, fillcolor = green tooltip="expanddims_92"]
+"5_24707\n1176" -> "0_24709\n1177"
+"0_24709\n1177" [style=filled, fillcolor = green tooltip="concat_92"]
+"0_18492\n1177" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/reshape"]
+"0_18492\n1177" -> "0_18499\n1178"
+"0_18499\n1178" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_18495\n1177" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/reshape_1"]
+"0_18495\n1177" -> "0_18501\n1178"
+"0_18501\n1178" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_24659\n1177" [style=filled, fillcolor = green tooltip="concat_82"]
+"0_24659\n1177" -> "3_24660\n1178"
+"3_24660\n1178" [style=filled, fillcolor = green tooltip="mean_82"]
+"0_24709\n1177" [style=filled, fillcolor = green tooltip="concat_92"]
+"0_24709\n1177" -> "4_24710\n1178"
+"4_24710\n1178" [style=filled, fillcolor = green tooltip="mean_92"]
+"3_24660\n1178" [style=filled, fillcolor = green tooltip="mean_82"]
+"3_24660\n1178" -> "1155_27662\n1179"
+"1155_27662\n1179" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7/conv/weights/applyrmsprop"]
+"3_24660\n1178" -> "0_25394\n1179"
+"0_25394\n1179" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7/conv/weights/gradients"]
+"0_18499\n1178" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/tuple/control_dependency"]
+"0_18499\n1178" -> "15_18508\n1179"
+"15_18508\n1179" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/mul_1"]
+"0_18499\n1178" -> "1396_18505\n1179"
+"1396_18505\n1179" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/mul"]
+"4_24710\n1178" [style=filled, fillcolor = green tooltip="mean_92"]
+"4_24710\n1178" -> "225_27672\n1179"
+"225_27672\n1179" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7dbl/conv_2/weights/applyrmsprop"]
+"4_24710\n1178" -> "0_25414\n1179"
+"0_25414\n1179" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7dbl/conv_2/weights/gradients"]
+"0_18501\n1178" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_1_grad/tuple/control_dependency_1"]
+"0_18501\n1178" -> "27_18518\n1179"
+"27_18518\n1179" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/sub_grad/neg"]
+"0_18501\n1178" -> "0_18522\n1179"
+"0_18522\n1179" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"1396_18505\n1179" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/mul"]
+"1396_18505\n1179" -> "0_18506\n1180"
+"0_18506\n1180" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/sum"]
+"15_18508\n1179" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/mul_1"]
+"15_18508\n1179" -> "131_18509\n1180"
+"131_18509\n1180" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/sum_1"]
+"27_18518\n1179" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/sub_grad/neg"]
+"27_18518\n1179" -> "0_18524\n1180"
+"0_18524\n1180" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_18522\n1179" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/sub_grad/tuple/control_dependency"]
+"0_18522\n1179" -> "5_24702\n1180"
+"5_24702\n1180" [style=filled, fillcolor = red tooltip="expanddims_91"]
+"0_18524\n1180" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/sub_grad/tuple/control_dependency_1"]
+"0_18524\n1180" -> "38_18526\n1181"
+"38_18526\n1181" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"0_18524\n1180" -> "936_18525\n1181"
+"936_18525\n1181" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_1_grad/mul"]
+"0_18506\n1180" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/sum"]
+"0_18506\n1180" -> "0_18507\n1181"
+"0_18507\n1181" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/reshape"]
+"131_18509\n1180" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/sum_1"]
+"131_18509\n1180" -> "0_18511\n1181"
+"0_18511\n1181" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/reshape_1"]
+"5_24702\n1180" [style=filled, fillcolor = red tooltip="expanddims_91"]
+"5_24702\n1180" -> "0_24704\n1181"
+"0_24704\n1181" [style=filled, fillcolor = red tooltip="concat_91"]
+"0_18507\n1181" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/reshape"]
+"0_18507\n1181" -> "0_18515\n1182"
+"0_18515\n1182" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_18511\n1181" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/reshape_1"]
+"0_18511\n1181" -> "0_18517\n1182"
+"0_18517\n1182" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"936_18525\n1181" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_1_grad/mul"]
+"936_18525\n1181" -> "0_18530\n1182"
+"0_18530\n1182" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"38_18526\n1181" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_1_grad/mul_1"]
+"38_18526\n1181" -> "0_18532\n1182"
+"0_18532\n1182" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_24704\n1181" [style=filled, fillcolor = red tooltip="concat_91"]
+"0_24704\n1181" -> "3_24705\n1182"
+"3_24705\n1182" [style=filled, fillcolor = red tooltip="mean_91"]
+"3_24705\n1182" [style=filled, fillcolor = red tooltip="mean_91"]
+"3_24705\n1182" -> "234_27671\n1183"
+"234_27671\n1183" [style=filled, fillcolor = red tooltip="rmsprop/update_mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/beta/applyrmsprop"]
+"3_24705\n1182" -> "0_25412\n1183"
+"0_25412\n1183" [style=filled, fillcolor = white tooltip="mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/beta/gradients"]
+"0_18530\n1182" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency"]
+"0_18530\n1182" -> "4_18533\n1183"
+"4_18533\n1183" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squeeze_grad/reshape"]
+"0_18517\n1182" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/tuple/control_dependency_1"]
+"0_18517\n1182" -> "75_18535\n1183"
+"75_18535\n1183" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_173"]
+"0_18532\n1182" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_1_grad/tuple/control_dependency_1"]
+"0_18532\n1182" -> "75_18535\n1183"
+"75_18535\n1183" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_173"]
+"75_18535\n1183" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_173"]
+"75_18535\n1183" -> "12_18536\n1184"
+"12_18536\n1184" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"4_18533\n1183" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squeeze_grad/reshape"]
+"4_18533\n1183" -> "0_18605\n1184"
+"0_18605\n1184" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/mean_grad/reshape"]
+"12_18536\n1184" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/rsqrt_grad/rsqrtgrad"]
+"12_18536\n1184" -> "0_18540\n1185"
+"0_18540\n1185" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/sum"]
+"12_18536\n1184" -> "0_18542\n1185"
+"0_18542\n1185" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/sum_1"]
+"0_18605\n1184" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/mean_grad/reshape"]
+"0_18605\n1184" -> "84_18606\n1185"
+"84_18606\n1185" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/mean_grad/tile"]
+"0_18540\n1185" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/sum"]
+"0_18540\n1185" -> "0_18541\n1186"
+"0_18541\n1186" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/reshape"]
+"0_18542\n1185" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/sum_1"]
+"0_18542\n1185" -> "0_18544\n1186"
+"0_18544\n1186" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/reshape_1"]
+"84_18606\n1185" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/mean_grad/tile"]
+"84_18606\n1185" -> "84_18607\n1186"
+"84_18607\n1186" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/mean_grad/truediv"]
+"0_18541\n1186" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/reshape"]
+"0_18541\n1186" -> "0_18548\n1187"
+"0_18548\n1187" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18544\n1186" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/reshape_1"]
+"0_18544\n1186" -> "0_18550\n1187"
+"0_18550\n1187" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/tuple/control_dependency_1"]
+"0_18548\n1187" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/add_grad/tuple/control_dependency"]
+"0_18548\n1187" -> "4_18551\n1188"
+"4_18551\n1188" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squeeze_1_grad/reshape"]
+"4_18551\n1188" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squeeze_1_grad/reshape"]
+"4_18551\n1188" -> "0_18567\n1189"
+"0_18567\n1189" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/variance_grad/reshape"]
+"0_18567\n1189" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/variance_grad/reshape"]
+"0_18567\n1189" -> "15_18568\n1190"
+"15_18568\n1190" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/variance_grad/tile"]
+"15_18568\n1190" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/variance_grad/tile"]
+"15_18568\n1190" -> "0_18569\n1191"
+"0_18569\n1191" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/variance_grad/truediv"]
+"0_18569\n1191" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/variance_grad/truediv"]
+"0_18569\n1191" -> "12_18576\n1192"
+"12_18576\n1192" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/mul"]
+"12_18576\n1192" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/mul"]
+"12_18576\n1192" -> "45_18578\n1193"
+"45_18578\n1193" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/mul_1"]
+"45_18578\n1193" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/mul_1"]
+"45_18578\n1193" -> "0_18579\n1194"
+"0_18579\n1194" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/sum"]
+"45_18578\n1193" -> "0_18581\n1194"
+"0_18581\n1194" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_18579\n1194" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/sum"]
+"0_18579\n1194" -> "0_18580\n1195"
+"0_18580\n1195" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18581\n1194" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/sum_1"]
+"0_18581\n1194" -> "0_18583\n1195"
+"0_18583\n1195" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18583\n1195" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/reshape_1"]
+"0_18583\n1195" -> "0_18584\n1196"
+"0_18584\n1196" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/neg"]
+"0_18580\n1195" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/reshape"]
+"0_18580\n1195" -> "0_18588\n1196"
+"0_18588\n1196" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18584\n1196" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/neg"]
+"0_18584\n1196" -> "0_18590\n1197"
+"0_18590\n1197" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/tuple/control_dependency_1"]
+"0_18515\n1182" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/batchnorm/mul_grad/tuple/control_dependency"]
+"0_18515\n1182" -> "61_18609\n1197"
+"61_18609\n1197" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_174"]
+"84_18607\n1186" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/mean_grad/truediv"]
+"84_18607\n1186" -> "61_18609\n1197"
+"61_18609\n1197" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_174"]
+"0_18588\n1196" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/batchnorm/moments/squareddifference_grad/tuple/control_dependency"]
+"0_18588\n1196" -> "61_18609\n1197"
+"61_18609\n1197" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_174"]
+"61_18609\n1197" [style=filled, fillcolor = red tooltip="tower_0/gradients/addn_174"]
+"61_18609\n1197" -> "172_18611\n1198"
+"172_18611\n1198" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/conv2d_grad/conv2dbackpropinput"]
+"61_18609\n1197" -> "85_18612\n1198"
+"85_18612\n1198" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/conv2d_grad/conv2dbackpropfilter"]
+"172_18611\n1198" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/conv2d_grad/conv2dbackpropinput"]
+"172_18611\n1198" -> "0_18617\n1199"
+"0_18617\n1199" [style=filled, fillcolor = red tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/conv2d_grad/tuple/control_dependency"]
+"85_18612\n1198" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/conv2d_grad/conv2dbackpropfilter"]
+"85_18612\n1198" -> "0_18619\n1199"
+"0_18619\n1199" [style=filled, fillcolor = green tooltip="tower_0/gradients/tower_0/mixed_17x17x768c/branch7x7dbl/conv_1/conv2d_grad/tuple/control_dependency_1"]
+}

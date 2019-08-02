@@ -1,0 +1,13 @@
+total edges from layer 7 to layer 8: 11 edges, they are:
+
+batch_processing/distort_image/resize_images/expanddims -> ['batch_processing/distort_image/resize_images/resizebilinear']
+batch_processing/distort_image_1/resize_images/expanddims -> ['batch_processing/distort_image_1/resize_images/resizenearestneighbor']
+batch_processing/distort_image_2/resize_images/expanddims -> ['batch_processing/distort_image_2/resize_images/resizebicubic']
+batch_processing/distort_image_3/resize_images/expanddims -> ['batch_processing/distort_image_3/resize_images/resizearea']
+tower_0/conv0/batchnorm/moments/squareddifference -> ['tower_0/conv0/batchnorm/moments/variance']
+tower_0/conv0/batchnorm/assignmovingavg/conv0/batchnorm/moving_mean/sub -> ['tower_0/conv0/batchnorm/assignmovingavg/conv0/batchnorm/moving_mean/mul']
+tower_0/crossentropyloss/add -> ['tower_0/crossentropyloss/xentropy/labels_stop_gradient']
+tower_0/aux_loss/add -> ['tower_0/aux_loss/xentropy/labels_stop_gradient']
+tower_0/gradients/tower_0/crossentropyloss/mean_grad/truediv -> ['tower_0/gradients/tower_0/crossentropyloss/xentropy/reshape_2_grad/reshape']
+tower_0/gradients/tower_0/aux_loss/mean_grad/truediv -> ['tower_0/gradients/tower_0/aux_loss/xentropy/reshape_2_grad/reshape']
+tower_0/gradients/tower_0/conv0/batchnorm/moments/squareddifference_grad/sub -> ['tower_0/gradients/tower_0/conv0/batchnorm/moments/squareddifference_grad/mul_1']

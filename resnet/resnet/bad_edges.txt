@@ -1,0 +1,2022 @@
+IteratorGetNext -> Equal  1
+resnet_model/conv2d/kernel/read -> L2Loss  1
+resnet_model/batch_normalization/gamma/read -> L2Loss_1  1
+resnet_model/batch_normalization/beta/read -> L2Loss_2  1
+resnet_model/batch_normalization/moving_mean/read -> resnet_model/batch_normalization/FusedBatchNorm  1
+resnet_model/batch_normalization/moving_variance/read -> resnet_model/batch_normalization/FusedBatchNorm  1
+resnet_model/conv2d_1/kernel/read -> L2Loss_3  1
+resnet_model/conv2d_2/kernel/read -> L2Loss_4  1
+resnet_model/batch_normalization_1/gamma/read -> L2Loss_5  1
+resnet_model/batch_normalization_1/beta/read -> L2Loss_6  1
+resnet_model/batch_normalization_1/moving_mean/read -> resnet_model/batch_normalization_1/FusedBatchNorm  1
+resnet_model/batch_normalization_1/moving_variance/read -> resnet_model/batch_normalization_1/FusedBatchNorm  1
+resnet_model/conv2d_3/kernel/read -> L2Loss_7  1
+resnet_model/batch_normalization_2/gamma/read -> L2Loss_8  1
+resnet_model/batch_normalization_2/beta/read -> L2Loss_9  1
+resnet_model/batch_normalization_2/moving_mean/read -> resnet_model/batch_normalization_2/FusedBatchNorm  1
+resnet_model/batch_normalization_2/moving_variance/read -> resnet_model/batch_normalization_2/FusedBatchNorm  1
+resnet_model/conv2d_4/kernel/read -> L2Loss_10  1
+resnet_model/batch_normalization_3/gamma/read -> L2Loss_11  1
+resnet_model/batch_normalization_3/beta/read -> L2Loss_12  1
+resnet_model/batch_normalization_3/moving_mean/read -> resnet_model/batch_normalization_3/FusedBatchNorm  1
+resnet_model/batch_normalization_3/moving_variance/read -> resnet_model/batch_normalization_3/FusedBatchNorm  1
+resnet_model/conv2d_5/kernel/read -> L2Loss_13  1
+resnet_model/batch_normalization_4/gamma/read -> L2Loss_14  1
+resnet_model/batch_normalization_4/beta/read -> L2Loss_15  1
+resnet_model/batch_normalization_4/moving_mean/read -> resnet_model/batch_normalization_4/FusedBatchNorm  1
+resnet_model/batch_normalization_4/moving_variance/read -> resnet_model/batch_normalization_4/FusedBatchNorm  1
+resnet_model/conv2d_6/kernel/read -> L2Loss_16  1
+resnet_model/batch_normalization_5/gamma/read -> L2Loss_17  1
+resnet_model/batch_normalization_5/beta/read -> L2Loss_18  1
+resnet_model/batch_normalization_5/moving_mean/read -> resnet_model/batch_normalization_5/FusedBatchNorm  1
+resnet_model/batch_normalization_5/moving_variance/read -> resnet_model/batch_normalization_5/FusedBatchNorm  1
+resnet_model/conv2d_7/kernel/read -> L2Loss_19  1
+resnet_model/batch_normalization_6/gamma/read -> L2Loss_20  1
+resnet_model/batch_normalization_6/beta/read -> L2Loss_21  1
+resnet_model/batch_normalization_6/moving_mean/read -> resnet_model/batch_normalization_6/FusedBatchNorm  1
+resnet_model/batch_normalization_6/moving_variance/read -> resnet_model/batch_normalization_6/FusedBatchNorm  1
+resnet_model/conv2d_8/kernel/read -> L2Loss_22  1
+resnet_model/batch_normalization_7/gamma/read -> L2Loss_23  1
+resnet_model/batch_normalization_7/beta/read -> L2Loss_24  1
+resnet_model/batch_normalization_7/moving_mean/read -> resnet_model/batch_normalization_7/FusedBatchNorm  1
+resnet_model/batch_normalization_7/moving_variance/read -> resnet_model/batch_normalization_7/FusedBatchNorm  1
+resnet_model/conv2d_9/kernel/read -> L2Loss_25  1
+resnet_model/batch_normalization_8/gamma/read -> L2Loss_26  1
+resnet_model/batch_normalization_8/beta/read -> L2Loss_27  1
+resnet_model/batch_normalization_8/moving_mean/read -> resnet_model/batch_normalization_8/FusedBatchNorm  1
+resnet_model/batch_normalization_8/moving_variance/read -> resnet_model/batch_normalization_8/FusedBatchNorm  1
+resnet_model/conv2d_10/kernel/read -> L2Loss_28  1
+resnet_model/batch_normalization_9/gamma/read -> L2Loss_29  1
+resnet_model/batch_normalization_9/beta/read -> L2Loss_30  1
+resnet_model/batch_normalization_9/moving_mean/read -> resnet_model/batch_normalization_9/FusedBatchNorm  1
+resnet_model/batch_normalization_9/moving_variance/read -> resnet_model/batch_normalization_9/FusedBatchNorm  1
+resnet_model/conv2d_11/kernel/read -> L2Loss_31  1
+resnet_model/batch_normalization_10/gamma/read -> L2Loss_32  1
+resnet_model/batch_normalization_10/beta/read -> L2Loss_33  1
+resnet_model/batch_normalization_10/moving_mean/read -> resnet_model/batch_normalization_10/FusedBatchNorm  1
+resnet_model/batch_normalization_10/moving_variance/read -> resnet_model/batch_normalization_10/FusedBatchNorm  1
+resnet_model/conv2d_12/kernel/read -> L2Loss_34  1
+resnet_model/conv2d_13/kernel/read -> L2Loss_35  1
+resnet_model/batch_normalization_11/gamma/read -> L2Loss_36  1
+resnet_model/batch_normalization_11/beta/read -> L2Loss_37  1
+resnet_model/batch_normalization_11/moving_mean/read -> resnet_model/batch_normalization_11/FusedBatchNorm  1
+resnet_model/batch_normalization_11/moving_variance/read -> resnet_model/batch_normalization_11/FusedBatchNorm  1
+resnet_model/conv2d_14/kernel/read -> L2Loss_38  1
+resnet_model/batch_normalization_12/gamma/read -> L2Loss_39  1
+resnet_model/batch_normalization_12/beta/read -> L2Loss_40  1
+resnet_model/batch_normalization_12/moving_mean/read -> resnet_model/batch_normalization_12/FusedBatchNorm  1
+resnet_model/batch_normalization_12/moving_variance/read -> resnet_model/batch_normalization_12/FusedBatchNorm  1
+resnet_model/conv2d_15/kernel/read -> L2Loss_41  1
+resnet_model/batch_normalization_13/gamma/read -> L2Loss_42  1
+resnet_model/batch_normalization_13/beta/read -> L2Loss_43  1
+resnet_model/batch_normalization_13/moving_mean/read -> resnet_model/batch_normalization_13/FusedBatchNorm  1
+resnet_model/batch_normalization_13/moving_variance/read -> resnet_model/batch_normalization_13/FusedBatchNorm  1
+resnet_model/conv2d_16/kernel/read -> L2Loss_44  1
+resnet_model/batch_normalization_14/gamma/read -> L2Loss_45  1
+resnet_model/batch_normalization_14/beta/read -> L2Loss_46  1
+resnet_model/batch_normalization_14/moving_mean/read -> resnet_model/batch_normalization_14/FusedBatchNorm  1
+resnet_model/batch_normalization_14/moving_variance/read -> resnet_model/batch_normalization_14/FusedBatchNorm  1
+resnet_model/conv2d_17/kernel/read -> L2Loss_47  1
+resnet_model/batch_normalization_15/gamma/read -> L2Loss_48  1
+resnet_model/batch_normalization_15/beta/read -> L2Loss_49  1
+resnet_model/batch_normalization_15/moving_mean/read -> resnet_model/batch_normalization_15/FusedBatchNorm  1
+resnet_model/batch_normalization_15/moving_variance/read -> resnet_model/batch_normalization_15/FusedBatchNorm  1
+resnet_model/conv2d_18/kernel/read -> L2Loss_50  1
+resnet_model/batch_normalization_16/gamma/read -> L2Loss_51  1
+resnet_model/batch_normalization_16/beta/read -> L2Loss_52  1
+resnet_model/batch_normalization_16/moving_mean/read -> resnet_model/batch_normalization_16/FusedBatchNorm  1
+resnet_model/batch_normalization_16/moving_variance/read -> resnet_model/batch_normalization_16/FusedBatchNorm  1
+resnet_model/conv2d_19/kernel/read -> L2Loss_53  1
+resnet_model/batch_normalization_17/gamma/read -> L2Loss_54  1
+resnet_model/batch_normalization_17/beta/read -> L2Loss_55  1
+resnet_model/batch_normalization_17/moving_mean/read -> resnet_model/batch_normalization_17/FusedBatchNorm  1
+resnet_model/batch_normalization_17/moving_variance/read -> resnet_model/batch_normalization_17/FusedBatchNorm  1
+resnet_model/conv2d_20/kernel/read -> L2Loss_56  1
+resnet_model/batch_normalization_18/gamma/read -> L2Loss_57  1
+resnet_model/batch_normalization_18/beta/read -> L2Loss_58  1
+resnet_model/batch_normalization_18/moving_mean/read -> resnet_model/batch_normalization_18/FusedBatchNorm  1
+resnet_model/batch_normalization_18/moving_variance/read -> resnet_model/batch_normalization_18/FusedBatchNorm  1
+resnet_model/conv2d_21/kernel/read -> L2Loss_59  1
+resnet_model/batch_normalization_19/gamma/read -> L2Loss_60  1
+resnet_model/batch_normalization_19/beta/read -> L2Loss_61  1
+resnet_model/batch_normalization_19/moving_mean/read -> resnet_model/batch_normalization_19/FusedBatchNorm  1
+resnet_model/batch_normalization_19/moving_variance/read -> resnet_model/batch_normalization_19/FusedBatchNorm  1
+resnet_model/conv2d_22/kernel/read -> L2Loss_62  1
+resnet_model/batch_normalization_20/gamma/read -> L2Loss_63  1
+resnet_model/batch_normalization_20/beta/read -> L2Loss_64  1
+resnet_model/batch_normalization_20/moving_mean/read -> resnet_model/batch_normalization_20/FusedBatchNorm  1
+resnet_model/batch_normalization_20/moving_variance/read -> resnet_model/batch_normalization_20/FusedBatchNorm  1
+resnet_model/conv2d_23/kernel/read -> L2Loss_65  1
+resnet_model/conv2d_24/kernel/read -> L2Loss_66  1
+resnet_model/batch_normalization_21/gamma/read -> L2Loss_67  1
+resnet_model/batch_normalization_21/beta/read -> L2Loss_68  1
+resnet_model/batch_normalization_21/moving_mean/read -> resnet_model/batch_normalization_21/FusedBatchNorm  1
+resnet_model/batch_normalization_21/moving_variance/read -> resnet_model/batch_normalization_21/FusedBatchNorm  1
+resnet_model/conv2d_25/kernel/read -> L2Loss_69  1
+resnet_model/batch_normalization_22/gamma/read -> L2Loss_70  1
+resnet_model/batch_normalization_22/beta/read -> L2Loss_71  1
+resnet_model/batch_normalization_22/moving_mean/read -> resnet_model/batch_normalization_22/FusedBatchNorm  1
+resnet_model/batch_normalization_22/moving_variance/read -> resnet_model/batch_normalization_22/FusedBatchNorm  1
+resnet_model/conv2d_26/kernel/read -> L2Loss_72  1
+resnet_model/batch_normalization_23/gamma/read -> L2Loss_73  1
+resnet_model/batch_normalization_23/beta/read -> L2Loss_74  1
+resnet_model/batch_normalization_23/moving_mean/read -> resnet_model/batch_normalization_23/FusedBatchNorm  1
+resnet_model/batch_normalization_23/moving_variance/read -> resnet_model/batch_normalization_23/FusedBatchNorm  1
+resnet_model/conv2d_27/kernel/read -> L2Loss_75  1
+resnet_model/batch_normalization_24/gamma/read -> L2Loss_76  1
+resnet_model/batch_normalization_24/beta/read -> L2Loss_77  1
+resnet_model/batch_normalization_24/moving_mean/read -> resnet_model/batch_normalization_24/FusedBatchNorm  1
+resnet_model/batch_normalization_24/moving_variance/read -> resnet_model/batch_normalization_24/FusedBatchNorm  1
+resnet_model/conv2d_28/kernel/read -> L2Loss_78  1
+resnet_model/batch_normalization_25/gamma/read -> L2Loss_79  1
+resnet_model/batch_normalization_25/beta/read -> L2Loss_80  1
+resnet_model/batch_normalization_25/moving_mean/read -> resnet_model/batch_normalization_25/FusedBatchNorm  1
+resnet_model/batch_normalization_25/moving_variance/read -> resnet_model/batch_normalization_25/FusedBatchNorm  1
+resnet_model/conv2d_29/kernel/read -> L2Loss_81  1
+resnet_model/batch_normalization_26/gamma/read -> L2Loss_82  1
+resnet_model/batch_normalization_26/beta/read -> L2Loss_83  1
+resnet_model/batch_normalization_26/moving_mean/read -> resnet_model/batch_normalization_26/FusedBatchNorm  1
+resnet_model/batch_normalization_26/moving_variance/read -> resnet_model/batch_normalization_26/FusedBatchNorm  1
+resnet_model/conv2d_30/kernel/read -> L2Loss_84  1
+resnet_model/batch_normalization_27/gamma/read -> L2Loss_85  1
+resnet_model/batch_normalization_27/beta/read -> L2Loss_86  1
+resnet_model/batch_normalization_27/moving_mean/read -> resnet_model/batch_normalization_27/FusedBatchNorm  1
+resnet_model/batch_normalization_27/moving_variance/read -> resnet_model/batch_normalization_27/FusedBatchNorm  1
+resnet_model/conv2d_31/kernel/read -> L2Loss_87  1
+resnet_model/batch_normalization_28/gamma/read -> L2Loss_88  1
+resnet_model/batch_normalization_28/beta/read -> L2Loss_89  1
+resnet_model/batch_normalization_28/moving_mean/read -> resnet_model/batch_normalization_28/FusedBatchNorm  1
+resnet_model/batch_normalization_28/moving_variance/read -> resnet_model/batch_normalization_28/FusedBatchNorm  1
+resnet_model/conv2d_32/kernel/read -> L2Loss_90  1
+resnet_model/batch_normalization_29/gamma/read -> L2Loss_91  1
+resnet_model/batch_normalization_29/beta/read -> L2Loss_92  1
+resnet_model/batch_normalization_29/moving_mean/read -> resnet_model/batch_normalization_29/FusedBatchNorm  1
+resnet_model/batch_normalization_29/moving_variance/read -> resnet_model/batch_normalization_29/FusedBatchNorm  1
+resnet_model/conv2d_33/kernel/read -> L2Loss_93  1
+resnet_model/batch_normalization_30/gamma/read -> L2Loss_94  1
+resnet_model/batch_normalization_30/beta/read -> L2Loss_95  1
+resnet_model/batch_normalization_30/moving_mean/read -> resnet_model/batch_normalization_30/FusedBatchNorm  1
+resnet_model/batch_normalization_30/moving_variance/read -> resnet_model/batch_normalization_30/FusedBatchNorm  1
+resnet_model/dense/kernel/read -> L2Loss_96  1
+resnet_model/dense/bias/read -> L2Loss_97  1
+Cast_98 -> Equal  2
+accuracy/total/read -> accuracy/truediv  1
+accuracy/count/read -> accuracy/Greater  1
+accuracy/AssignAdd -> accuracy/truediv_1  2
+accuracy/AssignAdd_1 -> accuracy/Greater_1  6
+mean/total -> report_uninitialized_variables/IsVariableInitialized_163  0
+mean/total/Initializer/zeros -> mean/total/Assign  0
+mean/count -> report_uninitialized_variables/IsVariableInitialized_164  0
+mean/count/Initializer/zeros -> mean/count/Assign  0
+mean/Size -> mean/ToFloat  0
+mean/Const -> mean/Sum  0
+mean/Sum -> mean/AssignAdd  3
+mean/ToFloat -> mean/AssignAdd_1  1
+mean/total/read -> mean/truediv  1
+mean/count/read -> mean/Greater  1
+mean/zeros_like -> mean/value  0
+mean/Greater -> mean/value  2
+mean/truediv -> mean/value  2
+mean/AssignAdd -> mean/truediv_1  2
+mean/AssignAdd_1 -> mean/Greater_1  3
+mean/zeros_like_1 -> mean/update_op  0
+mean/Greater_1 -> mean/update_op  2
+mean/truediv_1 -> mean/update_op  2
+mean/update_op -> group_deps  3
+eval_step -> report_uninitialized_variables/IsVariableInitialized_165  0
+eval_step/Initializer/zeros -> eval_step/Assign  0
+AssignAdd/value -> AssignAdd  0
+AssignAdd -> read  1
+read -> Identity  3
+report_uninitialized_variables/IsVariableInitialized -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_1 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_2 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_3 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_4 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_5 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_6 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_7 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_8 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_9 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_10 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_11 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_12 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_13 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_14 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_15 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_16 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_17 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_18 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_19 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_20 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_21 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_22 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_23 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_24 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_25 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_26 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_27 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_28 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_29 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_30 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_31 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_32 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_33 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_34 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_35 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_36 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_37 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_38 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_39 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_40 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_41 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_42 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_43 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_44 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_45 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_46 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_47 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_48 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_49 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_50 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_51 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_52 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_53 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_54 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_55 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_56 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_57 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_58 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_59 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_60 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_61 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_62 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_63 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_64 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_65 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_66 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_67 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_68 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_69 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_70 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_71 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_72 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_73 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_74 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_75 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_76 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_77 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_78 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_79 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_80 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_81 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_82 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_83 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_84 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_85 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_86 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_87 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_88 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_89 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_90 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_91 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_92 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_93 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_94 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_95 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_96 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_97 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_98 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_99 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_100 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_101 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_102 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_103 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_104 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_105 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_106 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_107 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_108 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_109 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_110 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_111 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_112 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_113 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_114 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_115 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_116 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_117 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_118 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_119 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_120 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_121 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_122 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_123 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_124 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_125 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_126 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_127 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_128 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_129 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_130 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_131 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_132 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_133 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_134 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_135 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_136 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_137 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_138 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_139 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_140 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_141 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_142 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_143 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_144 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_145 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_146 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_147 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_148 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_149 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_150 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_151 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_152 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_153 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_154 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_155 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_156 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_157 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_158 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_159 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_160 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_161 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_162 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_163 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_164 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_165 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables_1/IsVariableInitialized -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_1 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_2 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_3 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_4 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_5 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_6 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_7 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_8 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_9 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_10 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_11 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_12 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_13 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_14 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_15 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_16 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_17 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_18 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_19 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_20 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_21 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_22 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_23 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_24 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_25 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_26 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_27 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_28 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_29 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_30 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_31 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_32 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_33 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_34 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_35 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_36 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_37 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_38 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_39 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_40 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_41 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_42 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_43 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_44 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_45 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_46 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_47 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_48 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_49 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_50 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_51 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_52 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_53 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_54 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_55 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_56 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_57 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_58 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_59 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_60 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_61 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_62 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_63 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_64 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_65 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_66 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_67 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_68 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_69 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_70 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_71 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_72 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_73 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_74 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_75 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_76 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_77 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_78 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_79 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_80 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_81 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_82 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_83 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_84 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_85 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_86 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_87 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_88 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_89 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_90 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_91 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_92 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_93 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_94 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_95 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_96 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_97 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_98 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_99 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_100 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_101 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_102 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_103 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_104 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_105 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_106 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_107 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_108 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_109 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_110 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_111 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_112 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_113 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_114 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_115 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_116 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_117 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_118 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_119 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_120 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_121 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_122 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_123 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_124 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_125 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_126 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_127 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_128 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_129 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_130 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_131 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_132 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_133 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_134 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_135 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_136 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_137 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_138 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_139 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_140 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_141 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_142 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_143 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_144 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_145 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_146 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_147 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_148 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_149 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_150 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_151 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_152 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_153 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_154 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_155 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_156 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_157 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_158 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_159 -> report_uninitialized_variables_1/stack  1
+report_uninitialized_variables_1/IsVariableInitialized_160 -> report_uninitialized_variables_1/stack  1
+mean/total/Assign -> init_2  1
+mean/count/Assign -> init_2  1
+eval_step/Assign -> init_2  1
+save/Assign -> save/restore_shard  2
+save/Assign_1 -> save/restore_shard  2
+save/Assign_2 -> save/restore_shard  2
+save/Assign_3 -> save/restore_shard  2
+save/Assign_4 -> save/restore_shard  2
+save/Assign_5 -> save/restore_shard  2
+save/Assign_6 -> save/restore_shard  2
+save/Assign_7 -> save/restore_shard  2
+save/Assign_8 -> save/restore_shard  2
+save/Assign_9 -> save/restore_shard  2
+save/Assign_10 -> save/restore_shard  2
+save/Assign_11 -> save/restore_shard  2
+save/Assign_12 -> save/restore_shard  2
+save/Assign_13 -> save/restore_shard  2
+save/Assign_14 -> save/restore_shard  2
+save/Assign_15 -> save/restore_shard  2
+save/Assign_16 -> save/restore_shard  2
+save/Assign_17 -> save/restore_shard  2
+save/Assign_18 -> save/restore_shard  2
+save/Assign_19 -> save/restore_shard  2
+save/Assign_20 -> save/restore_shard  2
+save/Assign_21 -> save/restore_shard  2
+save/Assign_22 -> save/restore_shard  2
+save/Assign_23 -> save/restore_shard  2
+save/Assign_24 -> save/restore_shard  2
+save/Assign_25 -> save/restore_shard  2
+save/Assign_26 -> save/restore_shard  2
+save/Assign_27 -> save/restore_shard  2
+save/Assign_28 -> save/restore_shard  2
+save/Assign_29 -> save/restore_shard  2
+save/Assign_30 -> save/restore_shard  2
+save/Assign_31 -> save/restore_shard  2
+save/Assign_32 -> save/restore_shard  2
+save/Assign_33 -> save/restore_shard  2
+save/Assign_34 -> save/restore_shard  2
+save/Assign_35 -> save/restore_shard  2
+save/Assign_36 -> save/restore_shard  2
+save/Assign_37 -> save/restore_shard  2
+save/Assign_38 -> save/restore_shard  2
+save/Assign_39 -> save/restore_shard  2
+save/Assign_40 -> save/restore_shard  2
+save/Assign_41 -> save/restore_shard  2
+save/Assign_42 -> save/restore_shard  2
+save/Assign_43 -> save/restore_shard  2
+save/Assign_44 -> save/restore_shard  2
+save/Assign_45 -> save/restore_shard  2
+save/Assign_46 -> save/restore_shard  2
+save/Assign_47 -> save/restore_shard  2
+save/Assign_48 -> save/restore_shard  2
+save/Assign_49 -> save/restore_shard  2
+save/Assign_50 -> save/restore_shard  2
+save/Assign_51 -> save/restore_shard  2
+save/Assign_52 -> save/restore_shard  2
+save/Assign_53 -> save/restore_shard  2
+save/Assign_54 -> save/restore_shard  2
+save/Assign_55 -> save/restore_shard  2
+save/Assign_56 -> save/restore_shard  2
+save/Assign_57 -> save/restore_shard  2
+save/Assign_58 -> save/restore_shard  2
+save/Assign_59 -> save/restore_shard  2
+save/Assign_60 -> save/restore_shard  2
+save/Assign_61 -> save/restore_shard  2
+save/Assign_62 -> save/restore_shard  2
+save/Assign_63 -> save/restore_shard  2
+save/Assign_64 -> save/restore_shard  2
+save/Assign_65 -> save/restore_shard  2
+save/Assign_66 -> save/restore_shard  2
+save/Assign_67 -> save/restore_shard  2
+save/Assign_68 -> save/restore_shard  2
+save/Assign_69 -> save/restore_shard  2
+save/Assign_70 -> save/restore_shard  2
+save/Assign_71 -> save/restore_shard  2
+save/Assign_72 -> save/restore_shard  2
+save/Assign_73 -> save/restore_shard  2
+save/Assign_74 -> save/restore_shard  2
+save/Assign_75 -> save/restore_shard  2
+save/Assign_76 -> save/restore_shard  2
+save/Assign_77 -> save/restore_shard  2
+save/Assign_78 -> save/restore_shard  2
+save/Assign_79 -> save/restore_shard  2
+save/Assign_80 -> save/restore_shard  2
+save/Assign_81 -> save/restore_shard  2
+save/Assign_82 -> save/restore_shard  2
+save/Assign_83 -> save/restore_shard  2
+save/Assign_84 -> save/restore_shard  2
+save/Assign_85 -> save/restore_shard  2
+save/Assign_86 -> save/restore_shard  2
+save/Assign_87 -> save/restore_shard  2
+save/Assign_88 -> save/restore_shard  2
+save/Assign_89 -> save/restore_shard  2
+save/Assign_90 -> save/restore_shard  2
+save/Assign_91 -> save/restore_shard  2
+save/Assign_92 -> save/restore_shard  2
+save/Assign_93 -> save/restore_shard  2
+save/Assign_94 -> save/restore_shard  2
+save/Assign_95 -> save/restore_shard  2
+save/Assign_96 -> save/restore_shard  2
+save/Assign_97 -> save/restore_shard  2
+save/Assign_98 -> save/restore_shard  2
+save/Assign_99 -> save/restore_shard  2
+save/Assign_100 -> save/restore_shard  2
+save/Assign_101 -> save/restore_shard  2
+save/Assign_102 -> save/restore_shard  2
+save/Assign_103 -> save/restore_shard  2
+save/Assign_104 -> save/restore_shard  2
+save/Assign_105 -> save/restore_shard  2
+save/Assign_106 -> save/restore_shard  2
+save/Assign_107 -> save/restore_shard  2
+save/Assign_108 -> save/restore_shard  2
+save/Assign_109 -> save/restore_shard  2
+save/Assign_110 -> save/restore_shard  2
+save/Assign_111 -> save/restore_shard  2
+save/Assign_112 -> save/restore_shard  2
+save/Assign_113 -> save/restore_shard  2
+save/Assign_114 -> save/restore_shard  2
+save/Assign_115 -> save/restore_shard  2
+save/Assign_116 -> save/restore_shard  2
+save/Assign_117 -> save/restore_shard  2
+save/Assign_118 -> save/restore_shard  2
+save/Assign_119 -> save/restore_shard  2
+save/Assign_120 -> save/restore_shard  2
+save/Assign_121 -> save/restore_shard  2
+save/Assign_122 -> save/restore_shard  2
+save/Assign_123 -> save/restore_shard  2
+save/Assign_124 -> save/restore_shard  2
+save/Assign_125 -> save/restore_shard  2
+save/Assign_126 -> save/restore_shard  2
+save/Assign_127 -> save/restore_shard  2
+save/Assign_128 -> save/restore_shard  2
+save/Assign_129 -> save/restore_shard  2
+save/Assign_130 -> save/restore_shard  2
+save/Assign_131 -> save/restore_shard  2
+save/Assign_132 -> save/restore_shard  2
+save/Assign_133 -> save/restore_shard  2
+save/Assign_134 -> save/restore_shard  2
+save/Assign_135 -> save/restore_shard  2
+save/Assign_136 -> save/restore_shard  2
+save/Assign_137 -> save/restore_shard  2
+save/Assign_138 -> save/restore_shard  2
+save/Assign_139 -> save/restore_shard  2
+save/Assign_140 -> save/restore_shard  2
+save/Assign_141 -> save/restore_shard  2
+save/Assign_142 -> save/restore_shard  2
+save/Assign_143 -> save/restore_shard  2
+save/Assign_144 -> save/restore_shard  2
+save/Assign_145 -> save/restore_shard  2
+save/Assign_146 -> save/restore_shard  2
+save/Assign_147 -> save/restore_shard  2
+save/Assign_148 -> save/restore_shard  2
+save/Assign_149 -> save/restore_shard  2
+save/Assign_150 -> save/restore_shard  2
+save/Assign_151 -> save/restore_shard  2
+save/Assign_152 -> save/restore_shard  2
+save/Assign_153 -> save/restore_shard  2
+save/Assign_154 -> save/restore_shard  2
+save/Assign_155 -> save/restore_shard  2
+save/Assign_156 -> save/restore_shard  2
+save/Assign_157 -> save/restore_shard  2
+save/Assign_158 -> save/restore_shard  2
+save/Assign_159 -> save/restore_shard  2
+save/Assign_160 -> save/restore_shard  2
+bad edges that are not in the first layer are:670 edges. They are: 
+IteratorGetNext -> Equal
+in layer: 1
+resnet_model/conv2d/kernel/read -> L2Loss
+in layer: 1
+resnet_model/batch_normalization/gamma/read -> L2Loss_1
+in layer: 1
+resnet_model/batch_normalization/beta/read -> L2Loss_2
+in layer: 1
+resnet_model/batch_normalization/moving_mean/read -> resnet_model/batch_normalization/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization/moving_variance/read -> resnet_model/batch_normalization/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_1/kernel/read -> L2Loss_3
+in layer: 1
+resnet_model/conv2d_2/kernel/read -> L2Loss_4
+in layer: 1
+resnet_model/batch_normalization_1/gamma/read -> L2Loss_5
+in layer: 1
+resnet_model/batch_normalization_1/beta/read -> L2Loss_6
+in layer: 1
+resnet_model/batch_normalization_1/moving_mean/read -> resnet_model/batch_normalization_1/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_1/moving_variance/read -> resnet_model/batch_normalization_1/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_3/kernel/read -> L2Loss_7
+in layer: 1
+resnet_model/batch_normalization_2/gamma/read -> L2Loss_8
+in layer: 1
+resnet_model/batch_normalization_2/beta/read -> L2Loss_9
+in layer: 1
+resnet_model/batch_normalization_2/moving_mean/read -> resnet_model/batch_normalization_2/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_2/moving_variance/read -> resnet_model/batch_normalization_2/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_4/kernel/read -> L2Loss_10
+in layer: 1
+resnet_model/batch_normalization_3/gamma/read -> L2Loss_11
+in layer: 1
+resnet_model/batch_normalization_3/beta/read -> L2Loss_12
+in layer: 1
+resnet_model/batch_normalization_3/moving_mean/read -> resnet_model/batch_normalization_3/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_3/moving_variance/read -> resnet_model/batch_normalization_3/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_5/kernel/read -> L2Loss_13
+in layer: 1
+resnet_model/batch_normalization_4/gamma/read -> L2Loss_14
+in layer: 1
+resnet_model/batch_normalization_4/beta/read -> L2Loss_15
+in layer: 1
+resnet_model/batch_normalization_4/moving_mean/read -> resnet_model/batch_normalization_4/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_4/moving_variance/read -> resnet_model/batch_normalization_4/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_6/kernel/read -> L2Loss_16
+in layer: 1
+resnet_model/batch_normalization_5/gamma/read -> L2Loss_17
+in layer: 1
+resnet_model/batch_normalization_5/beta/read -> L2Loss_18
+in layer: 1
+resnet_model/batch_normalization_5/moving_mean/read -> resnet_model/batch_normalization_5/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_5/moving_variance/read -> resnet_model/batch_normalization_5/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_7/kernel/read -> L2Loss_19
+in layer: 1
+resnet_model/batch_normalization_6/gamma/read -> L2Loss_20
+in layer: 1
+resnet_model/batch_normalization_6/beta/read -> L2Loss_21
+in layer: 1
+resnet_model/batch_normalization_6/moving_mean/read -> resnet_model/batch_normalization_6/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_6/moving_variance/read -> resnet_model/batch_normalization_6/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_8/kernel/read -> L2Loss_22
+in layer: 1
+resnet_model/batch_normalization_7/gamma/read -> L2Loss_23
+in layer: 1
+resnet_model/batch_normalization_7/beta/read -> L2Loss_24
+in layer: 1
+resnet_model/batch_normalization_7/moving_mean/read -> resnet_model/batch_normalization_7/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_7/moving_variance/read -> resnet_model/batch_normalization_7/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_9/kernel/read -> L2Loss_25
+in layer: 1
+resnet_model/batch_normalization_8/gamma/read -> L2Loss_26
+in layer: 1
+resnet_model/batch_normalization_8/beta/read -> L2Loss_27
+in layer: 1
+resnet_model/batch_normalization_8/moving_mean/read -> resnet_model/batch_normalization_8/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_8/moving_variance/read -> resnet_model/batch_normalization_8/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_10/kernel/read -> L2Loss_28
+in layer: 1
+resnet_model/batch_normalization_9/gamma/read -> L2Loss_29
+in layer: 1
+resnet_model/batch_normalization_9/beta/read -> L2Loss_30
+in layer: 1
+resnet_model/batch_normalization_9/moving_mean/read -> resnet_model/batch_normalization_9/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_9/moving_variance/read -> resnet_model/batch_normalization_9/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_11/kernel/read -> L2Loss_31
+in layer: 1
+resnet_model/batch_normalization_10/gamma/read -> L2Loss_32
+in layer: 1
+resnet_model/batch_normalization_10/beta/read -> L2Loss_33
+in layer: 1
+resnet_model/batch_normalization_10/moving_mean/read -> resnet_model/batch_normalization_10/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_10/moving_variance/read -> resnet_model/batch_normalization_10/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_12/kernel/read -> L2Loss_34
+in layer: 1
+resnet_model/conv2d_13/kernel/read -> L2Loss_35
+in layer: 1
+resnet_model/batch_normalization_11/gamma/read -> L2Loss_36
+in layer: 1
+resnet_model/batch_normalization_11/beta/read -> L2Loss_37
+in layer: 1
+resnet_model/batch_normalization_11/moving_mean/read -> resnet_model/batch_normalization_11/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_11/moving_variance/read -> resnet_model/batch_normalization_11/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_14/kernel/read -> L2Loss_38
+in layer: 1
+resnet_model/batch_normalization_12/gamma/read -> L2Loss_39
+in layer: 1
+resnet_model/batch_normalization_12/beta/read -> L2Loss_40
+in layer: 1
+resnet_model/batch_normalization_12/moving_mean/read -> resnet_model/batch_normalization_12/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_12/moving_variance/read -> resnet_model/batch_normalization_12/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_15/kernel/read -> L2Loss_41
+in layer: 1
+resnet_model/batch_normalization_13/gamma/read -> L2Loss_42
+in layer: 1
+resnet_model/batch_normalization_13/beta/read -> L2Loss_43
+in layer: 1
+resnet_model/batch_normalization_13/moving_mean/read -> resnet_model/batch_normalization_13/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_13/moving_variance/read -> resnet_model/batch_normalization_13/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_16/kernel/read -> L2Loss_44
+in layer: 1
+resnet_model/batch_normalization_14/gamma/read -> L2Loss_45
+in layer: 1
+resnet_model/batch_normalization_14/beta/read -> L2Loss_46
+in layer: 1
+resnet_model/batch_normalization_14/moving_mean/read -> resnet_model/batch_normalization_14/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_14/moving_variance/read -> resnet_model/batch_normalization_14/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_17/kernel/read -> L2Loss_47
+in layer: 1
+resnet_model/batch_normalization_15/gamma/read -> L2Loss_48
+in layer: 1
+resnet_model/batch_normalization_15/beta/read -> L2Loss_49
+in layer: 1
+resnet_model/batch_normalization_15/moving_mean/read -> resnet_model/batch_normalization_15/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_15/moving_variance/read -> resnet_model/batch_normalization_15/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_18/kernel/read -> L2Loss_50
+in layer: 1
+resnet_model/batch_normalization_16/gamma/read -> L2Loss_51
+in layer: 1
+resnet_model/batch_normalization_16/beta/read -> L2Loss_52
+in layer: 1
+resnet_model/batch_normalization_16/moving_mean/read -> resnet_model/batch_normalization_16/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_16/moving_variance/read -> resnet_model/batch_normalization_16/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_19/kernel/read -> L2Loss_53
+in layer: 1
+resnet_model/batch_normalization_17/gamma/read -> L2Loss_54
+in layer: 1
+resnet_model/batch_normalization_17/beta/read -> L2Loss_55
+in layer: 1
+resnet_model/batch_normalization_17/moving_mean/read -> resnet_model/batch_normalization_17/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_17/moving_variance/read -> resnet_model/batch_normalization_17/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_20/kernel/read -> L2Loss_56
+in layer: 1
+resnet_model/batch_normalization_18/gamma/read -> L2Loss_57
+in layer: 1
+resnet_model/batch_normalization_18/beta/read -> L2Loss_58
+in layer: 1
+resnet_model/batch_normalization_18/moving_mean/read -> resnet_model/batch_normalization_18/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_18/moving_variance/read -> resnet_model/batch_normalization_18/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_21/kernel/read -> L2Loss_59
+in layer: 1
+resnet_model/batch_normalization_19/gamma/read -> L2Loss_60
+in layer: 1
+resnet_model/batch_normalization_19/beta/read -> L2Loss_61
+in layer: 1
+resnet_model/batch_normalization_19/moving_mean/read -> resnet_model/batch_normalization_19/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_19/moving_variance/read -> resnet_model/batch_normalization_19/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_22/kernel/read -> L2Loss_62
+in layer: 1
+resnet_model/batch_normalization_20/gamma/read -> L2Loss_63
+in layer: 1
+resnet_model/batch_normalization_20/beta/read -> L2Loss_64
+in layer: 1
+resnet_model/batch_normalization_20/moving_mean/read -> resnet_model/batch_normalization_20/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_20/moving_variance/read -> resnet_model/batch_normalization_20/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_23/kernel/read -> L2Loss_65
+in layer: 1
+resnet_model/conv2d_24/kernel/read -> L2Loss_66
+in layer: 1
+resnet_model/batch_normalization_21/gamma/read -> L2Loss_67
+in layer: 1
+resnet_model/batch_normalization_21/beta/read -> L2Loss_68
+in layer: 1
+resnet_model/batch_normalization_21/moving_mean/read -> resnet_model/batch_normalization_21/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_21/moving_variance/read -> resnet_model/batch_normalization_21/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_25/kernel/read -> L2Loss_69
+in layer: 1
+resnet_model/batch_normalization_22/gamma/read -> L2Loss_70
+in layer: 1
+resnet_model/batch_normalization_22/beta/read -> L2Loss_71
+in layer: 1
+resnet_model/batch_normalization_22/moving_mean/read -> resnet_model/batch_normalization_22/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_22/moving_variance/read -> resnet_model/batch_normalization_22/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_26/kernel/read -> L2Loss_72
+in layer: 1
+resnet_model/batch_normalization_23/gamma/read -> L2Loss_73
+in layer: 1
+resnet_model/batch_normalization_23/beta/read -> L2Loss_74
+in layer: 1
+resnet_model/batch_normalization_23/moving_mean/read -> resnet_model/batch_normalization_23/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_23/moving_variance/read -> resnet_model/batch_normalization_23/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_27/kernel/read -> L2Loss_75
+in layer: 1
+resnet_model/batch_normalization_24/gamma/read -> L2Loss_76
+in layer: 1
+resnet_model/batch_normalization_24/beta/read -> L2Loss_77
+in layer: 1
+resnet_model/batch_normalization_24/moving_mean/read -> resnet_model/batch_normalization_24/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_24/moving_variance/read -> resnet_model/batch_normalization_24/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_28/kernel/read -> L2Loss_78
+in layer: 1
+resnet_model/batch_normalization_25/gamma/read -> L2Loss_79
+in layer: 1
+resnet_model/batch_normalization_25/beta/read -> L2Loss_80
+in layer: 1
+resnet_model/batch_normalization_25/moving_mean/read -> resnet_model/batch_normalization_25/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_25/moving_variance/read -> resnet_model/batch_normalization_25/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_29/kernel/read -> L2Loss_81
+in layer: 1
+resnet_model/batch_normalization_26/gamma/read -> L2Loss_82
+in layer: 1
+resnet_model/batch_normalization_26/beta/read -> L2Loss_83
+in layer: 1
+resnet_model/batch_normalization_26/moving_mean/read -> resnet_model/batch_normalization_26/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_26/moving_variance/read -> resnet_model/batch_normalization_26/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_30/kernel/read -> L2Loss_84
+in layer: 1
+resnet_model/batch_normalization_27/gamma/read -> L2Loss_85
+in layer: 1
+resnet_model/batch_normalization_27/beta/read -> L2Loss_86
+in layer: 1
+resnet_model/batch_normalization_27/moving_mean/read -> resnet_model/batch_normalization_27/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_27/moving_variance/read -> resnet_model/batch_normalization_27/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_31/kernel/read -> L2Loss_87
+in layer: 1
+resnet_model/batch_normalization_28/gamma/read -> L2Loss_88
+in layer: 1
+resnet_model/batch_normalization_28/beta/read -> L2Loss_89
+in layer: 1
+resnet_model/batch_normalization_28/moving_mean/read -> resnet_model/batch_normalization_28/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_28/moving_variance/read -> resnet_model/batch_normalization_28/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_32/kernel/read -> L2Loss_90
+in layer: 1
+resnet_model/batch_normalization_29/gamma/read -> L2Loss_91
+in layer: 1
+resnet_model/batch_normalization_29/beta/read -> L2Loss_92
+in layer: 1
+resnet_model/batch_normalization_29/moving_mean/read -> resnet_model/batch_normalization_29/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_29/moving_variance/read -> resnet_model/batch_normalization_29/FusedBatchNorm
+in layer: 1
+resnet_model/conv2d_33/kernel/read -> L2Loss_93
+in layer: 1
+resnet_model/batch_normalization_30/gamma/read -> L2Loss_94
+in layer: 1
+resnet_model/batch_normalization_30/beta/read -> L2Loss_95
+in layer: 1
+resnet_model/batch_normalization_30/moving_mean/read -> resnet_model/batch_normalization_30/FusedBatchNorm
+in layer: 1
+resnet_model/batch_normalization_30/moving_variance/read -> resnet_model/batch_normalization_30/FusedBatchNorm
+in layer: 1
+resnet_model/dense/kernel/read -> L2Loss_96
+in layer: 1
+resnet_model/dense/bias/read -> L2Loss_97
+in layer: 1
+Cast_98 -> Equal
+in layer: 2
+accuracy/total/read -> accuracy/truediv
+in layer: 1
+accuracy/count/read -> accuracy/Greater
+in layer: 1
+accuracy/AssignAdd -> accuracy/truediv_1
+in layer: 2
+accuracy/AssignAdd_1 -> accuracy/Greater_1
+in layer: 6
+mean/Sum -> mean/AssignAdd
+in layer: 3
+mean/ToFloat -> mean/AssignAdd_1
+in layer: 1
+mean/total/read -> mean/truediv
+in layer: 1
+mean/count/read -> mean/Greater
+in layer: 1
+mean/Greater -> mean/value
+in layer: 2
+mean/truediv -> mean/value
+in layer: 2
+mean/AssignAdd -> mean/truediv_1
+in layer: 2
+mean/AssignAdd_1 -> mean/Greater_1
+in layer: 3
+mean/Greater_1 -> mean/update_op
+in layer: 2
+mean/truediv_1 -> mean/update_op
+in layer: 2
+mean/update_op -> group_deps
+in layer: 3
+AssignAdd -> read
+in layer: 1
+read -> Identity
+in layer: 3
+report_uninitialized_variables/IsVariableInitialized -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_1 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_2 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_3 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_4 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_5 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_6 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_7 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_8 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_9 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_10 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_11 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_12 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_13 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_14 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_15 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_16 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_17 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_18 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_19 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_20 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_21 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_22 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_23 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_24 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_25 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_26 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_27 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_28 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_29 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_30 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_31 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_32 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_33 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_34 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_35 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_36 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_37 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_38 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_39 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_40 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_41 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_42 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_43 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_44 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_45 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_46 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_47 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_48 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_49 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_50 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_51 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_52 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_53 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_54 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_55 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_56 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_57 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_58 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_59 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_60 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_61 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_62 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_63 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_64 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_65 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_66 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_67 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_68 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_69 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_70 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_71 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_72 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_73 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_74 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_75 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_76 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_77 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_78 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_79 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_80 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_81 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_82 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_83 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_84 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_85 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_86 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_87 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_88 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_89 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_90 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_91 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_92 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_93 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_94 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_95 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_96 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_97 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_98 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_99 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_100 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_101 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_102 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_103 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_104 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_105 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_106 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_107 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_108 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_109 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_110 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_111 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_112 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_113 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_114 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_115 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_116 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_117 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_118 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_119 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_120 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_121 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_122 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_123 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_124 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_125 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_126 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_127 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_128 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_129 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_130 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_131 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_132 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_133 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_134 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_135 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_136 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_137 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_138 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_139 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_140 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_141 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_142 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_143 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_144 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_145 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_146 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_147 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_148 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_149 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_150 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_151 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_152 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_153 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_154 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_155 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_156 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_157 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_158 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_159 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_160 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_161 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_162 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_163 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_164 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_165 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_1 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_2 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_3 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_4 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_5 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_6 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_7 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_8 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_9 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_10 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_11 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_12 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_13 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_14 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_15 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_16 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_17 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_18 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_19 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_20 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_21 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_22 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_23 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_24 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_25 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_26 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_27 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_28 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_29 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_30 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_31 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_32 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_33 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_34 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_35 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_36 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_37 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_38 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_39 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_40 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_41 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_42 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_43 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_44 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_45 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_46 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_47 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_48 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_49 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_50 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_51 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_52 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_53 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_54 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_55 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_56 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_57 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_58 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_59 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_60 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_61 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_62 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_63 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_64 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_65 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_66 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_67 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_68 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_69 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_70 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_71 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_72 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_73 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_74 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_75 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_76 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_77 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_78 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_79 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_80 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_81 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_82 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_83 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_84 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_85 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_86 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_87 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_88 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_89 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_90 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_91 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_92 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_93 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_94 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_95 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_96 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_97 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_98 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_99 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_100 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_101 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_102 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_103 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_104 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_105 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_106 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_107 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_108 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_109 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_110 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_111 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_112 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_113 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_114 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_115 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_116 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_117 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_118 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_119 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_120 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_121 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_122 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_123 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_124 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_125 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_126 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_127 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_128 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_129 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_130 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_131 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_132 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_133 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_134 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_135 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_136 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_137 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_138 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_139 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_140 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_141 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_142 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_143 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_144 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_145 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_146 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_147 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_148 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_149 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_150 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_151 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_152 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_153 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_154 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_155 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_156 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_157 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_158 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_159 -> report_uninitialized_variables_1/stack
+in layer: 1
+report_uninitialized_variables_1/IsVariableInitialized_160 -> report_uninitialized_variables_1/stack
+in layer: 1
+mean/total/Assign -> init_2
+in layer: 1
+mean/count/Assign -> init_2
+in layer: 1
+eval_step/Assign -> init_2
+in layer: 1
+save/Assign -> save/restore_shard
+in layer: 2
+save/Assign_1 -> save/restore_shard
+in layer: 2
+save/Assign_2 -> save/restore_shard
+in layer: 2
+save/Assign_3 -> save/restore_shard
+in layer: 2
+save/Assign_4 -> save/restore_shard
+in layer: 2
+save/Assign_5 -> save/restore_shard
+in layer: 2
+save/Assign_6 -> save/restore_shard
+in layer: 2
+save/Assign_7 -> save/restore_shard
+in layer: 2
+save/Assign_8 -> save/restore_shard
+in layer: 2
+save/Assign_9 -> save/restore_shard
+in layer: 2
+save/Assign_10 -> save/restore_shard
+in layer: 2
+save/Assign_11 -> save/restore_shard
+in layer: 2
+save/Assign_12 -> save/restore_shard
+in layer: 2
+save/Assign_13 -> save/restore_shard
+in layer: 2
+save/Assign_14 -> save/restore_shard
+in layer: 2
+save/Assign_15 -> save/restore_shard
+in layer: 2
+save/Assign_16 -> save/restore_shard
+in layer: 2
+save/Assign_17 -> save/restore_shard
+in layer: 2
+save/Assign_18 -> save/restore_shard
+in layer: 2
+save/Assign_19 -> save/restore_shard
+in layer: 2
+save/Assign_20 -> save/restore_shard
+in layer: 2
+save/Assign_21 -> save/restore_shard
+in layer: 2
+save/Assign_22 -> save/restore_shard
+in layer: 2
+save/Assign_23 -> save/restore_shard
+in layer: 2
+save/Assign_24 -> save/restore_shard
+in layer: 2
+save/Assign_25 -> save/restore_shard
+in layer: 2
+save/Assign_26 -> save/restore_shard
+in layer: 2
+save/Assign_27 -> save/restore_shard
+in layer: 2
+save/Assign_28 -> save/restore_shard
+in layer: 2
+save/Assign_29 -> save/restore_shard
+in layer: 2
+save/Assign_30 -> save/restore_shard
+in layer: 2
+save/Assign_31 -> save/restore_shard
+in layer: 2
+save/Assign_32 -> save/restore_shard
+in layer: 2
+save/Assign_33 -> save/restore_shard
+in layer: 2
+save/Assign_34 -> save/restore_shard
+in layer: 2
+save/Assign_35 -> save/restore_shard
+in layer: 2
+save/Assign_36 -> save/restore_shard
+in layer: 2
+save/Assign_37 -> save/restore_shard
+in layer: 2
+save/Assign_38 -> save/restore_shard
+in layer: 2
+save/Assign_39 -> save/restore_shard
+in layer: 2
+save/Assign_40 -> save/restore_shard
+in layer: 2
+save/Assign_41 -> save/restore_shard
+in layer: 2
+save/Assign_42 -> save/restore_shard
+in layer: 2
+save/Assign_43 -> save/restore_shard
+in layer: 2
+save/Assign_44 -> save/restore_shard
+in layer: 2
+save/Assign_45 -> save/restore_shard
+in layer: 2
+save/Assign_46 -> save/restore_shard
+in layer: 2
+save/Assign_47 -> save/restore_shard
+in layer: 2
+save/Assign_48 -> save/restore_shard
+in layer: 2
+save/Assign_49 -> save/restore_shard
+in layer: 2
+save/Assign_50 -> save/restore_shard
+in layer: 2
+save/Assign_51 -> save/restore_shard
+in layer: 2
+save/Assign_52 -> save/restore_shard
+in layer: 2
+save/Assign_53 -> save/restore_shard
+in layer: 2
+save/Assign_54 -> save/restore_shard
+in layer: 2
+save/Assign_55 -> save/restore_shard
+in layer: 2
+save/Assign_56 -> save/restore_shard
+in layer: 2
+save/Assign_57 -> save/restore_shard
+in layer: 2
+save/Assign_58 -> save/restore_shard
+in layer: 2
+save/Assign_59 -> save/restore_shard
+in layer: 2
+save/Assign_60 -> save/restore_shard
+in layer: 2
+save/Assign_61 -> save/restore_shard
+in layer: 2
+save/Assign_62 -> save/restore_shard
+in layer: 2
+save/Assign_63 -> save/restore_shard
+in layer: 2
+save/Assign_64 -> save/restore_shard
+in layer: 2
+save/Assign_65 -> save/restore_shard
+in layer: 2
+save/Assign_66 -> save/restore_shard
+in layer: 2
+save/Assign_67 -> save/restore_shard
+in layer: 2
+save/Assign_68 -> save/restore_shard
+in layer: 2
+save/Assign_69 -> save/restore_shard
+in layer: 2
+save/Assign_70 -> save/restore_shard
+in layer: 2
+save/Assign_71 -> save/restore_shard
+in layer: 2
+save/Assign_72 -> save/restore_shard
+in layer: 2
+save/Assign_73 -> save/restore_shard
+in layer: 2
+save/Assign_74 -> save/restore_shard
+in layer: 2
+save/Assign_75 -> save/restore_shard
+in layer: 2
+save/Assign_76 -> save/restore_shard
+in layer: 2
+save/Assign_77 -> save/restore_shard
+in layer: 2
+save/Assign_78 -> save/restore_shard
+in layer: 2
+save/Assign_79 -> save/restore_shard
+in layer: 2
+save/Assign_80 -> save/restore_shard
+in layer: 2
+save/Assign_81 -> save/restore_shard
+in layer: 2
+save/Assign_82 -> save/restore_shard
+in layer: 2
+save/Assign_83 -> save/restore_shard
+in layer: 2
+save/Assign_84 -> save/restore_shard
+in layer: 2
+save/Assign_85 -> save/restore_shard
+in layer: 2
+save/Assign_86 -> save/restore_shard
+in layer: 2
+save/Assign_87 -> save/restore_shard
+in layer: 2
+save/Assign_88 -> save/restore_shard
+in layer: 2
+save/Assign_89 -> save/restore_shard
+in layer: 2
+save/Assign_90 -> save/restore_shard
+in layer: 2
+save/Assign_91 -> save/restore_shard
+in layer: 2
+save/Assign_92 -> save/restore_shard
+in layer: 2
+save/Assign_93 -> save/restore_shard
+in layer: 2
+save/Assign_94 -> save/restore_shard
+in layer: 2
+save/Assign_95 -> save/restore_shard
+in layer: 2
+save/Assign_96 -> save/restore_shard
+in layer: 2
+save/Assign_97 -> save/restore_shard
+in layer: 2
+save/Assign_98 -> save/restore_shard
+in layer: 2
+save/Assign_99 -> save/restore_shard
+in layer: 2
+save/Assign_100 -> save/restore_shard
+in layer: 2
+save/Assign_101 -> save/restore_shard
+in layer: 2
+save/Assign_102 -> save/restore_shard
+in layer: 2
+save/Assign_103 -> save/restore_shard
+in layer: 2
+save/Assign_104 -> save/restore_shard
+in layer: 2
+save/Assign_105 -> save/restore_shard
+in layer: 2
+save/Assign_106 -> save/restore_shard
+in layer: 2
+save/Assign_107 -> save/restore_shard
+in layer: 2
+save/Assign_108 -> save/restore_shard
+in layer: 2
+save/Assign_109 -> save/restore_shard
+in layer: 2
+save/Assign_110 -> save/restore_shard
+in layer: 2
+save/Assign_111 -> save/restore_shard
+in layer: 2
+save/Assign_112 -> save/restore_shard
+in layer: 2
+save/Assign_113 -> save/restore_shard
+in layer: 2
+save/Assign_114 -> save/restore_shard
+in layer: 2
+save/Assign_115 -> save/restore_shard
+in layer: 2
+save/Assign_116 -> save/restore_shard
+in layer: 2
+save/Assign_117 -> save/restore_shard
+in layer: 2
+save/Assign_118 -> save/restore_shard
+in layer: 2
+save/Assign_119 -> save/restore_shard
+in layer: 2
+save/Assign_120 -> save/restore_shard
+in layer: 2
+save/Assign_121 -> save/restore_shard
+in layer: 2
+save/Assign_122 -> save/restore_shard
+in layer: 2
+save/Assign_123 -> save/restore_shard
+in layer: 2
+save/Assign_124 -> save/restore_shard
+in layer: 2
+save/Assign_125 -> save/restore_shard
+in layer: 2
+save/Assign_126 -> save/restore_shard
+in layer: 2
+save/Assign_127 -> save/restore_shard
+in layer: 2
+save/Assign_128 -> save/restore_shard
+in layer: 2
+save/Assign_129 -> save/restore_shard
+in layer: 2
+save/Assign_130 -> save/restore_shard
+in layer: 2
+save/Assign_131 -> save/restore_shard
+in layer: 2
+save/Assign_132 -> save/restore_shard
+in layer: 2
+save/Assign_133 -> save/restore_shard
+in layer: 2
+save/Assign_134 -> save/restore_shard
+in layer: 2
+save/Assign_135 -> save/restore_shard
+in layer: 2
+save/Assign_136 -> save/restore_shard
+in layer: 2
+save/Assign_137 -> save/restore_shard
+in layer: 2
+save/Assign_138 -> save/restore_shard
+in layer: 2
+save/Assign_139 -> save/restore_shard
+in layer: 2
+save/Assign_140 -> save/restore_shard
+in layer: 2
+save/Assign_141 -> save/restore_shard
+in layer: 2
+save/Assign_142 -> save/restore_shard
+in layer: 2
+save/Assign_143 -> save/restore_shard
+in layer: 2
+save/Assign_144 -> save/restore_shard
+in layer: 2
+save/Assign_145 -> save/restore_shard
+in layer: 2
+save/Assign_146 -> save/restore_shard
+in layer: 2
+save/Assign_147 -> save/restore_shard
+in layer: 2
+save/Assign_148 -> save/restore_shard
+in layer: 2
+save/Assign_149 -> save/restore_shard
+in layer: 2
+save/Assign_150 -> save/restore_shard
+in layer: 2
+save/Assign_151 -> save/restore_shard
+in layer: 2
+save/Assign_152 -> save/restore_shard
+in layer: 2
+save/Assign_153 -> save/restore_shard
+in layer: 2
+save/Assign_154 -> save/restore_shard
+in layer: 2
+save/Assign_155 -> save/restore_shard
+in layer: 2
+save/Assign_156 -> save/restore_shard
+in layer: 2
+save/Assign_157 -> save/restore_shard
+in layer: 2
+save/Assign_158 -> save/restore_shard
+in layer: 2
+save/Assign_159 -> save/restore_shard
+in layer: 2
+save/Assign_160 -> save/restore_shard
+in layer: 2

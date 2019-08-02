@@ -1,0 +1,2105 @@
+metrics/label/mean/broadcast_weights/assert_broadcastable/static_scalar_check_success -> metrics/label/mean/broadcast_weights/ones_like/Const  0
+metrics/label/mean/broadcast_weights/ones_like/Shape -> metrics/label/mean/broadcast_weights/ones_like  4
+metrics/label/mean/broadcast_weights/ones_like/Const -> metrics/label/mean/broadcast_weights/ones_like  1
+metrics/label/mean/broadcast_weights/weights -> metrics/label/mean/broadcast_weights  0
+metrics/label/mean/broadcast_weights/ones_like -> metrics/label/mean/broadcast_weights  2
+metrics/label/mean/total -> report_uninitialized_variables/IsVariableInitialized_12  0
+metrics/label/mean/total/Initializer/zeros -> metrics/label/mean/total/Assign  0
+metrics/label/mean/count -> report_uninitialized_variables/IsVariableInitialized_13  0
+metrics/label/mean/count/Initializer/zeros -> metrics/label/mean/count/Assign  0
+metrics/label/mean/broadcast_weights -> metrics/label/mean/broadcast_weights_1  3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_scalar/x -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_scalar  0
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/weights/rank -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1  0
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_scalar -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3  1
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/switch_f  2
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/pred_id -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch  2
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/values/rank -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch  0
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank  3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank  3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1  2
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_f  3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_t -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x  4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/values/shape -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2  4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/pred_id -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1  3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims  4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/dim -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Shape -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Const -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat/axis -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/weights/shape -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1  2
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1  3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1  4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/dim -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation  7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims  7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims  7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge  4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge  8
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge  7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge  3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f  4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_t -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/NoOp -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/pred_id -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3  4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_0 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_2 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_4 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_5 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_7 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1  7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge  6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge  7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge -> metrics/label/mean/broadcast_weights_1/ones_like/Const  7
+metrics/label/mean/broadcast_weights_1/ones_like/Shape -> metrics/label/mean/broadcast_weights_1/ones_like  6
+metrics/label/mean/broadcast_weights_1/ones_like/Const -> metrics/label/mean/broadcast_weights_1/ones_like  6
+metrics/label/mean/broadcast_weights_1/ones_like -> metrics/label/mean/broadcast_weights_1  7
+metrics/label/mean/broadcast_weights_1 -> metrics/label/mean/Sum  6
+metrics/label/mean/Const -> metrics/label/mean/Sum  0
+metrics/label/mean/Mul -> metrics/label/mean/AssignAdd_1  4
+metrics/label/mean/Const_1 -> metrics/label/mean/Sum_1  0
+metrics/label/mean/Sum_1 -> metrics/label/mean/AssignAdd  4
+metrics/label/mean/Sum -> metrics/label/mean/AssignAdd_1  3
+metrics/label/mean/total/read -> metrics/label/mean/truediv  1
+metrics/label/mean/count/read -> metrics/label/mean/Greater  1
+metrics/label/mean/zeros_like -> metrics/label/mean/value  0
+metrics/label/mean/Greater -> metrics/label/mean/value  2
+metrics/label/mean/truediv -> metrics/label/mean/value  2
+metrics/label/mean/AssignAdd -> metrics/label/mean/truediv_1  2
+metrics/label/mean/AssignAdd_1 -> metrics/label/mean/Greater_1  4
+metrics/label/mean/zeros_like_1 -> metrics/label/mean/update_op  0
+metrics/label/mean/Greater_1 -> metrics/label/mean/update_op  2
+metrics/label/mean/truediv_1 -> metrics/label/mean/update_op  2
+metrics/average_loss/total -> report_uninitialized_variables/IsVariableInitialized_14  0
+metrics/average_loss/total/Initializer/zeros -> metrics/average_loss/total/Assign  0
+metrics/average_loss/count -> report_uninitialized_variables/IsVariableInitialized_15  0
+metrics/average_loss/count/Initializer/zeros -> metrics/average_loss/count/Assign  0
+metrics/average_loss/broadcast_weights/assert_broadcastable/static_scalar_check_success -> metrics/average_loss/broadcast_weights/ones_like/Const  0
+metrics/average_loss/broadcast_weights/ones_like/Shape -> metrics/average_loss/broadcast_weights/ones_like  7
+metrics/average_loss/broadcast_weights/ones_like/Const -> metrics/average_loss/broadcast_weights/ones_like  1
+metrics/average_loss/Const -> metrics/average_loss/broadcast_weights  0
+metrics/average_loss/broadcast_weights/ones_like -> metrics/average_loss/broadcast_weights  2
+metrics/average_loss/broadcast_weights -> metrics/average_loss/Sum  3
+metrics/average_loss/Const_1 -> metrics/average_loss/Sum  0
+metrics/average_loss/Mul -> metrics/average_loss/AssignAdd_1  7
+metrics/average_loss/Const_2 -> metrics/average_loss/Sum_1  0
+metrics/average_loss/Sum_1 -> metrics/average_loss/AssignAdd  3
+metrics/average_loss/Sum -> metrics/average_loss/AssignAdd_1  2
+metrics/average_loss/total/read -> metrics/average_loss/truediv  1
+metrics/average_loss/count/read -> metrics/average_loss/Greater  1
+metrics/average_loss/zeros_like -> metrics/average_loss/value  0
+metrics/average_loss/Greater -> metrics/average_loss/value  2
+metrics/average_loss/truediv -> metrics/average_loss/value  2
+metrics/average_loss/AssignAdd -> metrics/average_loss/truediv_1  2
+metrics/average_loss/AssignAdd_1 -> metrics/average_loss/Greater_1  3
+metrics/average_loss/zeros_like_1 -> metrics/average_loss/update_op  0
+metrics/average_loss/Greater_1 -> metrics/average_loss/update_op  2
+metrics/average_loss/truediv_1 -> metrics/average_loss/update_op  2
+metrics/Cast -> metrics/Equal  2
+metrics/Equal -> metrics/ToFloat  4
+metrics/accuracy/total -> report_uninitialized_variables/IsVariableInitialized_16  0
+metrics/accuracy/total/Initializer/zeros -> metrics/accuracy/total/Assign  0
+metrics/accuracy/count -> report_uninitialized_variables/IsVariableInitialized_17  0
+metrics/accuracy/count/Initializer/zeros -> metrics/accuracy/count/Assign  0
+metrics/ToFloat -> metrics/accuracy/Mul  4
+metrics/accuracy/broadcast_weights/assert_broadcastable/static_scalar_check_success -> metrics/accuracy/broadcast_weights/ones_like/Const  0
+metrics/accuracy/broadcast_weights/ones_like/Shape -> metrics/accuracy/broadcast_weights/ones_like  5
+metrics/accuracy/broadcast_weights/ones_like/Const -> metrics/accuracy/broadcast_weights/ones_like  1
+metrics/Const -> metrics/accuracy/broadcast_weights  0
+metrics/accuracy/broadcast_weights/ones_like -> metrics/accuracy/broadcast_weights  2
+metrics/accuracy/broadcast_weights -> metrics/accuracy/Sum  3
+metrics/accuracy/Const -> metrics/accuracy/Sum  0
+metrics/accuracy/Mul -> metrics/accuracy/AssignAdd_1  5
+metrics/accuracy/Const_1 -> metrics/accuracy/Sum_1  0
+metrics/accuracy/Sum_1 -> metrics/accuracy/AssignAdd  3
+metrics/accuracy/Sum -> metrics/accuracy/AssignAdd_1  2
+metrics/accuracy/total/read -> metrics/accuracy/truediv  1
+metrics/accuracy/count/read -> metrics/accuracy/Greater  1
+metrics/accuracy/zeros_like -> metrics/accuracy/value  0
+metrics/accuracy/Greater -> metrics/accuracy/value  2
+metrics/accuracy/truediv -> metrics/accuracy/value  2
+metrics/accuracy/AssignAdd -> metrics/accuracy/truediv_1  2
+metrics/accuracy/AssignAdd_1 -> metrics/accuracy/Greater_1  3
+metrics/accuracy/zeros_like_1 -> metrics/accuracy/update_op  0
+metrics/accuracy/Greater_1 -> metrics/accuracy/update_op  2
+metrics/accuracy/truediv_1 -> metrics/accuracy/update_op  2
+metrics/precision/Cast_1 -> metrics/precision/false_positives/Equal  4
+metrics/precision/true_positives/Equal/y -> metrics/precision/true_positives/Equal  0
+metrics/precision/Cast -> metrics/precision/false_positives/Equal_1  2
+metrics/precision/true_positives/Equal_1/y -> metrics/precision/true_positives/Equal_1  0
+metrics/precision/true_positives/Equal -> metrics/precision/true_positives/LogicalAnd  5
+metrics/precision/true_positives/Equal_1 -> metrics/precision/true_positives/LogicalAnd  3
+metrics/precision/true_positives/count -> report_uninitialized_variables/IsVariableInitialized_18  0
+metrics/precision/true_positives/count/Initializer/zeros -> metrics/precision/true_positives/count/Assign  0
+metrics/precision/true_positives/LogicalAnd -> metrics/precision/true_positives/ToFloat  2
+metrics/precision/true_positives/ToFloat -> metrics/precision/true_positives/Mul  3
+metrics/precision/Const -> metrics/precision/false_positives/Mul  0
+metrics/precision/true_positives/assert_rank_in/static_checks_determined_all_ok -> metrics/precision/true_positives/Mul  0
+metrics/precision/true_positives/count/read -> metrics/precision/true_positives/Identity  1
+metrics/precision/true_positives/Mul -> metrics/precision/true_positives/Sum  4
+metrics/precision/true_positives/Const -> metrics/precision/true_positives/Sum  0
+metrics/precision/true_positives/Sum -> metrics/precision/true_positives/AssignAdd  2
+metrics/precision/false_positives/Equal/y -> metrics/precision/false_positives/Equal  0
+metrics/precision/false_positives/Equal_1/y -> metrics/precision/false_positives/Equal_1  0
+metrics/precision/false_positives/Equal -> metrics/precision/false_positives/LogicalAnd  5
+metrics/precision/false_positives/Equal_1 -> metrics/precision/false_positives/LogicalAnd  3
+metrics/precision/false_positives/count -> report_uninitialized_variables/IsVariableInitialized_19  0
+metrics/precision/false_positives/count/Initializer/zeros -> metrics/precision/false_positives/count/Assign  0
+metrics/precision/false_positives/LogicalAnd -> metrics/precision/false_positives/ToFloat  2
+metrics/precision/false_positives/ToFloat -> metrics/precision/false_positives/Mul  3
+metrics/precision/false_positives/assert_rank_in/static_checks_determined_all_ok -> metrics/precision/false_positives/Mul  0
+metrics/precision/false_positives/count/read -> metrics/precision/false_positives/Identity  1
+metrics/precision/false_positives/Mul -> metrics/precision/false_positives/Sum  4
+metrics/precision/false_positives/Const -> metrics/precision/false_positives/Sum  0
+metrics/precision/false_positives/Sum -> metrics/precision/false_positives/AssignAdd  2
+metrics/precision/true_positives/Identity -> metrics/precision/div  2
+metrics/precision/false_positives/Identity -> metrics/precision/add_1  2
+metrics/precision/add -> metrics/precision/Greater  3
+metrics/precision/Greater/y -> metrics/precision/Greater  0
+metrics/precision/add_1 -> metrics/precision/div  3
+metrics/precision/Greater -> metrics/precision/value  4
+metrics/precision/div -> metrics/precision/value  4
+metrics/precision/value/e -> metrics/precision/value  0
+metrics/precision/true_positives/AssignAdd -> metrics/precision/div_1  2
+metrics/precision/false_positives/AssignAdd -> metrics/precision/add_3  2
+metrics/precision/add_2 -> metrics/precision/Greater_1  2
+metrics/precision/Greater_1/y -> metrics/precision/Greater_1  0
+metrics/precision/add_3 -> metrics/precision/div_1  2
+metrics/precision/Greater_1 -> metrics/precision/update_op  3
+metrics/precision/div_1 -> metrics/precision/update_op  3
+metrics/precision/update_op/e -> metrics/precision/update_op  0
+metrics/recall/Cast_1 -> metrics/recall/false_negatives/Equal  4
+metrics/recall/true_positives/Equal/y -> metrics/recall/true_positives/Equal  0
+metrics/recall/Cast -> metrics/recall/false_negatives/Equal_1  2
+metrics/recall/true_positives/Equal_1/y -> metrics/recall/true_positives/Equal_1  0
+metrics/recall/true_positives/Equal -> metrics/recall/true_positives/LogicalAnd  5
+metrics/recall/true_positives/Equal_1 -> metrics/recall/true_positives/LogicalAnd  3
+metrics/recall/true_positives/count -> report_uninitialized_variables/IsVariableInitialized_20  0
+metrics/recall/true_positives/count/Initializer/zeros -> metrics/recall/true_positives/count/Assign  0
+metrics/recall/true_positives/LogicalAnd -> metrics/recall/true_positives/ToFloat  2
+metrics/recall/true_positives/ToFloat -> metrics/recall/true_positives/Mul  3
+metrics/recall/Const -> metrics/recall/false_negatives/Mul  0
+metrics/recall/true_positives/assert_rank_in/static_checks_determined_all_ok -> metrics/recall/true_positives/Mul  0
+metrics/recall/true_positives/count/read -> metrics/recall/true_positives/Identity  1
+metrics/recall/true_positives/Mul -> metrics/recall/true_positives/Sum  4
+metrics/recall/true_positives/Const -> metrics/recall/true_positives/Sum  0
+metrics/recall/true_positives/Sum -> metrics/recall/true_positives/AssignAdd  2
+metrics/recall/false_negatives/Equal/y -> metrics/recall/false_negatives/Equal  0
+metrics/recall/false_negatives/Equal_1/y -> metrics/recall/false_negatives/Equal_1  0
+metrics/recall/false_negatives/Equal -> metrics/recall/false_negatives/LogicalAnd  5
+metrics/recall/false_negatives/Equal_1 -> metrics/recall/false_negatives/LogicalAnd  3
+metrics/recall/false_negatives/count -> report_uninitialized_variables/IsVariableInitialized_21  0
+metrics/recall/false_negatives/count/Initializer/zeros -> metrics/recall/false_negatives/count/Assign  0
+metrics/recall/false_negatives/LogicalAnd -> metrics/recall/false_negatives/ToFloat  2
+metrics/recall/false_negatives/ToFloat -> metrics/recall/false_negatives/Mul  3
+metrics/recall/false_negatives/assert_rank_in/static_checks_determined_all_ok -> metrics/recall/false_negatives/Mul  0
+metrics/recall/false_negatives/count/read -> metrics/recall/false_negatives/Identity  1
+metrics/recall/false_negatives/Mul -> metrics/recall/false_negatives/Sum  4
+metrics/recall/false_negatives/Const -> metrics/recall/false_negatives/Sum  0
+metrics/recall/false_negatives/Sum -> metrics/recall/false_negatives/AssignAdd  2
+metrics/recall/true_positives/Identity -> metrics/recall/div  2
+metrics/recall/false_negatives/Identity -> metrics/recall/add_1  2
+metrics/recall/add -> metrics/recall/Greater  3
+metrics/recall/Greater/y -> metrics/recall/Greater  0
+metrics/recall/add_1 -> metrics/recall/div  3
+metrics/recall/Greater -> metrics/recall/value  4
+metrics/recall/div -> metrics/recall/value  4
+metrics/recall/value/e -> metrics/recall/value  0
+metrics/recall/true_positives/AssignAdd -> metrics/recall/div_1  2
+metrics/recall/false_negatives/AssignAdd -> metrics/recall/add_3  2
+metrics/recall/add_2 -> metrics/recall/Greater_1  2
+metrics/recall/Greater_1/y -> metrics/recall/Greater_1  0
+metrics/recall/add_3 -> metrics/recall/div_1  2
+metrics/recall/Greater_1 -> metrics/recall/update_op  3
+metrics/recall/div_1 -> metrics/recall/update_op  3
+metrics/recall/update_op/e -> metrics/recall/update_op  0
+metrics/prediction/mean/broadcast_weights/assert_broadcastable/static_scalar_check_success -> metrics/prediction/mean/broadcast_weights/ones_like/Const  0
+metrics/prediction/mean/broadcast_weights/ones_like/Shape -> metrics/prediction/mean/broadcast_weights/ones_like  6
+metrics/prediction/mean/broadcast_weights/ones_like/Const -> metrics/prediction/mean/broadcast_weights/ones_like  1
+metrics/prediction/mean/broadcast_weights/weights -> metrics/prediction/mean/broadcast_weights  0
+metrics/prediction/mean/broadcast_weights/ones_like -> metrics/prediction/mean/broadcast_weights  2
+metrics/prediction/mean/total -> report_uninitialized_variables/IsVariableInitialized_22  0
+metrics/prediction/mean/total/Initializer/zeros -> metrics/prediction/mean/total/Assign  0
+metrics/prediction/mean/count -> report_uninitialized_variables/IsVariableInitialized_23  0
+metrics/prediction/mean/count/Initializer/zeros -> metrics/prediction/mean/count/Assign  0
+metrics/prediction/mean/broadcast_weights -> metrics/prediction/mean/broadcast_weights_1  3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_scalar/x -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_scalar  0
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/weights/rank -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1  0
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_scalar -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3  1
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/switch_f  2
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/pred_id -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch  2
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/values/rank -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch  0
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank  3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank  3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1  2
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_f  3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_t -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x  4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/values/shape -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1  7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/pred_id -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1  3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims  4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/dim -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Shape -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Const -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat/axis -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/weights/shape -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1  2
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1  3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1  4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/dim -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation  7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims  7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims  7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge  4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge  8
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge  7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge  3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f  4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_t -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/NoOp -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/pred_id -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3  4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_0 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_2 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_4 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_5 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_7 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1  7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge  6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge  7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge -> metrics/prediction/mean/broadcast_weights_1/ones_like/Const  7
+metrics/prediction/mean/broadcast_weights_1/ones_like/Shape -> metrics/prediction/mean/broadcast_weights_1/ones_like  6
+metrics/prediction/mean/broadcast_weights_1/ones_like/Const -> metrics/prediction/mean/broadcast_weights_1/ones_like  6
+metrics/prediction/mean/broadcast_weights_1/ones_like -> metrics/prediction/mean/broadcast_weights_1  7
+metrics/prediction/mean/broadcast_weights_1 -> metrics/prediction/mean/Sum  8
+metrics/prediction/mean/Const -> metrics/prediction/mean/Sum  0
+metrics/prediction/mean/Mul -> metrics/prediction/mean/AssignAdd_1  6
+metrics/prediction/mean/Const_1 -> metrics/prediction/mean/Sum_1  0
+metrics/prediction/mean/Sum_1 -> metrics/prediction/mean/AssignAdd  4
+metrics/prediction/mean/Sum -> metrics/prediction/mean/AssignAdd_1  3
+metrics/prediction/mean/total/read -> metrics/prediction/mean/truediv  1
+metrics/prediction/mean/count/read -> metrics/prediction/mean/Greater  1
+metrics/prediction/mean/zeros_like -> metrics/prediction/mean/value  0
+metrics/prediction/mean/Greater -> metrics/prediction/mean/value  2
+metrics/prediction/mean/truediv -> metrics/prediction/mean/value  2
+metrics/prediction/mean/AssignAdd -> metrics/prediction/mean/truediv_1  2
+metrics/prediction/mean/AssignAdd_1 -> metrics/prediction/mean/Greater_1  4
+metrics/prediction/mean/zeros_like_1 -> metrics/prediction/mean/update_op  0
+metrics/prediction/mean/Greater_1 -> metrics/prediction/mean/update_op  2
+metrics/prediction/mean/truediv_1 -> metrics/prediction/mean/update_op  2
+metrics/accuracy_baseline/sub/x -> metrics/accuracy_baseline/sub  0
+metrics/label/mean/value -> metrics/accuracy_baseline/value  3
+metrics/accuracy_baseline/sub -> metrics/accuracy_baseline/value  2
+metrics/accuracy_baseline/sub_1/x -> metrics/accuracy_baseline/sub_1  0
+metrics/label/mean/update_op -> group_deps  3
+metrics/accuracy_baseline/sub_1 -> metrics/accuracy_baseline/update_op  2
+metrics/auc/broadcast_weights/assert_broadcastable/static_scalar_check_success -> metrics/auc/broadcast_weights/ones_like/Const  0
+metrics/auc/broadcast_weights/ones_like/Shape -> metrics/auc/broadcast_weights/ones_like  6
+metrics/auc/broadcast_weights/ones_like/Const -> metrics/auc/broadcast_weights/ones_like  1
+metrics/auc/broadcast_weights/weights -> metrics/auc/broadcast_weights  0
+metrics/auc/broadcast_weights/ones_like -> metrics/auc/broadcast_weights  2
+metrics/auc/Cast/x -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2  0
+metrics/auc/assert_greater_equal/GreaterEqual -> metrics/auc/assert_greater_equal/All  6
+metrics/auc/assert_greater_equal/Const -> metrics/auc/assert_greater_equal/All  0
+metrics/auc/assert_greater_equal/All -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch  2
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Switch -> metrics/auc/assert_greater_equal/Assert/AssertGuard/switch_f  2
+metrics/auc/assert_greater_equal/Assert/AssertGuard/switch_t -> metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency  3
+metrics/auc/assert_greater_equal/Assert/AssertGuard/NoOp -> metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency  4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/switch_f -> metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency_1  3
+metrics/auc/assert_greater_equal/Assert/AssertGuard/pred_id -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2  2
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert  3
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/data_0 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert  4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/data_1 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert  4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch_1 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert  6
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/data_3 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert  4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert  3
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert -> metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency_1  5
+metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency_1 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Merge  4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Merge  5
+metrics/auc/Cast_1/x -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch_2  0
+metrics/auc/assert_less_equal/LessEqual -> metrics/auc/assert_less_equal/All  6
+metrics/auc/assert_less_equal/Const -> metrics/auc/assert_less_equal/All  0
+metrics/auc/assert_less_equal/All -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch  2
+metrics/auc/assert_less_equal/Assert/AssertGuard/Switch -> metrics/auc/assert_less_equal/Assert/AssertGuard/switch_f  2
+metrics/auc/assert_less_equal/Assert/AssertGuard/switch_t -> metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency  3
+metrics/auc/assert_less_equal/Assert/AssertGuard/NoOp -> metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency  4
+metrics/auc/assert_less_equal/Assert/AssertGuard/switch_f -> metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency_1  3
+metrics/auc/assert_less_equal/Assert/AssertGuard/pred_id -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch_2  2
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert  3
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/data_0 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert  4
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/data_1 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert  4
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch_1 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert  6
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/data_3 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert  4
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch_2 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert  3
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert -> metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency_1  5
+metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency_1 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Merge  4
+metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency -> metrics/auc/assert_less_equal/Assert/AssertGuard/Merge  5
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Merge -> metrics/auc/Cast_2  5
+metrics/auc/assert_less_equal/Assert/AssertGuard/Merge -> metrics/auc/Cast_2  5
+metrics/auc/Reshape/shape -> metrics/auc/Reshape  0
+metrics/auc/Cast_2 -> metrics/auc/Reshape_1  5
+metrics/auc/Reshape_1/shape -> metrics/auc/Reshape_1  0
+metrics/auc/Reshape -> metrics/auc/transpose  6
+metrics/auc/Shape -> metrics/auc/strided_slice  2
+metrics/auc/strided_slice/stack -> metrics/auc/strided_slice  0
+metrics/auc/strided_slice/stack_1 -> metrics/auc/strided_slice  0
+metrics/auc/strided_slice/stack_2 -> metrics/auc/strided_slice  0
+metrics/auc/Const -> metrics/auc/ExpandDims  0
+metrics/auc/ExpandDims/dim -> metrics/auc/ExpandDims  0
+metrics/auc/stack/0 -> metrics/auc/stack  0
+metrics/auc/strided_slice -> metrics/auc/stack  3
+metrics/auc/ExpandDims -> metrics/auc/Tile  1
+metrics/auc/stack -> metrics/auc/Tile  2
+metrics/auc/transpose/Rank -> metrics/auc/transpose/Range  2
+metrics/auc/transpose/sub/y -> metrics/auc/transpose/sub  0
+metrics/auc/transpose/Range/start -> metrics/auc/transpose/Range  0
+metrics/auc/transpose/Range/delta -> metrics/auc/transpose/Range  0
+metrics/auc/transpose/sub -> metrics/auc/transpose/sub_1  3
+metrics/auc/transpose/Range -> metrics/auc/transpose/sub_1  3
+metrics/auc/transpose/sub_1 -> metrics/auc/transpose  2
+metrics/auc/transpose -> metrics/auc/Tile_1  3
+metrics/auc/Tile_1/multiples -> metrics/auc/Tile_1  0
+metrics/auc/Tile_1 -> metrics/auc/Greater  3
+metrics/auc/Tile -> metrics/auc/Greater  2
+metrics/auc/Greater -> metrics/auc/LogicalAnd_3  3
+metrics/auc/Reshape_1 -> metrics/auc/Tile_2  5
+metrics/auc/Tile_2/multiples -> metrics/auc/Tile_2  0
+metrics/auc/Tile_2 -> metrics/auc/LogicalAnd_1  2
+metrics/auc/broadcast_weights -> metrics/auc/broadcast_weights_1  3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_scalar/x -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_scalar  0
+metrics/auc/broadcast_weights_1/assert_broadcastable/weights/rank -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1  0
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_scalar -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3  1
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/switch_f  2
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/pred_id -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch  2
+metrics/auc/broadcast_weights_1/assert_broadcastable/values/rank -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch  0
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank  3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank  3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1  2
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_f  3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_t -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x  4
+metrics/auc/broadcast_weights_1/assert_broadcastable/values/shape -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1  7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/pred_id -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1  3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims  4
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/dim -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Shape -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Const -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat/axis -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/weights/shape -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1  2
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1  3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1  4
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/dim -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation  7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims  7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims  7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge  4
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge  8
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge  7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge  3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f  4
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_t -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/NoOp -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/pred_id -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3  4
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_0 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_2 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_4 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_5 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  7
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_7 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1  7
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge  6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge  7
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge -> metrics/auc/broadcast_weights_1/ones_like/Const  7
+metrics/auc/broadcast_weights_1/ones_like/Shape -> metrics/auc/broadcast_weights_1/ones_like  6
+metrics/auc/broadcast_weights_1/ones_like/Const -> metrics/auc/broadcast_weights_1/ones_like  6
+metrics/auc/broadcast_weights_1/ones_like -> metrics/auc/broadcast_weights_1  7
+metrics/auc/broadcast_weights_1 -> metrics/auc/Reshape_2  8
+metrics/auc/Reshape_2/shape -> metrics/auc/Reshape_2  0
+metrics/auc/Reshape_2 -> metrics/auc/Tile_3  3
+metrics/auc/Tile_3/multiples -> metrics/auc/Tile_3  0
+metrics/auc/true_positives -> report_uninitialized_variables/IsVariableInitialized_24  0
+metrics/auc/true_positives/Initializer/zeros -> metrics/auc/true_positives/Assign  0
+metrics/auc/LogicalAnd -> metrics/auc/ToFloat  3
+metrics/auc/ToFloat -> metrics/auc/mul  3
+metrics/auc/Tile_3 -> metrics/auc/mul_3  2
+metrics/auc/mul -> metrics/auc/Sum  4
+metrics/auc/Sum/reduction_indices -> metrics/auc/Sum  0
+metrics/auc/Sum -> metrics/auc/AssignAdd  3
+metrics/auc/false_negatives -> report_uninitialized_variables/IsVariableInitialized_25  0
+metrics/auc/false_negatives/Initializer/zeros -> metrics/auc/false_negatives/Assign  0
+metrics/auc/LogicalNot -> metrics/auc/LogicalAnd_2  3
+metrics/auc/LogicalAnd_1 -> metrics/auc/ToFloat_1  4
+metrics/auc/ToFloat_1 -> metrics/auc/mul_1  3
+metrics/auc/mul_1 -> metrics/auc/Sum_1  4
+metrics/auc/Sum_1/reduction_indices -> metrics/auc/Sum_1  0
+metrics/auc/Sum_1 -> metrics/auc/AssignAdd_1  3
+metrics/auc/true_negatives -> report_uninitialized_variables/IsVariableInitialized_26  0
+metrics/auc/true_negatives/Initializer/zeros -> metrics/auc/true_negatives/Assign  0
+metrics/auc/LogicalNot_1 -> metrics/auc/LogicalAnd_3  2
+metrics/auc/LogicalAnd_2 -> metrics/auc/ToFloat_2  4
+metrics/auc/ToFloat_2 -> metrics/auc/mul_2  4
+metrics/auc/mul_2 -> metrics/auc/Sum_2  5
+metrics/auc/Sum_2/reduction_indices -> metrics/auc/Sum_2  0
+metrics/auc/Sum_2 -> metrics/auc/AssignAdd_2  3
+metrics/auc/false_positives -> report_uninitialized_variables/IsVariableInitialized_27  0
+metrics/auc/false_positives/Initializer/zeros -> metrics/auc/false_positives/Assign  0
+metrics/auc/LogicalAnd_3 -> metrics/auc/ToFloat_3  3
+metrics/auc/ToFloat_3 -> metrics/auc/mul_3  4
+metrics/auc/mul_3 -> metrics/auc/Sum_3  5
+metrics/auc/Sum_3/reduction_indices -> metrics/auc/Sum_3  0
+metrics/auc/Sum_3 -> metrics/auc/AssignAdd_3  3
+metrics/auc/true_positives/read -> metrics/auc/add_1  1
+metrics/auc/add/y -> metrics/auc/add  0
+metrics/auc/false_negatives/read -> metrics/auc/add_1  1
+metrics/auc/add_1 -> metrics/auc/add_2  2
+metrics/auc/add_2/y -> metrics/auc/add_2  0
+metrics/auc/add -> metrics/auc/div  2
+metrics/auc/add_2 -> metrics/auc/div  3
+metrics/auc/false_positives/read -> metrics/auc/div_1  1
+metrics/auc/true_negatives/read -> metrics/auc/add_3  1
+metrics/auc/add_3 -> metrics/auc/add_4  2
+metrics/auc/add_4/y -> metrics/auc/add_4  0
+metrics/auc/add_4 -> metrics/auc/div_1  3
+metrics/auc/div_1 -> metrics/auc/strided_slice_2  2
+metrics/auc/strided_slice_1/stack -> metrics/auc/strided_slice_1  0
+metrics/auc/strided_slice_1/stack_1 -> metrics/auc/strided_slice_1  0
+metrics/auc/strided_slice_1/stack_2 -> metrics/auc/strided_slice_1  0
+metrics/auc/strided_slice_2/stack -> metrics/auc/strided_slice_2  0
+metrics/auc/strided_slice_2/stack_1 -> metrics/auc/strided_slice_2  0
+metrics/auc/strided_slice_2/stack_2 -> metrics/auc/strided_slice_2  0
+metrics/auc/strided_slice_1 -> metrics/auc/sub  3
+metrics/auc/strided_slice_2 -> metrics/auc/sub  3
+metrics/auc/div -> metrics/auc/strided_slice_4  2
+metrics/auc/strided_slice_3/stack -> metrics/auc/strided_slice_3  0
+metrics/auc/strided_slice_3/stack_1 -> metrics/auc/strided_slice_3  0
+metrics/auc/strided_slice_3/stack_2 -> metrics/auc/strided_slice_3  0
+metrics/auc/strided_slice_4/stack -> metrics/auc/strided_slice_4  0
+metrics/auc/strided_slice_4/stack_1 -> metrics/auc/strided_slice_4  0
+metrics/auc/strided_slice_4/stack_2 -> metrics/auc/strided_slice_4  0
+metrics/auc/strided_slice_3 -> metrics/auc/add_5  3
+metrics/auc/strided_slice_4 -> metrics/auc/add_5  3
+metrics/auc/add_5 -> metrics/auc/truediv  2
+metrics/auc/truediv/y -> metrics/auc/truediv  0
+metrics/auc/sub -> metrics/auc/Mul_4  2
+metrics/auc/truediv -> metrics/auc/Mul_4  3
+metrics/auc/Mul_4 -> metrics/auc/value  3
+metrics/auc/Const_1 -> metrics/auc/value  0
+metrics/auc/AssignAdd -> metrics/auc/add_7  2
+metrics/auc/add_6/y -> metrics/auc/add_6  0
+metrics/auc/AssignAdd_1 -> metrics/auc/add_7  2
+metrics/auc/add_7 -> metrics/auc/add_8  2
+metrics/auc/add_8/y -> metrics/auc/add_8  0
+metrics/auc/add_6 -> metrics/auc/div_2  2
+metrics/auc/add_8 -> metrics/auc/div_2  3
+metrics/auc/AssignAdd_3 -> metrics/auc/div_3  2
+metrics/auc/AssignAdd_2 -> metrics/auc/add_9  2
+metrics/auc/add_9 -> metrics/auc/add_10  2
+metrics/auc/add_10/y -> metrics/auc/add_10  0
+metrics/auc/add_10 -> metrics/auc/div_3  3
+metrics/auc/div_3 -> metrics/auc/strided_slice_6  2
+metrics/auc/strided_slice_5/stack -> metrics/auc/strided_slice_5  0
+metrics/auc/strided_slice_5/stack_1 -> metrics/auc/strided_slice_5  0
+metrics/auc/strided_slice_5/stack_2 -> metrics/auc/strided_slice_5  0
+metrics/auc/strided_slice_6/stack -> metrics/auc/strided_slice_6  0
+metrics/auc/strided_slice_6/stack_1 -> metrics/auc/strided_slice_6  0
+metrics/auc/strided_slice_6/stack_2 -> metrics/auc/strided_slice_6  0
+metrics/auc/strided_slice_5 -> metrics/auc/sub_1  3
+metrics/auc/strided_slice_6 -> metrics/auc/sub_1  3
+metrics/auc/div_2 -> metrics/auc/strided_slice_8  2
+metrics/auc/strided_slice_7/stack -> metrics/auc/strided_slice_7  0
+metrics/auc/strided_slice_7/stack_1 -> metrics/auc/strided_slice_7  0
+metrics/auc/strided_slice_7/stack_2 -> metrics/auc/strided_slice_7  0
+metrics/auc/strided_slice_8/stack -> metrics/auc/strided_slice_8  0
+metrics/auc/strided_slice_8/stack_1 -> metrics/auc/strided_slice_8  0
+metrics/auc/strided_slice_8/stack_2 -> metrics/auc/strided_slice_8  0
+metrics/auc/strided_slice_7 -> metrics/auc/add_11  3
+metrics/auc/strided_slice_8 -> metrics/auc/add_11  3
+metrics/auc/add_11 -> metrics/auc/truediv_1  2
+metrics/auc/truediv_1/y -> metrics/auc/truediv_1  0
+metrics/auc/sub_1 -> metrics/auc/Mul_5  2
+metrics/auc/truediv_1 -> metrics/auc/Mul_5  3
+metrics/auc/Mul_5 -> metrics/auc/update_op  3
+metrics/auc/Const_2 -> metrics/auc/update_op  0
+metrics/auc_precision_recall/broadcast_weights/assert_broadcastable/static_scalar_check_success -> metrics/auc_precision_recall/broadcast_weights/ones_like/Const  0
+metrics/auc_precision_recall/broadcast_weights/ones_like/Shape -> metrics/auc_precision_recall/broadcast_weights/ones_like  6
+metrics/auc_precision_recall/broadcast_weights/ones_like/Const -> metrics/auc_precision_recall/broadcast_weights/ones_like  1
+metrics/auc_precision_recall/broadcast_weights/weights -> metrics/auc_precision_recall/broadcast_weights  0
+metrics/auc_precision_recall/broadcast_weights/ones_like -> metrics/auc_precision_recall/broadcast_weights  2
+metrics/auc_precision_recall/Cast/x -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2  0
+metrics/auc_precision_recall/assert_greater_equal/GreaterEqual -> metrics/auc_precision_recall/assert_greater_equal/All  6
+metrics/auc_precision_recall/assert_greater_equal/Const -> metrics/auc_precision_recall/assert_greater_equal/All  0
+metrics/auc_precision_recall/assert_greater_equal/All -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch  2
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Switch -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/switch_f  2
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/switch_t -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency  3
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/NoOp -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency  4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/switch_f -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency_1  3
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/pred_id -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2  2
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert  3
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/data_0 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert  4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/data_1 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert  4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch_1 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert  6
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/data_3 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert  4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert  3
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency_1  5
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency_1 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Merge  4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Merge  5
+metrics/auc_precision_recall/Cast_1/x -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch_2  0
+metrics/auc_precision_recall/assert_less_equal/LessEqual -> metrics/auc_precision_recall/assert_less_equal/All  6
+metrics/auc_precision_recall/assert_less_equal/Const -> metrics/auc_precision_recall/assert_less_equal/All  0
+metrics/auc_precision_recall/assert_less_equal/All -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch  2
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Switch -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/switch_f  2
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/switch_t -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency  3
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/NoOp -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency  4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/switch_f -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency_1  3
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/pred_id -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch_2  2
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert  3
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/data_0 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert  4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/data_1 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert  4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch_1 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert  6
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/data_3 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert  4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch_2 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert  3
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency_1  5
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency_1 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Merge  4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Merge  5
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Merge -> metrics/auc_precision_recall/Cast_2  5
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Merge -> metrics/auc_precision_recall/Cast_2  5
+metrics/auc_precision_recall/Reshape/shape -> metrics/auc_precision_recall/Reshape  0
+metrics/auc_precision_recall/Cast_2 -> metrics/auc_precision_recall/Reshape_1  5
+metrics/auc_precision_recall/Reshape_1/shape -> metrics/auc_precision_recall/Reshape_1  0
+metrics/auc_precision_recall/Reshape -> metrics/auc_precision_recall/transpose  6
+metrics/auc_precision_recall/Shape -> metrics/auc_precision_recall/strided_slice  2
+metrics/auc_precision_recall/strided_slice/stack -> metrics/auc_precision_recall/strided_slice  0
+metrics/auc_precision_recall/strided_slice/stack_1 -> metrics/auc_precision_recall/strided_slice  0
+metrics/auc_precision_recall/strided_slice/stack_2 -> metrics/auc_precision_recall/strided_slice  0
+metrics/auc_precision_recall/Const -> metrics/auc_precision_recall/ExpandDims  0
+metrics/auc_precision_recall/ExpandDims/dim -> metrics/auc_precision_recall/ExpandDims  0
+metrics/auc_precision_recall/stack/0 -> metrics/auc_precision_recall/stack  0
+metrics/auc_precision_recall/strided_slice -> metrics/auc_precision_recall/stack  3
+metrics/auc_precision_recall/ExpandDims -> metrics/auc_precision_recall/Tile  1
+metrics/auc_precision_recall/stack -> metrics/auc_precision_recall/Tile  2
+metrics/auc_precision_recall/transpose/Rank -> metrics/auc_precision_recall/transpose/Range  2
+metrics/auc_precision_recall/transpose/sub/y -> metrics/auc_precision_recall/transpose/sub  0
+metrics/auc_precision_recall/transpose/Range/start -> metrics/auc_precision_recall/transpose/Range  0
+metrics/auc_precision_recall/transpose/Range/delta -> metrics/auc_precision_recall/transpose/Range  0
+metrics/auc_precision_recall/transpose/sub -> metrics/auc_precision_recall/transpose/sub_1  3
+metrics/auc_precision_recall/transpose/Range -> metrics/auc_precision_recall/transpose/sub_1  3
+metrics/auc_precision_recall/transpose/sub_1 -> metrics/auc_precision_recall/transpose  2
+metrics/auc_precision_recall/transpose -> metrics/auc_precision_recall/Tile_1  3
+metrics/auc_precision_recall/Tile_1/multiples -> metrics/auc_precision_recall/Tile_1  0
+metrics/auc_precision_recall/Tile_1 -> metrics/auc_precision_recall/Greater  3
+metrics/auc_precision_recall/Tile -> metrics/auc_precision_recall/Greater  2
+metrics/auc_precision_recall/Greater -> metrics/auc_precision_recall/LogicalAnd_3  3
+metrics/auc_precision_recall/Reshape_1 -> metrics/auc_precision_recall/Tile_2  5
+metrics/auc_precision_recall/Tile_2/multiples -> metrics/auc_precision_recall/Tile_2  0
+metrics/auc_precision_recall/Tile_2 -> metrics/auc_precision_recall/LogicalAnd_1  2
+metrics/auc_precision_recall/broadcast_weights -> metrics/auc_precision_recall/broadcast_weights_1  3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_scalar/x -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_scalar  0
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/weights/rank -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1  0
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_scalar -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3  1
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/switch_f  2
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/pred_id -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch  2
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/values/rank -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch  0
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank  3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank  3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1  2
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_f  3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_t -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x  4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/values/shape -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1  7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/pred_id -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1  3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims  4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/dim -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Shape -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Const -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat/axis -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/weights/shape -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1  2
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1  3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1  4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/dim -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation  7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims  7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims  7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge  4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge  8
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge  7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge  3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f  4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_t -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/NoOp -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/pred_id -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3  4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_0 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_2 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_4 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_5 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_7 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert  5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1  7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge  6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge  7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge -> metrics/auc_precision_recall/broadcast_weights_1/ones_like/Const  7
+metrics/auc_precision_recall/broadcast_weights_1/ones_like/Shape -> metrics/auc_precision_recall/broadcast_weights_1/ones_like  6
+metrics/auc_precision_recall/broadcast_weights_1/ones_like/Const -> metrics/auc_precision_recall/broadcast_weights_1/ones_like  6
+metrics/auc_precision_recall/broadcast_weights_1/ones_like -> metrics/auc_precision_recall/broadcast_weights_1  7
+metrics/auc_precision_recall/broadcast_weights_1 -> metrics/auc_precision_recall/Reshape_2  8
+metrics/auc_precision_recall/Reshape_2/shape -> metrics/auc_precision_recall/Reshape_2  0
+metrics/auc_precision_recall/Reshape_2 -> metrics/auc_precision_recall/Tile_3  3
+metrics/auc_precision_recall/Tile_3/multiples -> metrics/auc_precision_recall/Tile_3  0
+metrics/auc_precision_recall/true_positives -> report_uninitialized_variables/IsVariableInitialized_28  0
+metrics/auc_precision_recall/true_positives/Initializer/zeros -> metrics/auc_precision_recall/true_positives/Assign  0
+metrics/auc_precision_recall/LogicalAnd -> metrics/auc_precision_recall/ToFloat  3
+metrics/auc_precision_recall/ToFloat -> metrics/auc_precision_recall/mul  3
+metrics/auc_precision_recall/Tile_3 -> metrics/auc_precision_recall/mul_3  2
+metrics/auc_precision_recall/mul -> metrics/auc_precision_recall/Sum  4
+metrics/auc_precision_recall/Sum/reduction_indices -> metrics/auc_precision_recall/Sum  0
+metrics/auc_precision_recall/Sum -> metrics/auc_precision_recall/AssignAdd  3
+metrics/auc_precision_recall/false_negatives -> report_uninitialized_variables/IsVariableInitialized_29  0
+metrics/auc_precision_recall/false_negatives/Initializer/zeros -> metrics/auc_precision_recall/false_negatives/Assign  0
+metrics/auc_precision_recall/LogicalNot -> metrics/auc_precision_recall/LogicalAnd_2  3
+metrics/auc_precision_recall/LogicalAnd_1 -> metrics/auc_precision_recall/ToFloat_1  4
+metrics/auc_precision_recall/ToFloat_1 -> metrics/auc_precision_recall/mul_1  3
+metrics/auc_precision_recall/mul_1 -> metrics/auc_precision_recall/Sum_1  4
+metrics/auc_precision_recall/Sum_1/reduction_indices -> metrics/auc_precision_recall/Sum_1  0
+metrics/auc_precision_recall/Sum_1 -> metrics/auc_precision_recall/AssignAdd_1  3
+metrics/auc_precision_recall/true_negatives -> report_uninitialized_variables/IsVariableInitialized_30  0
+metrics/auc_precision_recall/true_negatives/Initializer/zeros -> metrics/auc_precision_recall/true_negatives/Assign  0
+metrics/auc_precision_recall/LogicalNot_1 -> metrics/auc_precision_recall/LogicalAnd_3  2
+metrics/auc_precision_recall/LogicalAnd_2 -> metrics/auc_precision_recall/ToFloat_2  4
+metrics/auc_precision_recall/ToFloat_2 -> metrics/auc_precision_recall/mul_2  4
+metrics/auc_precision_recall/mul_2 -> metrics/auc_precision_recall/Sum_2  5
+metrics/auc_precision_recall/Sum_2/reduction_indices -> metrics/auc_precision_recall/Sum_2  0
+metrics/auc_precision_recall/Sum_2 -> metrics/auc_precision_recall/AssignAdd_2  3
+metrics/auc_precision_recall/false_positives -> report_uninitialized_variables/IsVariableInitialized_31  0
+metrics/auc_precision_recall/false_positives/Initializer/zeros -> metrics/auc_precision_recall/false_positives/Assign  0
+metrics/auc_precision_recall/LogicalAnd_3 -> metrics/auc_precision_recall/ToFloat_3  3
+metrics/auc_precision_recall/ToFloat_3 -> metrics/auc_precision_recall/mul_3  4
+metrics/auc_precision_recall/mul_3 -> metrics/auc_precision_recall/Sum_3  5
+metrics/auc_precision_recall/Sum_3/reduction_indices -> metrics/auc_precision_recall/Sum_3  0
+metrics/auc_precision_recall/Sum_3 -> metrics/auc_precision_recall/AssignAdd_3  3
+metrics/auc_precision_recall/true_positives/read -> metrics/auc_precision_recall/add_4  1
+metrics/auc_precision_recall/add/y -> metrics/auc_precision_recall/add  0
+metrics/auc_precision_recall/false_negatives/read -> metrics/auc_precision_recall/add_1  1
+metrics/auc_precision_recall/add_1 -> metrics/auc_precision_recall/add_2  2
+metrics/auc_precision_recall/add_2/y -> metrics/auc_precision_recall/add_2  0
+metrics/auc_precision_recall/add -> metrics/auc_precision_recall/div  2
+metrics/auc_precision_recall/add_2 -> metrics/auc_precision_recall/div  3
+metrics/auc_precision_recall/add_3/y -> metrics/auc_precision_recall/add_3  0
+metrics/auc_precision_recall/false_positives/read -> metrics/auc_precision_recall/add_4  1
+metrics/auc_precision_recall/add_4 -> metrics/auc_precision_recall/add_5  2
+metrics/auc_precision_recall/add_5/y -> metrics/auc_precision_recall/add_5  0
+metrics/auc_precision_recall/add_3 -> metrics/auc_precision_recall/div_1  2
+metrics/auc_precision_recall/add_5 -> metrics/auc_precision_recall/div_1  3
+metrics/auc_precision_recall/div -> metrics/auc_precision_recall/strided_slice_2  2
+metrics/auc_precision_recall/strided_slice_1/stack -> metrics/auc_precision_recall/strided_slice_1  0
+metrics/auc_precision_recall/strided_slice_1/stack_1 -> metrics/auc_precision_recall/strided_slice_1  0
+metrics/auc_precision_recall/strided_slice_1/stack_2 -> metrics/auc_precision_recall/strided_slice_1  0
+metrics/auc_precision_recall/strided_slice_2/stack -> metrics/auc_precision_recall/strided_slice_2  0
+metrics/auc_precision_recall/strided_slice_2/stack_1 -> metrics/auc_precision_recall/strided_slice_2  0
+metrics/auc_precision_recall/strided_slice_2/stack_2 -> metrics/auc_precision_recall/strided_slice_2  0
+metrics/auc_precision_recall/strided_slice_1 -> metrics/auc_precision_recall/sub  3
+metrics/auc_precision_recall/strided_slice_2 -> metrics/auc_precision_recall/sub  3
+metrics/auc_precision_recall/div_1 -> metrics/auc_precision_recall/strided_slice_4  2
+metrics/auc_precision_recall/strided_slice_3/stack -> metrics/auc_precision_recall/strided_slice_3  0
+metrics/auc_precision_recall/strided_slice_3/stack_1 -> metrics/auc_precision_recall/strided_slice_3  0
+metrics/auc_precision_recall/strided_slice_3/stack_2 -> metrics/auc_precision_recall/strided_slice_3  0
+metrics/auc_precision_recall/strided_slice_4/stack -> metrics/auc_precision_recall/strided_slice_4  0
+metrics/auc_precision_recall/strided_slice_4/stack_1 -> metrics/auc_precision_recall/strided_slice_4  0
+metrics/auc_precision_recall/strided_slice_4/stack_2 -> metrics/auc_precision_recall/strided_slice_4  0
+metrics/auc_precision_recall/strided_slice_3 -> metrics/auc_precision_recall/add_6  3
+metrics/auc_precision_recall/strided_slice_4 -> metrics/auc_precision_recall/add_6  3
+metrics/auc_precision_recall/add_6 -> metrics/auc_precision_recall/truediv  2
+metrics/auc_precision_recall/truediv/y -> metrics/auc_precision_recall/truediv  0
+metrics/auc_precision_recall/sub -> metrics/auc_precision_recall/Mul_4  2
+metrics/auc_precision_recall/truediv -> metrics/auc_precision_recall/Mul_4  3
+metrics/auc_precision_recall/Mul_4 -> metrics/auc_precision_recall/value  3
+metrics/auc_precision_recall/Const_1 -> metrics/auc_precision_recall/value  0
+metrics/auc_precision_recall/AssignAdd -> metrics/auc_precision_recall/add_11  2
+metrics/auc_precision_recall/add_7/y -> metrics/auc_precision_recall/add_7  0
+metrics/auc_precision_recall/AssignAdd_1 -> metrics/auc_precision_recall/add_8  2
+metrics/auc_precision_recall/add_8 -> metrics/auc_precision_recall/add_9  2
+metrics/auc_precision_recall/add_9/y -> metrics/auc_precision_recall/add_9  0
+metrics/auc_precision_recall/add_7 -> metrics/auc_precision_recall/div_2  2
+metrics/auc_precision_recall/add_9 -> metrics/auc_precision_recall/div_2  3
+metrics/auc_precision_recall/add_10/y -> metrics/auc_precision_recall/add_10  0
+metrics/auc_precision_recall/AssignAdd_3 -> metrics/auc_precision_recall/add_11  2
+metrics/auc_precision_recall/add_11 -> metrics/auc_precision_recall/add_12  2
+metrics/auc_precision_recall/add_12/y -> metrics/auc_precision_recall/add_12  0
+metrics/auc_precision_recall/add_10 -> metrics/auc_precision_recall/div_3  2
+metrics/auc_precision_recall/add_12 -> metrics/auc_precision_recall/div_3  3
+metrics/auc_precision_recall/div_2 -> metrics/auc_precision_recall/strided_slice_6  2
+metrics/auc_precision_recall/strided_slice_5/stack -> metrics/auc_precision_recall/strided_slice_5  0
+metrics/auc_precision_recall/strided_slice_5/stack_1 -> metrics/auc_precision_recall/strided_slice_5  0
+metrics/auc_precision_recall/strided_slice_5/stack_2 -> metrics/auc_precision_recall/strided_slice_5  0
+metrics/auc_precision_recall/strided_slice_6/stack -> metrics/auc_precision_recall/strided_slice_6  0
+metrics/auc_precision_recall/strided_slice_6/stack_1 -> metrics/auc_precision_recall/strided_slice_6  0
+metrics/auc_precision_recall/strided_slice_6/stack_2 -> metrics/auc_precision_recall/strided_slice_6  0
+metrics/auc_precision_recall/strided_slice_5 -> metrics/auc_precision_recall/sub_1  3
+metrics/auc_precision_recall/strided_slice_6 -> metrics/auc_precision_recall/sub_1  3
+metrics/auc_precision_recall/div_3 -> metrics/auc_precision_recall/strided_slice_8  2
+metrics/auc_precision_recall/strided_slice_7/stack -> metrics/auc_precision_recall/strided_slice_7  0
+metrics/auc_precision_recall/strided_slice_7/stack_1 -> metrics/auc_precision_recall/strided_slice_7  0
+metrics/auc_precision_recall/strided_slice_7/stack_2 -> metrics/auc_precision_recall/strided_slice_7  0
+metrics/auc_precision_recall/strided_slice_8/stack -> metrics/auc_precision_recall/strided_slice_8  0
+metrics/auc_precision_recall/strided_slice_8/stack_1 -> metrics/auc_precision_recall/strided_slice_8  0
+metrics/auc_precision_recall/strided_slice_8/stack_2 -> metrics/auc_precision_recall/strided_slice_8  0
+metrics/auc_precision_recall/strided_slice_7 -> metrics/auc_precision_recall/add_13  3
+metrics/auc_precision_recall/strided_slice_8 -> metrics/auc_precision_recall/add_13  3
+metrics/auc_precision_recall/add_13 -> metrics/auc_precision_recall/truediv_1  2
+metrics/auc_precision_recall/truediv_1/y -> metrics/auc_precision_recall/truediv_1  0
+metrics/auc_precision_recall/sub_1 -> metrics/auc_precision_recall/Mul_5  2
+metrics/auc_precision_recall/truediv_1 -> metrics/auc_precision_recall/Mul_5  3
+metrics/auc_precision_recall/Mul_5 -> metrics/auc_precision_recall/update_op  3
+metrics/auc_precision_recall/Const_2 -> metrics/auc_precision_recall/update_op  0
+mean/total -> report_uninitialized_variables/IsVariableInitialized_32  0
+mean/total/Initializer/zeros -> mean/total/Assign  0
+mean/count -> report_uninitialized_variables/IsVariableInitialized_33  0
+mean/count/Initializer/zeros -> mean/count/Assign  0
+mean/Size -> mean/ToFloat  0
+mean/Const -> mean/Sum  0
+mean/Sum -> mean/AssignAdd  3
+mean/ToFloat -> mean/AssignAdd_1  1
+mean/total/read -> mean/truediv  1
+mean/count/read -> mean/Greater  1
+mean/zeros_like -> mean/value  0
+mean/Greater -> mean/value  2
+mean/truediv -> mean/value  2
+mean/AssignAdd -> mean/truediv_1  2
+mean/AssignAdd_1 -> mean/Greater_1  3
+mean/zeros_like_1 -> mean/update_op  0
+mean/Greater_1 -> mean/update_op  2
+mean/truediv_1 -> mean/update_op  2
+metrics/accuracy/update_op -> group_deps  3
+metrics/accuracy_baseline/update_op -> group_deps  2
+metrics/auc/update_op -> group_deps  3
+metrics/auc_precision_recall/update_op -> group_deps  3
+metrics/average_loss/update_op -> group_deps  3
+mean/update_op -> group_deps  3
+metrics/precision/update_op -> group_deps  3
+metrics/prediction/mean/update_op -> group_deps  3
+metrics/recall/update_op -> group_deps  3
+eval_step -> report_uninitialized_variables/IsVariableInitialized_34  0
+eval_step/Initializer/zeros -> eval_step/Assign  0
+AssignAdd/value -> AssignAdd  0
+AssignAdd -> read  1
+read -> Identity  2
+report_uninitialized_variables/IsVariableInitialized_23 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_24 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_25 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_26 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_27 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_28 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_29 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_30 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_31 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_32 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_33 -> report_uninitialized_variables/stack  1
+report_uninitialized_variables/IsVariableInitialized_34 -> report_uninitialized_variables/stack  1
+metrics/label/mean/total/Assign -> init_2  1
+metrics/label/mean/count/Assign -> init_2  1
+metrics/average_loss/total/Assign -> init_2  1
+metrics/average_loss/count/Assign -> init_2  1
+metrics/accuracy/total/Assign -> init_2  1
+metrics/accuracy/count/Assign -> init_2  1
+metrics/precision/true_positives/count/Assign -> init_2  1
+metrics/precision/false_positives/count/Assign -> init_2  1
+metrics/recall/true_positives/count/Assign -> init_2  1
+metrics/recall/false_negatives/count/Assign -> init_2  1
+metrics/prediction/mean/total/Assign -> init_2  1
+metrics/prediction/mean/count/Assign -> init_2  1
+metrics/auc/true_positives/Assign -> init_2  1
+metrics/auc/false_negatives/Assign -> init_2  1
+metrics/auc/true_negatives/Assign -> init_2  1
+metrics/auc/false_positives/Assign -> init_2  1
+metrics/auc_precision_recall/true_positives/Assign -> init_2  1
+metrics/auc_precision_recall/false_negatives/Assign -> init_2  1
+metrics/auc_precision_recall/true_negatives/Assign -> init_2  1
+metrics/auc_precision_recall/false_positives/Assign -> init_2  1
+mean/total/Assign -> init_2  1
+mean/count/Assign -> init_2  1
+eval_step/Assign -> init_2  1
+bad edges that are not in the first layer are:623 edges. They are: 
+metrics/label/mean/broadcast_weights/ones_like/Shape -> metrics/label/mean/broadcast_weights/ones_like
+in layer: 4
+metrics/label/mean/broadcast_weights/ones_like/Const -> metrics/label/mean/broadcast_weights/ones_like
+in layer: 1
+metrics/label/mean/broadcast_weights/ones_like -> metrics/label/mean/broadcast_weights
+in layer: 2
+metrics/label/mean/broadcast_weights -> metrics/label/mean/broadcast_weights_1
+in layer: 3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_scalar -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3
+in layer: 1
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/switch_f
+in layer: 2
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/pred_id -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch
+in layer: 2
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank
+in layer: 3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank
+in layer: 3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1
+in layer: 2
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_f
+in layer: 3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_t -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x
+in layer: 4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/values/shape -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2
+in layer: 4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/pred_id -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1
+in layer: 3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims
+in layer: 4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/dim -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Shape -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Const -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat/axis -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/weights/shape -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1
+in layer: 2
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1
+in layer: 3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1
+in layer: 4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/dim -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation
+in layer: 7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims
+in layer: 7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims
+in layer: 7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge
+in layer: 4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge
+in layer: 8
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge
+in layer: 7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge
+in layer: 3
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f
+in layer: 4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_t -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/NoOp -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/pred_id -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3
+in layer: 4
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_0 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_2 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_4 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_5 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_7 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1
+in layer: 7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1 -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge
+in layer: 6
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency -> metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge
+in layer: 7
+metrics/label/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge -> metrics/label/mean/broadcast_weights_1/ones_like/Const
+in layer: 7
+metrics/label/mean/broadcast_weights_1/ones_like/Shape -> metrics/label/mean/broadcast_weights_1/ones_like
+in layer: 6
+metrics/label/mean/broadcast_weights_1/ones_like/Const -> metrics/label/mean/broadcast_weights_1/ones_like
+in layer: 6
+metrics/label/mean/broadcast_weights_1/ones_like -> metrics/label/mean/broadcast_weights_1
+in layer: 7
+metrics/label/mean/broadcast_weights_1 -> metrics/label/mean/Sum
+in layer: 6
+metrics/label/mean/Mul -> metrics/label/mean/AssignAdd_1
+in layer: 4
+metrics/label/mean/Sum_1 -> metrics/label/mean/AssignAdd
+in layer: 4
+metrics/label/mean/Sum -> metrics/label/mean/AssignAdd_1
+in layer: 3
+metrics/label/mean/total/read -> metrics/label/mean/truediv
+in layer: 1
+metrics/label/mean/count/read -> metrics/label/mean/Greater
+in layer: 1
+metrics/label/mean/Greater -> metrics/label/mean/value
+in layer: 2
+metrics/label/mean/truediv -> metrics/label/mean/value
+in layer: 2
+metrics/label/mean/AssignAdd -> metrics/label/mean/truediv_1
+in layer: 2
+metrics/label/mean/AssignAdd_1 -> metrics/label/mean/Greater_1
+in layer: 4
+metrics/label/mean/Greater_1 -> metrics/label/mean/update_op
+in layer: 2
+metrics/label/mean/truediv_1 -> metrics/label/mean/update_op
+in layer: 2
+metrics/average_loss/broadcast_weights/ones_like/Shape -> metrics/average_loss/broadcast_weights/ones_like
+in layer: 7
+metrics/average_loss/broadcast_weights/ones_like/Const -> metrics/average_loss/broadcast_weights/ones_like
+in layer: 1
+metrics/average_loss/broadcast_weights/ones_like -> metrics/average_loss/broadcast_weights
+in layer: 2
+metrics/average_loss/broadcast_weights -> metrics/average_loss/Sum
+in layer: 3
+metrics/average_loss/Mul -> metrics/average_loss/AssignAdd_1
+in layer: 7
+metrics/average_loss/Sum_1 -> metrics/average_loss/AssignAdd
+in layer: 3
+metrics/average_loss/Sum -> metrics/average_loss/AssignAdd_1
+in layer: 2
+metrics/average_loss/total/read -> metrics/average_loss/truediv
+in layer: 1
+metrics/average_loss/count/read -> metrics/average_loss/Greater
+in layer: 1
+metrics/average_loss/Greater -> metrics/average_loss/value
+in layer: 2
+metrics/average_loss/truediv -> metrics/average_loss/value
+in layer: 2
+metrics/average_loss/AssignAdd -> metrics/average_loss/truediv_1
+in layer: 2
+metrics/average_loss/AssignAdd_1 -> metrics/average_loss/Greater_1
+in layer: 3
+metrics/average_loss/Greater_1 -> metrics/average_loss/update_op
+in layer: 2
+metrics/average_loss/truediv_1 -> metrics/average_loss/update_op
+in layer: 2
+metrics/Cast -> metrics/Equal
+in layer: 2
+metrics/Equal -> metrics/ToFloat
+in layer: 4
+metrics/ToFloat -> metrics/accuracy/Mul
+in layer: 4
+metrics/accuracy/broadcast_weights/ones_like/Shape -> metrics/accuracy/broadcast_weights/ones_like
+in layer: 5
+metrics/accuracy/broadcast_weights/ones_like/Const -> metrics/accuracy/broadcast_weights/ones_like
+in layer: 1
+metrics/accuracy/broadcast_weights/ones_like -> metrics/accuracy/broadcast_weights
+in layer: 2
+metrics/accuracy/broadcast_weights -> metrics/accuracy/Sum
+in layer: 3
+metrics/accuracy/Mul -> metrics/accuracy/AssignAdd_1
+in layer: 5
+metrics/accuracy/Sum_1 -> metrics/accuracy/AssignAdd
+in layer: 3
+metrics/accuracy/Sum -> metrics/accuracy/AssignAdd_1
+in layer: 2
+metrics/accuracy/total/read -> metrics/accuracy/truediv
+in layer: 1
+metrics/accuracy/count/read -> metrics/accuracy/Greater
+in layer: 1
+metrics/accuracy/Greater -> metrics/accuracy/value
+in layer: 2
+metrics/accuracy/truediv -> metrics/accuracy/value
+in layer: 2
+metrics/accuracy/AssignAdd -> metrics/accuracy/truediv_1
+in layer: 2
+metrics/accuracy/AssignAdd_1 -> metrics/accuracy/Greater_1
+in layer: 3
+metrics/accuracy/Greater_1 -> metrics/accuracy/update_op
+in layer: 2
+metrics/accuracy/truediv_1 -> metrics/accuracy/update_op
+in layer: 2
+metrics/precision/Cast_1 -> metrics/precision/false_positives/Equal
+in layer: 4
+metrics/precision/Cast -> metrics/precision/false_positives/Equal_1
+in layer: 2
+metrics/precision/true_positives/Equal -> metrics/precision/true_positives/LogicalAnd
+in layer: 5
+metrics/precision/true_positives/Equal_1 -> metrics/precision/true_positives/LogicalAnd
+in layer: 3
+metrics/precision/true_positives/LogicalAnd -> metrics/precision/true_positives/ToFloat
+in layer: 2
+metrics/precision/true_positives/ToFloat -> metrics/precision/true_positives/Mul
+in layer: 3
+metrics/precision/true_positives/count/read -> metrics/precision/true_positives/Identity
+in layer: 1
+metrics/precision/true_positives/Mul -> metrics/precision/true_positives/Sum
+in layer: 4
+metrics/precision/true_positives/Sum -> metrics/precision/true_positives/AssignAdd
+in layer: 2
+metrics/precision/false_positives/Equal -> metrics/precision/false_positives/LogicalAnd
+in layer: 5
+metrics/precision/false_positives/Equal_1 -> metrics/precision/false_positives/LogicalAnd
+in layer: 3
+metrics/precision/false_positives/LogicalAnd -> metrics/precision/false_positives/ToFloat
+in layer: 2
+metrics/precision/false_positives/ToFloat -> metrics/precision/false_positives/Mul
+in layer: 3
+metrics/precision/false_positives/count/read -> metrics/precision/false_positives/Identity
+in layer: 1
+metrics/precision/false_positives/Mul -> metrics/precision/false_positives/Sum
+in layer: 4
+metrics/precision/false_positives/Sum -> metrics/precision/false_positives/AssignAdd
+in layer: 2
+metrics/precision/true_positives/Identity -> metrics/precision/div
+in layer: 2
+metrics/precision/false_positives/Identity -> metrics/precision/add_1
+in layer: 2
+metrics/precision/add -> metrics/precision/Greater
+in layer: 3
+metrics/precision/add_1 -> metrics/precision/div
+in layer: 3
+metrics/precision/Greater -> metrics/precision/value
+in layer: 4
+metrics/precision/div -> metrics/precision/value
+in layer: 4
+metrics/precision/true_positives/AssignAdd -> metrics/precision/div_1
+in layer: 2
+metrics/precision/false_positives/AssignAdd -> metrics/precision/add_3
+in layer: 2
+metrics/precision/add_2 -> metrics/precision/Greater_1
+in layer: 2
+metrics/precision/add_3 -> metrics/precision/div_1
+in layer: 2
+metrics/precision/Greater_1 -> metrics/precision/update_op
+in layer: 3
+metrics/precision/div_1 -> metrics/precision/update_op
+in layer: 3
+metrics/recall/Cast_1 -> metrics/recall/false_negatives/Equal
+in layer: 4
+metrics/recall/Cast -> metrics/recall/false_negatives/Equal_1
+in layer: 2
+metrics/recall/true_positives/Equal -> metrics/recall/true_positives/LogicalAnd
+in layer: 5
+metrics/recall/true_positives/Equal_1 -> metrics/recall/true_positives/LogicalAnd
+in layer: 3
+metrics/recall/true_positives/LogicalAnd -> metrics/recall/true_positives/ToFloat
+in layer: 2
+metrics/recall/true_positives/ToFloat -> metrics/recall/true_positives/Mul
+in layer: 3
+metrics/recall/true_positives/count/read -> metrics/recall/true_positives/Identity
+in layer: 1
+metrics/recall/true_positives/Mul -> metrics/recall/true_positives/Sum
+in layer: 4
+metrics/recall/true_positives/Sum -> metrics/recall/true_positives/AssignAdd
+in layer: 2
+metrics/recall/false_negatives/Equal -> metrics/recall/false_negatives/LogicalAnd
+in layer: 5
+metrics/recall/false_negatives/Equal_1 -> metrics/recall/false_negatives/LogicalAnd
+in layer: 3
+metrics/recall/false_negatives/LogicalAnd -> metrics/recall/false_negatives/ToFloat
+in layer: 2
+metrics/recall/false_negatives/ToFloat -> metrics/recall/false_negatives/Mul
+in layer: 3
+metrics/recall/false_negatives/count/read -> metrics/recall/false_negatives/Identity
+in layer: 1
+metrics/recall/false_negatives/Mul -> metrics/recall/false_negatives/Sum
+in layer: 4
+metrics/recall/false_negatives/Sum -> metrics/recall/false_negatives/AssignAdd
+in layer: 2
+metrics/recall/true_positives/Identity -> metrics/recall/div
+in layer: 2
+metrics/recall/false_negatives/Identity -> metrics/recall/add_1
+in layer: 2
+metrics/recall/add -> metrics/recall/Greater
+in layer: 3
+metrics/recall/add_1 -> metrics/recall/div
+in layer: 3
+metrics/recall/Greater -> metrics/recall/value
+in layer: 4
+metrics/recall/div -> metrics/recall/value
+in layer: 4
+metrics/recall/true_positives/AssignAdd -> metrics/recall/div_1
+in layer: 2
+metrics/recall/false_negatives/AssignAdd -> metrics/recall/add_3
+in layer: 2
+metrics/recall/add_2 -> metrics/recall/Greater_1
+in layer: 2
+metrics/recall/add_3 -> metrics/recall/div_1
+in layer: 2
+metrics/recall/Greater_1 -> metrics/recall/update_op
+in layer: 3
+metrics/recall/div_1 -> metrics/recall/update_op
+in layer: 3
+metrics/prediction/mean/broadcast_weights/ones_like/Shape -> metrics/prediction/mean/broadcast_weights/ones_like
+in layer: 6
+metrics/prediction/mean/broadcast_weights/ones_like/Const -> metrics/prediction/mean/broadcast_weights/ones_like
+in layer: 1
+metrics/prediction/mean/broadcast_weights/ones_like -> metrics/prediction/mean/broadcast_weights
+in layer: 2
+metrics/prediction/mean/broadcast_weights -> metrics/prediction/mean/broadcast_weights_1
+in layer: 3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_scalar -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3
+in layer: 1
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/switch_f
+in layer: 2
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/pred_id -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch
+in layer: 2
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank
+in layer: 3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank
+in layer: 3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1
+in layer: 2
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_f
+in layer: 3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_t -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x
+in layer: 4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/values/shape -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/pred_id -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1
+in layer: 3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims
+in layer: 4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/dim -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Shape -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Const -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat/axis -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/weights/shape -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1
+in layer: 2
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1
+in layer: 3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1
+in layer: 4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/dim -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge
+in layer: 4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge
+in layer: 8
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge
+in layer: 3
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f
+in layer: 4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_t -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/NoOp -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/pred_id -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3
+in layer: 4
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_0 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_2 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_4 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_5 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_7 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1 -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency -> metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge -> metrics/prediction/mean/broadcast_weights_1/ones_like/Const
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1/ones_like/Shape -> metrics/prediction/mean/broadcast_weights_1/ones_like
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/ones_like/Const -> metrics/prediction/mean/broadcast_weights_1/ones_like
+in layer: 6
+metrics/prediction/mean/broadcast_weights_1/ones_like -> metrics/prediction/mean/broadcast_weights_1
+in layer: 7
+metrics/prediction/mean/broadcast_weights_1 -> metrics/prediction/mean/Sum
+in layer: 8
+metrics/prediction/mean/Mul -> metrics/prediction/mean/AssignAdd_1
+in layer: 6
+metrics/prediction/mean/Sum_1 -> metrics/prediction/mean/AssignAdd
+in layer: 4
+metrics/prediction/mean/Sum -> metrics/prediction/mean/AssignAdd_1
+in layer: 3
+metrics/prediction/mean/total/read -> metrics/prediction/mean/truediv
+in layer: 1
+metrics/prediction/mean/count/read -> metrics/prediction/mean/Greater
+in layer: 1
+metrics/prediction/mean/Greater -> metrics/prediction/mean/value
+in layer: 2
+metrics/prediction/mean/truediv -> metrics/prediction/mean/value
+in layer: 2
+metrics/prediction/mean/AssignAdd -> metrics/prediction/mean/truediv_1
+in layer: 2
+metrics/prediction/mean/AssignAdd_1 -> metrics/prediction/mean/Greater_1
+in layer: 4
+metrics/prediction/mean/Greater_1 -> metrics/prediction/mean/update_op
+in layer: 2
+metrics/prediction/mean/truediv_1 -> metrics/prediction/mean/update_op
+in layer: 2
+metrics/label/mean/value -> metrics/accuracy_baseline/value
+in layer: 3
+metrics/accuracy_baseline/sub -> metrics/accuracy_baseline/value
+in layer: 2
+metrics/label/mean/update_op -> group_deps
+in layer: 3
+metrics/accuracy_baseline/sub_1 -> metrics/accuracy_baseline/update_op
+in layer: 2
+metrics/auc/broadcast_weights/ones_like/Shape -> metrics/auc/broadcast_weights/ones_like
+in layer: 6
+metrics/auc/broadcast_weights/ones_like/Const -> metrics/auc/broadcast_weights/ones_like
+in layer: 1
+metrics/auc/broadcast_weights/ones_like -> metrics/auc/broadcast_weights
+in layer: 2
+metrics/auc/assert_greater_equal/GreaterEqual -> metrics/auc/assert_greater_equal/All
+in layer: 6
+metrics/auc/assert_greater_equal/All -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch
+in layer: 2
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Switch -> metrics/auc/assert_greater_equal/Assert/AssertGuard/switch_f
+in layer: 2
+metrics/auc/assert_greater_equal/Assert/AssertGuard/switch_t -> metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency
+in layer: 3
+metrics/auc/assert_greater_equal/Assert/AssertGuard/NoOp -> metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency
+in layer: 4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/switch_f -> metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency_1
+in layer: 3
+metrics/auc/assert_greater_equal/Assert/AssertGuard/pred_id -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2
+in layer: 2
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 3
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/data_0 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/data_1 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch_1 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 6
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/data_3 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 3
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Assert -> metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency_1
+in layer: 5
+metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency_1 -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Merge
+in layer: 4
+metrics/auc/assert_greater_equal/Assert/AssertGuard/control_dependency -> metrics/auc/assert_greater_equal/Assert/AssertGuard/Merge
+in layer: 5
+metrics/auc/assert_less_equal/LessEqual -> metrics/auc/assert_less_equal/All
+in layer: 6
+metrics/auc/assert_less_equal/All -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch
+in layer: 2
+metrics/auc/assert_less_equal/Assert/AssertGuard/Switch -> metrics/auc/assert_less_equal/Assert/AssertGuard/switch_f
+in layer: 2
+metrics/auc/assert_less_equal/Assert/AssertGuard/switch_t -> metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency
+in layer: 3
+metrics/auc/assert_less_equal/Assert/AssertGuard/NoOp -> metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency
+in layer: 4
+metrics/auc/assert_less_equal/Assert/AssertGuard/switch_f -> metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency_1
+in layer: 3
+metrics/auc/assert_less_equal/Assert/AssertGuard/pred_id -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch_2
+in layer: 2
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 3
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/data_0 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/data_1 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch_1 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 6
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/data_3 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert/Switch_2 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 3
+metrics/auc/assert_less_equal/Assert/AssertGuard/Assert -> metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency_1
+in layer: 5
+metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency_1 -> metrics/auc/assert_less_equal/Assert/AssertGuard/Merge
+in layer: 4
+metrics/auc/assert_less_equal/Assert/AssertGuard/control_dependency -> metrics/auc/assert_less_equal/Assert/AssertGuard/Merge
+in layer: 5
+metrics/auc/assert_greater_equal/Assert/AssertGuard/Merge -> metrics/auc/Cast_2
+in layer: 5
+metrics/auc/assert_less_equal/Assert/AssertGuard/Merge -> metrics/auc/Cast_2
+in layer: 5
+metrics/auc/Cast_2 -> metrics/auc/Reshape_1
+in layer: 5
+metrics/auc/Reshape -> metrics/auc/transpose
+in layer: 6
+metrics/auc/Shape -> metrics/auc/strided_slice
+in layer: 2
+metrics/auc/strided_slice -> metrics/auc/stack
+in layer: 3
+metrics/auc/ExpandDims -> metrics/auc/Tile
+in layer: 1
+metrics/auc/stack -> metrics/auc/Tile
+in layer: 2
+metrics/auc/transpose/Rank -> metrics/auc/transpose/Range
+in layer: 2
+metrics/auc/transpose/sub -> metrics/auc/transpose/sub_1
+in layer: 3
+metrics/auc/transpose/Range -> metrics/auc/transpose/sub_1
+in layer: 3
+metrics/auc/transpose/sub_1 -> metrics/auc/transpose
+in layer: 2
+metrics/auc/transpose -> metrics/auc/Tile_1
+in layer: 3
+metrics/auc/Tile_1 -> metrics/auc/Greater
+in layer: 3
+metrics/auc/Tile -> metrics/auc/Greater
+in layer: 2
+metrics/auc/Greater -> metrics/auc/LogicalAnd_3
+in layer: 3
+metrics/auc/Reshape_1 -> metrics/auc/Tile_2
+in layer: 5
+metrics/auc/Tile_2 -> metrics/auc/LogicalAnd_1
+in layer: 2
+metrics/auc/broadcast_weights -> metrics/auc/broadcast_weights_1
+in layer: 3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_scalar -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3
+in layer: 1
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/switch_f
+in layer: 2
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/pred_id -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch
+in layer: 2
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank
+in layer: 3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank
+in layer: 3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1
+in layer: 2
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_f
+in layer: 3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_t -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x
+in layer: 4
+metrics/auc/broadcast_weights_1/assert_broadcastable/values/shape -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1
+in layer: 7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/pred_id -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1
+in layer: 3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims
+in layer: 4
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/dim -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Shape -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Const -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat/axis -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/weights/shape -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1
+in layer: 2
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1
+in layer: 3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1
+in layer: 4
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/dim -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation
+in layer: 7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims
+in layer: 7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims
+in layer: 7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge
+in layer: 4
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge
+in layer: 8
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge
+in layer: 7
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge
+in layer: 3
+metrics/auc/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f
+in layer: 4
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_t -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/NoOp -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/pred_id -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3
+in layer: 4
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_0 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_2 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_4 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_5 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 7
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_7 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1
+in layer: 7
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1 -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge
+in layer: 6
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency -> metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge
+in layer: 7
+metrics/auc/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge -> metrics/auc/broadcast_weights_1/ones_like/Const
+in layer: 7
+metrics/auc/broadcast_weights_1/ones_like/Shape -> metrics/auc/broadcast_weights_1/ones_like
+in layer: 6
+metrics/auc/broadcast_weights_1/ones_like/Const -> metrics/auc/broadcast_weights_1/ones_like
+in layer: 6
+metrics/auc/broadcast_weights_1/ones_like -> metrics/auc/broadcast_weights_1
+in layer: 7
+metrics/auc/broadcast_weights_1 -> metrics/auc/Reshape_2
+in layer: 8
+metrics/auc/Reshape_2 -> metrics/auc/Tile_3
+in layer: 3
+metrics/auc/LogicalAnd -> metrics/auc/ToFloat
+in layer: 3
+metrics/auc/ToFloat -> metrics/auc/mul
+in layer: 3
+metrics/auc/Tile_3 -> metrics/auc/mul_3
+in layer: 2
+metrics/auc/mul -> metrics/auc/Sum
+in layer: 4
+metrics/auc/Sum -> metrics/auc/AssignAdd
+in layer: 3
+metrics/auc/LogicalNot -> metrics/auc/LogicalAnd_2
+in layer: 3
+metrics/auc/LogicalAnd_1 -> metrics/auc/ToFloat_1
+in layer: 4
+metrics/auc/ToFloat_1 -> metrics/auc/mul_1
+in layer: 3
+metrics/auc/mul_1 -> metrics/auc/Sum_1
+in layer: 4
+metrics/auc/Sum_1 -> metrics/auc/AssignAdd_1
+in layer: 3
+metrics/auc/LogicalNot_1 -> metrics/auc/LogicalAnd_3
+in layer: 2
+metrics/auc/LogicalAnd_2 -> metrics/auc/ToFloat_2
+in layer: 4
+metrics/auc/ToFloat_2 -> metrics/auc/mul_2
+in layer: 4
+metrics/auc/mul_2 -> metrics/auc/Sum_2
+in layer: 5
+metrics/auc/Sum_2 -> metrics/auc/AssignAdd_2
+in layer: 3
+metrics/auc/LogicalAnd_3 -> metrics/auc/ToFloat_3
+in layer: 3
+metrics/auc/ToFloat_3 -> metrics/auc/mul_3
+in layer: 4
+metrics/auc/mul_3 -> metrics/auc/Sum_3
+in layer: 5
+metrics/auc/Sum_3 -> metrics/auc/AssignAdd_3
+in layer: 3
+metrics/auc/true_positives/read -> metrics/auc/add_1
+in layer: 1
+metrics/auc/false_negatives/read -> metrics/auc/add_1
+in layer: 1
+metrics/auc/add_1 -> metrics/auc/add_2
+in layer: 2
+metrics/auc/add -> metrics/auc/div
+in layer: 2
+metrics/auc/add_2 -> metrics/auc/div
+in layer: 3
+metrics/auc/false_positives/read -> metrics/auc/div_1
+in layer: 1
+metrics/auc/true_negatives/read -> metrics/auc/add_3
+in layer: 1
+metrics/auc/add_3 -> metrics/auc/add_4
+in layer: 2
+metrics/auc/add_4 -> metrics/auc/div_1
+in layer: 3
+metrics/auc/div_1 -> metrics/auc/strided_slice_2
+in layer: 2
+metrics/auc/strided_slice_1 -> metrics/auc/sub
+in layer: 3
+metrics/auc/strided_slice_2 -> metrics/auc/sub
+in layer: 3
+metrics/auc/div -> metrics/auc/strided_slice_4
+in layer: 2
+metrics/auc/strided_slice_3 -> metrics/auc/add_5
+in layer: 3
+metrics/auc/strided_slice_4 -> metrics/auc/add_5
+in layer: 3
+metrics/auc/add_5 -> metrics/auc/truediv
+in layer: 2
+metrics/auc/sub -> metrics/auc/Mul_4
+in layer: 2
+metrics/auc/truediv -> metrics/auc/Mul_4
+in layer: 3
+metrics/auc/Mul_4 -> metrics/auc/value
+in layer: 3
+metrics/auc/AssignAdd -> metrics/auc/add_7
+in layer: 2
+metrics/auc/AssignAdd_1 -> metrics/auc/add_7
+in layer: 2
+metrics/auc/add_7 -> metrics/auc/add_8
+in layer: 2
+metrics/auc/add_6 -> metrics/auc/div_2
+in layer: 2
+metrics/auc/add_8 -> metrics/auc/div_2
+in layer: 3
+metrics/auc/AssignAdd_3 -> metrics/auc/div_3
+in layer: 2
+metrics/auc/AssignAdd_2 -> metrics/auc/add_9
+in layer: 2
+metrics/auc/add_9 -> metrics/auc/add_10
+in layer: 2
+metrics/auc/add_10 -> metrics/auc/div_3
+in layer: 3
+metrics/auc/div_3 -> metrics/auc/strided_slice_6
+in layer: 2
+metrics/auc/strided_slice_5 -> metrics/auc/sub_1
+in layer: 3
+metrics/auc/strided_slice_6 -> metrics/auc/sub_1
+in layer: 3
+metrics/auc/div_2 -> metrics/auc/strided_slice_8
+in layer: 2
+metrics/auc/strided_slice_7 -> metrics/auc/add_11
+in layer: 3
+metrics/auc/strided_slice_8 -> metrics/auc/add_11
+in layer: 3
+metrics/auc/add_11 -> metrics/auc/truediv_1
+in layer: 2
+metrics/auc/sub_1 -> metrics/auc/Mul_5
+in layer: 2
+metrics/auc/truediv_1 -> metrics/auc/Mul_5
+in layer: 3
+metrics/auc/Mul_5 -> metrics/auc/update_op
+in layer: 3
+metrics/auc_precision_recall/broadcast_weights/ones_like/Shape -> metrics/auc_precision_recall/broadcast_weights/ones_like
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights/ones_like/Const -> metrics/auc_precision_recall/broadcast_weights/ones_like
+in layer: 1
+metrics/auc_precision_recall/broadcast_weights/ones_like -> metrics/auc_precision_recall/broadcast_weights
+in layer: 2
+metrics/auc_precision_recall/assert_greater_equal/GreaterEqual -> metrics/auc_precision_recall/assert_greater_equal/All
+in layer: 6
+metrics/auc_precision_recall/assert_greater_equal/All -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch
+in layer: 2
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Switch -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/switch_f
+in layer: 2
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/switch_t -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency
+in layer: 3
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/NoOp -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency
+in layer: 4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/switch_f -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency_1
+in layer: 3
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/pred_id -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2
+in layer: 2
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 3
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/data_0 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/data_1 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch_1 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 6
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/data_3 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert/Switch_2 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert
+in layer: 3
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Assert -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency_1
+in layer: 5
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency_1 -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Merge
+in layer: 4
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/control_dependency -> metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Merge
+in layer: 5
+metrics/auc_precision_recall/assert_less_equal/LessEqual -> metrics/auc_precision_recall/assert_less_equal/All
+in layer: 6
+metrics/auc_precision_recall/assert_less_equal/All -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch
+in layer: 2
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Switch -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/switch_f
+in layer: 2
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/switch_t -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency
+in layer: 3
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/NoOp -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency
+in layer: 4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/switch_f -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency_1
+in layer: 3
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/pred_id -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch_2
+in layer: 2
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 3
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/data_0 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/data_1 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch_1 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 6
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/data_3 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert/Switch_2 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert
+in layer: 3
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Assert -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency_1
+in layer: 5
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency_1 -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Merge
+in layer: 4
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/control_dependency -> metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Merge
+in layer: 5
+metrics/auc_precision_recall/assert_greater_equal/Assert/AssertGuard/Merge -> metrics/auc_precision_recall/Cast_2
+in layer: 5
+metrics/auc_precision_recall/assert_less_equal/Assert/AssertGuard/Merge -> metrics/auc_precision_recall/Cast_2
+in layer: 5
+metrics/auc_precision_recall/Cast_2 -> metrics/auc_precision_recall/Reshape_1
+in layer: 5
+metrics/auc_precision_recall/Reshape -> metrics/auc_precision_recall/transpose
+in layer: 6
+metrics/auc_precision_recall/Shape -> metrics/auc_precision_recall/strided_slice
+in layer: 2
+metrics/auc_precision_recall/strided_slice -> metrics/auc_precision_recall/stack
+in layer: 3
+metrics/auc_precision_recall/ExpandDims -> metrics/auc_precision_recall/Tile
+in layer: 1
+metrics/auc_precision_recall/stack -> metrics/auc_precision_recall/Tile
+in layer: 2
+metrics/auc_precision_recall/transpose/Rank -> metrics/auc_precision_recall/transpose/Range
+in layer: 2
+metrics/auc_precision_recall/transpose/sub -> metrics/auc_precision_recall/transpose/sub_1
+in layer: 3
+metrics/auc_precision_recall/transpose/Range -> metrics/auc_precision_recall/transpose/sub_1
+in layer: 3
+metrics/auc_precision_recall/transpose/sub_1 -> metrics/auc_precision_recall/transpose
+in layer: 2
+metrics/auc_precision_recall/transpose -> metrics/auc_precision_recall/Tile_1
+in layer: 3
+metrics/auc_precision_recall/Tile_1 -> metrics/auc_precision_recall/Greater
+in layer: 3
+metrics/auc_precision_recall/Tile -> metrics/auc_precision_recall/Greater
+in layer: 2
+metrics/auc_precision_recall/Greater -> metrics/auc_precision_recall/LogicalAnd_3
+in layer: 3
+metrics/auc_precision_recall/Reshape_1 -> metrics/auc_precision_recall/Tile_2
+in layer: 5
+metrics/auc_precision_recall/Tile_2 -> metrics/auc_precision_recall/LogicalAnd_1
+in layer: 2
+metrics/auc_precision_recall/broadcast_weights -> metrics/auc_precision_recall/broadcast_weights_1
+in layer: 3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_scalar -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3
+in layer: 1
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/switch_f
+in layer: 2
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/pred_id -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch
+in layer: 2
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank
+in layer: 3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank
+in layer: 3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/is_same_rank -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1
+in layer: 2
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_f
+in layer: 3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/switch_t -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x
+in layer: 4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/values/shape -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/pred_id -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1
+in layer: 3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims
+in layer: 4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims/dim -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Shape -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like/Const -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ones_like -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat/axis -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/weights/shape -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1
+in layer: 2
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1
+in layer: 3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1
+in layer: 4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1/dim -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/ExpandDims_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/concat -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/DenseToDenseSetOperation -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/x -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims/num_invalid_dims -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge
+in layer: 4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/has_invalid_dims -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge
+in layer: 8
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/has_valid_nonscalar_shape/Merge -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge
+in layer: 3
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/is_valid_shape/Merge -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f
+in layer: 4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_t -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/NoOp -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/switch_f -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/pred_id -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3
+in layer: 4
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_0 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_2 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_4 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_5 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_2 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/data_7 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert/Switch_3 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert
+in layer: 5
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Assert -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency_1 -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/control_dependency -> metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1/assert_broadcastable/AssertGuard/Merge -> metrics/auc_precision_recall/broadcast_weights_1/ones_like/Const
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1/ones_like/Shape -> metrics/auc_precision_recall/broadcast_weights_1/ones_like
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/ones_like/Const -> metrics/auc_precision_recall/broadcast_weights_1/ones_like
+in layer: 6
+metrics/auc_precision_recall/broadcast_weights_1/ones_like -> metrics/auc_precision_recall/broadcast_weights_1
+in layer: 7
+metrics/auc_precision_recall/broadcast_weights_1 -> metrics/auc_precision_recall/Reshape_2
+in layer: 8
+metrics/auc_precision_recall/Reshape_2 -> metrics/auc_precision_recall/Tile_3
+in layer: 3
+metrics/auc_precision_recall/LogicalAnd -> metrics/auc_precision_recall/ToFloat
+in layer: 3
+metrics/auc_precision_recall/ToFloat -> metrics/auc_precision_recall/mul
+in layer: 3
+metrics/auc_precision_recall/Tile_3 -> metrics/auc_precision_recall/mul_3
+in layer: 2
+metrics/auc_precision_recall/mul -> metrics/auc_precision_recall/Sum
+in layer: 4
+metrics/auc_precision_recall/Sum -> metrics/auc_precision_recall/AssignAdd
+in layer: 3
+metrics/auc_precision_recall/LogicalNot -> metrics/auc_precision_recall/LogicalAnd_2
+in layer: 3
+metrics/auc_precision_recall/LogicalAnd_1 -> metrics/auc_precision_recall/ToFloat_1
+in layer: 4
+metrics/auc_precision_recall/ToFloat_1 -> metrics/auc_precision_recall/mul_1
+in layer: 3
+metrics/auc_precision_recall/mul_1 -> metrics/auc_precision_recall/Sum_1
+in layer: 4
+metrics/auc_precision_recall/Sum_1 -> metrics/auc_precision_recall/AssignAdd_1
+in layer: 3
+metrics/auc_precision_recall/LogicalNot_1 -> metrics/auc_precision_recall/LogicalAnd_3
+in layer: 2
+metrics/auc_precision_recall/LogicalAnd_2 -> metrics/auc_precision_recall/ToFloat_2
+in layer: 4
+metrics/auc_precision_recall/ToFloat_2 -> metrics/auc_precision_recall/mul_2
+in layer: 4
+metrics/auc_precision_recall/mul_2 -> metrics/auc_precision_recall/Sum_2
+in layer: 5
+metrics/auc_precision_recall/Sum_2 -> metrics/auc_precision_recall/AssignAdd_2
+in layer: 3
+metrics/auc_precision_recall/LogicalAnd_3 -> metrics/auc_precision_recall/ToFloat_3
+in layer: 3
+metrics/auc_precision_recall/ToFloat_3 -> metrics/auc_precision_recall/mul_3
+in layer: 4
+metrics/auc_precision_recall/mul_3 -> metrics/auc_precision_recall/Sum_3
+in layer: 5
+metrics/auc_precision_recall/Sum_3 -> metrics/auc_precision_recall/AssignAdd_3
+in layer: 3
+metrics/auc_precision_recall/true_positives/read -> metrics/auc_precision_recall/add_4
+in layer: 1
+metrics/auc_precision_recall/false_negatives/read -> metrics/auc_precision_recall/add_1
+in layer: 1
+metrics/auc_precision_recall/add_1 -> metrics/auc_precision_recall/add_2
+in layer: 2
+metrics/auc_precision_recall/add -> metrics/auc_precision_recall/div
+in layer: 2
+metrics/auc_precision_recall/add_2 -> metrics/auc_precision_recall/div
+in layer: 3
+metrics/auc_precision_recall/false_positives/read -> metrics/auc_precision_recall/add_4
+in layer: 1
+metrics/auc_precision_recall/add_4 -> metrics/auc_precision_recall/add_5
+in layer: 2
+metrics/auc_precision_recall/add_3 -> metrics/auc_precision_recall/div_1
+in layer: 2
+metrics/auc_precision_recall/add_5 -> metrics/auc_precision_recall/div_1
+in layer: 3
+metrics/auc_precision_recall/div -> metrics/auc_precision_recall/strided_slice_2
+in layer: 2
+metrics/auc_precision_recall/strided_slice_1 -> metrics/auc_precision_recall/sub
+in layer: 3
+metrics/auc_precision_recall/strided_slice_2 -> metrics/auc_precision_recall/sub
+in layer: 3
+metrics/auc_precision_recall/div_1 -> metrics/auc_precision_recall/strided_slice_4
+in layer: 2
+metrics/auc_precision_recall/strided_slice_3 -> metrics/auc_precision_recall/add_6
+in layer: 3
+metrics/auc_precision_recall/strided_slice_4 -> metrics/auc_precision_recall/add_6
+in layer: 3
+metrics/auc_precision_recall/add_6 -> metrics/auc_precision_recall/truediv
+in layer: 2
+metrics/auc_precision_recall/sub -> metrics/auc_precision_recall/Mul_4
+in layer: 2
+metrics/auc_precision_recall/truediv -> metrics/auc_precision_recall/Mul_4
+in layer: 3
+metrics/auc_precision_recall/Mul_4 -> metrics/auc_precision_recall/value
+in layer: 3
+metrics/auc_precision_recall/AssignAdd -> metrics/auc_precision_recall/add_11
+in layer: 2
+metrics/auc_precision_recall/AssignAdd_1 -> metrics/auc_precision_recall/add_8
+in layer: 2
+metrics/auc_precision_recall/add_8 -> metrics/auc_precision_recall/add_9
+in layer: 2
+metrics/auc_precision_recall/add_7 -> metrics/auc_precision_recall/div_2
+in layer: 2
+metrics/auc_precision_recall/add_9 -> metrics/auc_precision_recall/div_2
+in layer: 3
+metrics/auc_precision_recall/AssignAdd_3 -> metrics/auc_precision_recall/add_11
+in layer: 2
+metrics/auc_precision_recall/add_11 -> metrics/auc_precision_recall/add_12
+in layer: 2
+metrics/auc_precision_recall/add_10 -> metrics/auc_precision_recall/div_3
+in layer: 2
+metrics/auc_precision_recall/add_12 -> metrics/auc_precision_recall/div_3
+in layer: 3
+metrics/auc_precision_recall/div_2 -> metrics/auc_precision_recall/strided_slice_6
+in layer: 2
+metrics/auc_precision_recall/strided_slice_5 -> metrics/auc_precision_recall/sub_1
+in layer: 3
+metrics/auc_precision_recall/strided_slice_6 -> metrics/auc_precision_recall/sub_1
+in layer: 3
+metrics/auc_precision_recall/div_3 -> metrics/auc_precision_recall/strided_slice_8
+in layer: 2
+metrics/auc_precision_recall/strided_slice_7 -> metrics/auc_precision_recall/add_13
+in layer: 3
+metrics/auc_precision_recall/strided_slice_8 -> metrics/auc_precision_recall/add_13
+in layer: 3
+metrics/auc_precision_recall/add_13 -> metrics/auc_precision_recall/truediv_1
+in layer: 2
+metrics/auc_precision_recall/sub_1 -> metrics/auc_precision_recall/Mul_5
+in layer: 2
+metrics/auc_precision_recall/truediv_1 -> metrics/auc_precision_recall/Mul_5
+in layer: 3
+metrics/auc_precision_recall/Mul_5 -> metrics/auc_precision_recall/update_op
+in layer: 3
+mean/Sum -> mean/AssignAdd
+in layer: 3
+mean/ToFloat -> mean/AssignAdd_1
+in layer: 1
+mean/total/read -> mean/truediv
+in layer: 1
+mean/count/read -> mean/Greater
+in layer: 1
+mean/Greater -> mean/value
+in layer: 2
+mean/truediv -> mean/value
+in layer: 2
+mean/AssignAdd -> mean/truediv_1
+in layer: 2
+mean/AssignAdd_1 -> mean/Greater_1
+in layer: 3
+mean/Greater_1 -> mean/update_op
+in layer: 2
+mean/truediv_1 -> mean/update_op
+in layer: 2
+metrics/accuracy/update_op -> group_deps
+in layer: 3
+metrics/accuracy_baseline/update_op -> group_deps
+in layer: 2
+metrics/auc/update_op -> group_deps
+in layer: 3
+metrics/auc_precision_recall/update_op -> group_deps
+in layer: 3
+metrics/average_loss/update_op -> group_deps
+in layer: 3
+mean/update_op -> group_deps
+in layer: 3
+metrics/precision/update_op -> group_deps
+in layer: 3
+metrics/prediction/mean/update_op -> group_deps
+in layer: 3
+metrics/recall/update_op -> group_deps
+in layer: 3
+AssignAdd -> read
+in layer: 1
+read -> Identity
+in layer: 2
+report_uninitialized_variables/IsVariableInitialized_23 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_24 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_25 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_26 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_27 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_28 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_29 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_30 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_31 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_32 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_33 -> report_uninitialized_variables/stack
+in layer: 1
+report_uninitialized_variables/IsVariableInitialized_34 -> report_uninitialized_variables/stack
+in layer: 1
+metrics/label/mean/total/Assign -> init_2
+in layer: 1
+metrics/label/mean/count/Assign -> init_2
+in layer: 1
+metrics/average_loss/total/Assign -> init_2
+in layer: 1
+metrics/average_loss/count/Assign -> init_2
+in layer: 1
+metrics/accuracy/total/Assign -> init_2
+in layer: 1
+metrics/accuracy/count/Assign -> init_2
+in layer: 1
+metrics/precision/true_positives/count/Assign -> init_2
+in layer: 1
+metrics/precision/false_positives/count/Assign -> init_2
+in layer: 1
+metrics/recall/true_positives/count/Assign -> init_2
+in layer: 1
+metrics/recall/false_negatives/count/Assign -> init_2
+in layer: 1
+metrics/prediction/mean/total/Assign -> init_2
+in layer: 1
+metrics/prediction/mean/count/Assign -> init_2
+in layer: 1
+metrics/auc/true_positives/Assign -> init_2
+in layer: 1
+metrics/auc/false_negatives/Assign -> init_2
+in layer: 1
+metrics/auc/true_negatives/Assign -> init_2
+in layer: 1
+metrics/auc/false_positives/Assign -> init_2
+in layer: 1
+metrics/auc_precision_recall/true_positives/Assign -> init_2
+in layer: 1
+metrics/auc_precision_recall/false_negatives/Assign -> init_2
+in layer: 1
+metrics/auc_precision_recall/true_negatives/Assign -> init_2
+in layer: 1
+metrics/auc_precision_recall/false_positives/Assign -> init_2
+in layer: 1
+mean/total/Assign -> init_2
+in layer: 1
+mean/count/Assign -> init_2
+in layer: 1
+eval_step/Assign -> init_2
+in layer: 1
