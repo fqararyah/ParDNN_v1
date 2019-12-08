@@ -3,7 +3,10 @@ import nodeProps
 import random
 
 # folder containing the work files
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/time_steps_32/'
+#io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
+
+io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/inc/wrn_50_5/'
+network_app = 'wrn'
 
 # output file
 in1 = io_folder_path + 'nodes_average_durations.txt'

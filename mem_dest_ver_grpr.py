@@ -21,6 +21,7 @@ in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'
 in4 = io_folder_path + 'rev_' + network_app + '_src_sink_nodes_levels_low.txt'
 in4_b = io_folder_path + 'rev_' + network_app + '_src_sink_low.dot'
 in5 = io_folder_path + 'tensors_sz_32_low.txt'
+in6 = io_folder_path + 'memory.txt'
 
 """ # folder containing the work files
 io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
@@ -69,11 +70,11 @@ out1 = io_folder_path + 'ver_grouper_placement_e_nc.place'
 
 # grouper parameters
 no_of_desired_groups = 2
+memory_limit_per_group = 31 * 1024 * 1024 * 1024
 
 comm_latency = 45
 average_tensor_size_if_not_provided = 1
 comm_transfer_rate = 1000000 / (140 * 1024 * 1024 * 1024)
-BFS_max_depth = 8
 
 reverse_levels = {}
 # get nodes levels
@@ -159,7 +160,7 @@ with open(in4_b, 'r') as f:
             else:
                 rev_graph[nodes[0]] = [nodes[1]]
 
-#get nodes in degrees for the topological sort
+# get nodes in degrees for the topological sort
 nodes_in_degrees = {}
 for adjs in rev_graph.values():
     for adj in adjs:
@@ -167,6 +168,7 @@ for adjs in rev_graph.values():
             nodes_in_degrees[adj] += 1
         else:
             nodes_in_degrees[adj] = 1
+
 
 def get_nodes_weighted_levels(graph, edges_weights, src_nodes=None, nodes_weighted_levels={}):
     # getting the sources of the graph to start the topological traversal from them
@@ -231,6 +233,7 @@ def prioratize_adj_lists(graph, priorities):
         graph[node] = ordered_adjacents_list
 
     return graph
+
 
 nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, tensors_sizes)
 graph = prioratize_adj_lists(graph, nodes_weighted_levels)
@@ -397,7 +400,7 @@ for i in range(0, num_paths - 1):
     sibling_from_branching_main_path = ''
     current_group_siblings_potentials = 0
     sibling_from_branching_main_path_weight = 0
-    
+
     if (current_group_weight >= average_node_weight or len(current_group) >= average_path_len) and current_group_weight > 0:
         if current_group[0] != source_node_name and current_group[len(current_group) - 1] != sink_node_name:
             for src_node in analysis_graph[current_group[0]].parents:
@@ -522,168 +525,25 @@ for i in range(0, no_of_desired_groups):
     main_groups_indices[i] = num_initial_groups - i - 1
 total_gain = 0
 
-
-def simulate_scheduling(nodes_parts, source_node_name, sink_node_name):
-
-    visited = {}
-    max_end_times = [0, 0]
-    traversal_queue = []
-    heapq.heappush(traversal_queue, (0, source_node_name))
-
-    tensor_communicated_to_part = {}
-
-    for node in nodes_parts.keys():
-        analysis_graph[node].start_time = 0
-        analysis_graph[node].end_time = analysis_graph[node].duration
-
-    max_end_times[nodes_parts[source_node_name]
-                  ] = analysis_graph[source_node_name].duration
-
-    while(traversal_queue):
-        current_node = heapq.heappop(traversal_queue)[1]
-        current_node_part = nodes_parts[current_node]
-        current_node_end_time = analysis_graph[current_node].end_time
-        if current_node not in visited and current_node in nodes_parts:
-            visited[current_node] = 1
-            for adj_node in graph[current_node]:
-                all_parents_visited = True
-                last_finishing_parent_in_other_parts = 0
-                if adj_node in nodes_parts:
-                    for parent_node in analysis_graph[adj_node].parents:
-                        if parent_node in graph.keys() and parent_node in nodes_parts.keys():
-                            if parent_node not in visited:
-                                all_parents_visited = False
-                                break
-                            if nodes_parts[parent_node] != nodes_parts[adj_node]:
-                                if parent_node not in tensor_communicated_to_part.keys(
-                                ) or nodes_parts[adj_node] not in tensor_communicated_to_part[parent_node]:
-                                    comm_time = int(
-                                        (int(tensors_sizes[parent_node]) * comm_transfer_rate + comm_latency))
-                                else:
-                                    comm_time = 0
-                                parent_finishing_time = analysis_graph[parent_node].end_time + comm_time
-
-                                if parent_finishing_time > last_finishing_parent_in_other_parts:
-                                    last_finishing_parent_in_other_parts = parent_finishing_time
-
-                    if all_parents_visited:
-                        if nodes_parts[adj_node] == current_node_part:
-                            analysis_graph[adj_node].start_time = max(
-                                max_end_times[current_node_part], last_finishing_parent_in_other_parts)
-                            analysis_graph[adj_node].end_time = analysis_graph[adj_node].start_time + \
-                                analysis_graph[adj_node].duration
-                        else:
-                            if current_node not in tensor_communicated_to_part.keys(
-                            ) or nodes_parts[adj_node] not in tensor_communicated_to_part[current_node]:
-                                comm_time = int(
-                                    (int(tensors_sizes[current_node]) * comm_transfer_rate + comm_latency))
-                            else:
-                                comm_time = 0
-
-                            analysis_graph[adj_node].start_time = max(
-                                current_node_end_time + comm_time, max_end_times[nodes_parts[adj_node]], last_finishing_parent_in_other_parts)
-                            analysis_graph[adj_node].end_time = analysis_graph[adj_node].start_time + \
-                                analysis_graph[adj_node].duration
-
-                            if current_node in tensor_communicated_to_part:
-                                tensor_communicated_to_part[current_node].append(
-                                    nodes_parts[adj_node])
-                            else:
-                                tensor_communicated_to_part[current_node] = [
-                                    nodes_parts[adj_node]]
-
-                        max_end_times[nodes_parts[adj_node]
-                                      ] = max(analysis_graph[adj_node].end_time, max_end_times[nodes_parts[adj_node]] +
-                                              analysis_graph[adj_node].duration)
-
-                        for parent_node in analysis_graph[adj_node].parents:
-                            if parent_node in tensor_communicated_to_part:
-                                tensor_communicated_to_part[parent_node].append(
-                                    nodes_parts[adj_node])
-                            else:
-                                tensor_communicated_to_part[parent_node] = [
-                                    nodes_parts[adj_node]]
-
-                        heapq.heappush(
-                            traversal_queue, (analysis_graph[adj_node].start_time, adj_node))
-
-    return (analysis_graph[sink_node_name].start_time)
-
-
-def placement_best_first_search(nodes_parts, heavy_comm_groups, base_time, source_node_name, sink_node_name):
-    min_time = base_time
-    best_place = []
-    new_placement = False
-    traversal_queue = []
-    nodes_to_indices = {}
-    best_place_parts = copy.deepcopy(nodes_parts)
-    indx = 0
-    for node in nodes_parts:
-        nodes_to_indices[node] = indx
-        best_place.append(nodes_parts[node])
-        indx = indx + 1
-
-    search_tree_level = 0
-    heapq.heappush(traversal_queue, (base_time, [
-                   best_place, search_tree_level]))
-    iterations = 0
-    search_tree_max_depth = len(heavy_comm_groups)
-
-    while(iterations < 2**BFS_max_depth and len(traversal_queue) > 0):
-        iterations = iterations + 1
-        current_state = heapq.heappop(traversal_queue)
-        search_tree_level = (current_state[1])[1]
-        if search_tree_level < search_tree_max_depth:
-            state_0_parts = copy.deepcopy((current_state[1])[0])
-            for node in heavy_comm_groups[search_tree_level]:
-                state_0_parts[nodes_to_indices[node]] = 0
-            for node in nodes_parts.keys():
-                nodes_parts[node] = state_0_parts[nodes_to_indices[node]]
-            state_0_time = simulate_scheduling(
-                nodes_parts, source_node_name, sink_node_name)
-            if state_0_time < min_time:
-                min_time = state_0_time
-                best_place = state_0_parts
-                new_placement = True
-
-            state_1_parts = copy.deepcopy((current_state[1])[0])
-            for node in heavy_comm_groups[search_tree_level]:
-                state_1_parts[nodes_to_indices[node]] = 1
-            for node in nodes_parts.keys():
-                nodes_parts[node] = state_1_parts[nodes_to_indices[node]]
-            state_1_time = simulate_scheduling(
-                nodes_parts, source_node_name, sink_node_name)
-            if state_1_time < min_time:
-                min_time = state_1_time
-                best_place = state_1_parts
-                new_placement = True
-
-            heapq.heappush(traversal_queue, (state_0_time,
-                                             (state_0_parts, search_tree_level + 1)))
-            heapq.heappush(traversal_queue, (state_1_time,
-                                             (state_1_parts, search_tree_level + 1)))
-
-        if new_placement:
-            for node in nodes_parts.keys():
-                best_place_parts[node] = best_place[nodes_to_indices[node]]
-            new_placement = False
-
-    return [min_time, best_place_parts]
-
-
 nodes_groups = {}
+nodes_initial_groups = {}
 for node in analysis_graph.keys():
     nodes_groups[node] = -1
+
+for i in range(0, len(initial_groups)):
+    for node in initial_groups[i]:
+        nodes_initial_groups[node] = i
 
 for i in range(0, len(main_groups_indices)):
     for node in initial_groups[main_groups_indices[i]]:
         nodes_groups[node] = i
 
 cntt = 0
+final_groups = copy.deepcopy(initial_groups)
 # merging the groups
-while len(initial_groups) > no_of_desired_groups:
-    to_be_merged_group_index = len(initial_groups) - no_of_desired_groups - 1
-    to_be_merged_group = initial_groups[to_be_merged_group_index]
+while len(final_groups) > no_of_desired_groups:
+    to_be_merged_group_index = len(final_groups) - no_of_desired_groups - 1
+    to_be_merged_group = final_groups[to_be_merged_group_index]
     branch_main_path_indx = -1
 
     src_min_level = -1
@@ -699,8 +559,8 @@ while len(initial_groups) > no_of_desired_groups:
             src_max_level = int(analysis_graph[dst_node].level)
             branch_snk_node = dst_node
 
-    for i in range(0, len(initial_groups)):
-        if branch_src_node in initial_groups[i] and branch_snk_node in initial_groups[i]:
+    for i in range(0, len(final_groups)):
+        if branch_src_node in final_groups[i] and branch_snk_node in final_groups[i]:
             branch_main_path_indx = i
 
     # Note: the tensor size sent to the neighbors is the same, so pick the one with the lowest level.
@@ -752,8 +612,6 @@ while len(initial_groups) > no_of_desired_groups:
         if i == branch_main_path_indx:
             main_branch_sum_in_targeted_levels = sum_in_targeted_levels
 
-    improvement_achieved = False
-
     if merge_destination_index != branch_main_path_indx and branch_main_path_indx in main_groups_indices:
         current_branch_max_time = min_sum_in_targeted_levels + \
             group_comm_time + groups_weights[to_be_merged_group_index]
@@ -765,210 +623,6 @@ while len(initial_groups) > no_of_desired_groups:
         tmp_group_weight = groups_weights[to_be_merged_group_index]
         poped_group_weight = 0
 
-        adjustment_needed = False
-        # if this is the case, local refinement can be done.
-        if an_alternative_max_time < current_branch_max_time or (current_branch_max_time < an_alternative_max_time and current_branch_max_time > main_branch_sum_in_targeted_levels):
-            adjustment_needed = True
-
-        short_path_long_spreding = len(to_be_merged_group) < (
-            src_max_level - src_min_level) / average_path_len
-
-        if adjustment_needed and len(to_be_merged_group) > 1 and not short_path_long_spreding:
-
-            # order the nodes by the difference between their communication and computation requirements
-            comms_comps_diff = []
-            to_be_merged_group_clone = copy.deepcopy(to_be_merged_group)
-            for node in to_be_merged_group_clone:
-                comms_comps_diff.append(
-                    ((int(int(tensors_sizes[node])) * comm_transfer_rate + comm_latency) if node in tensors_sizes else 1) -
-                    analysis_graph[node].duration)
-
-            comms_comps_diff, to_be_merged_group_clone = (list(t) for t in zip(
-                *sorted(zip(comms_comps_diff, to_be_merged_group_clone), reverse=True)))
-
-            average_comm_comp = sum(comms_comps_diff) / len(comms_comps_diff)
-
-            heavy_comm_groups = []
-
-            current_node_comm_comp = comms_comps_diff[0]
-            current_node = to_be_merged_group_clone[0]
-            visited_heavy_nodes = {}
-            indx = 0
-            if branch_src_node in tensors_sizes and (int(tensors_sizes[branch_src_node]) * comm_transfer_rate + comm_latency) > average_comm_comp:
-                indx = 1
-                visited_heavy_nodes[to_be_merged_group[0]] = 1
-                heavy_comm_groups.append([to_be_merged_group[0]])
-
-            heavy_indx = indx
-            node_heavy_group_matching = {}
-
-            while average_comm_comp > 0 and len(comms_comps_diff) > 2 and current_node_comm_comp > average_comm_comp:
-                new_group_created = False
-
-                for adj_node in graph[current_node]:
-                    if not current_node in visited_heavy_nodes and adj_node in to_be_merged_group_clone:
-                        heavy_comm_groups.append([current_node])
-                        visited_heavy_nodes[current_node] = 1
-                        new_group_created = True
-                        node_heavy_group_matching[current_node] = heavy_indx
-                    if adj_node in to_be_merged_group_clone and adj_node not in visited_heavy_nodes:
-                        if not new_group_created:
-                            heavy_comm_groups.append([])
-                            new_group_created = True
-                        heavy_comm_groups[heavy_indx].append(adj_node)
-                        node_heavy_group_matching[adj_node] = heavy_indx
-                        visited_heavy_nodes[adj_node] = 1
-
-                indx = indx + 1
-                if new_group_created:
-                    heavy_indx = heavy_indx + 1
-                current_node_comm_comp = comms_comps_diff[indx]
-                current_node = to_be_merged_group_clone[indx]
-
-            heavy_group_parent_mapping = {}
-            for node in node_heavy_group_matching.keys():
-                for adj_node in graph[node]:
-                    if adj_node in node_heavy_group_matching:
-                        if node_heavy_group_matching[node] != node_heavy_group_matching[adj_node]:
-                            heavy_group_parent_mapping[node] = node_heavy_group_matching[adj_node]
-                            break
-            # assign the nodes in the targeted levels to either of the candidate merge groups
-            tmp_nodes_parts = {}
-            traversal_queue = [branch_src_node]
-            visited = {}
-            while traversal_queue:
-                current_node = traversal_queue.pop()
-                visited[current_node] = 1
-                if current_node not in tmp_nodes_parts:
-                    if nodes_groups[current_node] != -1:
-                        if main_groups_indices[nodes_groups[current_node]] == branch_main_path_indx:
-                            tmp_nodes_parts[current_node] = 0
-                        elif main_groups_indices[nodes_groups[current_node]] == merge_destination_index:
-                            tmp_nodes_parts[current_node] = 1
-                    for adj_node in graph[current_node]:
-                        if int(analysis_graph[adj_node].level) < int(analysis_graph[branch_snk_node].level) and adj_node not in visited:
-                            traversal_queue.append(adj_node)
-
-            tmp_nodes_parts[branch_src_node] = 0
-            tmp_nodes_parts[branch_snk_node] = 0
-
-            for node in to_be_merged_group:
-                tmp_nodes_parts[node] = 1
-
-            current_branch_max_time = simulate_scheduling(
-                tmp_nodes_parts, branch_src_node, branch_snk_node)
-
-            for node in to_be_merged_group:
-                tmp_nodes_parts[node] = 0
-
-            an_alternative_max_time = simulate_scheduling(
-                tmp_nodes_parts, branch_src_node, branch_snk_node)
-
-            total_time = min(current_branch_max_time, an_alternative_max_time)
-
-            for node in visited_heavy_nodes.keys():
-                to_be_merged_group_clone.remove(node)
-                tmp_nodes_parts[node] = 0
-            for node in to_be_merged_group_clone:
-                tmp_nodes_parts[node] = 1
-
-            initial_refinement_time = simulate_scheduling(
-                tmp_nodes_parts, branch_src_node, branch_snk_node)
-            best_time = total_time
-
-            power_diff = len(heavy_comm_groups) - BFS_max_depth
-            merged_heavy_groups_indices = []
-
-            if power_diff > BFS_max_depth:
-                for i in range(0, len(heavy_comm_groups)):
-                    heavy_comm_group = heavy_comm_groups[i]
-                    for node in heavy_comm_group:
-                        if node in heavy_group_parent_mapping and heavy_group_parent_mapping[node] not in merged_heavy_groups_indices:
-                            heavy_comm_groups[i] = heavy_comm_groups[i] + \
-                                heavy_comm_groups[heavy_group_parent_mapping[node]]
-                            merged_heavy_groups_indices.append(
-                                heavy_group_parent_mapping[node])
-
-                    power_diff = len(heavy_comm_groups) - \
-                        len(merged_heavy_groups_indices) - BFS_max_depth
-                    if power_diff < BFS_max_depth / 2:
-                        break
-
-            tmp_heavy_comm_groups = heavy_comm_groups
-            heavy_comm_groups = []
-            for i in range(0, len(tmp_heavy_comm_groups)):
-                if i not in merged_heavy_groups_indices:
-                    heavy_comm_groups.append(tmp_heavy_comm_groups[i])
-
-            if initial_refinement_time < total_time:
-                improvement_achieved = True
-                best_time = initial_refinement_time
-                [BFS_attempt_1_time, BFS_attempt_1_place] = placement_best_first_search(
-                    tmp_nodes_parts, heavy_comm_groups, initial_refinement_time, branch_src_node, branch_snk_node)
-            else:
-                [BFS_attempt_1_time, BFS_attempt_1_place] = placement_best_first_search(
-                    tmp_nodes_parts, heavy_comm_groups, total_time, branch_src_node, branch_snk_node)
-
-            best_BFS_attempt_2_time = BFS_attempt_1_time
-            best_BFS_attempt_2_place = {}
-
-            for i in range(0, min(power_diff, BFS_max_depth)):
-
-                for heavy_comm_group in heavy_comm_groups:
-                    tmp_nodes_parts[node] = int(random.getrandbits(1))
-
-                [BFS_attempt_2_time, BFS_attempt_2_place] = placement_best_first_search(
-                    tmp_nodes_parts, heavy_comm_groups, BFS_attempt_1_time, branch_src_node, branch_snk_node)
-                if BFS_attempt_2_time < best_BFS_attempt_2_time:
-                    best_BFS_attempt_2_time = BFS_attempt_2_time
-                    best_BFS_attempt_2_place = BFS_attempt_2_place
-
-            if best_BFS_attempt_2_time < best_time:
-                improvement_achieved = True
-                if best_BFS_attempt_2_time < BFS_attempt_1_time:
-                    best_time = best_BFS_attempt_2_time
-                    to_be_merged_group_clone = []
-                    for node in to_be_merged_group:
-                        if best_BFS_attempt_2_place[node] == 1:
-                            to_be_merged_group_clone.append(node)
-                else:
-                    best_time = BFS_attempt_1_time
-                    to_be_merged_group_clone = []
-                    for node in to_be_merged_group:
-                        if BFS_attempt_1_place[node] == 1:
-                            to_be_merged_group_clone.append(node)
-
-            # for node in to_be_merged_group_clone:
-             #   tmp_nodes_parts[node] = 1
-
-            if improvement_achieved:
-                for node in to_be_merged_group_clone:
-                    initial_groups[merge_destination_index].append(node)
-                    to_be_merged_group.remove(node)
-                    groups_weights[merge_destination_index] = groups_weights[merge_destination_index] + \
-                        analysis_graph[node].duration
-                    groups_weights[to_be_merged_group_index] = groups_weights[to_be_merged_group_index] - \
-                        analysis_graph[node].duration
-                    if int(analysis_graph[node].level) in tasks_per_levels[merge_destination_index].keys():
-                        tasks_per_levels[merge_destination_index][int(analysis_graph[node].level)] = tasks_per_levels[merge_destination_index][int(
-                            analysis_graph[node].level)] + analysis_graph[node].duration
-                    else:
-                        tasks_per_levels[merge_destination_index][int(
-                            analysis_graph[node].level)] = analysis_graph[node].duration
-                    tasks_per_levels[to_be_merged_group_index][int(analysis_graph[node].level)] = tasks_per_levels[to_be_merged_group_index][int(
-                        analysis_graph[node].level)] - analysis_graph[node].duration
-
-                    nodes_groups[node] = main_groups_indices.index(
-                        merge_destination_index)
-
-                for node in to_be_merged_group:
-                    if node not in to_be_merged_group_clone:
-                        if best_time > 0:
-                            total_gain = total_gain + (total_time - best_time)
-                            break
-
-            merge_destination_index = branch_main_path_indx
-
     merge_min_level = min(
         min_levels[to_be_merged_group_index], min_levels[merge_destination_index])
     merge_max_level = max(
@@ -976,9 +630,9 @@ while len(initial_groups) > no_of_desired_groups:
     groups_weights[merge_destination_index] = groups_weights[merge_destination_index] + \
         groups_weights[to_be_merged_group_index]
     groups_weights.pop(to_be_merged_group_index)
-    initial_groups[merge_destination_index] = initial_groups[merge_destination_index] + \
+    final_groups[merge_destination_index] = final_groups[merge_destination_index] + \
         to_be_merged_group
-    initial_groups.pop(to_be_merged_group_index)
+    final_groups.pop(to_be_merged_group_index)
     min_levels[merge_destination_index] = merge_min_level
     max_levels[merge_destination_index] = merge_max_level
     min_levels.pop(to_be_merged_group_index)
@@ -999,15 +653,181 @@ while len(initial_groups) > no_of_desired_groups:
     tasks_per_levels.pop(to_be_merged_group_index)
 
 
-print('total_gain = ' + str(total_gain))
+nodes_memory = {}
+# get memory consumption
+with open(in6, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        splitted = line.split('::')
+        nodes_memory[splitted[0]] = splitted[1]
+
+
+def get_levels_memory_consumption(graph, src_nodes=None):
+    # getting the sources of the graph to start the topological traversal from them
+    graph_keys = {}
+    nodes_ranks = {}
+    levels_memory_consumption = []
+
+    for i in range(0, no_of_desired_groups):
+        levels_memory_consumption[i] = {}
+
+    tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
+
+    for graph_key in graph.keys():
+        graph_keys[graph_key] = 0
+        nodes_ranks[graph_key] = len(graph[graph_key])
+
+    for adj_nodes in graph.values():
+        for node in adj_nodes:
+            if node in graph_keys:
+                graph_keys[node] = 1
+            else:
+                nodes_ranks[node] = 0
+
+    traversal_queueu = queue.Queue()
+
+    if src_nodes is None:
+        src_nodes = []
+        for node, source_node in graph_keys.items():
+            if source_node == 0:
+                src_nodes.append(node)
+
+    for node in src_nodes:
+        traversal_queueu.put(node)
+
+    # start the traversal
+    previously_visited = []
+    previously_visited_level = 0
+    while not traversal_queueu.empty():
+        current_node = traversal_queueu.get()
+        current_level = analysis_graph[current_node].level
+        current_group = nodes_groups[current_node]
+
+        if current_node in graph:
+            adj_nodes = graph[current_node]
+        else:
+            adj_nodes = []
+
+        if not current_level in levels_memory_consumption[current_group]:
+            levels_memory_consumption[current_group][current_level] = nodes_memory[current_node]
+        else:
+            levels_memory_consumption[current_group][current_level] += nodes_memory[current_node]
+
+        if previously_visited and previously_visited_level < current_level:
+            previously_visited_level = current_level
+            previously_visited = []
+            for i in range(0, len(previously_visited)):
+                previously_visited_node = previously_visited[i]
+                levels_memory_consumption[nodes_groups[previously_visited_node]
+                                          ][analysis_graph[previously_visited_node].level] -= nodes_memory[previously_visited_node]
+
+        for parent_node in analysis_graph[current_node].parents:
+            nodes_ranks[parent_node] -= 1
+            if nodes_ranks[parent_node] == 0:
+                levels_memory_consumption[nodes_groups[parent_node]
+                                          ][current_level] -= nodes_memory[parent_node]
+
+        groups_visited = {}
+        number_of_adjacents_in_the_same_group = 0
+
+        for i in range(0, no_of_desired_groups):
+            groups_visited[i] = False
+        for adj_node in adj_nodes:
+            adj_node_group = nodes_groups[adj_node]
+            if adj_node_group != current_group:
+                if not groups_visited[adj_node_group]:
+                    levels_memory_consumption[adj_node_group][current_level +
+                                                              1] += nodes_memory[current_node]
+                    groups_visited[adj_node_group] = True
+            else:
+                number_of_adjacents_in_the_same_group += 1
+
+            tmp_nodes_in_degrees[adj_node] -= 1
+            if tmp_nodes_in_degrees[adj_node] == 0:
+                traversal_queueu.put(adj_node)
+
+        if number_of_adjacents_in_the_same_group == 0:
+            previously_visited.append(current_node)
+            previously_visited_level = current_level
+
+    return levels_memory_consumption
+
+
+final_groups_memory_consumptions = get_levels_memory_consumption(graph)
+
+final_groups_comulative_work = []
+for i in range(0, no_of_desired_groups):
+    final_groups_comulative_work.append({-1: 0})
+
+for level in range(0, no_of_levels):
+    for group in range(0, no_of_desired_groups):
+        final_groups_comulative_work[group][level] = 0
+
+for level in range(0, no_of_levels):
+    for node in levels_nodes[level]:
+        final_groups_comulative_work[nodes_groups[node]
+                                     ][level] = final_groups_comulative_work[nodes_groups[node]][level - 1] + analysis_graph[node].duration
+
+initial_groups_mem_cons = []
+for i in range(0, no_of_desired_groups):
+    initial_groups_mem_cons.append([])
+
+for group in initial_groups:
+    current_final_group = nodes_groups[group[0]]
+    current_group_mem_cons = 0
+    for node in group:
+        current_group_mem_cons += nodes_memory[node]
+    heapq.heappush(
+        initial_groups_mem_cons[current_final_group], (current_group_mem_cons, current_group))
+
+current_level = 0
+for group_no in range(0, no_of_desired_groups):
+    while current_level < no_of_levels:
+        if final_groups_memory_consumptions[level] > memory_limit_per_group:
+            overflow = final_groups_memory_consumptions[level] - \
+                memory_limit_per_group
+            candidate_groups = []
+            candidate_groups_weights = []
+            candidate_group_weight = 0
+            sum_of_candidates = 0
+            while candidate_group_weight <= overflow and initial_groups_mem_cons[group_no] and sum_of_candidates <= no_of_desired_groups * overflow:
+                [candidate_group_weight, candidate_group] = heapq.heappop(
+                    initial_groups_mem_cons[group_no])
+                candidate_groups.append(candidate_group)
+                candidate_groups_weights.append(candidate_group_weight)
+                sum_of_candidates += candidate_group_weight
+
+            for sub_group in candidate_groups:
+                for i in range(0, len(final_groups)):
+                    can_be_merged = True
+                    for node in sub_group:
+                        node_level = analysis_graph[node].level
+                        if final_groups_memory_consumptions[i][node_level + 1] > memory_limit_per_group or \
+                            ( len(graph[node]) > 0 and graph[node][0] != sink_node_name and final_groups_memory_consumptions[i][node_level + 2] > memory_limit_per_group):
+                            can_be_merged = False
+                            break
+
+                        max_neighbor_level = node_level
+                        for neighbor_node in graph[node]:
+                            if neighbor_node != sink_node_name and nodes_groups[neighbor_node] == nodes_groups[node]:
+                                max_neighbor_level = analysis_graph[neighbor_node].level
+                            for level in range(node_level + 3, max_neighbor_level):
+                                if final_groups_memory_consumptions[i][level] > memory_limit_per_group:
+                                    can_be_merged = False
+                                    break
+                    
+                    if can_be_merged:
+
+        level += 1
+
 
 with open(out1, 'w') as f:
-    for i in range(0, len(initial_groups)):
+    for i in range(0, len(final_groups)):
         smm = 0
         light_levels_sum = 0
         cntt = 0
         count = 0
-        for node in initial_groups[i]:
+        for node in final_groups[i]:
             if not node.startswith("^"):
                 f.write(node + ' ' + str(no_of_desired_groups - i - 1) + '\n')
                 smm = smm + analysis_graph[node].duration

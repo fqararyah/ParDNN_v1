@@ -1,7 +1,7 @@
 import utils
 
 # folder containing the work files
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/'
+io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/'
 
 """ # input files
 in1 = io_folder_path + 'inc_A_dot_low.dot'
@@ -14,9 +14,9 @@ in6 = io_folder_path + 'tensors_sz_32_low.txt' """
 # input files
 in1 = io_folder_path + 'resnet_src_sink_low.dot'
 in2 = io_folder_path + 'resnet_src_sink_nodes_levels_low.txt'
-in3 = io_folder_path + 'vanilla_cleaned_low.place'
-in4 = io_folder_path + 'timeline-800.json'
-in5 = io_folder_path + 'colocation_low.txt'
+in3 = io_folder_path + 'ver_grouper_placement_e_nc.place'  # 'mixed_placement_v_part_nc.place'
+in4 = io_folder_path + 'timeline_step0_30_low.json'
+in5 = io_folder_path + 'colocation_32_low.txt'
 in6 = io_folder_path + 'tensors_sz_32_low.txt'
 
 
@@ -34,7 +34,7 @@ graph = {}
 with open(in1, 'r') as f:
     for line in f:
         line = utils.clean_line_keep_spaces(line)
-        nodes = line.split(" -> ")
+        nodes = line.split("->")
         if len(nodes) > 1:
             if nodes[0] in graph:
                 graph[nodes[0]].append(nodes[1])
@@ -64,7 +64,6 @@ for node, level in nodes_levels.items():
     else:
         rest_layers_nodes.append(node)
         if level == 68 and node in graph:
-            print(node)
             print(graph[node])
             for adj in graph[node]:
                 print(nodes_levels[adj])
@@ -89,7 +88,7 @@ for node in first_layers_nodes:
                 cntt[int(nodes_levels[adj])] = cntt[int(nodes_levels[adj])] + 1
 
 
-analysis_graph = utils.read_profiling_file(in4, True)
+analysis_graph = utils.read_profiling_file(in4, False)
 
 nodes = []
 times = []
@@ -112,6 +111,21 @@ with open(in6, 'r') as f:
 
 print(len(tensors_sizes))
 with open(out5, 'w') as f:
+    for i in range(0, len(nodes)):
+        if times[i] >= 0:
+            curr_tensor_size = -1
+            if nodes[i] in tensors_sizes:
+                curr_tensor_size = tensors_sizes[nodes[i]]
+            if nodes[i] in nodes_levels:
+                f.write(nodes[i] + ':S:' + str(times[i]) + ':D:' +
+                        str(analysis_graph[nodes[i]].duration) + ':L:' + nodes_levels[nodes[i]] + ':P:' + (str(nodes_devices[nodes[i]]) if nodes[i] in nodes_devices else '-1') + ':T:' + str(curr_tensor_size) + '\n')
+            else:
+                f.write(nodes[i] + ':S:' + str(times[i]) + ':D:' +
+                        str(analysis_graph[nodes[i]].duration) + ':L:-1' + ':P:' + (str(nodes_devices[nodes[i]]) if nodes[i] in nodes_devices else '-1') + ':T:' + str(curr_tensor_size) + '\n')
+        else:
+            f.write(nodes[i] + ':L:' + nodes_levels[nodes[i]] + ':P:' + (str(nodes_devices[nodes[i]]) if nodes[i] in nodes_devices else '-1') + ':T:' + str(curr_tensor_size) + '\n')
+
+
     for i in range(0, len(nodes)):
         if times[i] >= 0:
             curr_tensor_size = -1
@@ -149,22 +163,22 @@ for node in first_layers_nodes:
                 distinct_nodes[adj_node] = 1
 
 #sum = len(distinct_nodes)
+print(len(graph))
+cntt = 0
+for node, level in nodes_levels.items():
+    #in graph and len(graph[node]) <= 100000 and node
+    if int(level) > 8 and node in analysis_graph:
+        cntt += analysis_graph[node].duration
+print('multi child: ' + str(cntt))
+
+cntt2 = 0
+for node in analysis_graph:
+    cntt2 += analysis_graph[node].duration
+print('all nodes: ' + str(cntt2))
+print('percentage:' + str(cntt / cntt2))
 
 print(sum)
 
-""" collocated = {}
-with open(in5) as f:
-    for line in f:
-        line = utils.clean_line_keep_spaces(line)
-        splits = line.split(' vs ')
-        if nodes_devices[splits[0]] != '4' or nodes_devices[splits[1]] != '4':
-            print(nodes_devices[splits[0]] + ' -> ' + nodes_devices[splits[1]])
-        collocated[splits[0]] = splits[1]
-
-print(len(collocated))
-
-for key in collocated.keys():
-    print(nodes_levels[key]) """
 
 with open(out1, 'w') as f:
     for node in first_layers_nodes:

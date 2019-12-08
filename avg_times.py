@@ -3,7 +3,9 @@ from os import walk
 
 
 # folder containing the work files
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/inc/time_steps/'
+#io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
+
+io_folder_path = utils.io_folder_path
 
 # output file
 out1 = io_folder_path + 'nodes_average_durations.txt'
@@ -16,7 +18,7 @@ for (dirpath, dirnames, filenames) in walk(io_folder_path):
 # getting time (weight) info for nodes
 nodes_durations = {}
 for file in files:
-    if 'json' in file:
+    if 'json' in file and 'low' not in file and not 'tensor' in file:
         analysis_graph = utils.read_profiling_file(io_folder_path + file)
         for node in analysis_graph:
             if node in nodes_durations:
@@ -44,8 +46,5 @@ with open(out1, 'w') as f:
                     mean) + ', The median is:' + str(median) + ' ' + str(to_write))
         else:
             to_write = int((mean + median) / 2)
-        if node.lower() == 'tower_0/mixed_8x8x2048a/branch3x3dbl/conv_1/conv2d':
-            print(node + ', ' + str(nodes_durations[node]) + ', The mean is: ' + str(
-                    mean) + ', The median is:' + str(median) + ' ' + str(to_write))
-                    
         f.write(node.lower() + '::' + str(to_write) + '\n')
+print(len(nodes_durations))

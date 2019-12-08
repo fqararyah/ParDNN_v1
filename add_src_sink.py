@@ -1,13 +1,15 @@
 import utils
 
 # folder containing the work files
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/'
+#io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
+
+io_folder_path = utils.io_folder_path
 
 # input files
-in1 = io_folder_path + 'resnet.dot'#'inc_A_dot.dot'
+in1 = io_folder_path + utils.network_app + 't_low.dot'#'inc_A_dot.dot'
 
 #output filse
-out1 = io_folder_path + 'resnet_src_sink.dot'#'inc_A_dot_src_sink.dot'
+out1 = io_folder_path + utils.network_app + '_src_sink_low.dot'#'inc_A_dot_src_sink.dot'
 sink_node_name = 'snk'
 src_node_name = 'src'
 

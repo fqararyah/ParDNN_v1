@@ -7,19 +7,16 @@ import copy
 import collections
 import heapq
 import random
-import queue
 
 # folder containing the work files
-io_folder_path = utils.io_folder_path
+io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/inc/wrn_8_4/'
 network_app = utils.network_app
-in1 = io_folder_path + network_app + \
-    '_src_sink_low.dot'  # 'part_8_1799_src_sink.dot'
+in1 = io_folder_path + network_app + '_src_sink_low.dot'  # 'part_8_1799_src_sink.dot'
 in2 = io_folder_path + 'timeline_step17_low.json'
 # 'part_8_1799_src_sink_nodes_levels.txt'
 in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'
 # 'rev_part_8_1799_src_sink_nodes_levels.txt'
 in4 = io_folder_path + 'rev_' + network_app + '_src_sink_nodes_levels_low.txt'
-in4_b = io_folder_path + 'rev_' + network_app + '_src_sink_low.dot'
 in5 = io_folder_path + 'tensors_sz_32_low.txt'
 
 """ # folder containing the work files
@@ -68,9 +65,11 @@ in5 = io_folder_path + 'tensors_sz.txt' """
 out1 = io_folder_path + 'ver_grouper_placement_e_nc.place'
 
 # grouper parameters
+path_length_threshold = 10
+group_weight_threshold = 250
 no_of_desired_groups = 2
 
-comm_latency = 45
+comm_latency = 2 * 10
 average_tensor_size_if_not_provided = 1
 comm_transfer_rate = 1000000 / (140 * 1024 * 1024 * 1024)
 BFS_max_depth = 8
@@ -96,21 +95,6 @@ with open(in5, 'r') as f:
             int(splitted[1]) * comm_transfer_rate + comm_latency
 
 avg_tensor_size = total_tensor_sz / len(tensors_sizes)
-
-# getting time (weight) info for nodes
-analysis_graph = utils.read_profiling_file(in2, True)
-
-# get_node_average_weiht
-total_nodes_weight = 0
-for node, node_props in analysis_graph.items():
-    total_nodes_weight = total_nodes_weight + node_props.duration
-
-average_node_weight = total_nodes_weight/len(analysis_graph)
-
-ccr = total_tensor_sz / total_nodes_weight
-
-print('CCR= ' + str(ccr))
-
 # will contain the graph as an adgacency list
 graph = {}
 all_nodes = {}
@@ -130,10 +114,40 @@ with open(in1, 'r') as f:
             all_nodes[splits[0]].children.append(splits[1])
 
             if splits[0] in graph.keys():
-                graph[splits[0]].append(splits[1])
+                heapq.heappush(graph[splits[0]], (int(
+                    reverse_levels[splits[1]]), splits[1]))
             else:
-                graph[splits[0]] = [splits[1]]
+                graph[splits[0]] = []
+                heapq.heappush(graph[splits[0]], (int(
+                    reverse_levels[splits[1]]), splits[1]))
 
+graph[sink_node_name] = []
+
+for node in all_nodes:
+    if not node in tensors_sizes:
+        tensors_sizes[node] = average_tensor_size_if_not_provided
+
+# change adjacents priority queues to lists
+for node, adjacents in graph.items():
+    ordered_adjacents_list = []
+    while adjacents:
+        ordered_adjacents_list.append(heapq.heappop(adjacents)[1])
+    graph[node] = ordered_adjacents_list
+
+
+# getting time (weight) info for nodes
+analysis_graph = utils.read_profiling_file(in2, True)
+
+# get_node_average_weiht
+total_nodes_weight = 0
+for node, node_props in analysis_graph.items():
+    total_nodes_weight = total_nodes_weight + node_props.duration
+
+average_node_weight = total_nodes_weight/len(analysis_graph)
+
+ccr = total_tensor_sz / total_nodes_weight
+
+print('CCR= ' + str(ccr))
 
 for node, node_props in all_nodes.items():
     if node in analysis_graph:
@@ -143,171 +157,50 @@ for node, node_props in all_nodes.items():
         analysis_graph[node] = node_props
 
 
-for node in all_nodes:
-    if not node in tensors_sizes:
-        tensors_sizes[node] = average_tensor_size_if_not_provided
-
-# constructing the graph and initializing the nodes levels from the dot file
-rev_graph = {}
-with open(in4_b, 'r') as f:
-    for line in f:
-        line = utils.clean_line(line)
-        nodes = line.split("->")
-        if len(nodes) > 1:
-            if nodes[0] in rev_graph:
-                rev_graph[nodes[0]].append(nodes[1])
-            else:
-                rev_graph[nodes[0]] = [nodes[1]]
-
-#get nodes in degrees for the topological sort
-nodes_in_degrees = {}
-for adjs in rev_graph.values():
-    for adj in adjs:
-        if adj in nodes_in_degrees:
-            nodes_in_degrees[adj] += 1
-        else:
-            nodes_in_degrees[adj] = 1
-
-def get_nodes_weighted_levels(graph, edges_weights, src_nodes=None, nodes_weighted_levels={}):
-    # getting the sources of the graph to start the topological traversal from them
-    graph_keys = {}
-    tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
-    for graph_key in graph.keys():
-        graph_keys[graph_key] = 0
-
-    for adj_nodes in graph.values():
-        for node in adj_nodes:
-            if node in graph_keys:
-                graph_keys[node] = 1
-
-    traversal_queueu = queue.Queue()
-
-    if src_nodes is None:
-        src_nodes = []
-        for node, source_node in graph_keys.items():
-            if source_node == 0:
-                src_nodes.append(node)
-
-    for node in src_nodes:
-        nodes_weighted_levels[node] = 0  # analysis_graph[node].duration
-        traversal_queueu.put(node)
-
-    # start the traversal
-    while not traversal_queueu.empty():
-        current_node = traversal_queueu.get()
-        if current_node in graph:
-            adj_nodes = graph[current_node]
-        else:
-            adj_nodes = []
-        current_node_level = nodes_weighted_levels[current_node]
-        for adj_node in adj_nodes:
-            new_level = current_node_level + \
-                (int(edges_weights[adj_node]) * comm_transfer_rate + comm_latency) + \
-                analysis_graph[adj_node].duration
-            tmp_nodes_in_degrees[adj_node] -= 1
-            if adj_node not in nodes_weighted_levels or nodes_weighted_levels[adj_node] < new_level:
-                nodes_weighted_levels[adj_node] = new_level
-            if tmp_nodes_in_degrees[adj_node] == 0:
-                traversal_queueu.put(adj_node)
-
-    return nodes_weighted_levels
-
-
-def prioratize_adj_lists(graph, priorities):
-    tmp_graph = {}
-    for node, adjs in graph.items():
-        tmp_graph[node] = []
-        for adj in adjs:
-            heapq.heappush(tmp_graph[node], (-priorities[adj], adj))
-
-    graph = tmp_graph
-    graph[sink_node_name] = []
-
-    # change adjacents priority queues to lists
-    for node, adjacents in graph.items():
-        ordered_adjacents_list = []
-        while adjacents:
-            ordered_adjacents_list.append(heapq.heappop(adjacents)[1])
-        graph[node] = ordered_adjacents_list
-
-    return graph
-
-nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, tensors_sizes)
-graph = prioratize_adj_lists(graph, nodes_weighted_levels)
-
-graph[sink_node_name] = []
-
-
 # extracting all vertical paths in the graph
 source_node_name = 'src'
-free_nodes = []
-heapq.heappush(free_nodes, (0, source_node_name))
+traversal_stack = [source_node_name]
 paths = []
 current_path = []
 visited = {}
 groups_weights = []
 paths_lengths = []
 current_path_weight = 0
-current_path_weight_with_comm = 0
 num_paths = 0
 nodes_paths_mapping = {}
-nodes_to_visit = list(all_nodes.keys())
 
-while free_nodes:
-    current_node = heapq.heappop(free_nodes)[1]
-    adj_nodes = graph[current_node]
-
-    while current_node not in visited and current_node != sink_node_name:
+while len(traversal_stack) > 0:
+    current_node = traversal_stack.pop()
+    if current_node not in visited:
         current_path.append(current_node)
         current_path_weight = current_path_weight + \
             analysis_graph[current_node].duration
-        current_path_weight_with_comm = current_path_weight_with_comm + \
-            analysis_graph[current_node].duration + \
-            int(tensors_sizes[current_node]) * \
-            comm_transfer_rate + comm_latency
+        adj_nodes = graph[current_node]
         visited[current_node] = 1
-        nodes_to_visit.remove(current_node)
-        for adj_node in graph[current_node]:
-            if adj_node not in visited:
-                current_node = adj_node
-                break
-    if len(current_path) > 0:
-        paths.append(copy.deepcopy(current_path))
-        groups_weights.append(current_path_weight)
-        paths_lengths.append(len(current_path))
-
-        if current_path_weight_with_comm >= groups_weights[0] or len(paths) <= no_of_desired_groups:
-            nodes_weighted_levels = get_nodes_weighted_levels(
-                rev_graph, tensors_sizes, list(visited.keys()), nodes_weighted_levels)
-            prioratize_adj_lists(graph, nodes_weighted_levels)
-
-        for node in current_path:
-            for adj_node in graph[node]:
-                if adj_node not in visited:
-                    heapq.heappush(
-                        free_nodes, (-nodes_weighted_levels[adj_node], adj_node))
-
-        current_path = []
-        current_path_weight = 0
-        current_path_weight_with_comm = 0
-        num_paths = num_paths + 1
-
-    if len(free_nodes) == 0 and len(nodes_to_visit) > 0:
-        heapq.heappush(
-            free_nodes, (nodes_weighted_levels[nodes_to_visit[0]], nodes_to_visit[0]))
-        nodes_to_visit.pop(0)
+        all_neighbors_visited = True
+        for adj_node in adj_nodes:
+            if adj_node not in visited and adj_node != sink_node_name:
+                all_neighbors_visited = False
+                traversal_stack.append(adj_node)
+        if all_neighbors_visited:
+            paths.append(copy.deepcopy(current_path))
+            groups_weights.append(current_path_weight)
+            paths_lengths.append(len(current_path))
+            current_path = []
+            current_path_weight = 0
+            num_paths = num_paths + 1
 
 # sort paths from shortest to longest
 paths_lengths, groups_weights, paths = (list(t) for t in zip(
     *sorted(zip(paths_lengths, groups_weights, paths))))
-print('num of paths: ' + str(len(paths)))
+
+print(len(paths_lengths))
 # which node is in which path
 nodes_paths_mapping[source_node_name] = num_paths - 1
 nodes_paths_mapping[sink_node_name] = num_paths - 1
 for i in range(0, num_paths):
     for node in paths[i]:
         nodes_paths_mapping[node] = i
-
 
 # get max potential of paths
 groups_parents = {}
@@ -318,17 +211,9 @@ for i in range(0, len(paths)):
     current_path_len = len(current_path) - 1
     parent_path_indx = -1
     found = False
-    heaviest_parent_child_tensor = 0
-    heaviest_parent_or_child_path = -1
     if current_path[0] != source_node_name and current_path[current_path_len] != sink_node_name:
         for src_node in analysis_graph[current_path[0]].parents:
-            if int(tensors_sizes[src_node]) > heaviest_parent_child_tensor:
-                heaviest_parent_child_tensor = int(tensors_sizes[src_node])
-                heaviest_parent_or_child_path = nodes_paths_mapping[src_node]
             for dst_node in analysis_graph[current_path[current_path_len]].children:
-                if int(tensors_sizes[dst_node]) > heaviest_parent_child_tensor:
-                    heaviest_parent_child_tensor = int(tensors_sizes[dst_node])
-                    heaviest_parent_or_child_path = nodes_paths_mapping[dst_node]
                 if nodes_paths_mapping[src_node] == nodes_paths_mapping[dst_node]:
                     parent_path_indx = nodes_paths_mapping[src_node]
                     paths_max_potential[parent_path_indx] = paths_max_potential[parent_path_indx] + \
@@ -337,8 +222,6 @@ for i in range(0, len(paths)):
                     break
                 if found:
                     break
-    if parent_path_indx == -1:
-        parent_path_indx = heaviest_parent_or_child_path
     groups_parents[i] = parent_path_indx
 
 levels_weights = {}
@@ -381,6 +264,11 @@ for path in paths:
 average_path_len = math.ceil(
     after_heavy_paths_lengths / after_heavy_paths_count)
 
+average_path_weight = int(average_path_len * average_node_weight)
+
+print(average_path_len)
+print(average_node_weight)
+
 # getting initial groups
 initial_groups = copy.deepcopy(paths)
 initial_groups_indices = [1] * num_paths
@@ -397,8 +285,8 @@ for i in range(0, num_paths - 1):
     sibling_from_branching_main_path = ''
     current_group_siblings_potentials = 0
     sibling_from_branching_main_path_weight = 0
-    
-    if (current_group_weight >= average_node_weight or len(current_group) >= average_path_len) and current_group_weight > 0:
+
+    if current_group_weight >= average_path_weight or len(current_group) >= average_path_len:
         if current_group[0] != source_node_name and current_group[len(current_group) - 1] != sink_node_name:
             for src_node in analysis_graph[current_group[0]].parents:
                 if nodes_paths_mapping[src_node] == branching_main_path:
@@ -443,12 +331,11 @@ for i in range(0, num_paths - 1):
                 else:
                     out_tensor_size = average_tensor_size_if_not_provided
 
-                group_comm_time = comm_latency * 2 + \
+                group_comm_time = comm_latency + \
                     (in_tensor_size + out_tensor_size) * comm_transfer_rate
 
-                if group_comm_time >= total_branching_potential + current_group_weight:
+                if group_comm_time > total_branching_potential + current_group_weight:
                     while initial_groups_indices[branching_main_path] == 0:
-                        # union find like stuff
                         branching_main_path = path_joined_group[branching_main_path]
                     path_joined_group[i] = branching_main_path
                     initial_groups_indices[i] = 0
@@ -558,7 +445,7 @@ def simulate_scheduling(nodes_parts, source_node_name, sink_node_name):
                                 if parent_node not in tensor_communicated_to_part.keys(
                                 ) or nodes_parts[adj_node] not in tensor_communicated_to_part[parent_node]:
                                     comm_time = int(
-                                        (int(tensors_sizes[parent_node]) * comm_transfer_rate + comm_latency))
+                                        (int(tensors_sizes[parent_node]) * comm_transfer_rate + (comm_latency / 2)))
                                 else:
                                     comm_time = 0
                                 parent_finishing_time = analysis_graph[parent_node].end_time + comm_time
@@ -576,7 +463,7 @@ def simulate_scheduling(nodes_parts, source_node_name, sink_node_name):
                             if current_node not in tensor_communicated_to_part.keys(
                             ) or nodes_parts[adj_node] not in tensor_communicated_to_part[current_node]:
                                 comm_time = int(
-                                    (int(tensors_sizes[current_node]) * comm_transfer_rate + comm_latency))
+                                    (int(tensors_sizes[current_node]) * comm_transfer_rate + (comm_latency / 2)))
                             else:
                                 comm_time = 0
 
@@ -689,7 +576,7 @@ while len(initial_groups) > no_of_desired_groups:
     src_min_level = -1
     branch_src_node = ''
     branch_snk_node = ''
-    src_max_level = 20000
+    src_max_level = 2000
     for src_node in analysis_graph[to_be_merged_group[0]].parents:
         if int(analysis_graph[src_node].level) > src_min_level:
             src_min_level = int(analysis_graph[src_node].level)
@@ -703,7 +590,6 @@ while len(initial_groups) > no_of_desired_groups:
         if branch_src_node in initial_groups[i] and branch_snk_node in initial_groups[i]:
             branch_main_path_indx = i
 
-    # Note: the tensor size sent to the neighbors is the same, so pick the one with the lowest level.
     max_parent_or_child_tensor = ''
     max_parent_or_child_tensor_size = 0
     if branch_main_path_indx == -1:
@@ -728,10 +614,10 @@ while len(initial_groups) > no_of_desired_groups:
     else:
         out_tensor_size = average_tensor_size_if_not_provided
 
-    group_comm_time = comm_latency * 2 + \
+    group_comm_time = comm_latency + \
         (in_tensor_size + out_tensor_size) * comm_transfer_rate
 
-    min_sum_in_targeted_levels = 1000000000000
+    min_sum_in_targeted_levels = 1000000000
     main_branch_sum_in_targeted_levels = 0
     merge_destination_index = 0
 
@@ -740,7 +626,7 @@ while len(initial_groups) > no_of_desired_groups:
         # current_min_level = max(src_min_level, min_levels[i])
         # current_max_level = min(src_max_level, max_levels[i])
 
-        for level in range(src_min_level + 1, src_max_level - 1):
+        for level in range(src_min_level + 1, src_max_level):
             # and level in tasks_per_levels[to_be_merged_group_index].keys():
             if level in tasks_per_levels[i].keys():
                 sum_in_targeted_levels = sum_in_targeted_levels + \
@@ -753,6 +639,7 @@ while len(initial_groups) > no_of_desired_groups:
             main_branch_sum_in_targeted_levels = sum_in_targeted_levels
 
     improvement_achieved = False
+    first_pass = True
 
     if merge_destination_index != branch_main_path_indx and branch_main_path_indx in main_groups_indices:
         current_branch_max_time = min_sum_in_targeted_levels + \
@@ -766,21 +653,20 @@ while len(initial_groups) > no_of_desired_groups:
         poped_group_weight = 0
 
         adjustment_needed = False
-        # if this is the case, local refinement can be done.
+
         if an_alternative_max_time < current_branch_max_time or (current_branch_max_time < an_alternative_max_time and current_branch_max_time > main_branch_sum_in_targeted_levels):
             adjustment_needed = True
 
         short_path_long_spreding = len(to_be_merged_group) < (
-            src_max_level - src_min_level) / average_path_len
-
+            src_max_level - src_min_level) / 10
+        
         if adjustment_needed and len(to_be_merged_group) > 1 and not short_path_long_spreding:
 
-            # order the nodes by the difference between their communication and computation requirements
             comms_comps_diff = []
             to_be_merged_group_clone = copy.deepcopy(to_be_merged_group)
             for node in to_be_merged_group_clone:
                 comms_comps_diff.append(
-                    ((int(int(tensors_sizes[node])) * comm_transfer_rate + comm_latency) if node in tensors_sizes else 1) -
+                    ((int(int(tensors_sizes[node])) * comm_transfer_rate + comm_latency / 2) if node in tensors_sizes else 1) -
                     analysis_graph[node].duration)
 
             comms_comps_diff, to_be_merged_group_clone = (list(t) for t in zip(
@@ -792,11 +678,11 @@ while len(initial_groups) > no_of_desired_groups:
 
             current_node_comm_comp = comms_comps_diff[0]
             current_node = to_be_merged_group_clone[0]
-            visited_heavy_nodes = {}
+            visited_nodes = {}
             indx = 0
-            if branch_src_node in tensors_sizes and (int(tensors_sizes[branch_src_node]) * comm_transfer_rate + comm_latency) > average_comm_comp:
+            if branch_src_node in tensors_sizes and (int(tensors_sizes[branch_src_node]) * comm_transfer_rate + comm_latency / 2) > average_comm_comp:
                 indx = 1
-                visited_heavy_nodes[to_be_merged_group[0]] = 1
+                visited_nodes[to_be_merged_group[0]] = 1
                 heavy_comm_groups.append([to_be_merged_group[0]])
 
             heavy_indx = indx
@@ -806,19 +692,19 @@ while len(initial_groups) > no_of_desired_groups:
                 new_group_created = False
 
                 for adj_node in graph[current_node]:
-                    if not current_node in visited_heavy_nodes and adj_node in to_be_merged_group_clone:
+                    if not current_node in visited_nodes and int(analysis_graph[adj_node].level) < src_max_level:
                         heavy_comm_groups.append([current_node])
-                        visited_heavy_nodes[current_node] = 1
+                        visited_nodes[current_node] = 1
                         new_group_created = True
                         node_heavy_group_matching[current_node] = heavy_indx
-                    if adj_node in to_be_merged_group_clone and adj_node not in visited_heavy_nodes:
+                    if adj_node in to_be_merged_group_clone and adj_node not in visited_nodes:
                         if not new_group_created:
                             heavy_comm_groups.append([])
                             new_group_created = True
                         heavy_comm_groups[heavy_indx].append(adj_node)
                         node_heavy_group_matching[adj_node] = heavy_indx
-                        visited_heavy_nodes[adj_node] = 1
-
+                        visited_nodes[adj_node] = 1
+                
                 indx = indx + 1
                 if new_group_created:
                     heavy_indx = heavy_indx + 1
@@ -832,8 +718,9 @@ while len(initial_groups) > no_of_desired_groups:
                         if node_heavy_group_matching[node] != node_heavy_group_matching[adj_node]:
                             heavy_group_parent_mapping[node] = node_heavy_group_matching[adj_node]
                             break
-            # assign the nodes in the targeted levels to either of the candidate merge groups
+
             tmp_nodes_parts = {}
+
             traversal_queue = [branch_src_node]
             visited = {}
             while traversal_queue:
@@ -866,7 +753,7 @@ while len(initial_groups) > no_of_desired_groups:
 
             total_time = min(current_branch_max_time, an_alternative_max_time)
 
-            for node in visited_heavy_nodes.keys():
+            for node in visited_nodes.keys():
                 to_be_merged_group_clone.remove(node)
                 tmp_nodes_parts[node] = 0
             for node in to_be_merged_group_clone:
@@ -878,8 +765,8 @@ while len(initial_groups) > no_of_desired_groups:
 
             power_diff = len(heavy_comm_groups) - BFS_max_depth
             merged_heavy_groups_indices = []
-
-            if power_diff > BFS_max_depth:
+            
+            if power_diff > BFS_max_depth / 2:
                 for i in range(0, len(heavy_comm_groups)):
                     heavy_comm_group = heavy_comm_groups[i]
                     for node in heavy_comm_group:
@@ -888,10 +775,10 @@ while len(initial_groups) > no_of_desired_groups:
                                 heavy_comm_groups[heavy_group_parent_mapping[node]]
                             merged_heavy_groups_indices.append(
                                 heavy_group_parent_mapping[node])
-
+            
                     power_diff = len(heavy_comm_groups) - \
                         len(merged_heavy_groups_indices) - BFS_max_depth
-                    if power_diff < BFS_max_depth / 2:
+                    if power_diff < 1:
                         break
 
             tmp_heavy_comm_groups = heavy_comm_groups
@@ -915,7 +802,9 @@ while len(initial_groups) > no_of_desired_groups:
             for i in range(0, min(power_diff, BFS_max_depth)):
 
                 for heavy_comm_group in heavy_comm_groups:
-                    tmp_nodes_parts[node] = int(random.getrandbits(1))
+                    tmp_random = int(random.getrandbits(1))
+                for node in heavy_comm_group:
+                    tmp_nodes_parts[node] = tmp_random
 
                 [BFS_attempt_2_time, BFS_attempt_2_place] = placement_best_first_search(
                     tmp_nodes_parts, heavy_comm_groups, BFS_attempt_1_time, branch_src_node, branch_snk_node)
@@ -935,7 +824,9 @@ while len(initial_groups) > no_of_desired_groups:
                     best_time = BFS_attempt_1_time
                     to_be_merged_group_clone = []
                     for node in to_be_merged_group:
-                        if BFS_attempt_1_place[node] == 1:
+                        if node not in BFS_attempt_1_place:
+                            cntt = cntt + 1
+                        elif BFS_attempt_1_place[node] == 1:
                             to_be_merged_group_clone.append(node)
 
             # for node in to_be_merged_group_clone:
@@ -966,6 +857,8 @@ while len(initial_groups) > no_of_desired_groups:
                         if best_time > 0:
                             total_gain = total_gain + (total_time - best_time)
                             break
+                if best_time == 0:
+                    cntt = cntt + 1
 
             merge_destination_index = branch_main_path_indx
 
@@ -997,6 +890,7 @@ while len(initial_groups) > no_of_desired_groups:
         else:
             tasks_per_levels[merge_destination_index][level] = tasks_sum
     tasks_per_levels.pop(to_be_merged_group_index)
+
 
 
 print('total_gain = ' + str(total_gain))

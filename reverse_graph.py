@@ -1,13 +1,15 @@
 import utils
 
 #folder containing the work files
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/'
+#io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
+
+io_folder_path = utils.io_folder_path
 
 #input files
-in1 = io_folder_path + 'resnet_src_sink.dot' #'inc_A_dot_src_sink.dot'
+in1 = io_folder_path + utils.network_app + '_src_sink_low.dot' #'inc_A_dot_src_sink.dot'
 
 #output files
-out1 = io_folder_path + 'rev_resnet_src_sink.dot' #'rev_inc_A_dot_src_sink.dot'
+out1 = io_folder_path + 'rev_' + utils.network_app + '_src_sink_low.dot' #'rev_inc_A_dot_src_sink.dot'
 
 
 rev_graph_src = []
