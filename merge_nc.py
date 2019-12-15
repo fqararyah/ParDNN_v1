@@ -86,31 +86,6 @@ with open(in5_b, 'r') as f:
             else:
                 rev_graph[nodes[0]] = [nodes[1]]
 
-#backward adjustment:
-for node, adjs in rev_graph.items():
-    if node.endswith("/read"):
-        read_children = [0,0]
-        for read_child in graph[node]:
-            if read_child in placer_placement:
-                read_children[int(placer_placement[read_child])] += 1
-        """ if read_children[0] > read_children[1]:
-            placer_placement[node] = '0'
-        elif  read_children[1] > read_children[0]:
-            placer_placement[node] = '1' """
-        for adj_node in adjs:
-            placer_placement[adj_node] = placer_placement[node]
-            for adj_adj_node in graph[adj_node]:
-                placer_placement[adj_adj_node] = placer_placement[node]
-                if adj_adj_node.endswith("/assign") and nodes_levels[adj_adj_node] <= nodes_levels[node]:
-                    nodes_to_visit = [adj_adj_node]
-                    visited = {}
-                    while nodes_to_visit:
-                        node_to_visit = nodes_to_visit.pop()
-                        if node_to_visit != 'src' and node_to_visit != 'snk' and node_to_visit not in visited:
-                            visited[node_to_visit] = 1
-                            placer_placement[node_to_visit] = placer_placement[node]
-                            nodes_to_visit = nodes_to_visit + rev_graph[node_to_visit]
-
 print("fff")
 level = 7
 collocated = {}
@@ -161,6 +136,24 @@ for collocation_src in collocated.keys():
 #print(placer_placement['unit_2_2/conv_2/kernel'])
 #print(placer_placement['save/Assign_185'])
 
+#backward adjustment:
+for node, adjs in rev_graph.items():
+    if node.endswith("/read"):
+        placer_placement[node] = placer_placement[node[:-5]]
+        for adj_node in adjs:
+            placer_placement[adj_node] = placer_placement[node]
+            for adj_adj_node in graph[adj_node]:
+                placer_placement[adj_adj_node] = placer_placement[node]
+                if adj_adj_node.endswith("/assign") and nodes_levels[adj_adj_node] <= nodes_levels[node]:
+                    nodes_to_visit = [adj_adj_node]
+                    visited = {}
+                    while nodes_to_visit:
+                        node_to_visit = nodes_to_visit.pop()
+                        if node_to_visit != 'src' and node_to_visit != 'snk' and node_to_visit not in visited:
+                            visited[node_to_visit] = 1
+                            placer_placement[node_to_visit] = placer_placement[node]
+                            nodes_to_visit = nodes_to_visit + rev_graph[node_to_visit]
+                            
 parts_weights = {}
 with open(out1, 'w') as f:
     for node, part in vanilla_placement.items():

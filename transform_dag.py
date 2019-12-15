@@ -1,4 +1,5 @@
 import utils
+import json
 
 #io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_480/'
 # input files
@@ -7,7 +8,7 @@ io_folder_path = utils.io_folder_path
 
 network_app = utils.network_app
 
-in1 = io_folder_path + network_app + '_low.dot'
+in1 = io_folder_path + network_app + '.dot'
 in2 = io_folder_path + 'tensors_sz_32_low.txt'
 
 out = io_folder_path + network_app + 't_low.dot'
@@ -41,7 +42,7 @@ with open(out, 'w') as f:
     f.write('digraph{\n')
     for node,adjs in graph.items():
         for adj in adjs:
-            f.write('"' + node + '"->"' + adj + '"\n')
+            f.write('"' + node.lower() + '"->"' + adj.lower() + '"\n')
     f.write('}')
 
 tensors_sizes = {}

@@ -1,9 +1,9 @@
 import utils
 
 io_folder_path = utils.io_folder_path
-in1 = io_folder_path + 'mem_6.txt'
+in1 = io_folder_path + 'mem_k_4.txt'
 in2 = io_folder_path + utils.network_app + '_src_sink_low.dot'
-out1 = io_folder_path + 'memory_6.txt'
+out1 = io_folder_path + 'memory4.txt'
 
 all_nodes = {}
 
@@ -17,36 +17,53 @@ with open(in2, 'r') as f:
 
 sum_inits = 0
 
+def text_to_bytes(mem_cons):
+    node_mem_cons = 0 
+    if mem_cons.endswith('GB'):
+        node_mem_cons = float(mem_cons[:-1]) * 1024 * 1024 * 1024
+    elif mem_cons.endswith('MB'):
+        node_mem_cons = float(mem_cons[:-1]) * 1024 * 1024
+    elif mem_cons.endswith('KB'):
+        node_mem_cons = float(mem_cons[:-1]) * 1024
+    elif mem_cons.endswith('B'):
+        node_mem_cons = float(mem_cons[:-1])
+
+    return node_mem_cons
+
 nodes_memory = {}
+additional_memory = {}
 with open(in1, 'r') as f:
     for line in f:
-        line = utils.clean_line(line)
-        splits = line.split('::')
-        node_name = splits[0].lower()
-        if node_name == "gradients/unit_1_0/bn_2/batchnorm/add_1_grad/Sum_1":
-            print(1)
+        line = utils.clean_line_keep_spaces(line)
+        splits = line.split('::(')
+        if len(splits) < 2:
+            splits = line.split(' (')
 
-        mem_cons = splits = line.split('/')
-        mem_cons = mem_cons[len(mem_cons) - 1]
-        mem_cons = mem_cons[:-1]
-        node_mem_cons = 0
-        if mem_cons.endswith('GB'):
-            node_mem_cons = float(mem_cons[:-2]) * 1024 * 1024 * 1024
-        elif mem_cons.endswith('MB'):
-            node_mem_cons = float(mem_cons[:-2]) * 1024 * 1024
-        elif mem_cons.endswith('KB'):
-            node_mem_cons = float(mem_cons[:-2]) * 1024
-        elif mem_cons.endswith('B'):
-            node_mem_cons = float(mem_cons[:-1])
-        
-        nodes_memory[node_name] = node_mem_cons
+        if len(splits) > 1:
+            node_name = splits[0].lower()
+            node_name = utils.clean_line(node_name)
+            mem_cons = utils.clean_line(splits[1]).split(',')
+            total_cons = mem_cons[0][1:]
+            mem_cons = mem_cons[len(mem_cons) - 1]
+            mem_cons = mem_cons.split('/')[0]
 
-        if node_name in all_nodes:
-            all_nodes[node_name] = 0
-        else:
-            sum_inits += node_mem_cons
+            node_mem_cons = text_to_bytes(mem_cons)
+            total_cons = text_to_bytes(total_cons)
+            additional_mem_cons = max(total_cons - node_mem_cons, 0)
             
-print(sum_inits)
+            nodes_memory[node_name] = node_mem_cons
+            additional_memory[node_name] = additional_mem_cons
+            
+            if node_name in all_nodes:
+                sum_inits += node_mem_cons
+                #print(node_name + ' ' + str(node_mem_cons))
+            #if node_mem_cons > 0 and node_name in all_nodes:
+               # print(node_name)
+
+            if node_name in all_nodes:
+                all_nodes[node_name] = 0
+            
+print(sum_inits/1000000000)
 
 for node, val in all_nodes.items():
     if val == 1:
@@ -54,4 +71,4 @@ for node, val in all_nodes.items():
         
 with open(out1, 'w') as f:
     for key, val in nodes_memory.items():
-        f.write(key + '::' + str(int(val)) + '\n')
+        f.write(key + '::' + str(int(val)) + '\n' + '::' + additional_memory[node_name])
