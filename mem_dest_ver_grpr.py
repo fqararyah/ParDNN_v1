@@ -791,6 +791,11 @@ for level in range(0, no_of_levels):
         final_groups_comulative_work[nodes_groups[node]
                                      ][level] = final_groups_comulative_work[nodes_groups[node]][level - 1] + analysis_graph[node].duration
 
+for level in range(0, no_of_levels):
+    for group in range(0, no_of_desired_groups):
+        if level not in final_groups_comulative_work[group]:
+            final_groups_comulative_work[group] = final_groups_comulative_work[level - 1]
+
 # memory consumption of the initial groups
 initial_groups_mem_cons = []
 current_initial_group = 0
@@ -801,12 +806,16 @@ for group in initial_groups:
         current_group_mem_cons += nodes_memory[node]
     initial_groups_mem_cons.append(current_group_mem_cons)
 
+initial_groups_start_
+
 final_grop
 #communication and computation of the initial groups
 current_group_indx = 0
 initial_groups_comps_comms = []
+initial_groups_comms = []
 initial_groups_comm_comp_to_mem_ratio = []
 initial_groups_end_levels = []
+initial_groups_sinks_levels = []
 com_comp_min = math.inf
 com_comp_max = 0
 ratio_min = math.inf
@@ -821,11 +830,20 @@ for initial_group in initial_groups:
         if current_comm_cost > max_cost:
             comm_cost = current_comm_cost
 
-    comm_cost += tensors_sizes[end_node]
+    comm_cost += int(tensors_sizes[end_node])
+    initial_groups_comms.append(comm_cost)
     total_cost = comm_cost + groups_weights[current_group_indx]
     initial_groups_comps_comms.append(total_cost)
     ratio = total_cost / initial_groups_mem_cons[current_group_indx]
     initial_groups_comm_comp_to_mem_ratio[current_group_indx] = ratio
+
+    min_child_end_level = math.inf
+    for child in graph[end_node]:
+        current_child_level = analysis_graph[child].level
+        if current_child_level < max_child_end_level:
+            min_child_end_level = current_child_level
+
+    initial_groups_sinks_levels.append(min_child_end_level)
 
     if total_cost > com_comp_max:
         com_comp_max = total_cost
@@ -845,8 +863,8 @@ initial_groups_sorting_criteria = []
 for i in range(0, len(initial_group)):
     initial_groups_sorting_criteria[i] = initial_groups_comps_comms[i] / normalized_comm_comp_den + initial_groups_comm_comp_to_mem_ratio[i] / normalized_ratio_den
 
-initial_groups_mem_cons, initial_groups_sorting_criteria, initial_groups, initial_groups_end_levels = (list(t) for t in zip(
-    *sorted(zip(initial_groups_mem_cons, initial_groups_sorting_criteria, initial_groups, initial_groups_end_levels))))
+initial_groups_mem_cons, initial_groups_sorting_criteria, initial_groups, initial_groups_end_levels, initial_groups_sinks_levels, initial_groups_comms = (list(t) for t in zip(
+    *sorted(zip(initial_groups_mem_cons, initial_groups_sorting_criteria, initial_groups, initial_groups_end_levels, initial_groups_sinks_levels, initial_groups_comms))))
 
 initial_final_group_mapping = {}
 for group in initial_groups:
@@ -882,27 +900,27 @@ for group_no in range(0, no_of_desired_groups):
             #the first group that can accomodate the sub group: select it.
             #update things accordingly.
             for sub_group_indx in candidate_groups_indices:
-                current_sub_group = initial_groups[sub_group_indx]
+                current_sub_group = candidate_groups_indices[sub_group_indx]
+                merge_with_index = -1
+                min_so_far = math.inf
+                sub_group_start_level = analysis_graph[sub_group_indx[0]].level
+
+                comm_comp_with_final_groups = [initial_groups_comms[group_no][0]] * no_of_desired_groups
+                for parent_node in rev_graph[current_sub_group[0]]:
+                    comm_comp_with_final_groups[nodes_groups[parent_node]] -= int(tensors_sizes[parent_node])
+                comm_comp_with_final_groups[nodes_groups[current_sub_group[-1]]] -= int(tensors_sizes[current_sub_group[-1]])
+
+                groups_indices = []
+                for i in range(0, no_of_desired_groups):
+                    groups_indices.append(i)
+
                 for i in range(0, len(final_groups)):
-                    can_be_merged = True
-                    for node in current_sub_group:
-                        node_level = analysis_graph[node].level
-                        if final_groups_memory_consumptions[i][node_level + 1] > memory_limit_per_group or \
-                                (len(graph[node]) > 0 and graph[node][0] != sink_node_name and final_groups_memory_consumptions[i][node_level + 2] > memory_limit_per_group):
-                            can_be_merged = False
-                            break
+                    comm_comp_with_final_groups += final_groups_comulative_work[final_groups[i]][initial_groups_sinks_levels[current_sub_group]] - \
+                        final_groups_comulative_work[final_groups[i]][sub_group_start_level] 
 
-                        max_neighbor_level = node_level
-                        for neighbor_node in graph[node]:
-                            if neighbor_node != sink_node_name and nodes_groups[neighbor_node] == nodes_groups[node]:
-                                max_neighbor_level = analysis_graph[neighbor_node].level
-                            for level in range(node_level + 3, max_neighbor_level):
-                                if final_groups_memory_consumptions[i][level] > memory_limit_per_group:
-                                    can_be_merged = False
-                                    break
+                comm_comp_with_final_groups, groups_indices = (list(t) for t in zip( *sorted(zip(comm_comp_with_final_groups, groups_indices))))
 
-                    if can_be_merged:
-
+                
         current_level += 1
 
 

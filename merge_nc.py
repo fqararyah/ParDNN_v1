@@ -109,29 +109,6 @@ for collocation_src in collocated.keys():
         placer_placement[adj_node] = placer_placement[collocation_src]
         for another_src in rev_collocated[adj_node]:
             placer_placement[another_src] = placer_placement[collocation_src]
-            """ if vanilla_placement[adj_node] != '4':
-                if collocation_src in placer_placement and adj_node in placer_placement:
-                    if placer_placement[adj_node] != placer_placement[collocation_src]:
-                        placer_placement[adj_node] = placer_placement[collocation_src]
-                        if adj_node in rev_collocated:
-                            for tra_adj_node in rev_collocated[adj_node]:
-                                placer_placement[tra_adj_node] = placer_placement[collocation_src] 
-                elif adj_node in placer_placement:
-                    if placer_placement[adj_node] != vanilla_placement[collocation_src]:
-                        placer_placement[adj_node] = vanilla_placement[collocation_src]
-                        if adj_node in rev_collocated:
-                            
-                            for tra_adj_node in rev_collocated[adj_node]:
-                                placer_placement[tra_adj_node] = vanilla_placement[collocation_src] 
-                else:
-                    if vanilla_placement[adj_node] != vanilla_placement[collocation_src]:
-                        vanilla_placement[adj_node] = vanilla_placement[collocation_src]
-                        if adj_node in rev_collocated:
-                            for tra_adj_node in rev_collocated[adj_node]:                        
-                                vanilla_placement[tra_adj_node] = vanilla_placement[collocation_src]
-    else:
-        for coll_node in collocated[collocation_src]:
-            placer_placement[coll_node] = '0' """
 
 #print(placer_placement['unit_2_2/conv_2/kernel'])
 #print(placer_placement['save/Assign_185'])
@@ -143,8 +120,8 @@ for node, adjs in rev_graph.items():
         for adj_node in adjs:
             placer_placement[adj_node] = placer_placement[node]
             for adj_adj_node in graph[adj_node]:
-                placer_placement[adj_adj_node] = placer_placement[node]
-                if adj_adj_node.endswith("/assign") and nodes_levels[adj_adj_node] <= nodes_levels[node]:
+                if adj_adj_node.endswith("/assign") and nodes_levels[adj_adj_node] <= nodes_levels[node] + 1:
+                    placer_placement[adj_adj_node] = placer_placement[node]
                     nodes_to_visit = [adj_adj_node]
                     visited = {}
                     while nodes_to_visit:
@@ -153,7 +130,11 @@ for node, adjs in rev_graph.items():
                             visited[node_to_visit] = 1
                             placer_placement[node_to_visit] = placer_placement[node]
                             nodes_to_visit = nodes_to_visit + rev_graph[node_to_visit]
-                            
+                if adj_adj_node.split('/')[-1].startswith('apply'):
+                    if adj_adj_node =='adam/update_rnnlm/multi_rnn_cell/cell_0/basic_lstm_cell/bias/applyadam':
+                        print(placer_placement[node])
+                    placer_placement[adj_adj_node] = placer_placement[node]
+
 parts_weights = {}
 with open(out1, 'w') as f:
     for node, part in vanilla_placement.items():
