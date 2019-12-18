@@ -666,16 +666,24 @@ with open(in6, 'r') as f:
         additional_memory[splitted[0]] = splitted[2]
 
 levels_additional_memory = []
-
+levels_additional_memory_by_node = []
 for i in range(0, no_of_desired_groups):
     levels_additional_memory[i].append({-1:0})
+    levels_additional_memory_by_node.append([])
 
+for i in range(0, no_of_desired_groups):
+    for j in range(0, no_of_levels):
+        levels_additional_memory_by_node[i].append()
+
+current_level = 0
 for current_level_nodes in levels_nodes:
     max_addition = [0] * no_of_desired_groups
     for node in current_level_nodes:
         current_node_group = nodes_groups[node]
         max_addition = max(
             additional_memory[node], max_addition[current_node_group])
+        levels_additional_memory_by_node[current_node_group][current_level].append(additional_memory[node])
+    current_level += 1
 
     for i in range(0, no_of_desired_groups):
         levels_additional_memory[i].append(max_addition[i])
@@ -730,8 +738,8 @@ def get_levels_memory_consumption(graph, src_nodes=None):
         if not current_level in levels_memory_consumption[current_group]:
             levels_memory_consumption[current_group][current_level] = nodes_memory[current_node] + \
                 levels_memory_consumption[current_level - 1] + \
-                additional_memory[current_level] - \
-                additional_memory[current_level - 1]
+                levels_additional_memory[current_level] - \
+                levels_additional_memory[current_level - 1]
         else:
             levels_memory_consumption[current_group][current_level] += nodes_memory[current_node]
 
@@ -777,24 +785,50 @@ def get_levels_memory_consumption(graph, src_nodes=None):
 
 final_groups_memory_consumptions = get_levels_memory_consumption(graph)
 
-# work destribution among levels:
-final_groups_comulative_work = []
-for i in range(0, no_of_desired_groups):
-    final_groups_comulative_work.append({-1: 0})
+#add dependencies:
+nodes_last_child_level_with_deps = {}
+nodes_last_child_level = {}
+for node in all_nodes:
+    max_child_level = 0
+    nodes_last_child_level[node] = 0
+    for child in graph[node]:
+        child_level =analysis_graph[child].level
+        if  child_level > max_child_level:
+            max_child_level = child_level
+        if child_level > nodes_last_child_level[node]:
+            nodes_last_child_level[node] = child_level
+        visited = {}
+        splitted_child = child.split('/')
+        if child.startswith('^') or 'group_deps' in splitted_child[-1] or 'control_dependency' in splitted_child[-1]:
+            nodes_to_visit = [child]
+            while nodes_to_visit:
+                current_visit = nodes_to_visit.pop()
+                for child_of_child in graph[current_visit]:
+                    if child_of_child not in visited:
+                        visited[child_of_child] = 1
+                        splitted_child = child_of_child.split('/')
+                        if analysis_graph[child_of_child].level > max_child_level:
+                            max_child_level = analysis_graph[child_of_child].level
+                        if child_of_child.startswith('^') or 'group_deps' in splitted_child[-1] or 'control_dependency' in splitted_child[-1]:
+                            nodes_to_visit.append(child_of_child)
+      
+    nodes_last_child_level_with_deps[node] = max_child_level
 
-for level in range(0, no_of_levels):
-    for group in range(0, no_of_desired_groups):
-        final_groups_comulative_work[group][level] = 0
+for node in all_nodes:
+    for level in range(nodes_last_child_level, nodes_last_child_level_with_deps):
+        final_groups_memory_consumptions[nodes_groups[node]][level] += nodes_memory[node]
+
+# work destribution among levels:
+final_groups_levels_work = []
+for group in range(0, no_of_desired_groups):
+    final_groups_levels_work.append([])
+    for level in range(0, no_of_levels):
+            final_groups_levels_work[group][level].appent(0)
 
 for level in range(0, no_of_levels):
     for node in levels_nodes[level]:
-        final_groups_comulative_work[nodes_groups[node]
-                                     ][level] = final_groups_comulative_work[nodes_groups[node]][level - 1] + analysis_graph[node].duration
+        final_groups_levels_work[nodes_groups[node]][level] += analysis_graph[node].duration
 
-for level in range(0, no_of_levels):
-    for group in range(0, no_of_desired_groups):
-        if level not in final_groups_comulative_work[group]:
-            final_groups_comulative_work[group] = final_groups_comulative_work[level - 1]
 
 # memory consumption of the initial groups
 initial_groups_mem_cons = []
@@ -806,9 +840,6 @@ for group in initial_groups:
         current_group_mem_cons += nodes_memory[node]
     initial_groups_mem_cons.append(current_group_mem_cons)
 
-initial_groups_start_
-
-final_grop
 #communication and computation of the initial groups
 current_group_indx = 0
 initial_groups_comps_comms = []
@@ -827,7 +858,7 @@ for initial_group in initial_groups:
     comm_cost = 0
     for parent in rev_graph[starting_node]:
         current_comm_cost = int(tensors_sizes[parent])
-        if current_comm_cost > max_cost:
+        if current_comm_cost > comm_cost:
             comm_cost = current_comm_cost
 
     comm_cost += int(tensors_sizes[end_node])
@@ -840,7 +871,7 @@ for initial_group in initial_groups:
     min_child_end_level = math.inf
     for child in graph[end_node]:
         current_child_level = analysis_graph[child].level
-        if current_child_level < max_child_end_level:
+        if current_child_level < min_child_end_level:
             min_child_end_level = current_child_level
 
     initial_groups_sinks_levels.append(min_child_end_level)
@@ -895,10 +926,6 @@ for group_no in range(0, no_of_desired_groups):
             candidate_groups_sotring_weights, candidate_groups_mem_cons, candidate_groups_indices = (list(t) for t in zip(
                 *sorted(zip(candidate_groups_sotring_weights, candidate_groups_mem_cons, candidate_groups_indices))))         
 
-            #modify this pick the best viable group.
-            #Sort the main groups by com+comp cost in the targeted levels.
-            #the first group that can accomodate the sub group: select it.
-            #update things accordingly.
             for sub_group_indx in candidate_groups_indices:
                 current_sub_group = candidate_groups_indices[sub_group_indx]
                 merge_with_index = -1
@@ -910,17 +937,56 @@ for group_no in range(0, no_of_desired_groups):
                     comm_comp_with_final_groups[nodes_groups[parent_node]] -= int(tensors_sizes[parent_node])
                 comm_comp_with_final_groups[nodes_groups[current_sub_group[-1]]] -= int(tensors_sizes[current_sub_group[-1]])
 
-                groups_indices = []
+                final_groups_indices = []
                 for i in range(0, no_of_desired_groups):
-                    groups_indices.append(i)
+                    final_groups_indices.append(i)
 
                 for i in range(0, len(final_groups)):
-                    comm_comp_with_final_groups += final_groups_comulative_work[final_groups[i]][initial_groups_sinks_levels[current_sub_group]] - \
-                        final_groups_comulative_work[final_groups[i]][sub_group_start_level] 
+                    for level in range(sub_group_start_level, initial_groups_sinks_levels[sub_group_indx] - 1):
+                        comm_comp_with_final_groups[i] += final_groups_levels_work[i][level]
 
-                comm_comp_with_final_groups, groups_indices = (list(t) for t in zip( *sorted(zip(comm_comp_with_final_groups, groups_indices))))
+                comm_comp_with_final_groups, final_groups_indices = (list(t) for t in zip( *sorted(zip(comm_comp_with_final_groups, final_groups_indices))))
 
-                
+                tmp_groups_mem_consumption = copy.deepcopy(final_groups_memory_consumptions)
+                tmp_levels_additional_memory = copy.deepcopy(levels_additional_memory)
+                tmp_levels_additional_memory_by_node = copy.deepcopy(levels_additional_memory_by_node)
+                merged = False
+                for final_group_indx in final_groups_indices:
+                    merged = True
+                    for node in current_sub_group:
+                        node_level = analysis_graph[node].level
+                        node_additional_memory = additional_memory[node]
+                        node_mem_cons = nodes_memory[node]
+                        tmp_levels_additional_memory_by_node[group_no][node_level].remove(node_additional_memory)
+                        if tmp_levels_additional_memory[group_no][node_level] <= node_additional_memory:
+                            tmp_levels_additional_memory[group_no][node_level] = max(levels_additional_memory_by_node)
+                            tmp_groups_mem_consumption[group_no][node_level] += tmp_levels_additional_memory[group_no][node_level]
+                            tmp_groups_mem_consumption[group_no][node_level] -= node_additional_memory
+                        tmp_levels_additional_memory_by_node[final_group_indx][node_level].append(node_additional_memory)
+                        if tmp_levels_additional_memory[final_group_indx][node_level] < node_additional_memory:
+                            tmp_levels_additional_memory[final_group_indx][node_level] = node_additional_memory
+                            tmp_groups_mem_consumption[final_group_indx][node_level] += node_additional_memory
+                            if tmp_groups_mem_consumption[final_group_indx][node_level] > memory_limit_per_group:
+                                merged = False
+                                break
+                            tmp_groups_mem_consumption[final_group_indx][node_level] -= levels_additional_memory[final_group_indx][node_level]
+
+                        for level in range(node_level, nodes_last_child_level_with_deps[node]):
+                            tmp_groups_mem_consumption[group_no][level] -= node_mem_cons
+                            tmp_groups_mem_consumption[final_group_indx][level] += node_mem_cons
+                            if tmp_groups_mem_consumption > memory_limit_per_group:
+                                merged = False
+                                break
+                    
+                    if merged:
+                        final_groups_memory_consumptions = tmp_groups_mem_consumption
+                        levels_additional_memory = tmp_levels_additional_memory
+                        levels_additional_memory_by_node = tmp_levels_additional_memory_by_node
+                        initial_final_group_mapping[sub_group_indx] = final_group_indx
+                        for node in  current_sub_group:
+                            nodes_groups[node] = final_group_indx
+                        break
+
         current_level += 1
 
 
