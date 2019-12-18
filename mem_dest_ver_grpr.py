@@ -668,19 +668,19 @@ with open(in6, 'r') as f:
 levels_additional_memory = []
 levels_additional_memory_by_node = []
 for i in range(0, no_of_desired_groups):
-    levels_additional_memory[i].append({-1:0})
+    levels_additional_memory[i].append([])
     levels_additional_memory_by_node.append([])
 
 for i in range(0, no_of_desired_groups):
     for j in range(0, no_of_levels):
-        levels_additional_memory_by_node[i].append()
+        levels_additional_memory_by_node[i].append([])
 
 current_level = 0
 for current_level_nodes in levels_nodes:
     max_addition = [0] * no_of_desired_groups
     for node in current_level_nodes:
         current_node_group = nodes_groups[node]
-        max_addition = max(
+        max_addition[current_node_group] = max(
             additional_memory[node], max_addition[current_node_group])
         levels_additional_memory_by_node[current_node_group][current_level].append(additional_memory[node])
     current_level += 1
@@ -724,7 +724,7 @@ def get_levels_memory_consumption(graph, src_nodes=None):
 
     # start the traversal
     previously_visited = []
-    previously_visited_level = 0
+    previously_visited_levels = []
     while not traversal_queueu.empty():
         current_node = traversal_queueu.get()
         current_level = analysis_graph[current_node].level
@@ -735,21 +735,30 @@ def get_levels_memory_consumption(graph, src_nodes=None):
         else:
             adj_nodes = []
 
-        if not current_level in levels_memory_consumption[current_group]:
+        #remove footprint of nodes which has no children in their groups group
+        if previously_visited:
+            removed_indices = []
+            for i in range(0, len(previously_visited)):
+                if previously_visited_levels[i] < current_level:
+                    previously_visited_node = previously_visited[i]
+                    levels_memory_consumption[nodes_groups[previously_visited_node]
+                                            ][analysis_graph[previously_visited_node].level] -= nodes_memory[previously_visited_node]
+                    removed_indices.append(i)
+            for i in removed_indices:
+                previously_visited_levels.pop(i)
+                previously_visited.pop(i)
+
+        if current_level not in levels_memory_consumption[current_group]:
+            #fill levels which has no nodes
+            for level in range(len(levels_memory_consumption[current_group]) - 1, current_level):
+                levels_memory_consumption[current_group][level] = levels_memory_consumption[current_group][level - 1] 
+
             levels_memory_consumption[current_group][current_level] = nodes_memory[current_node] + \
-                levels_memory_consumption[current_level - 1] + \
-                levels_additional_memory[current_level] - \
-                levels_additional_memory[current_level - 1]
+                levels_memory_consumption[current_group][current_level - 1] + \
+                levels_additional_memory[current_group][current_level] - \
+                levels_additional_memory[current_group][current_level - 1]
         else:
             levels_memory_consumption[current_group][current_level] += nodes_memory[current_node]
-
-        if previously_visited and previously_visited_level < current_level:
-            previously_visited_level = current_level
-            previously_visited = []
-            for i in range(0, len(previously_visited)):
-                previously_visited_node = previously_visited[i]
-                levels_memory_consumption[nodes_groups[previously_visited_node]
-                                          ][analysis_graph[previously_visited_node].level] -= nodes_memory[previously_visited_node]
 
         for parent_node in analysis_graph[current_node].parents:
             nodes_ranks[parent_node] -= 1
@@ -766,8 +775,13 @@ def get_levels_memory_consumption(graph, src_nodes=None):
             adj_node_group = nodes_groups[adj_node]
             if adj_node_group != current_group:
                 if not groups_visited[adj_node_group]:
-                    levels_memory_consumption[adj_node_group][current_level +
-                                                              1] += nodes_memory[current_node]
+                    if current_level + 1 not in levels_memory_consumption[adj_node_group]:
+                        for level in range(len(levels_memory_consumption[current_group]) - 1, current_level + 2):
+                            levels_memory_consumption[current_group][level] = levels_memory_consumption[current_group][level - 1] + \
+                            levels_additional_memory[current_group][level] - \
+                            levels_additional_memory[current_group][level - 1]
+
+                    levels_memory_consumption[adj_node_group][current_level + 1] += nodes_memory[current_node]
                     groups_visited[adj_node_group] = True
             else:
                 number_of_adjacents_in_the_same_group += 1
@@ -775,10 +789,10 @@ def get_levels_memory_consumption(graph, src_nodes=None):
             tmp_nodes_in_degrees[adj_node] -= 1
             if tmp_nodes_in_degrees[adj_node] == 0:
                 traversal_queueu.put(adj_node)
-        # A node that has no adjacents in its group: it is stored so that its memory consumption is subtracted when moving to the next level
+        # A node that has no adjacents in its group: it is stored so that its memory consumption is subtracted when moving to the next level(TF way of handling, adding sudo send nodes)
         if number_of_adjacents_in_the_same_group == 0:
             previously_visited.append(current_node)
-            previously_visited_level = current_level
+            previously_visited_levels.append(current_level)
 
     return levels_memory_consumption
 
@@ -982,6 +996,7 @@ for group_no in range(0, no_of_desired_groups):
                         final_groups_memory_consumptions = tmp_groups_mem_consumption
                         levels_additional_memory = tmp_levels_additional_memory
                         levels_additional_memory_by_node = tmp_levels_additional_memory_by_node
+
                         initial_final_group_mapping[sub_group_indx] = final_group_indx
                         for node in  current_sub_group:
                             nodes_groups[node] = final_group_indx
