@@ -110,30 +110,29 @@ for collocation_src in collocated.keys():
         for another_src in rev_collocated[adj_node]:
             placer_placement[another_src] = placer_placement[collocation_src]
 
-#print(placer_placement['unit_2_2/conv_2/kernel'])
-#print(placer_placement['save/Assign_185'])
+print(placer_placement['rnnlm/multi_rnn_cell/cell_4/basic_lstm_cell/kernel'])
+print(placer_placement['adam/update_rnnlm/multi_rnn_cell/cell_6/basic_lstm_cell/kernel/applyadam'])
 
 #backward adjustment:
 for node, adjs in rev_graph.items():
     if node.endswith("/read"):
         placer_placement[node] = placer_placement[node[:-5]]
-        for adj_node in adjs:
-            placer_placement[adj_node] = placer_placement[node]
-            for adj_adj_node in graph[adj_node]:
-                if adj_adj_node.endswith("/assign") and nodes_levels[adj_adj_node] <= nodes_levels[node] + 1:
-                    placer_placement[adj_adj_node] = placer_placement[node]
-                    nodes_to_visit = [adj_adj_node]
-                    visited = {}
-                    while nodes_to_visit:
-                        node_to_visit = nodes_to_visit.pop()
-                        if node_to_visit != 'src' and node_to_visit != 'snk' and node_to_visit not in visited:
-                            visited[node_to_visit] = 1
-                            placer_placement[node_to_visit] = placer_placement[node]
-                            nodes_to_visit = nodes_to_visit + rev_graph[node_to_visit]
-                if adj_adj_node.split('/')[-1].startswith('apply'):
-                    if adj_adj_node =='adam/update_rnnlm/multi_rnn_cell/cell_0/basic_lstm_cell/bias/applyadam':
-                        print(placer_placement[node])
-                    placer_placement[adj_adj_node] = placer_placement[node]
+        apply_node = assign_node = node[:-5] + '/apply'
+        if apply_node in graph:
+            placer_placement[apply_node] = placer_placement[node]
+        
+        assign_node = node[:-5] + '/assign'
+        if assign_node in rev_graph:
+            placer_placement[assign_node] = placer_placement[node]
+            nodes_to_visit = [assign_node]
+            visited = {}
+            while nodes_to_visit:
+                node_to_visit = nodes_to_visit.pop()
+                if node_to_visit != 'src' and node_to_visit != 'snk' and node_to_visit not in visited:
+                    visited[node_to_visit] = 1
+                    placer_placement[node_to_visit] = placer_placement[node]
+                    nodes_to_visit = nodes_to_visit + rev_graph[node_to_visit]
+
 
 parts_weights = {}
 with open(out1, 'w') as f:

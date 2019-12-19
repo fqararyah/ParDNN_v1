@@ -8,10 +8,11 @@ io_folder_path = utils.io_folder_path
 
 network_app = utils.network_app
 
-in1 = io_folder_path + network_app + '.dot'
-in2 = io_folder_path + 'tensors_sz_32_low.txt'
+in1 = io_folder_path + network_app + '_low.dot'
+in2 = io_folder_path + 'tensors_sz_32.txt'
 
 out = io_folder_path + network_app + 't_low.dot'
+out2 = io_folder_path + 'tensors_sz_32_low.txt'
 
 all_nodes = {}
 graph = {}
@@ -50,14 +51,15 @@ tensors_sizes = {}
 with open(in2, 'r') as f:
     for line in f:
         line = utils.clean_line(line)
+        line=line.lower()
         splitted = line.split('::')
         tensors_sizes[splitted[0]] = splitted[1]
 
 print(len(tensors_sizes))
 
-with open(in2, 'w') as f:
+with open(out2, 'w') as f:
     for tensor, size in tensors_sizes.items():
-        if not tensor.startswith("^"):
-            f.write(tensor+"::"+size+"\n")
-            f.write("^"+tensor+"::" + tensors_sizes[node[1:]] + "\n")
+        f.write(tensor+"::"+size+"\n")
+        if not tensor.startswith("^") and ("^" + tensor) in all_nodes:
+            f.write("^"+tensor+"::" + tensors_sizes[tensor] + "\n")
 
