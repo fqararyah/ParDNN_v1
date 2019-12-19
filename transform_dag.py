@@ -59,5 +59,5 @@ with open(in2, 'w') as f:
     for tensor, size in tensors_sizes.items():
         if not tensor.startswith("^"):
             f.write(tensor+"::"+size+"\n")
-            f.write("^"+tensor+"::1\n")
+            f.write("^"+tensor+"::" + tensors_sizes[node[1:]] + "\n")
 
