@@ -1,9 +1,9 @@
 import utils
 
-io_folder_path= 'C:/Users/fareed/PycharmProjects/tf_project/inc/wrn_50_5/'
+io_folder_path= 'C:/Users/fareed/PycharmProjects/tf_project/inc/rnn/'
 
-in1 = io_folder_path + 'wrn_src_sink_nodes_levels_low.txt'
-in2 = io_folder_path + 'memory_6.txt'
+in1 = io_folder_path + 'rnn_src_sink_nodes_levels_low.txt'
+in2 = io_folder_path + 'memory.txt'
 
 out1 = io_folder_path + 'levels_densities_6.txt'
 

@@ -23,48 +23,6 @@ in4_b = io_folder_path + 'rev_' + network_app + '_src_sink_low.dot'
 in5 = io_folder_path + 'tensors_sz_32_low.txt'
 in6 = io_folder_path + 'memory.txt'
 
-""" # folder containing the work files
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
-
-in1 = io_folder_path + 'resnet_src_sink_low.dot'  # 'part_8_1799_src_sink.dot'
-in2 = io_folder_path + 'timeline_step0_10_low.json'
-# 'part_8_1799_src_sink_nodes_levels.txt'
-in3 = io_folder_path + 'resnet_src_sink_nodes_levels_low.txt'
-# 'rev_part_8_1799_src_sink_nodes_levels.txt'
-in4 = io_folder_path + 'rev_resnet_src_sink_nodes_levels_low.txt'
-in5 = io_folder_path + 'tensors_sz_32_low.txt' """
-
-""" # folder containing the work files
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/nmt/'
-
-in1 = io_folder_path + 'nmt_src_sink_low.dot'  # 'part_8_1799_src_sink.dot'
-in2 = io_folder_path + 'timeline_step1554.json'
-# 'part_8_1799_src_sink_nodes_levels.txt'
-in3 = io_folder_path + 'nmt_src_sink_nodes_levels_low.txt'
-# 'rev_part_8_1799_src_sink_nodes_levels.txt'
-in4 = io_folder_path + 'rev_nmt_src_sink_nodes_levels_low.txt'
-in5 = io_folder_path + 'tensors_sz_32_low.txt' """
-
-""" # folder containing the work files
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/vgg/'
-
-in1 = io_folder_path + 'vgg_src_sink_low.dot'  # 'part_8_1799_src_sink.dot'
-in2 = io_folder_path + 'timeline_step110.json'
-# 'part_8_1799_src_sink_nodes_levels.txt'
-in3 = io_folder_path + 'vgg_src_sink_nodes_levels_low.txt'
-# 'rev_part_8_1799_src_sink_nodes_levels.txt'
-in4 = io_folder_path + 'rev_vgg_src_sink_nodes_levels_low.txt'
-in5 = io_folder_path + 'tensors_sz_32_low.txt' """
-
-
-""" in1 = io_folder_path + 'part_1_39_src_sink.dot'#'part_8_1799_src_sink.dot'
-in2 = io_folder_path + 'timeline_step303.json'
-# 'part_8_1799_src_sink_nodes_levels.txt'
-in3 = io_folder_path + 'part_1_39_src_sink_nodes_levels.txt'
-# 'rev_part_8_1799_src_sink_nodes_levels.txt'
-in4 = io_folder_path + 'rev_part_1_39_src_sink_nodes_levels.txt'
-in5 = io_folder_path + 'tensors_sz.txt' """
-
 # output file
 out1 = io_folder_path + 'ver_grouper_placement_e_nc.place'
 
@@ -86,17 +44,16 @@ with open(in4, 'r') as f:
             reverse_levels[node_and_level[0]] = node_and_level[1]
 
 tensors_sizes = {}
-total_tensor_sz = 0
+edges_weights = {}
 # get tensors sizes
 with open(in5, 'r') as f:
     for line in f:
         line = utils.clean_line(line)
         splitted = line.split('::')
-        tensors_sizes[splitted[0]] = splitted[1]
-        total_tensor_sz = total_tensor_sz + \
-            int(splitted[1]) * comm_transfer_rate + comm_latency
-
-avg_tensor_size = total_tensor_sz / len(tensors_sizes)
+        tensor_size = int(splitted[1])
+        tensor_name = splitted[0]
+        tensors_sizes[tensor_name] = tensor_size
+        edges_weights[tensor_name] = float(tensor_size) * comm_transfer_rate + comm_latency
 
 # getting time (weight) info for nodes
 analysis_graph = utils.read_profiling_file(in2, True)
@@ -107,10 +64,6 @@ for node, node_props in analysis_graph.items():
     total_nodes_weight = total_nodes_weight + node_props.duration
 
 average_node_weight = total_nodes_weight/len(analysis_graph)
-
-ccr = total_tensor_sz / total_nodes_weight
-
-print('CCR= ' + str(ccr))
 
 # will contain the graph as an adgacency list
 graph = {}
@@ -146,7 +99,8 @@ for node, node_props in all_nodes.items():
 
 for node in all_nodes:
     if not node in tensors_sizes:
-        tensors_sizes[node] = average_tensor_size_if_not_provided
+        tensors_sizes[node] = 0
+        edges_weights[node] = float(comm_latency)
 
 # constructing the graph and initializing the nodes levels from the dot file
 rev_graph = {}
@@ -175,25 +129,26 @@ for node in all_nodes:
     else:
         rev_nodes_in_degrees[node] = 0
 
-def get_nodes_weighted_levels(graph, edges_weights, src_nodes=None, nodes_weighted_levels={}):
+def get_nodes_weighted_levels(graph, edges_weights, src_nodes=None):
     # getting the sources of the graph to start the topological traversal from them
     graph_keys = {}
-    tmp_rev_nodes_in_degrees = copy.deepcopy(rev_nodes_in_degrees)
-    for graph_key in graph.keys():
-        graph_keys[graph_key] = 0
-
-    for adj_nodes in graph.values():
-        for node in adj_nodes:
-            if node in graph_keys:
-                graph_keys[node] = 1
+    nodes_weighted_levels={}
+    tmp_nodes_in_degrees = copy.deepcopy(rev_nodes_in_degrees)
 
     traversal_queueu = queue.Queue()
 
     if src_nodes is None:
-        src_nodes = []
+        for graph_key in graph.keys():
+            graph_keys[graph_key] = 0
+
+        for adj_nodes in graph.values():
+            for node in adj_nodes:
+                if node in graph_keys:
+                    graph_keys[node] = 1
+        src_nodes = {}
         for node, source_node in graph_keys.items():
             if source_node == 0:
-                src_nodes.append(node)
+                src_nodes[node] = 1
 
     for node in src_nodes:
         nodes_weighted_levels[node] = 0  # analysis_graph[node].duration
@@ -206,42 +161,20 @@ def get_nodes_weighted_levels(graph, edges_weights, src_nodes=None, nodes_weight
             adj_nodes = graph[current_node]
         else:
             adj_nodes = []
+
         current_node_level = nodes_weighted_levels[current_node]
         for adj_node in adj_nodes:
-            new_level = current_node_level + \
-                (int(edges_weights[adj_node]) * comm_transfer_rate + comm_latency) + \
-                analysis_graph[adj_node].duration
-            tmp_rev_nodes_in_degrees[adj_node] -= 1
-            if adj_node not in nodes_weighted_levels or nodes_weighted_levels[adj_node] < new_level:
-                nodes_weighted_levels[adj_node] = new_level
-            if tmp_rev_nodes_in_degrees[adj_node] == 0:
-                traversal_queueu.put(adj_node)
+            if adj_node not in src_nodes:
+                new_level = current_node_level + edges_weights[adj_node] + analysis_graph[adj_node].duration
+                tmp_nodes_in_degrees[adj_node] -= 1
+                if adj_node not in nodes_weighted_levels or nodes_weighted_levels[adj_node] < new_level:
+                    nodes_weighted_levels[adj_node] = new_level
+                if tmp_nodes_in_degrees[adj_node] == 0:
+                    traversal_queueu.put(adj_node)
     
     return nodes_weighted_levels
 
-def prioratize_adj_lists(graph, priorities):
-    tmp_graph = {}
-    for node, adjs in graph.items():
-        tmp_graph[node] = []
-        for adj in adjs:
-            heapq.heappush(tmp_graph[node], (-priorities[adj], adj))
-
-    graph = tmp_graph
-    graph[sink_node_name] = []
-
-    # change adjacents priority queues to lists
-    for node, adjacents in graph.items():
-        ordered_adjacents_list = []
-        while adjacents:
-            ordered_adjacents_list.append(heapq.heappop(adjacents)[1])
-        graph[node] = ordered_adjacents_list
-
-    return graph
-
-
-nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, tensors_sizes)
-graph = prioratize_adj_lists(graph, nodes_weighted_levels)
-
+nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights)
 graph[sink_node_name] = []
 
 
@@ -262,31 +195,28 @@ nodes_to_visit = list(all_nodes.keys())
 
 while free_nodes:
     current_node = heapq.heappop(free_nodes)[1]
-    adj_nodes = graph[current_node]
 
-    while current_node not in visited and current_node != sink_node_name:
+    while current_node !='' and current_node not in visited:
         current_path.append(current_node)
         current_path_weight = current_path_weight + \
             analysis_graph[current_node].duration
         current_path_weight_with_comm = current_path_weight_with_comm + \
-            analysis_graph[current_node].duration + \
-            int(tensors_sizes[current_node]) * \
-            comm_transfer_rate + comm_latency
+            analysis_graph[current_node].duration + edges_weights[current_node]
         visited[current_node] = 1
-        nodes_to_visit.remove(current_node)
+        max_priority = -1
+        next_node = ''
         for adj_node in graph[current_node]:
-            if adj_node not in visited:
-                current_node = adj_node
-                break
+            if adj_node not in visited and nodes_weighted_levels[adj_node] > max_priority:
+                max_priority = nodes_weighted_levels[adj_node]
+                next_node = adj_node
+        current_node = next_node
+
     if len(current_path) > 0:
-        paths.append(copy.deepcopy(current_path))
+        paths.append(current_path)
         groups_weights.append(current_path_weight)
         paths_lengths.append(len(current_path))
-
-        if current_path_weight_with_comm >= groups_weights[0] or len(paths) <= no_of_desired_groups:
-            nodes_weighted_levels = get_nodes_weighted_levels(
-                rev_graph, tensors_sizes, list(visited.keys()), nodes_weighted_levels)
-            prioratize_adj_lists(graph, nodes_weighted_levels)
+        if current_path_weight_with_comm >= groups_weights[0] / 20 or len(paths) <= no_of_desired_groups:
+            nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights, visited)
 
         for node in current_path:
             for adj_node in graph[node]:
@@ -299,22 +229,17 @@ while free_nodes:
         current_path_weight_with_comm = 0
         num_paths = num_paths + 1
 
-    if len(free_nodes) == 0 and len(nodes_to_visit) > 0:
-        heapq.heappush(
-            free_nodes, (nodes_weighted_levels[nodes_to_visit[0]], nodes_to_visit[0]))
-        nodes_to_visit.pop(0)
-
 # sort paths from shortest to longest
 paths_lengths, groups_weights, paths = (list(t) for t in zip(
     *sorted(zip(paths_lengths, groups_weights, paths))))
 print('num of paths: ' + str(len(paths)))
+print(paths_lengths[-20:])
 # which node is in which path
 nodes_paths_mapping[source_node_name] = num_paths - 1
 nodes_paths_mapping[sink_node_name] = num_paths - 1
 for i in range(0, num_paths):
     for node in paths[i]:
         nodes_paths_mapping[node] = i
-
 
 # get max potential of paths
 groups_parents = {}
@@ -329,12 +254,12 @@ for i in range(0, len(paths)):
     heaviest_parent_or_child_path = -1
     if current_path[0] != source_node_name and current_path[current_path_len] != sink_node_name:
         for src_node in analysis_graph[current_path[0]].parents:
-            if int(tensors_sizes[src_node]) > heaviest_parent_child_tensor:
-                heaviest_parent_child_tensor = int(tensors_sizes[src_node])
+            if tensors_sizes[src_node] > heaviest_parent_child_tensor:
+                heaviest_parent_child_tensor = tensors_sizes[src_node]
                 heaviest_parent_or_child_path = nodes_paths_mapping[src_node]
             for dst_node in analysis_graph[current_path[current_path_len]].children:
-                if int(tensors_sizes[dst_node]) > heaviest_parent_child_tensor:
-                    heaviest_parent_child_tensor = int(tensors_sizes[dst_node])
+                if tensors_sizes[dst_node] > heaviest_parent_child_tensor:
+                    heaviest_parent_child_tensor = tensors_sizes[dst_node]
                     heaviest_parent_or_child_path = nodes_paths_mapping[dst_node]
                 if nodes_paths_mapping[src_node] == nodes_paths_mapping[dst_node]:
                     parent_path_indx = nodes_paths_mapping[src_node]
@@ -442,12 +367,11 @@ for i in range(0, num_paths - 1):
                 in_tensor_size = 0
                 out_tensor_size = 0
                 if branch_start in tensors_sizes:
-                    in_tensor_size = int(tensors_sizes[branch_start])
+                    in_tensor_size = tensors_sizes[branch_start]
                 else:
                     in_tensor_size = average_tensor_size_if_not_provided
                 if current_group[len(current_group) - 1] in tensors_sizes:
-                    out_tensor_size = int(
-                        tensors_sizes[current_group[len(current_group) - 1]])
+                    out_tensor_size = tensors_sizes[current_group[len(current_group) - 1]]
                 else:
                     out_tensor_size = average_tensor_size_if_not_provided
 
@@ -575,9 +499,8 @@ while len(final_groups) > no_of_desired_groups:
     max_parent_or_child_tensor_size = 0
     if branch_main_path_indx == -1:
         for parent_node in analysis_graph[to_be_merged_group[0]].parents:
-            if parent_node in tensors_sizes and int(tensors_sizes[parent_node]) > max_parent_or_child_tensor_size and nodes_groups[parent_node] != -1:
-                max_parent_or_child_tensor_size = int(
-                    tensors_sizes[parent_node])
+            if parent_node in tensors_sizes and tensors_sizes[parent_node] > max_parent_or_child_tensor_size and nodes_groups[parent_node] != -1:
+                max_parent_or_child_tensor_size = tensors_sizes[parent_node]
                 max_parent_or_child_tensor = parent_node
         if max_parent_or_child_tensor != '':
             branch_main_path_indx = nodes_groups[max_parent_or_child_tensor]
@@ -585,13 +508,12 @@ while len(final_groups) > no_of_desired_groups:
     in_tensor_size = 0
     out_tensor_size = 0
     if branch_src_node in tensors_sizes:
-        in_tensor_size = int(tensors_sizes[branch_src_node])
+        in_tensor_size = tensors_sizes[branch_src_node]
     else:
         in_tensor_size = average_tensor_size_if_not_provided
 
     if to_be_merged_group[len(to_be_merged_group) - 1] in tensors_sizes:
-        out_tensor_size = int(
-            tensors_sizes[to_be_merged_group[len(to_be_merged_group) - 1]])
+        out_tensor_size = tensors_sizes[to_be_merged_group[len(to_be_merged_group) - 1]]
     else:
         out_tensor_size = average_tensor_size_if_not_provided
 
@@ -898,9 +820,9 @@ if memory_limit_is_exceeded:
         initial_groups_start_levels.append(analysis_graph[starting_node].level)
         comm_cost = 0
         for parent in rev_graph[starting_node]:
-            comm_cost += int(tensors_sizes[parent])
+            comm_cost += tensors_sizes[parent]
 
-        comm_cost += int(tensors_sizes[end_node])
+        comm_cost += tensors_sizes[end_node]
         initial_groups_comms.append(comm_cost)
         total_cost = comm_cost + groups_weights[current_group_indx]
         initial_groups_comps_comms.append(total_cost)
@@ -974,8 +896,8 @@ if memory_limit_is_exceeded:
                     comm_comp_with_final_groups = [initial_groups_comms[sub_group_indx]] * no_of_desired_groups
                     #how much communication with the other final groups will this movement incure
                     for parent_node in rev_graph[current_sub_group[0]]:
-                        comm_comp_with_final_groups[nodes_groups[parent_node]] -= int(tensors_sizes[parent_node])
-                    comm_comp_with_final_groups[nodes_groups[current_sub_group[-1]]] -= int(tensors_sizes[current_sub_group[-1]])
+                        comm_comp_with_final_groups[nodes_groups[parent_node]] -= tensors_sizes[parent_node]
+                    comm_comp_with_final_groups[nodes_groups[current_sub_group[-1]]] -= tensors_sizes[current_sub_group[-1]]
 
                     final_groups_indices = []
                     for i in range(0, no_of_desired_groups):

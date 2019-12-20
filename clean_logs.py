@@ -14,19 +14,20 @@ actual_placement = {}
 with open(in1, 'r', encoding="utf8") as f:
     for line in f:
         line = clean_line(line)
+        line = line.lower()
         splits = line.split(" ")
         device_n = ''
         if len(splits) > 2:
             device = splits[2]
-            if device.endswith('CPU:0'):
+            if device.endswith('cpu:0'):
                 device_n = '4'
-            elif device.endswith('GPU:0'):
+            elif device.endswith('gpu:0'):
                 device_n = '0'
-            elif device.endswith('GPU:1'):
+            elif device.endswith('gpu:1'):
                 device_n = '1'
-            elif device.endswith('GPU:2'):
+            elif device.endswith('gpu:2'):
                 device_n = '2'
-            elif device.endswith('GPU:3'):
+            elif device.endswith('gpu:3'):
                 device_n = '3'
             
             if device_n != '' and (splits[0][:-1] not in actual_placement or device_n == '4'):
