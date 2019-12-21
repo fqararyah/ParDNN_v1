@@ -177,7 +177,8 @@ def get_nodes_weighted_levels(graph, edges_weights, src_nodes=None):
 nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights)
 graph[sink_node_name] = []
 
-
+print(nodes_weighted_levels['gradients/rnnlm_1/rnnlm/multi_rnn_cell/cell_5/basic_lstm_cell/mul_21_grad/mul_1'])
+print(nodes_weighted_levels['rnnlm_1/rnnlm/multi_rnn_cell/cell_5/basic_lstm_cell/sigmoid_21'])
 # extracting all vertical paths in the graph
 source_node_name = 'src'
 free_nodes = []
@@ -242,9 +243,9 @@ for i in range(0, num_paths):
     for node in paths[i]:
         nodes_paths_mapping[node] = i
     
-    if 'gradients/rnnlm_1/rnnlm/multi_rnn_cell/cell_2/basic_lstm_cell/concat_10_grad/slice' in paths[i]:
+    if 'gradients/rnnlm_1/rnnlm/multi_rnn_cell/cell_5/basic_lstm_cell/sigmoid_21_grad/sigmoidgrad' in paths[i]:
         print(paths[i])
-print(groups_weights[-1] / 50)
+
 # get max potential of paths
 groups_parents = {}
 paths_max_potential = copy.deepcopy(groups_weights)
@@ -633,6 +634,22 @@ for switching_node in switching_nodes_pure_children:
         initial_groups[some_parent_initial_group].append(switching_node)
         initial_groups[nodes_initial_groups[switching_node]].remove(switching_node)
         nodes_initial_groups[switching_node] = some_parent_initial_group
+
+for switching_node in switching_nodes_pure_parents:
+    parents_final_group = nodes_groups[rev_graph[switching_node][0]]
+    switching_node_group = nodes_groups[switching_node]
+    some_child_initial_group = -1
+    for child in graph[switching_node]:
+        if nodes_groups[child] == parents_final_group:
+            if some_child_initial_group == -1:
+                some_child_initial_group = nodes_initial_groups[child]
+                break
+    
+    if analysis_graph[switching_node].duration <= comm_latency:
+        nodes_groups[switching_node] = parents_final_group
+        initial_groups[some_child_initial_group].insert(0, switching_node)
+        initial_groups[nodes_initial_groups[switching_node]].remove(switching_node)
+        nodes_initial_groups[switching_node] = some_child_initial_group
 
 
 nodes_memory = {}
