@@ -27,7 +27,7 @@ in6 = io_folder_path + 'memory.txt'
 out1 = io_folder_path + 'ver_grouper_placement_e_nc.place'
 
 # grouper parameters
-no_of_desired_groups = 2
+no_of_desired_groups = 4
 memory_limit_per_group = 31 * 1024 * 1024 * 1024
 
 comm_latency = 45
@@ -69,6 +69,8 @@ average_node_weight = total_nodes_weight/len(analysis_graph)
 graph = {}
 all_nodes = {}
 sink_node_name = 'snk'
+source_node_name = 'src'
+
 # initializing the nodes and adjacencies from the dot file
 with open(in1, 'r') as f:
     for line in f:
@@ -128,13 +130,12 @@ for node in all_nodes:
         rev_nodes_in_degrees[node] = len(graph[node])
     else:
         rev_nodes_in_degrees[node] = 0
-
-def get_nodes_weighted_levels(graph, edges_weights, src_nodes=None):
+import time
+def get_nodes_weighted_levels(graph, edges_weights, src_nodes = None, previosly_visited = []):
     # getting the sources of the graph to start the topological traversal from them
     graph_keys = {}
     nodes_weighted_levels={}
     tmp_nodes_in_degrees = copy.deepcopy(rev_nodes_in_degrees)
-
     traversal_queueu = queue.Queue()
 
     if src_nodes is None:
@@ -151,41 +152,33 @@ def get_nodes_weighted_levels(graph, edges_weights, src_nodes=None):
                 src_nodes[node] = 1
 
     for node in src_nodes:
-        nodes_weighted_levels[node] = 0  # analysis_graph[node].duration
         traversal_queueu.put(node)
+    for node in graph.keys():
+        nodes_weighted_levels[node] = 0  # analysis_graph[node].duration
 
     # start the traversal
     while not traversal_queueu.empty():
         current_node = traversal_queueu.get()
-        if current_node in graph:
-            adj_nodes = graph[current_node]
-        else:
-            adj_nodes = []
-
+        adj_nodes = graph[current_node]
         current_node_level = nodes_weighted_levels[current_node]
         for adj_node in adj_nodes:
-            if adj_node not in src_nodes:
+            if adj_node not in previosly_visited:
                 new_level = current_node_level + edges_weights[adj_node] + analysis_graph[adj_node].duration
                 tmp_nodes_in_degrees[adj_node] -= 1
-                if adj_node not in nodes_weighted_levels or nodes_weighted_levels[adj_node] < new_level:
+                if nodes_weighted_levels[adj_node] < new_level:
                     nodes_weighted_levels[adj_node] = new_level
                 if tmp_nodes_in_degrees[adj_node] == 0:
                     traversal_queueu.put(adj_node)
-    
     return nodes_weighted_levels
 
-nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights)
-graph[sink_node_name] = []
-
-print(nodes_weighted_levels['gradients/rnnlm_1/rnnlm/multi_rnn_cell/cell_5/basic_lstm_cell/mul_21_grad/mul_1'])
-print(nodes_weighted_levels['rnnlm_1/rnnlm/multi_rnn_cell/cell_5/basic_lstm_cell/sigmoid_21'])
 # extracting all vertical paths in the graph
-source_node_name = 'src'
+graph[sink_node_name] = []
+rev_graph[source_node_name] = []
 free_nodes = []
-heapq.heappush(free_nodes, (0, source_node_name))
 paths = []
 current_path = []
 visited = {}
+src_nodes = {}
 groups_weights = []
 paths_lengths = []
 current_path_weight = 0
@@ -193,9 +186,17 @@ current_path_weight_with_comm = 0
 num_paths = 0
 nodes_paths_mapping = {}
 nodes_to_visit = list(all_nodes.keys())
+tmp_rev_graph = copy.deepcopy(rev_graph)
+tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
+
+nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights)
+for node, weighted_level in nodes_weighted_levels.items():
+    heapq.heappush(free_nodes, (-weighted_level, node))
 
 while free_nodes:
     current_node = heapq.heappop(free_nodes)[1]
+    while current_node in visited and free_nodes:
+        current_node = heapq.heappop(free_nodes)[1]
 
     while current_node !='' and current_node not in visited:
         current_path.append(current_node)
@@ -204,6 +205,7 @@ while free_nodes:
         current_path_weight_with_comm = current_path_weight_with_comm + \
             analysis_graph[current_node].duration + edges_weights[current_node]
         visited[current_node] = 1
+        src_nodes[current_node] = 1
         max_priority = -1
         next_node = ''
         for adj_node in graph[current_node]:
@@ -216,14 +218,19 @@ while free_nodes:
         paths.append(current_path)
         groups_weights.append(current_path_weight)
         paths_lengths.append(len(current_path))
-        if current_path_weight_with_comm >= groups_weights[0] / 20 or len(paths) <= no_of_desired_groups:
-            nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights, visited)
+        if current_path_weight_with_comm >= groups_weights[0] / 10 or len(paths) <= no_of_desired_groups:
+            nodes_weighted_levels = get_nodes_weighted_levels(tmp_rev_graph, edges_weights, src_nodes, visited)
+            free_nodes = []
+            for node, weighted_level in nodes_weighted_levels.items():
+                heapq.heappush(free_nodes, (-weighted_level, node))
 
         for node in current_path:
+            del rev_nodes_in_degrees[node]
             for adj_node in graph[node]:
-                if adj_node not in visited:
-                    heapq.heappush(
-                        free_nodes, (-nodes_weighted_levels[adj_node], adj_node))
+                tmp_nodes_in_degrees[adj_node] -= 1
+                if adj_node in visited and tmp_nodes_in_degrees[adj_node] == 0:
+                    del tmp_rev_graph[adj_node]
+                    del src_nodes[adj_node]
 
         current_path = []
         current_path_weight = 0
@@ -242,9 +249,6 @@ nodes_paths_mapping[sink_node_name] = num_paths - 1
 for i in range(0, num_paths):
     for node in paths[i]:
         nodes_paths_mapping[node] = i
-    
-    if 'gradients/rnnlm_1/rnnlm/multi_rnn_cell/cell_5/basic_lstm_cell/sigmoid_21_grad/sigmoidgrad' in paths[i]:
-        print(paths[i])
 
 # get max potential of paths
 groups_parents = {}
@@ -1038,7 +1042,7 @@ with open(out1, 'w') as f:
         if not node.startswith("^"):
             f.write(node + ' ' + str(group) + '\n')
             smm[group] += analysis_graph[node].duration
-            if analysis_graph[node].level >= 0 and analysis_graph[node].level < 10:
+            if analysis_graph[node].level >= 200 and analysis_graph[node].level < 270:
                 light_levels_sum[group] += analysis_graph[node].duration
                 count[group] += 1
             cntt[group] += 1

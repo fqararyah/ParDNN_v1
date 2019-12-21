@@ -86,7 +86,6 @@ with open(in5_b, 'r') as f:
             else:
                 rev_graph[nodes[0]] = [nodes[1]]
 
-print("fff")
 level = 7
 collocated = {}
 rev_collocated = {}

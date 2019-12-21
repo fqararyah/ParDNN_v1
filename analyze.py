@@ -441,7 +441,7 @@ for i in range(start_from_level + 1, end_at_level):
 
 
 comm_transfer_rate = 1000000 / (140 * 1024 * 1024 * 1024)
-comm_latency = 6
+comm_latency = 45
 tensors_sizes = {}
 # get tensors sizes
 with open(in5, 'r') as f:
