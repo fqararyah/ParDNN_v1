@@ -110,9 +110,6 @@ for collocation_src in collocated.keys():
         for another_src in rev_collocated[adj_node]:
             placer_placement[another_src] = placer_placement[collocation_src]
 
-print(placer_placement['rnnlm/multi_rnn_cell/cell_4/basic_lstm_cell/kernel'])
-print(placer_placement['adam/update_rnnlm/multi_rnn_cell/cell_6/basic_lstm_cell/kernel/applyadam'])
-
 #backward adjustment:
 for node, adjs in rev_graph.items():
     if node.endswith("/read"):

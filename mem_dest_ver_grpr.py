@@ -234,13 +234,17 @@ paths_lengths, groups_weights, paths = (list(t) for t in zip(
     *sorted(zip(paths_lengths, groups_weights, paths))))
 print('num of paths: ' + str(len(paths)))
 print(paths_lengths[-20:])
+
 # which node is in which path
 nodes_paths_mapping[source_node_name] = num_paths - 1
 nodes_paths_mapping[sink_node_name] = num_paths - 1
 for i in range(0, num_paths):
     for node in paths[i]:
         nodes_paths_mapping[node] = i
-
+    
+    if 'gradients/rnnlm_1/rnnlm/multi_rnn_cell/cell_2/basic_lstm_cell/concat_10_grad/slice' in paths[i]:
+        print(paths[i])
+print(groups_weights[-1] / 50)
 # get max potential of paths
 groups_parents = {}
 paths_max_potential = copy.deepcopy(groups_weights)
@@ -291,11 +295,7 @@ with open(in3, 'r') as f:
                                ] = analysis_graph[node_and_level[0]].duration
                 no_of_levels = no_of_levels + 1
 
-commulative_levels_weights = {-1: 0}
-for level in range(0, no_of_levels):
-    level_weight = levels_weights[level]
-    commulative_levels_weights[level] = commulative_levels_weights[level - 1] + level_weight
-
+#map, helpful to find nodes in a level in O(1)
 levels_nodes = [None] * no_of_levels
 for node, props in analysis_graph.items():
     if node in all_nodes:
@@ -582,6 +582,58 @@ while len(final_groups) > no_of_desired_groups:
     tasks_per_levels.pop(to_be_merged_group_index)
 
 nodes_groups[sink_node_name] = 0
+
+#post processing, switching nodes placement modification:
+switching_nodes_pure_parents = []
+switching_nodes_pure_children = []
+#start from level 2, since level 0 contains src -added by me- and 1 contains nodes that are not children of any node in the original graph
+#exclude the last level since it only contains the sink
+for i in range(2, no_of_levels - 1):
+    for node in levels_nodes[i]:
+        all_chidren_in_one_group = True
+        all_parents_in_one_group = True
+        children = graph[node]
+        first_child_group = nodes_groups[children[0]]
+        parents = rev_graph[node]
+        first_parent_group = nodes_groups[parents[0]]
+        for child_node in children:
+            if nodes_groups[child_node] != first_child_group:
+                all_chidren_in_one_group = False
+                break
+        for parent_node in parents:
+            if nodes_groups[parent_node] != first_parent_group:
+                all_parents_in_one_group = False
+                break
+        #note: if all chidren are in the same group and all parents in the same group, then all of them will be in the same group and
+        # there is no switching, this is because at least one path will be passing through the switching point.
+        switching_node_group = nodes_groups[node]
+        if all_chidren_in_one_group and (not all_parents_in_one_group) and switching_node_group != first_child_group:
+            switching_nodes_pure_children.append(node)
+        if all_parents_in_one_group and (not all_chidren_in_one_group) and switching_node_group != first_parent_group:
+            switching_nodes_pure_parents.append(node)
+
+for switching_node in switching_nodes_pure_children:
+    children_final_group = nodes_groups[graph[switching_node][0]]
+    switching_node_group = nodes_groups[switching_node]
+    comm_from_its_group = 0
+    comm_from_children_group = 0
+    some_parent_initial_group = -1
+    for parent in rev_graph[switching_node]:
+        if nodes_groups[parent] == children_final_group:
+            comm_from_children_group += edges_weights[parent]
+            if some_parent_initial_group == -1:
+                some_parent_initial_group = nodes_initial_groups[parent]
+        elif nodes_groups[parent] == switching_node_group:
+            comm_from_its_group += edges_weights[parent]
+    
+    comm_from_children_group += edges_weights[switching_node]
+    movement_gain = comm_from_children_group - (comm_from_its_group + analysis_graph[switching_node].duration)
+    if movement_gain > 0:
+        nodes_groups[switching_node] = children_final_group
+        initial_groups[some_parent_initial_group].append(switching_node)
+        initial_groups[nodes_initial_groups[switching_node]].remove(switching_node)
+        nodes_initial_groups[switching_node] = some_parent_initial_group
+
 
 nodes_memory = {}
 additional_memory = {}
@@ -961,20 +1013,19 @@ if memory_limit_is_exceeded:
 
 
 with open(out1, 'w') as f:
-    for i in range(0, len(final_groups)):
-        smm = 0
-        light_levels_sum = 0
-        cntt = 0
-        count = 0
-        for node in final_groups[i]:
-            if not node.startswith("^"):
-                f.write(node + ' ' + str(no_of_desired_groups - i - 1) + '\n')
-                smm = smm + analysis_graph[node].duration
-                if analysis_graph[node].level >= 0 and analysis_graph[node].level < 10:
-                    light_levels_sum = light_levels_sum + \
-                        analysis_graph[node].duration
-                    count = count + 1
-                cntt = cntt + 1
+    smm = [0] * no_of_desired_groups
+    light_levels_sum = [0] * no_of_desired_groups
+    cntt = [0] * no_of_desired_groups
+    count = [0] * no_of_desired_groups
+    for node, group in nodes_groups.items():
+        if not node.startswith("^"):
+            f.write(node + ' ' + str(group) + '\n')
+            smm[group] += analysis_graph[node].duration
+            if analysis_graph[node].level >= 0 and analysis_graph[node].level < 10:
+                light_levels_sum[group] += analysis_graph[node].duration
+                count[group] += 1
+            cntt[group] += 1
 
-        print(str(no_of_desired_groups - i - 1) + ': ' + str(cntt) +
-              ', ' + str(smm) + ', ' + str(count) + ', ' + str(light_levels_sum))
+    for i in range(0, no_of_desired_groups):
+        print(str(i) + ': ' + str(cntt[i]) +
+              ', ' + str(smm[i]) + ', ' + str(count[i]) + ', ' + str(light_levels_sum[i]))
