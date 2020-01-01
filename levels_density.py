@@ -37,8 +37,8 @@ levels = list(levels_density.keys())
 densities = list(levels_density.values())
 densities_memory = list(levels_density_memory.values())
 
-densities_memory, densities, levels = (list(t) for t in zip(
-                *sorted(zip(densities_memory, densities, levels), reverse=True)))
+densities, densities_memory, levels = (list(t) for t in zip(
+                *sorted(zip( densities, densities_memory, levels), reverse=True)))
 
 with open(out1, 'w') as f:
     for i in range(0, len(levels)):

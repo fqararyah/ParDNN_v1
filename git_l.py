@@ -218,7 +218,7 @@ while free_nodes:
         paths.append(current_path)
         groups_weights.append(current_path_weight)
         paths_lengths.append(len(current_path))
-        if len(paths) <= no_of_desired_groups or current_path_weight_with_comm >= groups_weights[0] / 10:
+        if current_path_weight_with_comm >= groups_weights[0] / 10 or len(paths) <= no_of_desired_groups:
             nodes_weighted_levels = get_nodes_weighted_levels(tmp_rev_graph, edges_weights, src_nodes, visited)
             free_nodes = []
             for node, weighted_level in nodes_weighted_levels.items():
@@ -312,12 +312,12 @@ for node, props in analysis_graph.items():
 after_heavy_paths_count = 0
 after_heavy_paths_lengths = 0
 for path in paths:
-    after_heavy_paths_count = after_heavy_paths_count + 1
-    after_heavy_paths_lengths = after_heavy_paths_lengths + len(path)
+    if analysis_graph[path[0]].level > 8:
+        after_heavy_paths_count = after_heavy_paths_count + 1
+        after_heavy_paths_lengths = after_heavy_paths_lengths + len(path)
 
-average_path_len = round(after_heavy_paths_lengths / after_heavy_paths_count)
-
-print(average_path_len)
+average_path_len = math.ceil(
+    after_heavy_paths_lengths / after_heavy_paths_count)
 
 # getting initial groups
 initial_groups = copy.deepcopy(paths)
@@ -443,7 +443,8 @@ for i in range(0, len(initial_groups)):
         node_props = analysis_graph[node]
         node_level = int(node_props.level)
         if node_level in tasks_per_levels[i].keys():
-            tasks_per_levels[i][node_level] += node_props.duration
+            tasks_per_levels[i][node_level] = tasks_per_levels[i][node_level] + \
+                node_props.duration
         else:
             tasks_per_levels[i][node_level] = node_props.duration
 
@@ -452,280 +453,141 @@ for i in range(0, len(initial_groups)):
         if node_level > max_levels[i]:
             max_levels[i] = node_level
 
-# getting main groups-------------------------------------------------
-final_groups = []
-final_groups_weights = []
-to_be_merged_groups = []
-to_be_merged_groups_weights = []
-
-for i in range(1, no_of_desired_groups + 1):
-    final_groups.append(initial_groups[-i])
-    final_groups_weights.append(groups_weights[-i])
-
-final_groups_tasks_per_levels = []
-final_groups_max_levels = [0]*len(final_groups)
-final_groups_min_levels = [math.inf]*len(final_groups)
-
+# getting main groups
+main_groups_indices = [-1] * no_of_desired_groups
 for i in range(0, no_of_desired_groups):
-    final_groups_tasks_per_levels.append(collections.OrderedDict())
-    current_group = final_groups[i]
-    for node in current_group:
-        node_props = analysis_graph[node]
-        node_level = int(node_props.level)
-        if node_level in final_groups_tasks_per_levels[i].keys():
-            final_groups_tasks_per_levels[i][node_level] += node_props.duration
-        else:
-            final_groups_tasks_per_levels[i][node_level] = node_props.duration
-
-        if node_level < final_groups_min_levels[i]:
-            final_groups_min_levels[i] = node_level
-        if node_level > final_groups_max_levels[i]:
-            final_groups_max_levels[i] = node_level
+    main_groups_indices[i] = num_initial_groups - i - 1
+total_gain = 0
 
 nodes_groups = {}
-for node in all_nodes:
+nodes_initial_groups = {}
+for node in analysis_graph.keys():
     nodes_groups[node] = -1
 
-for i in range(0, len(final_groups)):
-    for node in final_groups[i]:
-        nodes_groups[node] = i
-
-""" #filling--------------------------------------------------------------
-ref_final_group = final_groups[0]
-conn_points = []
-imbalances = []
-filling_groups = {}
-for i in range(1, no_of_desired_groups):
-    current_group = final_groups[i]
-    conn_points.append(analysis_graph[current_group[0]].level)
-    for node in current_group:
-        for child in graph[node]:
-            if child in ref_final_group:
-                conn_points.append(analysis_graph[child].level)
-    for conn_point in range(0,len(conn_points) - 1):
-        strt = conn_points[conn_point]
-        end = conn_points[conn_point + 1]
-        sum_in_ref = 0
-        sum_in_curr = 0
-        missing_levels = {}
-        for level in range(strt, end):
-            if level in final_groups_tasks_per_levels[0]:
-                sum_in_ref += final_groups_tasks_per_levels[0][level]
-                if level not in final_groups_tasks_per_levels[i]:
-                    missing_levels[level] = 1
-            if level in final_groups_tasks_per_levels[i]:
-                sum_in_curr += final_groups_tasks_per_levels[i][level]
-
-        diff_in_weights = sum_in_ref - sum_in_curr
-        if diff_in_weights > 0:
-            candidate_filling_groups = []
-            for group_indx in range(0, len(initial_groups) - no_of_desired_groups):
-                filling_group = initial_groups[group_indx]
-                filling_group_start_level = analysis_graph[filling_group[0]].level
-                filling_group_end_level = analysis_graph[filling_group[-1]].level
-                if (filling_group_start_level >= strt and filling_group_end_level <= end) and \
-                    (groups_weights[group_indx] <= diff_in_weights):
-                    candidate_filling_groups.append(group_indx)
-
-            if candidate_filling_groups:
-                candidate_groups_comms = [0] * len(candidate_filling_groups) # comm with this main group - comm with others
-                candidate_groups_scores = [0] * len(candidate_filling_groups)
-                candidate_groups_ratios = [0] * len(candidate_filling_groups)
-                candidate_groups_sorting_criteria = [0] * len(candidate_filling_groups)
-                for group_indx in range(0, len(candidate_filling_groups)):
-                    comm_with_others = 0
-                    for node in initial_groups[candidate_filling_groups[group_indx]]:
-                        if analysis_graph[node].level in missing_levels:
-                            candidate_groups_scores[group_indx] += 1
-                        for parent_node in rev_graph[node]:
-                            if nodes_groups[parent_node] == i:
-                                candidate_groups_comms[group_indx] += edges_weights[parent_node]
-                            elif nodes_groups[parent_node] != -1:
-                                candidate_groups_comms[group_indx] -= edges_weights[parent_node]
-                                comm_with_others += edges_weights[parent_node]
-                        for child_node in graph[node]:
-                            if nodes_groups[child_node] == i:
-                                candidate_groups_comms[group_indx] += edges_weights[node]
-                            if nodes_groups[child_node] != -1:
-                                candidate_groups_comms[group_indx] -= edges_weights[node]
-                                comm_with_others += edges_weights[node]
-                    if comm_with_others > 0:
-                        candidate_groups_ratios[group_indx] = groups_weights[candidate_filling_groups[group_indx]] / comm_with_others
-                    else:
-                        candidate_groups_ratios[group_indx] = 0
-
-                scores_min = min(candidate_groups_scores)
-                scores_max = max(candidate_groups_scores)
-                scores_normalization_den = scores_max - scores_min + 1
-                comms_min = min(candidate_groups_comms)
-                comms_max = max(candidate_groups_comms)
-                comms_normalization_den = comms_max - comms_min + 1
-                ratios_min = min(candidate_groups_ratios)
-                ratios_max = max(candidate_groups_ratios)
-                ratios_normalization_den = ratios_max - ratios_min + 1
-
-                for ii in range(0, len(candidate_groups_comms)):
-                    candidate_groups_sorting_criteria[ii] = (candidate_groups_comms[ii] - comms_min) / comms_normalization_den + \
-                        (candidate_groups_scores[ii] - scores_min) / scores_normalization_den + \
-                            (candidate_groups_ratios[ii] - ratios_min) / ratios_normalization_den
-                
-                candidate_groups_sorting_criteria, candidate_filling_groups = (list(t) for t in zip(
-                        *sorted(zip(candidate_groups_sorting_criteria, candidate_filling_groups), reverse=True)))
-
-            for candidate_filling_group in candidate_filling_groups:
-                diff_in_weights -= groups_weights[candidate_filling_group]
-                for node in initial_groups[candidate_filling_group]:
-                    nodes_groups[node] = i
-                    if analysis_graph[node].level in final_groups_tasks_per_levels[i]: 
-                        final_groups_tasks_per_levels[i][analysis_graph[node].level] += analysis_graph[node].duration
-                    else:
-                        final_groups_tasks_per_levels[i][analysis_graph[node].level] = analysis_graph[node].duration
-                
-                filling_groups[candidate_filling_group] = 1
-
-                if diff_in_weights <= 0:
-                    break
-#end filling----------------------------------------------------- """
-for i in range(0, len(initial_groups) - no_of_desired_groups):
-    #if i not in filling_groups:
-    to_be_merged_groups.append(initial_groups[i])
-    to_be_merged_groups_weights.append(groups_weights[i])
-
-# parts work distribution over levels
-to_be_merged_groups_tasks_per_levels = []
-to_be_merged_groups_len = len(to_be_merged_groups)
-to_be_merged_groups_max_levels = [0] * to_be_merged_groups_len
-to_be_merged_groups_min_levels = [math.inf] * to_be_merged_groups_len
-to_be_merged_groups_densities = [0] * to_be_merged_groups_len
-to_be_merged_groups_lengths = [0] * to_be_merged_groups_len
-to_be_merged_groups_empty_spots = [0] * to_be_merged_groups_len
-to_be_merged_groups_sorting_criteria = [0] * to_be_merged_groups_len
-penalize_small_paths = [0] * to_be_merged_groups_len
-
-for i in range(0, to_be_merged_groups_len):
-    to_be_merged_groups_tasks_per_levels.append(collections.OrderedDict())
-    current_group = to_be_merged_groups[i]
-    min_level = math.inf
-    max_level = 0
-    for node in current_group:
-        node_props = analysis_graph[node]
-        node_level = int(node_props.level)
-        if node_level in to_be_merged_groups_tasks_per_levels[i].keys():
-            to_be_merged_groups_tasks_per_levels[i][node_level] += node_props.duration
-        else:
-            to_be_merged_groups_tasks_per_levels[i][node_level] = node_props.duration
-
-        if node_level < min_level:
-            min_level = node_level
-        if node_level > max_level:
-            max_level = node_level
-
-    to_be_merged_groups_min_levels[i] = min_level
-    to_be_merged_groups_max_levels[i] = max_level
-    
-    sink_level = math.inf
-    for snk_node in analysis_graph[current_group[-1]].children:
-        if int(analysis_graph[snk_node].level) < sink_level:
-            sink_level = int(analysis_graph[dst_node].level)
-
-    spanning_over = sink_level - min_level
-    to_be_merged_groups_lengths[i] = len(current_group)
-    to_be_merged_groups_empty_spots[i] = max(spanning_over - len(current_group) - (sink_level - max_level), 0)
-    if len(current_group) < average_path_len:
-        penalize_small_paths[i] = 1
-
-    if spanning_over <= 0:
-        to_be_merged_groups_densities[i] = 0
-    else:
-        to_be_merged_groups_densities[i] = to_be_merged_groups_weights[i] / spanning_over
-
-normalized_densities_den = max(to_be_merged_groups_densities) - min(to_be_merged_groups_densities) + 1
-normalized_lengths_den = max(to_be_merged_groups_lengths) - min(to_be_merged_groups_lengths) + 1
-normalized_empty_spots_den = max(to_be_merged_groups_empty_spots) - min(to_be_merged_groups_empty_spots) + 1
-normalized_weights_den = max(to_be_merged_groups_weights) - min(to_be_merged_groups_weights) + 1
-normalized_densities_sub = min(to_be_merged_groups_densities)
-normalized_lengths_sub = min(to_be_merged_groups_lengths)
-normalized_weights_sub = min(to_be_merged_groups_weights)
-normalized_empty_spots_sub = min(to_be_merged_groups_empty_spots)
-
-for i in range(0, to_be_merged_groups_len):
-    to_be_merged_groups_sorting_criteria[i] = (to_be_merged_groups_weights[i] - normalized_weights_sub) / normalized_weights_den + \
-    (to_be_merged_groups_densities[i] - normalized_densities_sub) / normalized_densities_den + \
-        (to_be_merged_groups_lengths[i] - normalized_lengths_sub) / (normalized_lengths_den) \
-        - (to_be_merged_groups_empty_spots[i] - normalized_empty_spots_sub) / normalized_empty_spots_den - penalize_small_paths[i]
-
-total_gain = 0
-nodes_initial_groups = {}
 for i in range(0, len(initial_groups)):
     for node in initial_groups[i]:
         nodes_initial_groups[node] = i
 
-to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels = \
-    (list(t) for t in zip(*sorted(zip(to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels), reverse=True)))
+for i in range(0, len(main_groups_indices)):
+    for node in initial_groups[main_groups_indices[i]]:
+        nodes_groups[node] = i
+
 cntt = 0
+final_groups = copy.deepcopy(initial_groups)
+final_groups_weights = copy.deepcopy(groups_weights)
+
 # merging the groups
-for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
-    to_be_merged_group = to_be_merged_groups[to_be_merged_group_index]
+while len(final_groups) > no_of_desired_groups:
+    to_be_merged_group_index = len(final_groups) - no_of_desired_groups - 1
+    to_be_merged_group = final_groups[to_be_merged_group_index]
     branch_main_path_indx = -1
+
     src_min_level = -1
     branch_src_node = ''
     branch_snk_node = ''
-    min_sink_level = math.inf
+    src_max_level = 20000
+    for src_node in analysis_graph[to_be_merged_group[0]].parents:
+        if int(analysis_graph[src_node].level) > src_min_level:
+            src_min_level = int(analysis_graph[src_node].level)
+            branch_src_node = src_node
+    for dst_node in analysis_graph[to_be_merged_group[len(to_be_merged_group) - 1]].children:
+        if int(analysis_graph[dst_node].level) < src_max_level:
+            src_max_level = int(analysis_graph[dst_node].level)
+            branch_snk_node = dst_node
 
-    to_be_merged_group_comms = [0] * no_of_desired_groups
+    for i in range(0, len(final_groups)):
+        if branch_src_node in final_groups[i] and branch_snk_node in final_groups[i]:
+            branch_main_path_indx = i
 
-    for node in to_be_merged_group:
-        for parent_node in rev_graph[node]:
-            if nodes_groups[parent_node] != -1:
-                to_be_merged_group_comms[nodes_groups[parent_node]] += edges_weights[parent_node]
-        
-        for child_node in graph[node]:
-            if nodes_groups[child_node] != -1:
-                to_be_merged_group_comms[nodes_groups[child_node]] += edges_weights[node]
+    # Note: the tensor size sent to the neighbors is the same, so pick the one with the lowest level.
+    max_parent_or_child_tensor = ''
+    max_parent_or_child_tensor_size = 0
+    if branch_main_path_indx == -1:
+        for parent_node in analysis_graph[to_be_merged_group[0]].parents:
+            if parent_node in tensors_sizes and tensors_sizes[parent_node] > max_parent_or_child_tensor_size and nodes_groups[parent_node] != -1:
+                max_parent_or_child_tensor_size = tensors_sizes[parent_node]
+                max_parent_or_child_tensor = parent_node
+        if max_parent_or_child_tensor != '':
+            branch_main_path_indx = nodes_groups[max_parent_or_child_tensor]
 
-    src_min_level = int(analysis_graph[to_be_merged_group[0]].level)
+    in_tensor_size = 0
+    out_tensor_size = 0
+    if branch_src_node in tensors_sizes:
+        in_tensor_size = tensors_sizes[branch_src_node]
+    else:
+        in_tensor_size = average_tensor_size_if_not_provided
 
-    for dst_node in analysis_graph[to_be_merged_group[-1]].children:
-        if int(analysis_graph[dst_node].level) < min_sink_level:
-            min_sink_level = int(analysis_graph[dst_node].level)
+    if to_be_merged_group[len(to_be_merged_group) - 1] in tensors_sizes:
+        out_tensor_size = tensors_sizes[to_be_merged_group[len(to_be_merged_group) - 1]]
+    else:
+        out_tensor_size = average_tensor_size_if_not_provided
 
-    min_sum_in_targeted_levels = math.inf
+    group_comm_time = comm_latency * 2 + \
+        (in_tensor_size + out_tensor_size) * comm_transfer_rate
+
+    min_sum_in_targeted_levels = 1000000000000
+    main_branch_sum_in_targeted_levels = 0
     merge_destination_index = 0
-    
-    for i in range(0, no_of_desired_groups):
-        sum_in_targeted_levels = 0
-        for level in range(src_min_level + 1, min_sink_level):
-            if level in final_groups_tasks_per_levels[i].keys():
-                sum_in_targeted_levels += final_groups_tasks_per_levels[i][level]
 
-        for comm_i in range(0, no_of_desired_groups):
-            if comm_i != i:
-                sum_in_targeted_levels += to_be_merged_group_comms[comm_i] 
+    for i in main_groups_indices:
+        sum_in_targeted_levels = 0
+        # current_min_level = max(src_min_level, min_levels[i])
+        # current_max_level = min(src_max_level, max_levels[i])
+
+        for level in range(src_min_level + 1, src_max_level - 1):
+            # and level in tasks_per_levels[to_be_merged_group_index].keys():
+            if level in tasks_per_levels[i].keys():
+                sum_in_targeted_levels = sum_in_targeted_levels + \
+                    tasks_per_levels[i][level]
 
         if sum_in_targeted_levels < min_sum_in_targeted_levels:
             min_sum_in_targeted_levels = sum_in_targeted_levels
             merge_destination_index = i
+        if i == branch_main_path_indx:
+            main_branch_sum_in_targeted_levels = sum_in_targeted_levels
+
+    if merge_destination_index != branch_main_path_indx and branch_main_path_indx in main_groups_indices:
+        current_branch_max_time = min_sum_in_targeted_levels + \
+            group_comm_time + final_groups_weights[to_be_merged_group_index]
+        an_alternative_max_time = main_branch_sum_in_targeted_levels + \
+            final_groups_weights[to_be_merged_group_index]
+
+        tmp_group = copy.deepcopy(to_be_merged_group)
+        poped_group = []
+        tmp_group_weight = final_groups_weights[to_be_merged_group_index]
+        poped_group_weight = 0
 
     merge_min_level = min(
-        to_be_merged_groups_min_levels[to_be_merged_group_index], final_groups_min_levels[merge_destination_index])
+        min_levels[to_be_merged_group_index], min_levels[merge_destination_index])
     merge_max_level = max(
-        to_be_merged_groups_max_levels[to_be_merged_group_index], final_groups_max_levels[merge_destination_index])
-    final_groups_weights[merge_destination_index] += to_be_merged_groups_weights[to_be_merged_group_index]
-    final_groups[merge_destination_index] += to_be_merged_group
-    final_groups_min_levels[merge_destination_index] = merge_min_level
-    final_groups_max_levels[merge_destination_index] = merge_max_level
-    merge_src_levels_tasks = to_be_merged_groups_tasks_per_levels[to_be_merged_group_index]
+        max_levels[to_be_merged_group_index], max_levels[merge_destination_index])
+    final_groups_weights[merge_destination_index] = final_groups_weights[merge_destination_index] + \
+        final_groups_weights[to_be_merged_group_index]
+    final_groups_weights.pop(to_be_merged_group_index)
+    final_groups[merge_destination_index] = final_groups[merge_destination_index] + \
+        to_be_merged_group
+    final_groups.pop(to_be_merged_group_index)
+    min_levels[merge_destination_index] = merge_min_level
+    max_levels[merge_destination_index] = merge_max_level
+    min_levels.pop(to_be_merged_group_index)
+    max_levels.pop(to_be_merged_group_index)
+    merge_src_levels_tasks = tasks_per_levels[to_be_merged_group_index]
 
     for node in to_be_merged_group:
-        nodes_groups[node] = merge_destination_index
+        nodes_groups[node] = main_groups_indices.index(merge_destination_index)
+
+    for j in range(0, no_of_desired_groups):
+        main_groups_indices[j] = main_groups_indices[j] - 1
 
     for level, tasks_sum in merge_src_levels_tasks.items():
-        if level in final_groups_tasks_per_levels[merge_destination_index].keys():
-            final_groups_tasks_per_levels[merge_destination_index][level] += tasks_sum
+        if level in tasks_per_levels[merge_destination_index].keys():
+            tasks_per_levels[merge_destination_index][level] = tasks_per_levels[merge_destination_index][level] + tasks_sum
         else:
-            final_groups_tasks_per_levels[merge_destination_index][level] = tasks_sum
+            tasks_per_levels[merge_destination_index][level] = tasks_sum
+    tasks_per_levels.pop(to_be_merged_group_index)
 
 nodes_groups[sink_node_name] = 0
+
 
 #post processing paths switching:
 # work destribution among levels:
@@ -746,7 +608,6 @@ initial_groups_latest_sorces_levels = []
 initial_groups_earliest_sink_levels = []
 containing_groups_indices = []
 already_swapped = {}
-swap_groups_sorting_criteria = []
 
 initial_group_indx = 0
 len_of_the_smallest_main_group_candidate = len(initial_groups[-no_of_desired_groups])
@@ -767,9 +628,6 @@ for initial_group in initial_groups:
             totally_contained = False
             break
     
-    if first_child_group == nodes_groups[start_node]:
-        totally_contained = False
-
     if totally_contained:
         initial_groups_indices.append(initial_group_indx)
         containing_groups_indices.append(first_child_group)
@@ -783,21 +641,18 @@ for initial_group in initial_groups:
         initial_groups_earliest_sink_levels.append(min_child_end_level)
         initial_groups_latest_sorces_levels.append(analysis_graph[initial_group[0]].level - 1)
 
-        swap_groups_sorting_criteria.append((initial_groups_earliest_sink_levels[-1] - initial_groups_latest_sorces_levels[-1]) * -1)
-
     initial_group_indx += 1
 
-swap_groups_sorting_criteria, initial_groups_latest_sorces_levels, initial_groups_earliest_sink_levels, initial_groups_indices, containing_groups_indices = (list(t) for t in zip(
-        *sorted(zip(swap_groups_sorting_criteria, initial_groups_latest_sorces_levels, initial_groups_earliest_sink_levels, initial_groups_indices, containing_groups_indices))))
+initial_groups_latest_sorces_levels, initial_groups_earliest_sink_levels, initial_groups_indices, containing_groups_indices = (list(t) for t in zip(
+        *sorted(zip(initial_groups_latest_sorces_levels, initial_groups_earliest_sink_levels, initial_groups_indices, containing_groups_indices))))
 
 no_of_swap_groups = len(initial_groups_indices)
 containing_group_levels_work_in_swap_levels = [0] * no_of_swap_groups
 swap_groups_final_group_levels_work_in_swap_levels = [0] * no_of_swap_groups
 comm_with_containing_groups = [0] * no_of_swap_groups
-comm_with_its_groups = [0] * no_of_swap_groups
 swap_groups_final_groups = [0] * no_of_swap_groups
 
-for group_indx in range(no_of_swap_groups - 2, -1, -1):
+for group_indx in range(0, no_of_swap_groups):
     swap_group_containing_group_levels_work = 0
     swap_group_final_group_levels_work = 0
     swap_group = initial_groups[group_indx]
@@ -813,24 +668,13 @@ for group_indx in range(no_of_swap_groups - 2, -1, -1):
     containing_group_levels_work_in_swap_levels[group_indx] = swap_group_containing_group_levels_work
     swap_groups_final_group_levels_work_in_swap_levels[group_indx] = swap_group_final_group_levels_work
 
+    swap_group_parents = rev_graph[start_node]
     comm_with_containing_group = 0
-    comm_with_its_group = 0
-
-    for node in swap_group:
-        for parent in rev_graph[node]:
-            if nodes_groups[parent] == swap_group_containing_group:
-                comm_with_containing_group += edges_weights[parent]
-            elif nodes_groups[parent] == swap_group_final_group:
-                comm_with_its_group += edges_weights[parent]
-        
-        for child in graph[node]:
-            if nodes_groups[child] == swap_group_containing_group:
-                comm_with_containing_group += edges_weights[node]
-            elif nodes_groups[child] == swap_group_final_group:
-                comm_with_its_group += edges_weights[node]
+    for parent in swap_group_parents:
+        comm_with_containing_group += edges_weights[parent]
+    comm_with_containing_group += edges_weights[swap_group[-1]]
 
     comm_with_containing_groups[group_indx] = comm_with_containing_group
-    comm_with_its_groups[group_indx] = comm_with_its_group
     group_indx += 1
 
 for to_be_swapped_group_indx in range(0, no_of_swap_groups - 1):
@@ -859,8 +703,8 @@ for to_be_swapped_group_indx in range(0, no_of_swap_groups - 1):
                     comm_with_containing_groups[to_be_swapped_group_indx] + swap_with_group_containing_group_work, \
                             comm_with_containing_groups[swap_with_group_indx] + to_be_swapped_group_containing_group_work)
                 
-                an_alternative_max_time = max(comm_with_its_groups[to_be_swapped_group_indx] + to_be_swapped_group_work + to_be_swapped_group_containing_group_work - swap_with_group_work, \
-                    comm_with_its_groups[swap_with_group_indx] + swap_with_group_work + swap_with_group_containing_group_work - to_be_swapped_group_work)
+                an_alternative_max_time = max(to_be_swapped_group_work + to_be_swapped_group_containing_group_work - swap_with_group_work, \
+                    swap_with_group_work + swap_with_group_containing_group_work - to_be_swapped_group_work)
                 
                 swapping_gain = current_max_time - an_alternative_max_time
                 if swapping_gain > max_swapping_gain:
@@ -874,8 +718,7 @@ for to_be_swapped_group_indx in range(0, no_of_swap_groups - 1):
     if swapping_candidate_indx == -1:
         current_time = max(comm_with_containing_groups[to_be_swapped_group_indx] + to_be_swapped_group_final_group_work, \
             to_be_swapped_group_containing_group_work)
-        an_alternative_time = max(comm_with_its_groups[to_be_swapped_group_indx] + to_be_swapped_group_work + \
-            to_be_swapped_group_containing_group_work,to_be_swapped_group_final_group_work - to_be_swapped_group_work)
+        an_alternative_time = max(to_be_swapped_group_work + to_be_swapped_group_containing_group_work,to_be_swapped_group_final_group_work - to_be_swapped_group_work)
         if an_alternative_time < current_time:
             to_be_swapped_group = initial_groups[initial_groups_indices[to_be_swapped_group_indx]]
             for node in to_be_swapped_group:
@@ -886,7 +729,7 @@ for to_be_swapped_group_indx in range(0, no_of_swap_groups - 1):
             
             total_swapping_gain += current_time - an_alternative_time
  
-    if swapping_candidate_indx != -1 and swapping_candidate_indx:
+    if swapping_candidate_indx != -1:
         already_swapped[swap_with_group_indx] = 1
         already_swapped[swapping_candidate_indx] = 1
         to_be_swapped_group = initial_groups[initial_groups_indices[to_be_swapped_group_indx]]
@@ -909,7 +752,6 @@ print('total swapping gain = ' + str(total_swapping_gain))
 
 
 #post processing, switching nodes placement modification:
-total_switching_gain = 0
 switching_nodes_pure_parents = []
 switching_nodes_pure_children = []
 #start from level 2, since level 0 contains src -added by me- and 1 contains nodes that are not children of any node in the original graph
@@ -938,7 +780,6 @@ for i in range(2, no_of_levels - 1):
         if all_parents_in_one_group and (not all_chidren_in_one_group) and switching_node_group != first_parent_group:
             switching_nodes_pure_parents.append(node)
 
-to_be_removed_groups_indices = []
 for switching_node in switching_nodes_pure_children:
     children_final_group = nodes_groups[graph[switching_node][0]]
     switching_node_group = nodes_groups[switching_node]
@@ -955,20 +796,11 @@ for switching_node in switching_nodes_pure_children:
     
     comm_from_children_group += edges_weights[switching_node]
     movement_gain = comm_from_children_group - (comm_from_its_group + analysis_graph[switching_node].duration)
-
     if movement_gain > 0:
-        total_switching_gain += movement_gain
-        switching_node_weight = analysis_graph[switching_node].duration
-        switching_node_level = analysis_graph[switching_node].level
-        final_groups_levels_work[nodes_groups[switching_node]][switching_node_level] -= switching_node_weight
-        final_groups_levels_work[children_final_group][switching_node_level] += switching_node_weight
         nodes_groups[switching_node] = children_final_group
-        switching_node_group_indx = nodes_initial_groups[switching_node]
         initial_groups[some_parent_initial_group].append(switching_node)
-        initial_groups[switching_node_group_indx].remove(switching_node)
+        initial_groups[nodes_initial_groups[switching_node]].remove(switching_node)
         nodes_initial_groups[switching_node] = some_parent_initial_group
-        if len(initial_groups[switching_node_group_indx]) == 0:
-            to_be_removed_groups_indices.append(switching_node_group_indx)
 
 for switching_node in switching_nodes_pure_parents:
     parents_final_group = nodes_groups[rev_graph[switching_node][0]]
@@ -981,26 +813,12 @@ for switching_node in switching_nodes_pure_parents:
                 break
     
     if analysis_graph[switching_node].duration <= comm_latency:
-        switching_node_weight = analysis_graph[switching_node].duration
-        switching_node_level = analysis_graph[switching_node].level
-        final_groups_levels_work[nodes_groups[switching_node]][switching_node_level] -= switching_node_weight
-        final_groups_levels_work[parents_final_group][switching_node_level] += switching_node_weight
-        nodes_groups[switching_node] = children_final_group
         nodes_groups[switching_node] = parents_final_group
-        switching_node_group_indx = nodes_initial_groups[switching_node]
         initial_groups[some_child_initial_group].insert(0, switching_node)
-        initial_groups[switching_node_group_indx].remove(switching_node)
+        initial_groups[nodes_initial_groups[switching_node]].remove(switching_node)
         nodes_initial_groups[switching_node] = some_child_initial_group
-        if len(initial_groups[switching_node_group_indx]) == 0:
-            to_be_removed_groups_indices.append(switching_node_group_indx)
-
-for to_be_removed_groups_indx in to_be_removed_groups_indices:
-    initial_groups.pop(to_be_removed_groups_indx)
-
-print('total_switching_gain = ' + str(total_switching_gain))
 
 
-#memory----------------------------------------------------------------------------------------
 nodes_memory = {}
 additional_memory = {}
 # get memory consumption
@@ -1159,10 +977,6 @@ def get_levels_memory_consumption(graph, src_nodes=None):
 
 final_groups_memory_consumptions = get_levels_memory_consumption(graph)
 
-for i in range(0, no_of_desired_groups):
-    for level in range(len(final_groups_memory_consumptions[i]) - 2, no_of_levels):
-        final_groups_memory_consumptions[i][level] = final_groups_memory_consumptions[i][level - 1] 
-
 memory_limit_is_exceeded = False
 for i in range(0, no_of_desired_groups):
     for level in range(no_of_levels - 1, 0, -1):
@@ -1204,6 +1018,18 @@ if memory_limit_is_exceeded:
         for level in range(nodes_last_child_level, nodes_last_child_level_with_deps):
             final_groups_memory_consumptions[nodes_groups[node]][level] += nodes_memory[node]
 
+    # work destribution among levels:
+    final_groups_levels_work = []
+    for group in range(0, no_of_desired_groups):
+        final_groups_levels_work.append([])
+        for level in range(0, no_of_levels):
+                final_groups_levels_work[group].append(0)
+
+    for level in range(0, no_of_levels):
+        for node in levels_nodes[level]:
+            final_groups_levels_work[nodes_groups[node]][level] += analysis_graph[node].duration
+
+
     # memory consumption of the initial groups
     initial_groups_mem_cons = []
     current_initial_group = 0
@@ -1228,17 +1054,13 @@ if memory_limit_is_exceeded:
         starting_node = initial_group[0]
         end_node = initial_group[len(initial_group) - 1]
         initial_groups_start_levels.append(analysis_graph[starting_node].level)
+        comm_cost = 0
+        for parent in rev_graph[starting_node]:
+            comm_cost += tensors_sizes[parent]
 
-        comm_costs = [0] * no_of_desired_groups
-        for node in initial_group:
-            for parent_node in rev_graph[node]:
-                comm_costs[nodes_groups[parent_node]] += edges_weights[parent_node]
-        
-            for child_node in graph[node]:
-                comm_costs[nodes_groups[child_node]] += edges_weights[node]
-
-        initial_groups_comms.append(comm_costs)
-        total_cost = sum(comm_costs) + groups_weights[current_group_indx]
+        comm_cost += tensors_sizes[end_node]
+        initial_groups_comms.append(comm_cost)
+        total_cost = comm_cost + groups_weights[current_group_indx]
         initial_groups_comps_comms.append(total_cost)
         ratio = total_cost / (initial_groups_mem_cons[current_group_indx] + 1) #negligable addition, just to avoid devision by zero without using if statements
         initial_groups_comm_comp_to_mem_ratio[current_group_indx] = ratio
@@ -1267,8 +1089,7 @@ if memory_limit_is_exceeded:
     normalized_comm_comp_den = com_comp_max - com_comp_min
     initial_groups_sorting_criteria = []
     for i in range(0, len(initial_group)):
-        initial_groups_sorting_criteria[i] = (initial_groups_comps_comms[i] - com_comp_min) / normalized_comm_comp_den + \
-            (initial_groups_comm_comp_to_mem_ratio[i] - ratio_min) / normalized_ratio_den
+        initial_groups_sorting_criteria[i] = initial_groups_comps_comms[i] / normalized_comm_comp_den + initial_groups_comm_comp_to_mem_ratio[i] / normalized_ratio_den
 
     initial_groups_mem_cons, initial_groups_sorting_criteria, initial_groups, initial_groups_start_levels, initial_groups_earliest_sink_levels, initial_groups_comms = (list(t) for t in zip(
         *sorted(zip(initial_groups_mem_cons, initial_groups_sorting_criteria, initial_groups, initial_groups_start_levels, initial_groups_earliest_sink_levels, initial_groups_comms))))
@@ -1308,6 +1129,11 @@ if memory_limit_is_exceeded:
                     current_sub_group = candidate_groups_indices[sub_group_indx]
                     merge_with_index = -1
                     sub_group_start_level = analysis_graph[sub_group_indx[0]].level
+                    comm_comp_with_final_groups = [initial_groups_comms[sub_group_indx]] * no_of_desired_groups
+                    #how much communication with the other final groups will this movement incure
+                    for parent_node in rev_graph[current_sub_group[0]]:
+                        comm_comp_with_final_groups[nodes_groups[parent_node]] -= tensors_sizes[parent_node]
+                    comm_comp_with_final_groups[nodes_groups[current_sub_group[-1]]] -= tensors_sizes[current_sub_group[-1]]
 
                     final_groups_indices = []
                     for i in range(0, no_of_desired_groups):
@@ -1371,15 +1197,15 @@ if memory_limit_is_exceeded:
 
 
 with open(out1, 'w') as f:
-    smm = [0] * (no_of_desired_groups + 1 )
-    light_levels_sum = [0] * (no_of_desired_groups + 1)
-    cntt = [0] * (no_of_desired_groups + 1)
-    count = [0] * (no_of_desired_groups + 1)
+    smm = [0] * no_of_desired_groups
+    light_levels_sum = [0] * no_of_desired_groups
+    cntt = [0] * no_of_desired_groups
+    count = [0] * no_of_desired_groups
     for node, group in nodes_groups.items():
         if not node.startswith("^"):
             f.write(node + ' ' + str(group) + '\n')
             smm[group] += analysis_graph[node].duration
-            if analysis_graph[node].level >= 150 and analysis_graph[node].level <= 350:
+            if analysis_graph[node].level >= 200 and analysis_graph[node].level < 270:
                 light_levels_sum[group] += analysis_graph[node].duration
                 count[group] += 1
             cntt[group] += 1

@@ -5,37 +5,6 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-"""# folder containing the work files
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
-
- # input files
-in1 = io_folder_path + 'timeline_step303_25.json'
-# 'nodes_levels.txt'#'part_8_1799_src_sink_nodes_levels.txt'
-in2 = io_folder_path + 'nodes_levels_low.txt'#'part_1_39_src_sink_nodes_levels.txt'
-#in3 = io_folder_path + 'fareed/mixed_h_zoltan/mixed_h_zoltan_2_cleaned.place'
-in3 = io_folder_path +  'inc_nmt.place'#'mixed_placement_v_part_nc.place'
-in4 = io_folder_path + 'inc_A_dot_low.dot' #'part_1_39_src_sink.dot'  #part_8_1799
-in5 = io_folder_path + 'tensors_sz_32_low.txt' """
-
-""" # input files
-in1 = io_folder_path + 'timeline_step1554.json'
-# 'nodes_levels.txt'#'part_8_1799_src_sink_nodes_levels.txt'
-in2 = io_folder_path + 'nmt_src_sink_nodes_levels_low.txt'#'part_1_39_src_sink_nodes_levels.txt'
-#in3 = io_folder_path + 'fareed/mixed_h_zoltan/mixed_h_zoltan_2_cleaned.place'
-in3 = io_folder_path + 'etf.place'#'mixed_placement_v_part_nc.place'
-in4 = io_folder_path + 'nmt_src_sink_low.dot' #'part_1_39_src_sink.dot'  #part_8_1799
-in5 = io_folder_path + 'tensors_sz_32_low.txt' """
-
-""" # input files
-in1 = io_folder_path + 'timeline_step110.json'
-# 'nodes_levels.txt'#'part_8_1799_src_sink_nodes_levels.txt'
-in2 = io_folder_path + 'vgg_src_sink_nodes_levels_low.txt'#'part_1_39_src_sink_nodes_levels.txt'
-#in3 = io_folder_path + 'fareed/mixed_h_zoltan/mixed_h_zoltan_2_cleaned.place'
-in3 = io_folder_path +  'mixed_placement_v_part_nc.place'
-in4 = io_folder_path + 'vgg_src_sink_low.dot' #'part_1_39_src_sink.dot'  #part_8_1799
-in5 = io_folder_path + 'tensors_sz_32_low.txt' """
-
 network_app = utils.network_app
 io_folder_path = utils.io_folder_path
 # input files
@@ -43,19 +12,10 @@ in1 = io_folder_path + 'timeline_step17_low.json'
 # 'nodes_levels.txt'#'part_8_1799_src_sink_nodes_levels.txt'
 in2 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'#'part_1_39_src_sink_nodes_levels.txt'
 #in3 = io_folder_path + 'fareed/mixed_h_zoltan/mixed_h_zoltan_2_cleaned.place'
-in3 = io_folder_path + 'ver_grouper_placement_e_nc.place'#'ver_grouper_placement_e_nc.place'#'mixed_placement_v_part_nc.place'#'vanilla_cleaned_low.place'#'mixed_placement_v_part_nc.place'
+in3 = io_folder_path + 'ver_grouper_placement_e_nc.place'#'mixed_placement_v_part_nc.place'#'vanilla_cleaned_low.place'#'mixed_placement_v_part_nc.place'
 in4 = io_folder_path + network_app + '_src_sink_low.dot' #'part_1_39_src_sink.dot'  #part_8_1799
 in5 = io_folder_path + 'tensors_sz_32_low.txt'
 in6 = io_folder_path + 'memory.txt'
-
-
-
-""" # input files
-in1 = io_folder_path + 'timeline_step0_45.json'
-in2 = io_folder_path +  'nodes_levels.txt'#'part_8_1799_src_sink_nodes_levels.txt'
-#in3 = io_folder_path + 'fareed/mixed_h_zoltan/mixed_h_zoltan_2_cleaned.place'
-in3 = io_folder_path + 'resnet_metis_3.place'#'vanilla_Cleaned.place'
-in4 = io_folder_path + 'resnet.dot' #part_8_1799 """
 
 analysis_graph = utils.read_profiling_file(in1, True)
 
@@ -139,8 +99,8 @@ offset_x = 20
 offset_y = 20
 graphics_window_width = 1300
 graphics_window_height = 600
-levels_to_represent = min(20, int(max_level))
-start_from_level = 500
+levels_to_represent = min(50, int(max_level))
+start_from_level = 150
 end_at_level = start_from_level + levels_to_represent
 first_node_in_the_graph_to_show_start_time = 0
 last_node_in_the_graph_to_show_end_time = 8
@@ -429,7 +389,7 @@ for i in range(start_from_level + 1, end_at_level):
                 else:
                     color_indx = 0
                 gvz_colors[src_key] = devices_colors_gvz[int(
-                    color_indx)%5]
+                    color_indx)%8]
                 if node in nodes_parts:
                     color_indx = nodes_parts[node]
                 elif node.lower() in nodes_parts:
@@ -437,7 +397,7 @@ for i in range(start_from_level + 1, end_at_level):
                 else:
                     color_indx = 0
                 gvz_colors[dst_key] = devices_colors_gvz[int(
-                    color_indx)%5]
+                    color_indx)%8]
 
 
 comm_transfer_rate = 1000000 / (140 * 1024 * 1024 * 1024)
