@@ -25,11 +25,11 @@ with open(in1, 'r') as f:
         if len(splits) > 1:
             if splits[1] in levels_density:
                 levels_density[splits[1]] += 1
-                levels_density_memory[splits[1]] += int(nodes_memory[splits[0]])
+                levels_density_memory[splits[1]] += int(nodes_memory[splits[0]]) if splits[0] in nodes_memory else 0
             else:
                 levels_density[splits[1]] = 1
-                levels_density_memory[splits[1]] = int(nodes_memory[splits[0]])
-        mem_sum += int(nodes_memory[splits[0]])
+                levels_density_memory[splits[1]] = int(nodes_memory[splits[0]]) if splits[0] in nodes_memory else 0
+        #mem_sum += int(nodes_memory[splits[0]])
 
 print("total memory consumption of the model is: " + str(mem_sum))
 

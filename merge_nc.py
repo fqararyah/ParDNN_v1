@@ -135,7 +135,7 @@ with open(out1, 'w') as f:
     for node, part in vanilla_placement.items():
         if not node.startswith('^') and node in placer_placement:
             if node in nodes_levels and node in placer_placement:
-                if part == '4' or nodes_levels[node] < 0:
+                if part == '-1' or nodes_levels[node] < 0:
                     f.write(node + ' ' + part + '\n')
                 else:
                     f.write(node + ' ' + placer_placement[node] + '\n')
