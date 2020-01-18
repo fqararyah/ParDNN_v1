@@ -18,7 +18,7 @@ for (dirpath, dirnames, filenames) in walk(io_folder_path):
 # getting time (weight) info for nodes
 nodes_durations = {}
 for file in files:
-    if 'json' in file and 'low' not in file and not 'tensor' in file:
+    if 'json' in file and 'low' not in file and not 'tensor' in file and not 'mem' in file:
         analysis_graph = utils.read_profiling_file(io_folder_path + file)
         for node in analysis_graph:
             if node in nodes_durations:
