@@ -5,8 +5,8 @@ import random
 # folder containing the work files
 #io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
 
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/inc/wrn_10_101/'
-network_app = 'wrn'
+io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/inc/rnn/'
+network_app = 'rnn'
 
 # output file
 in1 = io_folder_path + 'nodes_average_durations.txt'
