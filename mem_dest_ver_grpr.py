@@ -28,7 +28,7 @@ in6 = io_folder_path + 'memory.txt'
 out1 = io_folder_path + 'ver_grouper_placement_e_nc.place'
 
 # grouper parameters
-no_of_desired_groups = 8
+no_of_desired_groups = 6
 memory_limit_per_group = 31 * 1024 * 1024 * 1024
 
 comm_latency = 45
