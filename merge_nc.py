@@ -86,38 +86,27 @@ with open(in5_b, 'r') as f:
             else:
                 rev_graph[nodes[0]] = [nodes[1]]
 
-level = 7
-collocated = {}
-rev_collocated = {}
-with open(in6) as f:
-    for line in f:
-        line = utils.clean_line_keep_spaces(line)
-        splits = line.split(' vs ')
-        if splits[0] not in collocated:
-            collocated[splits[0]] = [splits[1]]
-        else:
-            collocated[splits[0]].append(splits[1])
-        if splits[1] not in rev_collocated:
-            rev_collocated[splits[1]] = [splits[0]]
-        else:
-            rev_collocated[splits[1]].append(splits[0])
-
-for collocation_src in collocated.keys():
-    #if collocation_src in graph:
-    for adj_node in collocated[collocation_src]:#graph[collocation_src]:
-        placer_placement[adj_node] = placer_placement[collocation_src]
-        for another_src in rev_collocated[adj_node]:
-            placer_placement[another_src] = placer_placement[collocation_src]
-
 #backward adjustment:
 for node, adjs in rev_graph.items():
     if node.endswith("/read"):
-        placer_placement[node] = placer_placement[node[:-5]]
-        apply_node = assign_node = node[:-5] + '/apply'
+        org_node = node[:-5]
+        apply_node = assign_node = org_node + '/apply'
+        assign_node = org_node + '/assign'
+        plcmnt = ''
         if apply_node in graph:
-            placer_placement[apply_node] = placer_placement[node]
+            plcmnt = placer_placement[apply_node]
+        elif assign_node in graph:
+            plcmnt = placer_placement[assign_node]
+        else:
+            plcmnt = placer_placement[node]
         
-        assign_node = node[:-5] + '/assign'
+        if org_node in graph:
+            placer_placement[org_node] = plcmnt
+        
+        if assign_node in graph:
+            placer_placement[assign_node] = plcmnt
+        placer_placement[node] = plcmnt
+        
         if assign_node in rev_graph:
             placer_placement[assign_node] = placer_placement[node]
             nodes_to_visit = [assign_node]
@@ -129,6 +118,29 @@ for node, adjs in rev_graph.items():
                     placer_placement[node_to_visit] = placer_placement[node]
                     nodes_to_visit = nodes_to_visit + rev_graph[node_to_visit]
 
+
+level = 7
+collocated = {}
+rev_collocated = {}
+with open(in6) as f:
+    for line in f:
+        line = utils.clean_line_keep_spaces(line).lower()
+        splits = line.split(' vs ')
+        if splits[0] not in collocated:
+            collocated[splits[0]] = [splits[1]]
+        else:
+            collocated[splits[0]].append(splits[1])
+        if splits[1] not in rev_collocated:
+            rev_collocated[splits[1]] = [splits[0]]
+        else:
+            rev_collocated[splits[1]].append(splits[0])
+
+for collocation_dst in rev_collocated.keys():
+    #if collocation_src in graph:
+    for adj_node in rev_collocated[collocation_dst]:#graph[collocation_src]:
+        placer_placement[adj_node] = placer_placement[collocation_dst]
+        for another_dst in collocated[adj_node]:
+            placer_placement[another_dst] = placer_placement[adj_node]
 
 parts_weights = {}
 with open(out1, 'w') as f:

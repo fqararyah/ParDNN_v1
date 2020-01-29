@@ -1,8 +1,8 @@
 import utils
 
-io_folder_path= 'C:/Users/fareed/PycharmProjects/tf_project/inc/rnn/'
+io_folder_path= 'C:/Users/fareed/PycharmProjects/tf_project/inc/wrn_10_101/'
 
-in1 = io_folder_path + 'rnn_src_sink_nodes_levels_low.txt'
+in1 = io_folder_path + 'wrn_src_sink_nodes_levels_low.txt'
 in2 = io_folder_path + 'memory.txt'
 
 out1 = io_folder_path + 'levels_densities_6.txt'
@@ -44,14 +44,19 @@ with open(in1, 'r') as f:
 
 print("total memory consumption of the model is: " + str(mem_sum))
 
-""" levels = list(levels_density.keys())
-densities = list(levels_density.values())
-densities_memory = list(levels_density_memory.values())
+levels = []
+densities = []
+densities_memory = []
+
+for level in levels_density.keys():
+    levels.append(level)
+    densities.append(levels_density[level])
+    densities_memory.append(levels_density_memory[level])
 
 densities, densities_memory, levels = (list(t) for t in zip(
-                *sorted(zip( densities, densities_memory, levels), reverse=True))) """
+                *sorted(zip( densities, densities_memory, levels), reverse=True)))
 
 with open(out1, 'w') as f:
     for i in range(0, len(levels_density)):
-        f.write('-' + str(i) +'::' + str(levels_density[i]) + '::' + str(levels_density_memory[i] if i in levels_density_memory else 0) + '\n')
+        f.write('-' + str(levels[i]) +'::' + str(densities[i]) + '::' + str(densities_memory[i] if i in levels_density_memory else 0) + '\n')
 

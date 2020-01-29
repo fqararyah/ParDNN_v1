@@ -24,7 +24,7 @@ with open(in3, 'r') as f:
         line = utils.clean_line(line)
         splitted = line.split('::')
         tensor_size = int(splitted[1])
-        tensor_name = splitted[0]
+        tensor_name = splitted[0].lower()
         tensors_sizes[tensor_name] = tensor_size
 
 sum_inits = 0

@@ -1087,9 +1087,9 @@ def get_levels_memory_consumption(graph, src_nodes=None):
             if tmp_nodes_in_degrees[adj_node] == 0:
                 traversal_queueu.put(adj_node)
 
-    for group in range(0, no_of_desired_groups):
+    """ for group in range(0, no_of_desired_groups):
         for level in range(0, no_of_levels):
-            levels_memory_consumption[group][level] += levels_additional_memory[group][level]
+            levels_memory_consumption[group][level] += levels_additional_memory[group][level] """
     
     return levels_memory_consumption
 
@@ -1102,13 +1102,13 @@ for level in range(0, no_of_levels):
     prntt = False
     for group in range(0, no_of_desired_groups):
         sum_in_level += final_groups_memory_consumptions[group][level]
-        if final_groups_memory_consumptions[group][level] > memory_limit_per_group:
+        if final_groups_memory_consumptions[group][level] > 36.0 * (1024 * 1024 * 1024):
             prntt = True
         _str += str(final_groups_memory_consumptions[group][level] / (1024 * 1024 * 1024)) + ' '
     if sum_in_level > max_mem:
         max_mem = sum_in_level
-    #if prntt:
-        #print(_str)
+    if prntt:
+        print(_str)
 
 print('max consumption in a level is: ' + str(max_mem / (1024 * 1024 * 1024)))
 
