@@ -28,7 +28,7 @@ in6 = io_folder_path + 'memory.txt'
 out1 = io_folder_path + 'ver_grouper_placement_e_nc.place'
 
 # grouper parameters
-no_of_desired_groups = 6
+no_of_desired_groups = 4
 memory_limit_per_group = 31 * 1024 * 1024 * 1024
 
 comm_latency = 45
@@ -1102,7 +1102,7 @@ for level in range(0, no_of_levels):
     prntt = False
     for group in range(0, no_of_desired_groups):
         sum_in_level += final_groups_memory_consumptions[group][level]
-        if final_groups_memory_consumptions[group][level] > 36.0 * (1024 * 1024 * 1024):
+        if final_groups_memory_consumptions[group][level] > 20.0 * (1024 * 1024 * 1024):
             prntt = True
         _str += str(final_groups_memory_consumptions[group][level] / (1024 * 1024 * 1024)) + ' '
     if sum_in_level > max_mem:

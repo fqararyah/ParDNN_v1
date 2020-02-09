@@ -5,7 +5,7 @@ import random
 # folder containing the work files
 #io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
 
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/inc/wrn_10_101/'#wrn_10_101
+io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/inc/wrn_16_101/'
 network_app = 'wrn'
 
 # output file

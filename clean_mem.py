@@ -32,11 +32,11 @@ sum_inits = 0
 def text_to_bytes(mem_cons):
     node_mem_cons = 0 
     if mem_cons.endswith('GB'):
-        node_mem_cons = float(mem_cons[:-2]) * 1024 * 1024 * 1024
+        node_mem_cons = float(mem_cons[:-2]) * 1000 * 1000 * 1000
     elif mem_cons.endswith('MB'):
-        node_mem_cons = float(mem_cons[:-2]) * 1024 * 1024
+        node_mem_cons = float(mem_cons[:-2]) * 1000 * 1000
     elif mem_cons.endswith('KB'):
-        node_mem_cons = float(mem_cons[:-2]) * 1024
+        node_mem_cons = float(mem_cons[:-2]) * 1000
     elif mem_cons.endswith('B'):
         node_mem_cons = float(mem_cons[:-1])
 
@@ -56,25 +56,17 @@ with open(in1, 'r') as f:
                 node_name = splits[0].lower()
                 node_name = utils.clean_line(node_name)
                 mem_cons = utils.clean_line(splits[1]).split(',')
-                total_cons = mem_cons[0]
-                total_cons = total_cons.split('/')[0]
-                mem_cons = mem_cons[len(mem_cons) - 1]
+                mem_cons = mem_cons[-1]
                 mem_cons = mem_cons.split('/')[0]
 
                 node_mem_cons = text_to_bytes(mem_cons)
-                total_cons = text_to_bytes(total_cons)
-                additional_mem_cons = max(total_cons - node_mem_cons, 0)
                 
                 if node_name in tensors_sizes:
-                    if node_mem_cons > 0:
-                        nodes_memory[node_name] = tensors_sizes[node_name]
-                    else:
-                        nodes_memory[node_name] = 0
+                    nodes_memory[node_name] = abs(max(tensors_sizes[node_name], node_mem_cons))
                 else:
                     nodes_memory[node_name] = node_mem_cons
                     #if node_name in all_nodes and node_mem_cons > 0:
                      #   print(node_mem_cons)
-                additional_memory[node_name] = additional_mem_cons
                 
                 if node_name in all_nodes:
                     sum_inits += node_mem_cons
@@ -91,7 +83,7 @@ for node, val in all_nodes.items():
     if val == 1:
         if node in tensors_sizes:
             nodes_memory[node] = tensors_sizes[node]
-            print('fffff')
+            print(node)
         else:
             nodes_memory[node] = 0
         additional_memory[node] = 0

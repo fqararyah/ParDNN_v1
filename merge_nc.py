@@ -9,43 +9,17 @@ io_folder_path = utils.io_folder_path
 network_app = utils.network_app
 in1 = io_folder_path + 'vanilla_cleaned_low.place'
 in2 = io_folder_path + 'ver_grouper_placement_e_nc.place'#'ver_grouper_placement_e_nc.place'#'ver_grouper_placement_e.place'
-in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'#'resnet_src_sink_nodes_levels_low.txt'
 in5 = io_folder_path + network_app + '_src_sink_low.dot'#'resnet_src_sink_low.dot'
 in5_b = io_folder_path + 'rev_' + network_app + '_src_sink_low.dot'#'resnet_src_sink_low.dot'
 in6 = io_folder_path + 'colocation_32_low.txt'
 in7 = io_folder_path + 'timeline_step17_low.json'
 
 
-""" # input files
-in1 = io_folder_path + 'vanilla_cleaned_low.place'
-in2 = io_folder_path + 'ver_grouper_placement_e_nc.place'#'ver_grouper_placement_e_nc.place'#'ver_grouper_placement_e.place'
-in3 = io_folder_path + 'nmt_src_sink_nodes_levels_low.txt'#'resnet_src_sink_nodes_levels_low.txt'
-in4 = io_folder_path + 'blacklist_low.txt'
-in5 = io_folder_path + 'nmt_src_sink_low.dot'#'resnet_src_sink_low.dot'
-in6 = io_folder_path + 'colocation_32_low.txt' """
-""" 
-# input files
-in1 = io_folder_path + 'vanilla_cleaned_low.place'
-in2 = io_folder_path + 'ver_grouper_placement_e_nc.place'#'ver_grouper_placement_e_nc.place'#'ver_grouper_placement_e.place'
-in3 = io_folder_path + 'resnet_src_sink_nodes_levels_low.txt'#'resnet_src_sink_nodes_levels_low.txt'
-in4 = io_folder_path + 'blacklist_low.txt'
-in5 = io_folder_path + 'resnet_src_sink_low.dot'#'resnet_src_sink_low.dot'
-in5_b = io_folder_path + 'rev_resnet_src_sink_low.dot'#'resnet_src_sink_low.dot'
-in6 = io_folder_path + 'colocation_32_low.txt' """
-
 out1 = io_folder_path + 'placement.place'
 
 nodes_levels = {}
 
-
 analysis_graph = utils.read_profiling_file(in7, True)
-
-with open(in3, 'r') as f:
-    for line in f:
-        line = utils.clean_line(line)
-        splits = line.split('::')
-        nodes_levels[splits[0]] = int(splits[1])
-
 
 vanilla_placement = {}
 placer_placement = {}
@@ -86,40 +60,35 @@ with open(in5_b, 'r') as f:
             else:
                 rev_graph[nodes[0]] = [nodes[1]]
 
-#backward adjustment:
-for node, adjs in rev_graph.items():
-    if node.endswith("/read"):
-        org_node = node[:-5]
-        apply_node = assign_node = org_node + '/apply'
-        assign_node = org_node + '/assign'
-        plcmnt = ''
-        if apply_node in graph:
-            plcmnt = placer_placement[apply_node]
-        elif assign_node in graph:
-            plcmnt = placer_placement[assign_node]
-        else:
-            plcmnt = placer_placement[node]
-        
-        if org_node in graph:
-            placer_placement[org_node] = plcmnt
-        
-        if assign_node in graph:
-            placer_placement[assign_node] = plcmnt
-        placer_placement[node] = plcmnt
-        
-        if assign_node in rev_graph:
-            placer_placement[assign_node] = placer_placement[node]
-            nodes_to_visit = [assign_node]
-            visited = {}
-            while nodes_to_visit:
-                node_to_visit = nodes_to_visit.pop()
-                if node_to_visit != 'src' and node_to_visit != 'snk' and node_to_visit not in visited:
-                    visited[node_to_visit] = 1
-                    placer_placement[node_to_visit] = placer_placement[node]
-                    nodes_to_visit = nodes_to_visit + rev_graph[node_to_visit]
+applies = ['/applymomentum', '/applyadam']
+assigns = ['/assign', '/assignsub']
 
+for i in range(0, len(assigns)):
+    current_assign = assigns[i]
+    for j in range(1, 100):
+        assigns.append(current_assign + '_' +str(j))
 
-level = 7
+def place_collocated_nodes(rev_graph):
+    for node in rev_graph.keys():
+        if ( node.endswith(tuple(applies)) or node.endswith(tuple(assigns)) ) and not node.startswith('^'):
+            orig_node = node[:node.rfind('/')]
+            read_node = node[:node.rfind('/')] + '/read'
+            if node.endswith(tuple(applies)):
+                plcmnt = placer_placement[node]
+                placer_placement[orig_node] = plcmnt
+                placer_placement[read_node] = plcmnt
+
+                for assign_node in assigns:
+                    if (orig_node + assign_node) in graph:
+                        placer_placement[assign_node] = plcmnt
+
+            elif node.endswith(tuple(assigns)):
+                plcmnt = placer_placement[node]
+                placer_placement[orig_node] = plcmnt
+                placer_placement[read_node] = plcmnt
+
+place_collocated_nodes(rev_graph)              
+
 collocated = {}
 rev_collocated = {}
 with open(in6) as f:
@@ -146,8 +115,8 @@ parts_weights = {}
 with open(out1, 'w') as f:
     for node, part in vanilla_placement.items():
         if not node.startswith('^') and node in placer_placement:
-            if node in nodes_levels and node in placer_placement:
-                if part == '-1' or nodes_levels[node] < 0:
+            if node in placer_placement:
+                if part == '-1':
                     f.write(node + ' ' + part + '\n')
                 else:
                     f.write(node + ' ' + placer_placement[node] + '\n')
