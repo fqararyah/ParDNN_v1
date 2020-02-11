@@ -83,7 +83,6 @@ for node, val in all_nodes.items():
     if val == 1:
         if node in tensors_sizes:
             nodes_memory[node] = tensors_sizes[node]
-            print(node)
         else:
             nodes_memory[node] = 0
         additional_memory[node] = 0

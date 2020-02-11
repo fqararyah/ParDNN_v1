@@ -34,10 +34,10 @@ for node in all_nodes.keys():
         normal_node = node[1:]
         if normal_node in all_nodes:
             if normal_node in graph.keys():
-                if node not in graph[normal_node]:
-                    graph[normal_node].append(node)
+                graph[normal_node] += graph[node] 
             else:
-                graph[normal_node] = [node]
+                graph[normal_node] = graph[node]
+            del graph[node]
 
 with open(out, 'w') as f:
     f.write('digraph{\n')
@@ -60,6 +60,4 @@ print(len(tensors_sizes))
 with open(out2, 'w') as f:
     for tensor, size in tensors_sizes.items():
         f.write(tensor+"::"+size+"\n")
-        if not tensor.startswith("^") and ("^" + tensor) in all_nodes:
-            f.write("^"+tensor+"::" + tensors_sizes[tensor] + "\n")
 
