@@ -5,3 +5,4 @@ import reverse_graph
 import topological_sort
 import avg_times
 import clean_mem
+import classify_ops

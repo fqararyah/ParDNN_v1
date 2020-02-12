@@ -24,14 +24,18 @@ in4 = io_folder_path + 'rev_' + network_app + '_src_sink_nodes_levels_low.txt'
 in4_b = io_folder_path + 'rev_' + network_app + '_src_sink_low.dot'
 in5 = io_folder_path + 'tensors_sz_32_low.txt'
 in6 = io_folder_path + 'memory.txt'
-in7 = io_folder_path + 'placement.place'
+in8 = io_folder_path + 'collocations.txt'
+in9 = io_folder_path + 'no_ops.txt'
+in10 = io_folder_path + 'ref_nodes.txt'
+in11 = io_folder_path + 'var_nodes.txt'
+in12 = io_folder_path + 'vanilla_cleaned.place'
 
 # output file
-out1 = io_folder_path + 'ver_grouper_placement_e_nc.place'
+out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
-no_of_desired_groups = 2
-memory_limit_per_group = 20 * 1024 * 1024 * 1024
+no_of_desired_groups = 4
+memory_limit_per_group = 32 * 1024 * 1024 * 1024
 
 comm_latency = 45
 average_tensor_size_if_not_provided = 1
@@ -57,6 +61,41 @@ with open(in5, 'r') as f:
         tensor_name = splitted[0]
         tensors_sizes[tensor_name] = tensor_size
         edges_weights[tensor_name] = int(float(tensor_size) * comm_transfer_rate + comm_latency)
+
+collocations = []
+nodes_collocation_groups = {}
+indx = 0
+with open(in8, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        collocations.append([])
+        splits = line.split("::")
+        for node in splits:
+            collocations[indx].append(node)
+            nodes_collocation_groups[node] = indx
+        indx += 1
+
+no_op_nodes = {}
+with open(in9, 'r') as f:
+    for line in f:
+        no_op_nodes[utils.clean_line(line)] = 1
+
+ref_nodes = {}
+with open(in10, 'r') as f:
+    for line in f:
+        ref_nodes[utils.clean_line(line)] = 1
+
+var_nodes = {}
+with open(in11, 'r') as f:
+    for line in f:
+        var_nodes[utils.clean_line(line)] = 1
+
+vanilla_placement = {}
+with open(in12, 'r') as f:
+    for line in f:
+        line = utils.clean_line_keep_spaces(line).lower()
+        splits = line.split(' ')
+        vanilla_placement[splits[0]] = splits[1]
 
 # getting time (weight) info for nodes
 analysis_graph = utils.read_profiling_file(in2, True)
@@ -966,16 +1005,31 @@ for group in tmp_initial_groups:
 
 print('total_switching_gain = ' + str(total_switching_gain))
 
+#handle collocation groups:
+for collocation_group in collocations:
+    final_groups_indices = [i for i in range(0, no_of_desired_groups)]
+    group_outside_comms = [0] * no_of_desired_groups
+    final_groups_criteria = [0] * no_of_desired_groups
 
-""" # get memory consumption
-with open(in7, 'r') as f:
-    for line in f:
-        line = utils.clean_line_keep_spaces(line)
-        splitted = line.split(' ')
-        node_name = splitted[0].lower()
-        nodes_groups[node_name] = int(splitted[1])
-        if int(splitted[1]) == -1:
-            nodes_groups[node_name] = 0 """
+    for collocation_node in collocation_group:
+        final_groups_criteria[nodes_groups[collocation_node]] += analysis_graph[collocation_node].duration
+        collocation_node_comm = edges_weights[collocation_node]
+        for adj_node in graph[collocation_node]:
+            if adj_node not in collocation_group and adj_node not in no_op_nodes: 
+                group_outside_comms[nodes_groups[adj_node]] = 1
+        
+        group_outside_comms = [i * collocation_node_comm for i in group_outside_comms]
+
+        for rev_adj in rev_graph[collocation_node]:
+            if rev_adj not in collocation_group:
+                group_outside_comms[nodes_groups[rev_adj]] += edges_weights[rev_adj]
+
+    final_groups_criteria = [sum(x) for x in zip(final_groups_criteria, group_outside_comms)]
+
+    target_group_indx = final_groups_criteria.index(max(final_groups_criteria))
+
+    for node in collocation_group:
+        nodes_groups[node] = target_group_indx
 
 #memory----------------------------------------------------------------------------------------
 nodes_memory = {}
@@ -1460,13 +1514,16 @@ with open(out1, 'w') as f:
     cntt = [0] * (no_of_desired_groups + 1)
     count = [0] * (no_of_desired_groups + 1)
     for node, group in nodes_groups.items():
-        if not node.startswith("^"):
-            f.write(node + ' ' + str(group) + '\n')
-            smm[group] += analysis_graph[node].duration
-            if analysis_graph[node].level >= 510 and analysis_graph[node].level <= 650:
-                light_levels_sum[group] += analysis_graph[node].duration
-                count[group] += 1
-            cntt[group] += 1
+        if node in vanilla_placement and vanilla_placement[node] == '-1':
+            f.write(node + ' -1\n')
+        else:
+            if not node.startswith("^"):
+                f.write(node + ' ' + str(group) + '\n')
+                smm[group] += analysis_graph[node].duration
+                if analysis_graph[node].level >= 510 and analysis_graph[node].level <= 650:
+                    light_levels_sum[group] += analysis_graph[node].duration
+                    count[group] += 1
+                cntt[group] += 1
 
     for i in range(0, no_of_desired_groups):
         print(str(i) + ': ' + str(cntt[i]) +

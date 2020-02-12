@@ -15,6 +15,9 @@ network_app = utils.network_app
 in1 = io_folder_path + network_app + \
     '_src_sink_low.dot'  # 'part_8_1799_src_sink.dot'
 in2 = io_folder_path + 'operations_attributes.txt'
+in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'
+in6 = io_folder_path + 'memory.txt'
+in7 = io_folder_path + 'placement.place'
 
 graph = {}
 rev_graph = {}
@@ -36,13 +39,44 @@ with open(in1, 'r') as f:
 
 no_ops = {}
 ref_ops = {}
+ops_types = {}
 with open(in2, 'r') as f:
     for line in f:
         splits = utils.clean_line(line).lower().split('::')
+        ops_types[splits[0]] = splits[1]
         if splits[1] == 'noop':
             no_ops[splits[0]] = 1
         elif len(splits) > 2 and splits[2] == 'true':
             ref_ops[splits[0]] = 1 
+
+nodes_levels = {}
+# get nodes levels
+with open(in3, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        node_and_level = line.split("::")
+        if len(node_and_level) > 1:
+            int_node_level = int(node_and_level[1])
+            nodes_levels[node_and_level[0]] = int_node_level
+
+nodes_memory = {}
+# get memory consumption
+with open(in6, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        splitted = line.split('::')
+        node_name = splitted[0].lower()
+        nodes_memory[node_name] = int(splitted[1])
+
+nodes_groups = {}
+with open(in7, 'r') as f:
+    for line in f:
+        line = utils.clean_line_keep_spaces(line)
+        splitted = line.split(' ')
+        node_name = splitted[0].lower()
+        nodes_groups[node_name] = int(splitted[1])
+        if int(splitted[1]) == -1:
+            nodes_groups[node_name] = 0
 
 collocations = {}
 for node in ref_ops.keys():
@@ -50,7 +84,48 @@ for node in ref_ops.keys():
         if rev_adj in ref_ops:
             if node not in collocations.keys():
                 collocations[node] = []
-            collocations[node].append(rev_adj)
+            if not ops_types[rev_adj].endswith('variablev2'):
+                collocations[node].append(str(rev_adj) + ':' + str(ops_types[rev_adj]))
 
 for node, adjs in collocations.items():
-    print(node + '::' + str(adjs))
+    if adjs:
+        print(node + '::' + str(adjs))
+
+ref_smm = 0
+non_ref_smm = 0
+ref_count = 0
+non_ref_count = 0
+collocations = {}
+used = {}
+for node in no_ops.keys():
+    if nodes_levels[node] > 15:
+        for rev_adj in rev_graph[node]:
+            if rev_adj not in used and nodes_groups[rev_adj] == 0:
+                if node not in collocations.keys():
+                    collocations[node] = []
+                collocations[node].append(str(rev_adj) + ':' + str(rev_adj in ref_ops))
+                if rev_adj in ref_ops:
+                    ref_smm += nodes_memory[rev_adj]
+                    ref_count += 1
+                else:
+                    non_ref_smm += nodes_memory[rev_adj]
+                    non_ref_count += 1
+
+            used[rev_adj] = 1
+
+print(ref_count)
+print(non_ref_count)
+
+print(ref_smm / (1024 * 1024 * 1024))
+print(non_ref_smm / (1024 * 1024 * 1024))
+
+""" for node, adjs in collocations.items():
+    if adjs:
+        print(node + ':' + str(nods_levels[node]) + '::' + str(adjs)) """
+print(len(ref_ops))
+smm = 0
+for op, op_type in ops_types.items():
+    if op_type.endswith(('variablev2', 'variable')) and nodes_groups[op] == 0:
+        smm+= nodes_memory[op]
+
+#print(smm / (1024*1024*1024))

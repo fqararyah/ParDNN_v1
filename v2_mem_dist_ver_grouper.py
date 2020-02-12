@@ -29,8 +29,8 @@ in7 = io_folder_path + 'placement.place'
 out1 = io_folder_path + 'ver_grouper_placement_e_nc.place'
 
 # grouper parameters
-no_of_desired_groups = 2
-memory_limit_per_group = 20 * 1024 * 1024 * 1024
+no_of_desired_groups = 4
+memory_limit_per_group = 32 * 1024 * 1024 * 1024
 
 comm_latency = 45
 average_tensor_size_if_not_provided = 1
@@ -1417,7 +1417,7 @@ for group_no in range(0, no_of_desired_groups):
 
         node_index -= 1
 
-max_mem = 0
+""" max_mem = 0
 for level in scheduled_levels_list:
     _str = '' + str(level) + '::'
     sum_in_level = 0
@@ -1430,7 +1430,7 @@ for level in scheduled_levels_list:
     if sum_in_level > max_mem:
         max_mem = sum_in_level
     if prntt:
-        print(_str)
+        print(_str) """
 
 with open(out1, 'w') as f:
     smm = [0] * (no_of_desired_groups + 1 )
