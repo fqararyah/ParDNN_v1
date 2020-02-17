@@ -5,6 +5,7 @@ in1 = io_folder_path + 'mem.txt'
 in2 = io_folder_path + utils.network_app + '_src_sink_low.dot'
 in3 = io_folder_path + 'memory_tensors.txt'
 out1 = io_folder_path + 'memory.txt'
+out2 = io_folder_path + 'res_memory.txt'
 
 all_nodes = {}
 
@@ -32,11 +33,11 @@ sum_inits = 0
 def text_to_bytes(mem_cons):
     node_mem_cons = 0 
     if mem_cons.endswith('GB'):
-        node_mem_cons = float(mem_cons[:-2]) * 1000 * 1000 * 1000
+        node_mem_cons = float(mem_cons[:-2]) * 1024 * 1024 * 1024
     elif mem_cons.endswith('MB'):
-        node_mem_cons = float(mem_cons[:-2]) * 1000 * 1000
+        node_mem_cons = float(mem_cons[:-2]) * 1024 * 1024
     elif mem_cons.endswith('KB'):
-        node_mem_cons = float(mem_cons[:-2]) * 1000
+        node_mem_cons = float(mem_cons[:-2]) * 1024
     elif mem_cons.endswith('B'):
         node_mem_cons = float(mem_cons[:-1])
 
@@ -44,6 +45,7 @@ def text_to_bytes(mem_cons):
 
 nodes_memory = {}
 additional_memory = {}
+res_memory = {}
 with open(in1, 'r') as f:
     for line in f:
         if not '_TFProfRoot' in line:
@@ -56,15 +58,20 @@ with open(in1, 'r') as f:
                 node_name = splits[0].lower()
                 node_name = utils.clean_line(node_name)
                 mem_cons = utils.clean_line(splits[1]).split(',')
+
+                if len(mem_cons) > 2 and text_to_bytes(mem_cons[2].split('/')[0]) > 0:
+                    res_memory[node_name] = text_to_bytes(mem_cons[2].split('/')[0])
+                    
+
                 mem_cons = mem_cons[-1]
                 mem_cons = mem_cons.split('/')[0]
 
                 node_mem_cons = text_to_bytes(mem_cons)
                 
-                if node_name in tensors_sizes:
-                    nodes_memory[node_name] = abs(max(tensors_sizes[node_name], node_mem_cons))
-                else:
-                    nodes_memory[node_name] = node_mem_cons
+                #if node_name in tensors_sizes:
+                #    nodes_memory[node_name] = abs(max(tensors_sizes[node_name], node_mem_cons))
+                #else:
+                nodes_memory[node_name] = node_mem_cons
                     #if node_name in all_nodes and node_mem_cons > 0:
                      #   print(node_mem_cons)
                 
@@ -81,12 +88,16 @@ print(sum_inits/1000000000)
 
 for node, val in all_nodes.items():
     if val == 1:
-        if node in tensors_sizes:
+        """ if node in tensors_sizes:
             nodes_memory[node] = tensors_sizes[node]
-        else:
-            nodes_memory[node] = 0
+        else: """
+        nodes_memory[node] = 0
         additional_memory[node] = 0
         
 with open(out1, 'w') as f:
     for key, val in nodes_memory.items():
+        f.write(key + '::' + str(int(val)) + '\n')
+
+with open(out2, 'w') as f:
+    for key, val in res_memory.items():
         f.write(key + '::' + str(int(val)) + '\n')

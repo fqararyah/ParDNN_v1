@@ -17,6 +17,7 @@ in1 = io_folder_path + network_app + \
 in2 = io_folder_path + 'operations_attributes.txt'
 in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'
 in6 = io_folder_path + 'memory.txt'
+in6_b = io_folder_path + 'res_memory.txt'
 in7 = io_folder_path + 'placement.place'
 
 graph = {}
@@ -40,6 +41,7 @@ with open(in1, 'r') as f:
 no_ops = {}
 ref_ops = {}
 ops_types = {}
+var_ops = {}
 with open(in2, 'r') as f:
     for line in f:
         splits = utils.clean_line(line).lower().split('::')
@@ -48,6 +50,8 @@ with open(in2, 'r') as f:
             no_ops[splits[0]] = 1
         elif len(splits) > 2 and splits[2] == 'true':
             ref_ops[splits[0]] = 1 
+            if splits[1].startswith('variable'):
+                var_ops[splits[0]] = 1
 
 nodes_levels = {}
 # get nodes levels
@@ -68,6 +72,15 @@ with open(in6, 'r') as f:
         node_name = splitted[0].lower()
         nodes_memory[node_name] = int(splitted[1])
 
+nodes_res_memory = {}
+# get memory consumption
+with open(in6_b, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        splitted = line.split('::')
+        node_name = splitted[0].lower()
+        nodes_res_memory[node_name] = int(splitted[1])
+
 nodes_groups = {}
 with open(in7, 'r') as f:
     for line in f:
@@ -84,14 +97,14 @@ for node in ref_ops.keys():
         if rev_adj in ref_ops:
             if node not in collocations.keys():
                 collocations[node] = []
-            if not ops_types[rev_adj].endswith('variablev2'):
+            if not ops_types[rev_adj].endswith(('variable','variablev2')):
                 collocations[node].append(str(rev_adj) + ':' + str(ops_types[rev_adj]))
 
 for node, adjs in collocations.items():
     if adjs:
         print(node + '::' + str(adjs))
 
-ref_smm = 0
+""" ref_smm = 0
 non_ref_smm = 0
 ref_count = 0
 non_ref_count = 0
@@ -119,13 +132,35 @@ print(non_ref_count)
 print(ref_smm / (1024 * 1024 * 1024))
 print(non_ref_smm / (1024 * 1024 * 1024))
 
-""" for node, adjs in collocations.items():
-    if adjs:
-        print(node + ':' + str(nods_levels[node]) + '::' + str(adjs)) """
+var_ops_sums = [0] * 4
+for node in graph.keys():
+    add = False
+    if node not in ref_ops:
+        for adj in graph[node]:
+            if nodes_groups[adj] == nodes_groups[node]:
+                add = True
+                print(str(nodes_levels[node]) + '::' + str(nodes_levels[adj]) + '::' + str(nodes_memory[node]))
+        if add:
+            var_ops_sums[nodes_groups[node]] += nodes_memory[node]
+
+print('--------------------')
+for var_ops_sum in var_ops_sums:
+    print(var_ops_sum / (1024 * 1024 * 1024))
+
 print(len(ref_ops))
 smm = 0
 for op, op_type in ops_types.items():
-    if op_type.endswith(('variablev2', 'variable')) and nodes_groups[op] == 0:
-        smm+= nodes_memory[op]
+    if op_type.endswith(('variablev2', 'variable')) and nodes_groups[op] == 0: 
+        smm+= nodes_memory[op]"""
+
+count = 0
+non_ref_nodes_with_no_op_child = {}
+for node in nodes_res_memory.keys():
+    if node not in ref_ops:
+        print( node + '::' + str(nodes_res_memory[node]) + '::' + str(nodes_levels[node]) + '::' + str(ops_types[node]) )
+
+print(count)
+for node, count in non_ref_nodes_with_no_op_child.items():
+    print(node)
 
 #print(smm / (1024*1024*1024))

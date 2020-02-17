@@ -34,10 +34,9 @@ for node in all_nodes.keys():
         normal_node = node[1:]
         if normal_node in all_nodes:
             if normal_node in graph.keys():
-                graph[normal_node] += graph[node] 
+                graph[normal_node].append(node)
             else:
-                graph[normal_node] = graph[node]
-            del graph[node]
+                graph[normal_node] = [node]
 
 with open(out, 'w') as f:
     f.write('digraph{\n')
