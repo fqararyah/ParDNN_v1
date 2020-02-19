@@ -57,34 +57,38 @@ with open(in1, 'r') as f:
             if len(splits) > 1:
                 node_name = splits[0].lower()
                 node_name = utils.clean_line(node_name)
-                mem_cons = utils.clean_line(splits[1]).split(',')
+                if node_name in all_nodes: # or 1 == 1:
+                    mem_cons = utils.clean_line(splits[1]).split(',')
 
-                if len(mem_cons) > 2 and text_to_bytes(mem_cons[2].split('/')[0]) > 0:
-                    res_memory[node_name] = text_to_bytes(mem_cons[2].split('/')[0])
+                    if len(mem_cons) > 2 and text_to_bytes(mem_cons[2].split('/')[0]) > 0:
+                        res_memory[node_name] = text_to_bytes(mem_cons[2].split('/')[0])
+                        
+
+                    mem_cons = mem_cons[-1]
+                    mem_cons = mem_cons.split('/')[0]
+
+                    node_mem_cons = text_to_bytes(mem_cons)
                     
+                    #if node_name in tensors_sizes:
+                    #    nodes_memory[node_name] = abs(max(tensors_sizes[node_name], node_mem_cons))
+                    #else:
+                    nodes_memory[node_name] = node_mem_cons
+                        #if node_name in all_nodes and node_mem_cons > 0:
+                        #   print(node_mem_cons)
+                    
+                        #print(node_name + ' ' + str(node_mem_cons))
+                    #if node_mem_cons > 0 and node_name in all_nodes:
+                    # print(node_name)
 
-                mem_cons = mem_cons[-1]
-                mem_cons = mem_cons.split('/')[0]
+                    if node_name in all_nodes:
+                        all_nodes[node_name] = 0
 
-                node_mem_cons = text_to_bytes(mem_cons)
-                
-                #if node_name in tensors_sizes:
-                #    nodes_memory[node_name] = abs(max(tensors_sizes[node_name], node_mem_cons))
-                #else:
-                nodes_memory[node_name] = node_mem_cons
-                    #if node_name in all_nodes and node_mem_cons > 0:
-                     #   print(node_mem_cons)
-                
-                if node_name in all_nodes:
-                    sum_inits += node_mem_cons
-                    #print(node_name + ' ' + str(node_mem_cons))
-                #if node_mem_cons > 0 and node_name in all_nodes:
-                # print(node_name)
-
-                if node_name in all_nodes:
-                    all_nodes[node_name] = 0
+                    if node_name not in all_nodes:
+                        if node_name in nodes_memory and nodes_memory[node_name] > 0:
+                            print(node_name)
+                            sum_inits += nodes_memory[node_name]
             
-print(sum_inits/1000000000)
+print(sum_inits/(1024*1024*1024))
 
 for node, val in all_nodes.items():
     if val == 1:

@@ -153,7 +153,7 @@ for op, op_type in ops_types.items():
     if op_type.endswith(('variablev2', 'variable')) and nodes_groups[op] == 0: 
         smm+= nodes_memory[op]"""
 
-count = 0
+""" count = 0
 non_ref_nodes_with_no_op_child = {}
 for node in nodes_res_memory.keys():
     if node not in ref_ops:
@@ -161,6 +161,49 @@ for node in nodes_res_memory.keys():
 
 print(count)
 for node, count in non_ref_nodes_with_no_op_child.items():
-    print(node)
+    print(node) """
+
+var_count = 0
+ref_count = 0
+res_count = 0
+norm_count = 0
+
+var_sum = 0
+ref_sum = 0
+res_sum = 0
+norm_sum = 0
+
+for node, mem in nodes_memory.items():
+    if mem > 0 and nodes_groups[node] == 0:
+        if node in var_ops:
+            var_count += 1
+            var_sum += mem
+        elif node in ref_ops:
+            ref_count += 1
+            ref_sum += mem
+        elif node in nodes_res_memory:
+            res_count += 1
+            res_sum += mem
+        else:
+             norm_count += 1
+             norm_sum += mem
+
+print('-----------------------')
+print('var_count: ' + str(var_count)) 
+print('ref_count: ' + str(ref_count)) 
+print('res_count: ' + str(res_count)) 
+print('norm_count: ' + str(norm_count)) 
+
+print('var_sum: ' + str( var_sum / (1024 * 1024 * 1024) )) 
+print('ref_sum: ' + str(ref_sum / (1024 * 1024 * 1024) )) 
+print('res_sum: ' + str(res_sum / (1024 * 1024 * 1024) )) 
+print('norm_sum: ' + str(norm_sum / (1024 * 1024 * 1024) )) 
+print('-----------------------')
+
+""" for node in rev_graph.keys():
+    if node in ref_ops:
+        for rev_adjs in rev_graph[node]:
+            if rev_adj not in ref_ops and not rev_adj.startswith('^') and rev_adj not in no_ops:
+                print(rev_adj)  """
 
 #print(smm / (1024*1024*1024))
