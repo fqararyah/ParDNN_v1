@@ -131,7 +131,7 @@ for node, val in all_nodes.items():
                 res_memory[node] = nf_res_memory[node_name]
                 break
 
-    if not found:        
+    if not found and val == 1:        
         nodes_memory[node] = 0
         
 with open(out1, 'w') as f:
