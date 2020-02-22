@@ -9,6 +9,7 @@ import heapq
 import random
 import queue
 import time
+import numpy as np
 
 # folder containing the work files
 io_folder_path = utils.io_folder_path
@@ -23,10 +24,14 @@ in4 = io_folder_path + 'rev_' + network_app + '_src_sink_nodes_levels_low.txt'
 in4_b = io_folder_path + 'rev_' + network_app + '_src_sink_low.dot'
 in5 = io_folder_path + 'tensors_sz_32_low.txt'
 in6 = io_folder_path + 'memory.txt'
-in7 = io_folder_path + 'placement.place'
+in8 = io_folder_path + 'collocations.txt'
+in9 = io_folder_path + 'no_ops.txt'
+in10 = io_folder_path + 'ref_nodes.txt'
+in11 = io_folder_path + 'var_nodes.txt'
+in12 = io_folder_path + 'vanilla_cleaned.place'
 
 # output file
-out1 = io_folder_path + 'ver_grouper_placement_e_nc.place'
+out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
 no_of_desired_groups = 4
@@ -56,6 +61,41 @@ with open(in5, 'r') as f:
         tensor_name = splitted[0]
         tensors_sizes[tensor_name] = tensor_size
         edges_weights[tensor_name] = int(float(tensor_size) * comm_transfer_rate + comm_latency)
+
+collocations = []
+nodes_collocation_groups = {}
+indx = 0
+with open(in8, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        collocations.append([])
+        splits = line.split("::")
+        for node in splits:
+            collocations[indx].append(node)
+            nodes_collocation_groups[node] = indx
+        indx += 1
+
+no_op_nodes = {}
+with open(in9, 'r') as f:
+    for line in f:
+        no_op_nodes[utils.clean_line(line)] = 1
+
+ref_nodes = {}
+with open(in10, 'r') as f:
+    for line in f:
+        ref_nodes[utils.clean_line(line)] = 1
+
+var_nodes = {}
+with open(in11, 'r') as f:
+    for line in f:
+        var_nodes[utils.clean_line(line)] = 1
+
+vanilla_placement = {}
+with open(in12, 'r') as f:
+    for line in f:
+        line = utils.clean_line_keep_spaces(line).lower()
+        splits = line.split(' ')
+        vanilla_placement[splits[0]] = splits[1]
 
 # getting time (weight) info for nodes
 analysis_graph = utils.read_profiling_file(in2, True)
@@ -965,16 +1005,31 @@ for group in tmp_initial_groups:
 
 print('total_switching_gain = ' + str(total_switching_gain))
 
+#handle collocation groups:
+for collocation_group in collocations:
+    final_groups_indices = [i for i in range(0, no_of_desired_groups)]
+    group_outside_comms = [0] * no_of_desired_groups
+    final_groups_criteria = [0] * no_of_desired_groups
 
-""" # get memory consumption
-with open(in7, 'r') as f:
-    for line in f:
-        line = utils.clean_line_keep_spaces(line)
-        splitted = line.split(' ')
-        node_name = splitted[0].lower()
-        nodes_groups[node_name] = int(splitted[1])
-        if int(splitted[1]) == -1:
-            nodes_groups[node_name] = 0 """
+    for collocation_node in collocation_group:
+        final_groups_criteria[nodes_groups[collocation_node]] += analysis_graph[collocation_node].duration
+        collocation_node_comm = edges_weights[collocation_node]
+        for adj_node in graph[collocation_node]:
+            if adj_node not in collocation_group and adj_node not in no_op_nodes: 
+                group_outside_comms[nodes_groups[adj_node]] = 1
+        
+        group_outside_comms = [i * collocation_node_comm for i in group_outside_comms]
+
+        for rev_adj in rev_graph[collocation_node]:
+            if rev_adj not in collocation_group:
+                group_outside_comms[nodes_groups[rev_adj]] += edges_weights[rev_adj]
+
+    final_groups_criteria = [sum(x) for x in zip(final_groups_criteria, group_outside_comms)]
+
+    target_group_indx = final_groups_criteria.index(max(final_groups_criteria))
+
+    for node in collocation_group:
+        nodes_groups[node] = target_group_indx
 
 #memory----------------------------------------------------------------------------------------
 nodes_memory = {}
@@ -995,8 +1050,6 @@ for node in all_nodes:
 
 def prepare_for_memory_balancing_round():
     memory_limit_is_exceeded = False
-    nodes_list = []
-    scheduled_levels_list = []
     for node in all_nodes.keys():
         nodes_levels_scheduled[node] = 0
 
@@ -1070,10 +1123,11 @@ def prepare_for_memory_balancing_round():
     groups_non_empty_levels = []
     for i in range(0, no_of_desired_groups):
         groups_non_empty_levels.append({})
-        
+
+    nodes_list = nodes_levels_scheduled.keys()
+    scheduled_levels_list = nodes_levels_scheduled.values()
+
     for node, scheduled_level in nodes_levels_scheduled.items():
-        nodes_list.append(node)
-        scheduled_levels_list.append(scheduled_level)
         groups_non_empty_levels[nodes_groups[node]][scheduled_level] = 1
 
     scheduled_levels_list, nodes_list = (list(t) for t in zip(
@@ -1083,9 +1137,12 @@ def prepare_for_memory_balancing_round():
     subtract_commulative_memory_at = {}
     visited_levels = {}
 
+    indx = 0
     for level in scheduled_levels_list:
-        final_groups_memory_consumptions[level] = [0] * no_of_desired_groups
         subtract_commulative_memory_at[level] = [0] * no_of_desired_groups
+        if not level in levels_indices_map: 
+            levels_indices_map[level] = indx
+            indx += 1
     
     levels_ends = {}
     ends_levels = {}
@@ -1100,6 +1157,8 @@ def prepare_for_memory_balancing_round():
         for end in ends:
             ends_levels[end] = level
     
+    final_groups_memory_consumptions = np.zeros((no_of_desired_groups, len(levels_indices_map)), dtype= np.int64)
+    
     for node_indx in range(0, len(nodes_list)):
         node = nodes_list[node_indx]
         node_scheduled_level = scheduled_levels_list[node_indx]
@@ -1108,14 +1167,14 @@ def prepare_for_memory_balancing_round():
         node_group = nodes_groups[node]
         node_memory = nodes_memory[node]
 
-        final_groups_memory_consumptions[node_scheduled_level][node_group] += node_memory
+        final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]] += node_memory
 
         if node_scheduled_level not in visited_levels or visited_levels[node_scheduled_level][node_group] == 0:
-            final_groups_memory_consumptions[node_scheduled_level][node_group] += commulative_memory_from_parents_to_children[node_group] 
+            final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]] += commulative_memory_from_parents_to_children[node_group] 
 
-        if final_groups_memory_consumptions[node_scheduled_level][node_group] > memory_limit_per_group:
+        if final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]] > memory_limit_per_group:
             memory_limit_is_exceeded = True
-            """ print(final_groups_memory_consumptions[node_scheduled_level][node_group])
+            """ print(final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]])
             print(node_scheduled_level)
             print(node_group)
             print('----------------------') """
@@ -1124,9 +1183,9 @@ def prepare_for_memory_balancing_round():
             commulative_memory_from_parents_to_children[node_group] -= subtract_commulative_memory_at[node_scheduled_level][node_group]
 
         for group_num in range(0, no_of_desired_groups):
-            if node_scheduled_level not in groups_non_empty_levels[group_num] and final_groups_memory_consumptions[node_scheduled_level][group_num] == 0:
-                final_groups_memory_consumptions[node_scheduled_level][group_num] = \
-                    final_groups_memory_consumptions[scheduled_levels_list[node_indx - 1]][group_num] - subtract_commulative_memory_at[scheduled_levels_list[node_indx - 1]][group_num]
+            if node_scheduled_level not in groups_non_empty_levels[group_num] and final_groups_memory_consumptions[group_num][levels_indices_map[node_scheduled_level]] == 0:
+                final_groups_memory_consumptions[group_num][levels_indices_map[node_scheduled_level]] = \
+                    final_groups_memory_consumptions[group_num][levels_indices_map[scheduled_levels_list[node_indx - 1]]] - subtract_commulative_memory_at[scheduled_levels_list[node_indx - 1]][group_num]
             level = parents_last_active_levels[node][group_num]
             if level > node_scheduled_level:
                 if node != sink_node_name and graph[node][0] != sink_node_name:
@@ -1139,7 +1198,7 @@ def prepare_for_memory_balancing_round():
             visited_levels[node_scheduled_level] = [0] * no_of_desired_groups
         visited_levels[node_scheduled_level][node_group] = 1
 
-    return [nodes_list, scheduled_levels_list, memory_limit_is_exceeded]
+    return [final_groups_memory_consumptions, nodes_list, scheduled_levels_list, memory_limit_is_exceeded]
 
 
 
@@ -1157,24 +1216,25 @@ for group_no in range(0, no_of_desired_groups):
     nodes_comms = {}
     nodes_levels_scheduled = {}
     tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
-    final_groups_memory_consumptions = {}
+    final_groups_memory_consumptions = None
     nodes_indices_map = {}
-    [nodes_list, scheduled_levels_list, memory_limit_is_exceeded] = prepare_for_memory_balancing_round()
+    levels_indices_map = {}
+    [final_groups_memory_consumptions, nodes_list, scheduled_levels_list, memory_limit_is_exceeded] = prepare_for_memory_balancing_round()
 
-    """ max_mem = 0
+    max_mem = 0
     for level in scheduled_levels_list:
         _str = '' + str(level) + '::'
         sum_in_level = 0
         prntt = False
         for grpp in range(0, no_of_desired_groups):
-            sum_in_level += final_groups_memory_consumptions[level][grpp]
-            if final_groups_memory_consumptions[level][grpp] / (1024 * 1024 * 1024) > 20.0:
+            sum_in_level += final_groups_memory_consumptions[grpp][levels_indices_map[level]]
+            if final_groups_memory_consumptions[grpp][levels_indices_map[level]] / (1024 * 1024 * 1024) > 22.5:
                 prntt = True
-            _str += str(final_groups_memory_consumptions[level][grpp] / (1024 * 1024 * 1024)) + ' '
+            _str += str(final_groups_memory_consumptions[grpp][levels_indices_map[level]] / (1024 * 1024 * 1024)) + ' '
         if sum_in_level > max_mem:
             max_mem = sum_in_level
         if prntt:
-            print(_str) """
+            print(_str)
 
     if memory_limit_is_exceeded:
         print('limit is exceeded')
@@ -1219,7 +1279,7 @@ for group_no in range(0, no_of_desired_groups):
             nodes_mem_potentials[node] = candidate_node_mem_potential
             heapq.heappush(criteria_heap, ( nodes_comms[node][node_group] / (candidate_node_mem_potential + 1), node) )
 
-            overflow = final_groups_memory_consumptions[scheduled_level][node_group] - memory_limit_per_group
+            overflow = final_groups_memory_consumptions[node_group][levels_indices_map[scheduled_level]] - memory_limit_per_group
             if overflow > 0:
                 """ print('crh:' + str(len(criteria_heap)))
 
@@ -1287,7 +1347,7 @@ for group_no in range(0, no_of_desired_groups):
                         final_groups_memory_consumptions_in_current_level_inverted = [] # inverted due to reverse sort
                         for i in range(0, no_of_desired_groups):
                             final_groups_indices.append(i)
-                            final_groups_memory_consumptions_in_current_level_inverted.append(-final_groups_memory_consumptions[candidate_node_level][i])
+                            final_groups_memory_consumptions_in_current_level_inverted.append(-final_groups_memory_consumptions[i][levels_indices_map[candidate_node_level]])
                         node_comms = nodes_comms[node_name]
                         node_comms, final_groups_memory_consumptions_in_current_level_inverted, final_groups_indices = \
                             (list(t) for t in zip(*sorted(zip(node_comms, final_groups_memory_consumptions_in_current_level_inverted, final_groups_indices), reverse=True)))
@@ -1298,6 +1358,8 @@ for group_no in range(0, no_of_desired_groups):
                                 merged = True
                                 affected_levels_additional_mems = {}
                                 affected_levels_to_subtract_mems = {}
+                                ranges_additions = []
+                                ranges_subtractions = []
                                 current_level_indx = nodes_indices_map[node_name]
                                 stop_at_level = nodes_earliest_parents_levels[node_name]
                                 value_to_add = 0
@@ -1322,34 +1384,48 @@ for group_no in range(0, no_of_desired_groups):
                                             if level_to_subtract_at not in levels_to_subtract_at_from_subtract_value:
                                                 levels_to_subtract_at_from_subtract_value[level_to_subtract_at] = 0
                                             levels_to_subtract_at_from_subtract_value[level_to_subtract_at] += parent_memory
+
+                                    if candidate_node_level not in levels_to_subtract_at_from_add_value:
+                                        levels_to_subtract_at_from_add_value[candidate_node_level] = 0
+
+                                    levels_to_subtract_at = levels_to_subtract_at_from_add_value.keys()
+                                    values_to_subtract = levels_to_subtract_at_from_add_value.values()
+                                    levels_to_subtract_at, values_to_subtract = (list(t) for t in zip(*sorted(zip(levels_to_subtract_at, values_to_subtract), reverse=True)))
+
+                                    for i in range(0, len(levels_to_subtract_at)):
+                                        ranges_additions.append([ levels_indices_map[levels_to_subtract_at[i]], value_to_add - values_to_subtract[i]])
+                                        value_to_add -= values_to_subtract[i]
+                                    #----------------------------------------------
+                                    if candidate_node_level not in levels_to_subtract_at_from_subtract_value:
+                                        levels_to_subtract_at_from_subtract_value[candidate_node_level] = 0
+
+                                    levels_to_subtract_at = levels_to_subtract_at_from_subtract_value.keys()
+                                    values_to_subtract = levels_to_subtract_at_from_subtract_value.values()
+                                    levels_to_subtract_at, values_to_subtract = (list(t) for t in zip(*sorted(zip(levels_to_subtract_at, values_to_subtract), reverse=True)))
+
+                                    for i in range(0, len(levels_to_subtract_at)):
+                                        ranges_subtractions.append([ levels_indices_map[levels_to_subtract_at[i]], value_to_subtract - values_to_subtract[i]])
+                                        value_to_subtract -= values_to_subtract[i]
+                                    
                                 else:
                                     merged = False
-                                
-                                while (value_to_add > 0 or value_to_subtract > 0) and scheduled_levels_list[current_level_indx] > stop_at_level:
-                                    current_level = scheduled_levels_list[current_level_indx]
-                                    current_node = nodes_list[current_level_indx]
-                                    
-                                    if current_level in levels_to_subtract_at_from_add_value:
-                                        value_to_add -= levels_to_subtract_at_from_add_value[current_level]
-                                        del levels_to_subtract_at_from_add_value[current_level]
-                                    if current_level in levels_to_subtract_at_from_subtract_value:
-                                        value_to_subtract -= levels_to_subtract_at_from_subtract_value[current_level]
-                                        del levels_to_subtract_at_from_subtract_value[current_level]
 
-                                    affected_levels_additional_mems[current_level] = value_to_add
-                                    if value_to_add + final_groups_memory_consumptions[current_level][final_group_indx] > memory_limit_per_group:
+                                roll_back_indx = 0
+                                for i in range(0, len(ranges_additions) - 1):
+                                    final_groups_memory_consumptions[final_group_indx][ ranges_additions[i+1][0] + 1 : ranges_additions[i][0] + 1 ] += ranges_additions[i][1]
+                                    roll_back_indx += 1
+                                    #print(str(ranges_additions[i][0]) + ':' + str(ranges_additions[i+1][0]))
+                                    if np.amax( final_groups_memory_consumptions[final_group_indx] [ranges_additions[i+1][0] + 1 : ranges_additions[i][0] + 1 ] ) > memory_limit_per_group:
                                         merged = False
+                                        for i in range(0, roll_back_indx):
+                                            final_groups_memory_consumptions[final_group_indx][ ranges_additions[i+1][0] + 1 : ranges_additions[i][0] + 1 ] -= ranges_additions[i][1]
                                         break
-                                    affected_levels_to_subtract_mems[current_level] = value_to_subtract
-                                    
-                                    current_level_indx -= 1
 
                                 if merged:
                                     merged_nodes[node_name] = 1
-                                    for level, memory in affected_levels_additional_mems.items():
-                                        final_groups_memory_consumptions[level][final_group_indx] += memory
-                                    for level, memory in affected_levels_to_subtract_mems.items():
-                                        final_groups_memory_consumptions[level][node_group] -= memory
+
+                                    for i in range(0, len(ranges_subtractions) - 1):
+                                        final_groups_memory_consumptions[node_group][ ranges_subtractions[i+1][0] + 1 : ranges_subtractions[i][0] + 1 ] -= ranges_subtractions[i][1]
                                     
                                     nodes_groups[node_name] = final_group_indx
                                     
@@ -1409,7 +1485,7 @@ for group_no in range(0, no_of_desired_groups):
                 print('cannot be addressed')
                 _str = '' + str(scheduled_level) + '::'
                 for grpp in range(0, no_of_desired_groups):
-                    _str += str(final_groups_memory_consumptions[scheduled_level][grpp] / (1024 * 1024 * 1024)) + ' '
+                    _str += str(final_groups_memory_consumptions[grpp][levels_indices_map[scheduled_level]] / (1024 * 1024 * 1024)) + ' '
                 print(_str)
                 #print(analysis_graph[node].level)
                 print(overflow/(1024 * 1024 * 1024))
@@ -1417,8 +1493,8 @@ for group_no in range(0, no_of_desired_groups):
 
         node_index -= 1
 
-""" max_mem = 0
-for level in scheduled_levels_list:
+max_mem = 0
+""" for level in scheduled_levels_list:
     _str = '' + str(level) + '::'
     sum_in_level = 0
     prntt = False
@@ -1438,13 +1514,16 @@ with open(out1, 'w') as f:
     cntt = [0] * (no_of_desired_groups + 1)
     count = [0] * (no_of_desired_groups + 1)
     for node, group in nodes_groups.items():
-        if not node.startswith("^"):
-            f.write(node + ' ' + str(group) + '\n')
-            smm[group] += analysis_graph[node].duration
-            if analysis_graph[node].level >= 510 and analysis_graph[node].level <= 650:
-                light_levels_sum[group] += analysis_graph[node].duration
-                count[group] += 1
-            cntt[group] += 1
+        if node in vanilla_placement and vanilla_placement[node] == '-1':
+            f.write(node + ' -1\n')
+        else:
+            if not node.startswith("^"):
+                f.write(node + ' ' + str(group) + '\n')
+                smm[group] += analysis_graph[node].duration
+                if analysis_graph[node].level >= 510 and analysis_graph[node].level <= 650:
+                    light_levels_sum[group] += analysis_graph[node].duration
+                    count[group] += 1
+                cntt[group] += 1
 
     for i in range(0, no_of_desired_groups):
         print(str(i) + ': ' + str(cntt[i]) +

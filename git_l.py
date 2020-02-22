@@ -19,6 +19,8 @@ in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'
 in6 = io_folder_path + 'memory.txt'
 in6_b = io_folder_path + 'res_memory.txt'
 in7 = io_folder_path + 'placement.place'
+in8 = io_folder_path + 'nf_memory.txt'
+in8_b = io_folder_path + 'nf_res_memory.txt'
 
 graph = {}
 rev_graph = {}
@@ -81,6 +83,36 @@ with open(in6_b, 'r') as f:
         node_name = splitted[0].lower()
         nodes_res_memory[node_name] = int(splitted[1])
 
+nf_nodes_memory = {}
+# get memory consumption
+with open(in8, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        splitted = line.split('::')
+        node_name = splitted[0].lower()
+        nf_nodes_memory[node_name] = int(splitted[1])
+
+nf_nodes_res_memory = {}
+# get memory consumption
+with open(in8_b, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        splitted = line.split('::')
+        node_name = splitted[0].lower()
+        nf_nodes_res_memory[node_name] = int(splitted[1])
+
+smm = 0
+for node, mem in nf_nodes_memory.items():
+    smm += mem
+
+print('not found mem cons:: ' + str(smm / (1024 * 1024 * 1024) ))
+smm = 0
+for node, mem in nf_nodes_res_memory.items():
+    smm += mem
+
+print('not found residual mem cons:: ' + str(smm / (1024 * 1024 * 1024) ))
+
+no_of_groups = 0
 nodes_groups = {}
 with open(in7, 'r') as f:
     for line in f:
@@ -88,8 +120,12 @@ with open(in7, 'r') as f:
         splitted = line.split(' ')
         node_name = splitted[0].lower()
         nodes_groups[node_name] = int(splitted[1])
+        if int(splitted[1]) > no_of_groups:
+            no_of_groups = int(splitted[1])
         if int(splitted[1]) == -1:
             nodes_groups[node_name] = 0
+
+no_of_groups += 1
 
 collocations = {}
 for node in ref_ops.keys():
@@ -206,4 +242,28 @@ print('-----------------------')
             if rev_adj not in ref_ops and not rev_adj.startswith('^') and rev_adj not in no_ops:
                 print(rev_adj)  """
 
+levels = {}
+for node in graph.keys():
+    if node not in ref_ops and node not in var_ops and node not in nodes_res_memory and nodes_memory[node] > 0:
+        for adj in graph[node]:
+            if adj in no_ops or adj.startswith('^'):
+                #print(node + '::' + adj + '::' + str(nodes_memory[node]) + ' :: ' + str(nodes_levels[node]) )
+                if nodes_levels[node] not in levels:
+                    levels[nodes_levels[node]] = 0
+                levels[nodes_levels[node]] += nodes_memory[node]
+
+""" for level, count in levels.items():
+    if count > 1:
+        print(str(level) + '::' + str(count))  """
+
+smm = 0
+for node in rev_graph['snk']:
+    if (node in nodes_memory and nodes_memory[node] > 0):
+        smm += nodes_memory[node]
+    if (node in nodes_res_memory and nodes_res_memory[node] > 0):
+        smm += nodes_res_memory[node]
+    if node.startswith('^'):
+        print(1)
+
+print(smm)
 #print(smm / (1024*1024*1024))

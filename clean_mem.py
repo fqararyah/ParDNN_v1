@@ -4,8 +4,12 @@ io_folder_path = utils.io_folder_path
 in1 = io_folder_path + 'mem.txt'
 in2 = io_folder_path + utils.network_app + '_src_sink_low.dot'
 in3 = io_folder_path + 'memory_tensors.txt'
+in4 = io_folder_path + 'no_ops.txt'
+in5 = io_folder_path + 'operations_attributes.txt'
 out1 = io_folder_path + 'memory.txt'
+out1_1 = io_folder_path + 'nf_memory.txt'
 out2 = io_folder_path + 'res_memory.txt'
+out2_1 = io_folder_path + 'nf_res_memory.txt'
 
 all_nodes = {}
 
@@ -28,6 +32,18 @@ with open(in3, 'r') as f:
         tensor_name = splitted[0].lower()
         tensors_sizes[tensor_name] = tensor_size
 
+no_op_nodes = {}
+with open(in4, 'r') as f:
+    for line in f:
+        no_op_nodes[utils.clean_line(line)] = 1
+
+do_not_check_ops = {}
+with open(in5, 'r') as f:
+    for line in f:
+        splits = utils.clean_line(line).lower().split('::')
+        if splits[1] == 'switch' or splits[1] == 'identity' or (len(splits) > 2 and splits[2] == 'true' ):
+            do_not_check_ops[splits[0]] = 1
+
 sum_inits = 0
 
 def text_to_bytes(mem_cons):
@@ -44,8 +60,10 @@ def text_to_bytes(mem_cons):
     return node_mem_cons
 
 nodes_memory = {}
+nf_nodes_memory = {}
 additional_memory = {}
 res_memory = {}
+nf_res_memory = {}
 with open(in1, 'r') as f:
     for line in f:
         if not '_TFProfRoot' in line:
@@ -57,46 +75,64 @@ with open(in1, 'r') as f:
             if len(splits) > 1:
                 node_name = splits[0].lower()
                 node_name = utils.clean_line(node_name)
-                if node_name in all_nodes: # or 1 == 1:
-                    mem_cons = utils.clean_line(splits[1]).split(',')
 
-                    if len(mem_cons) > 2 and text_to_bytes(mem_cons[2].split('/')[0]) > 0:
-                        res_memory[node_name] = text_to_bytes(mem_cons[2].split('/')[0])
-                        
+                mem_cons = utils.clean_line(splits[1]).split(',')
 
-                    mem_cons = mem_cons[-1]
-                    mem_cons = mem_cons.split('/')[0]
+                if len(mem_cons) > 2:
+                    res_cons = text_to_bytes(mem_cons[2].split('/')[0])
+                    if node_name == 'gradients/AddN_1524/tmp_var'.lower():
+                        print(res_cons)
+                    if res_cons > 0:
+                        if node_name in all_nodes:
+                            res_memory[node_name] = res_cons
+                        else:
+                            nf_res_memory[node_name] = res_cons
 
-                    node_mem_cons = text_to_bytes(mem_cons)
-                    
-                    #if node_name in tensors_sizes:
-                    #    nodes_memory[node_name] = abs(max(tensors_sizes[node_name], node_mem_cons))
-                    #else:
+                mem_cons = mem_cons[-1]
+                mem_cons = mem_cons.split('/')[0]
+
+                node_mem_cons = text_to_bytes(mem_cons)
+                
+                #if node_name in tensors_sizes:
+                #    nodes_memory[node_name] = abs(max(tensors_sizes[node_name], node_mem_cons))
+                #else:
+                if node_name in all_nodes:
                     nodes_memory[node_name] = node_mem_cons
-                        #if node_name in all_nodes and node_mem_cons > 0:
-                        #   print(node_mem_cons)
-                    
-                        #print(node_name + ' ' + str(node_mem_cons))
-                    #if node_mem_cons > 0 and node_name in all_nodes:
-                    # print(node_name)
+                elif node_mem_cons > 0:
+                    nf_nodes_memory[node_name] = node_mem_cons
+                    #if node_name in all_nodes and node_mem_cons > 0:
+                    #   print(node_mem_cons)
+                
+                    #print(node_name + ' ' + str(node_mem_cons))
+                #if node_mem_cons > 0 and node_name in all_nodes:
+                # print(node_name)
 
-                    if node_name in all_nodes:
-                        all_nodes[node_name] = 0
+                if node_name in all_nodes:
+                    all_nodes[node_name] = 0
 
-                    if node_name not in all_nodes:
-                        if node_name in nodes_memory and nodes_memory[node_name] > 0:
-                            print(node_name)
-                            sum_inits += nodes_memory[node_name]
+                if node_name not in all_nodes:
+                    if node_name in nodes_memory and nodes_memory[node_name] > 0:
+                        print(node_name)
+                        sum_inits += nodes_memory[node_name]
             
 print(sum_inits/(1024*1024*1024))
 
 for node, val in all_nodes.items():
-    if val == 1:
-        """ if node in tensors_sizes:
-            nodes_memory[node] = tensors_sizes[node]
-        else: """
-        nodes_memory[node] = 0
-        additional_memory[node] = 0
+    if (val == 1 or nodes_memory[node] == 0) and not node.startswith('^') and node not in no_op_nodes and node not in do_not_check_ops:
+        found = False
+        for node_name in nf_nodes_memory.keys():
+            if node in node_name:
+                found = True
+                nodes_memory[node] = nf_nodes_memory[node_name]
+                break
+        
+        for node_name in nf_res_memory.keys():
+            if node in node_name:
+                res_memory[node] = nf_res_memory[node_name]
+                break
+
+        if not found:        
+            nodes_memory[node] = 0
         
 with open(out1, 'w') as f:
     for key, val in nodes_memory.items():
@@ -104,4 +140,12 @@ with open(out1, 'w') as f:
 
 with open(out2, 'w') as f:
     for key, val in res_memory.items():
+        f.write(key + '::' + str(int(val)) + '\n')
+
+with open(out1_1, 'w') as f:
+    for key, val in nf_nodes_memory.items():
+        f.write(key + '::' + str(int(val)) + '\n')
+
+with open(out2_1, 'w') as f:
+    for key, val in nf_res_memory.items():
         f.write(key + '::' + str(int(val)) + '\n')

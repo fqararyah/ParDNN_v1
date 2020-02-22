@@ -36,7 +36,7 @@ out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
 no_of_desired_groups = 4
-memory_limit_per_group = 28 * 1024 * 1024 * 1024
+memory_limit_per_group = 30 * 1024 * 1024 * 1024
 
 comm_latency = 45
 average_tensor_size_if_not_provided = 1
