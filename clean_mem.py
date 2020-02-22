@@ -118,8 +118,8 @@ with open(in1, 'r') as f:
 print(sum_inits/(1024*1024*1024))
 
 for node, val in all_nodes.items():
+    found = False
     if (val == 1 or nodes_memory[node] == 0) and not node.startswith('^') and node not in no_op_nodes and node not in do_not_check_ops:
-        found = False
         for node_name in nf_nodes_memory.keys():
             if node in node_name:
                 found = True
@@ -131,8 +131,8 @@ for node, val in all_nodes.items():
                 res_memory[node] = nf_res_memory[node_name]
                 break
 
-        if not found:        
-            nodes_memory[node] = 0
+    if not found:        
+        nodes_memory[node] = 0
         
 with open(out1, 'w') as f:
     for key, val in nodes_memory.items():
