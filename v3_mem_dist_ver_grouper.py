@@ -35,7 +35,7 @@ in12 = io_folder_path + 'vanilla_cleaned.place'
 out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
-no_of_desired_groups = 8
+no_of_desired_groups = 2
 memory_limit_per_group = 30 * 1024 * 1024 * 1024
 
 comm_latency = 45
@@ -1435,7 +1435,7 @@ for group_no in range(0, no_of_desired_groups):
                 print(_str)
 
                 print(overflow) """
-
+                print(scheduled_level)
                 while overflow > 0 and (criteria_heap or big_nodes or resident_nodes_heap or collocated_nodes_heap):
                     from_big_nodes = False
                     heaps_are_empty = False
@@ -1450,12 +1450,15 @@ for group_no in range(0, no_of_desired_groups):
                             break
 
                     if criteria_heap or collocated_nodes_heap or resident_nodes_heap:
+                        criteria_val = math.inf
                         if criteria_heap:
                             candidate_node = criteria_heap[0]
+                            criteria_val = candidate_node[0]
                         if collocated_nodes_heap:
                             alt_collocated = collocated_nodes_heap[0]
-                            if alt_collocated[0] < candidate_node[0]:
+                            if alt_collocated[0] < criteria_val:
                                 candidate_node = alt_collocated
+                                criteria_val = candidate_node[0]
                         alt_resident = None
                         while resident_nodes_heap:
                             alt_resident = resident_nodes_heap[0]
@@ -1465,7 +1468,7 @@ for group_no in range(0, no_of_desired_groups):
                                 ineffective_resident_nodes[alt_resident_name] = parents_all_active_levels[alt_resident_name][group_no]
                                 heapq.heappush(ineffective_resident_nodes_heap, (-alt_resident_level, alt_resident_name) )
                             else:
-                                if alt_resident[0] < candidate_node[0]:
+                                if alt_resident[0] < criteria_val:
                                     candidate_node = alt_resident
                                 break
                             alt_resident = None
@@ -1685,6 +1688,7 @@ for group_no in range(0, no_of_desired_groups):
                                                 parents_last_active_levels[parent][node_group] = max(parents_all_active_levels[parent][node_group])
                                                 if parent in ineffective_resident_nodes and parents_last_active_levels[parent][node_group] < candidate_node_level:
                                                     heapq.heappush(resident_nodes_heap, ((nodes_comms[parent][node_group] + 1) / (nodes_memory[parent] + 0.1), parent ) )
+                                                    del ineffective_resident_nodes[parent]
 
                                                 for child in graph[parent]:
                                                     if nodes_groups[child] == node_group or nodes_groups[child] == final_group_indx:
@@ -1727,6 +1731,24 @@ for group_no in range(0, no_of_desired_groups):
                     if prntt:
                         print(_str) """
                 print('cannot be addressed')
+                #print(analysis_graph[node].level)
+                print(overflow/(1024 * 1024 * 1024))
+
+                max_mem = 0
+                for level in scheduled_levels_list:
+                    _str = '' + str(level) + '::'
+                    sum_in_level = 0
+                    prntt = False
+                    for grpp in range(0, no_of_desired_groups):
+                        sum_in_level += final_groups_memory_consumptions[grpp][levels_indices_map[level]]
+                        if final_groups_memory_consumptions[grpp][levels_indices_map[level]] > 29 * (1024 * 1024 * 1024):
+                            prntt = True
+                        _str += str(final_groups_memory_consumptions[grpp][levels_indices_map[level]] / (1024 * 1024 * 1024)) + ' '
+                    if sum_in_level > max_mem:
+                        max_mem = sum_in_level
+                    if prntt:
+                        print(_str)
+
                 _str = '' + str(scheduled_level) + '::'
                 for grpp in range(0, no_of_desired_groups):
                     _str += str(final_groups_memory_consumptions[grpp][levels_indices_map[scheduled_level]] / (1024 * 1024 * 1024)) + ' '
@@ -1736,23 +1758,6 @@ for group_no in range(0, no_of_desired_groups):
                 print(len(big_nodes))
                 print(analysis_graph[node].level)
                 print(_str)
-                #print(analysis_graph[node].level)
-                print(overflow/(1024 * 1024 * 1024))
-
-                """ max_mem = 0
-                for level in scheduled_levels_list:
-                    _str = '' + str(level) + '::'
-                    sum_in_level = 0
-                    prntt = False
-                    for grpp in range(0, no_of_desired_groups):
-                        sum_in_level += final_groups_memory_consumptions[grpp][levels_indices_map[level]]
-                        if final_groups_memory_consumptions[grpp][levels_indices_map[level]] > memory_limit_per_group:
-                            prntt = True
-                        _str += str(final_groups_memory_consumptions[grpp][levels_indices_map[level]] / (1024 * 1024 * 1024)) + ' '
-                    if sum_in_level > max_mem:
-                        max_mem = sum_in_level
-                    if prntt:
-                        print(_str) """
 
                 exit()
 

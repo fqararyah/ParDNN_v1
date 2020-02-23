@@ -124,11 +124,13 @@ for node, val in all_nodes.items():
             if node in node_name:
                 found = True
                 nodes_memory[node] = nf_nodes_memory[node_name]
+                print(nf_nodes_memory[node_name])
                 break
         
         for node_name in nf_res_memory.keys():
             if node in node_name:
                 res_memory[node] = nf_res_memory[node_name]
+                print(nf_res_memory[node_name])
                 break
 
     if not found and val == 1:        
