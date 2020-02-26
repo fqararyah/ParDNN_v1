@@ -35,19 +35,22 @@ in12 = io_folder_path + 'vanilla_cleaned.place'
 out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
-no_of_desired_groups = 2
+no_of_desired_groups = 4
 memory_limit_per_group = 30 * 1024 * 1024 * 1024
 
+#tst
 comm_latency = 45
 average_tensor_size_if_not_provided = 1
 comm_transfer_rate = 1000000 / (140 * 1024 * 1024 * 1024)
 
 # will contain the graph as an adgacency list
 graph = {}
+rev_graph = {}
 all_nodes = {}
 sink_node_name = 'snk'
 source_node_name = 'src'
 graph[sink_node_name] = []
+rev_graph[source_node_name] = []
 
 # initializing the nodes and adjacencies from the dot file
 with open(in1, 'r') as f:
@@ -64,6 +67,17 @@ with open(in1, 'r') as f:
                 graph[splits[0]].append(splits[1])
             else:
                 graph[splits[0]] = [splits[1]]
+
+# constructing the graph and initializing the nodes levels from the dot file
+with open(in4_b, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        nodes = line.split("->")
+        if len(nodes) > 1:
+            if nodes[0] in rev_graph:
+                rev_graph[nodes[0]].append(nodes[1])
+            else:
+                rev_graph[nodes[0]] = [nodes[1]]
 
 no_op_nodes = {}
 with open(in9, 'r') as f:
@@ -161,18 +175,6 @@ for node in all_nodes:
         for adj_node in graph[node]:
             edges_weights[node][adj_node] = float(comm_latency)
 
-# constructing the graph and initializing the nodes levels from the dot file
-rev_graph = {}
-with open(in4_b, 'r') as f:
-    for line in f:
-        line = utils.clean_line(line)
-        nodes = line.split("->")
-        if len(nodes) > 1:
-            if nodes[0] in rev_graph:
-                rev_graph[nodes[0]].append(nodes[1])
-            else:
-                rev_graph[nodes[0]] = [nodes[1]]
-
 # get nodes in degrees for the topological sort
 nodes_in_degrees = {}
 for node in all_nodes:
@@ -189,11 +191,11 @@ for node in all_nodes:
         rev_nodes_in_degrees[node] = 0
 
 #nodes bottom levels
-def get_nodes_weighted_levels(graph, edges_weights, src_nodes = None, previosly_visited = []):
+def get_nodes_weighted_levels(graph, edges_weights, src_nodes = None, previosly_visited = [], grouped = False, nodes_groups = {}, is_rev = True, _nodes_in_degrees = rev_nodes_in_degrees):
     # getting the sources of the graph to start the topological traversal from them
     graph_keys = {}
     nodes_weighted_levels={}
-    tmp_nodes_in_degrees = copy.deepcopy(rev_nodes_in_degrees)
+    tmp_nodes_in_degrees = copy.deepcopy(_nodes_in_degrees)
     traversal_queueu = queue.Queue()
 
     if src_nodes is None:
@@ -219,10 +221,18 @@ def get_nodes_weighted_levels(graph, edges_weights, src_nodes = None, previosly_
         current_node = traversal_queueu.get()
         adj_nodes = graph[current_node]
         current_node_level = nodes_weighted_levels[current_node]
+        current_node_duration = analysis_graph[current_node].duration
         for adj_node in adj_nodes:
             if adj_node not in previosly_visited:
                 #this is correct, might seem confusing, remember we are working with the reversed graph
-                new_level = current_node_level + edges_weights[adj_node][current_node] + analysis_graph[adj_node].duration
+                if is_rev:
+                    edge_weight = edges_weights[adj_node][current_node]
+                else:
+                    edge_weight = edges_weights[current_node][adj_node]
+                if grouped:
+                    if nodes_groups[adj_node] == nodes_groups[current_node]:
+                        edge_weight = 0
+                new_level = current_node_level + edge_weight + (analysis_graph[adj_node].duration if is_rev else current_node_duration)
                 tmp_nodes_in_degrees[adj_node] -= 1
                 if nodes_weighted_levels[adj_node] < new_level:
                     nodes_weighted_levels[adj_node] = new_level
@@ -248,6 +258,8 @@ tmp_rev_graph = copy.deepcopy(rev_graph)
 tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
 
 nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights)
+
+
 for node, weighted_level in nodes_weighted_levels.items():
     heapq.heappush(free_nodes, (-weighted_level, node))
 
@@ -279,8 +291,8 @@ while free_nodes:
         paths.append(current_path)
         groups_weights.append(current_path_weight)
         paths_lengths.append(len(current_path))
-        if len(paths) <= no_of_desired_groups or current_path_weight_with_comm >= groups_weights[0] / 10:
-            nodes_weighted_levels = get_nodes_weighted_levels(tmp_rev_graph, edges_weights, src_nodes, visited)
+        if len(paths) <= no_of_desired_groups or current_path_weight_with_comm >= groups_weights[0]:
+            nodes_weighted_levels = get_nodes_weighted_levels(graph = tmp_rev_graph, edges_weights = edges_weights, src_nodes= src_nodes, previosly_visited= visited)
             free_nodes = []
             for node, weighted_level in nodes_weighted_levels.items():
                 heapq.heappush(free_nodes, (-weighted_level, node))
@@ -314,42 +326,84 @@ for i in range(0, num_paths):
 # get max potential of paths
 groups_parents = {}
 paths_max_potential = copy.deepcopy(groups_weights)
+levels_work_sums = {}
+nodes_weighted_levels = get_nodes_weighted_levels(graph= graph, grouped= True, edges_weights = edges_weights, nodes_groups= nodes_paths_mapping, is_rev= False, _nodes_in_degrees= nodes_in_degrees)
+for node, level in nodes_weighted_levels.items():
+    if level not in levels_work_sums:
+        levels_work_sums[level] = 0
+    levels_work_sums[level] += analysis_graph[node].duration
 
+levels = levels_work_sums.keys() 
+work_sums = levels_work_sums.values()
+
+levels, work_sums = (list(t) for t in zip(
+        *sorted(zip(levels, work_sums))))
+
+for i in range(1, len(work_sums)):
+    work_sums[i] += work_sums[i - 1]
+
+levels_indices_map = {}
+current_level = 0
+for level in levels:
+    if level not in levels_indices_map:
+        levels_indices_map[level] = current_level 
+        current_level += 1
+
+paths_comms = []
+paths_ranges = []
+path_ranges_subtract = []
+paths_parents = []
 for i in range(0, len(paths)):
-    current_path = paths[i]
-    current_path_len = len(current_path) - 1
-    parent_path_indx = -1
-    found = False
-    heaviest_parent_child_tensor = 0
-    heaviest_parent_or_child_path = -1
-    if current_path[0] != source_node_name and current_path[current_path_len] != sink_node_name:
-        for src_node in rev_graph[current_path[0]]:
-            if tensors_sizes[src_node] > heaviest_parent_child_tensor:
-                heaviest_parent_child_tensor = tensors_sizes[src_node]
-                heaviest_parent_or_child_path = nodes_paths_mapping[src_node]
-            for dst_node in graph[current_path[current_path_len]]:
-                if tensors_sizes[dst_node] > heaviest_parent_child_tensor:
-                    heaviest_parent_child_tensor = tensors_sizes[dst_node]
-                    heaviest_parent_or_child_path = nodes_paths_mapping[dst_node]
-                if nodes_paths_mapping[src_node] == nodes_paths_mapping[dst_node]:
-                    parent_path_indx = nodes_paths_mapping[src_node]
-                    paths_max_potential[parent_path_indx] = paths_max_potential[parent_path_indx] + \
-                        paths_max_potential[i]
-                    found = True
-                    break
-                if found:
-                    break
-    if parent_path_indx == -1:
-        parent_path_indx = heaviest_parent_or_child_path
-    groups_parents[i] = parent_path_indx
+    path = paths[i]
+    if path[0] == source_node_name:
+        continue
 
-#map, helpful to find nodes in a level in O(1)
-levels_nodes = [None] * no_of_levels
-for node, props in analysis_graph.items():
-    if node in all_nodes:
-        if levels_nodes[props.level] == None:
-            levels_nodes[props.level] = []
-        levels_nodes[props.level].append(node)
+    path_comm = 0
+    path_last_src = 0
+    path_first_snk = math.inf
+    path_head = path[0]
+    path_tail = path[-1]
+    path_parents = {}
+
+    first_child_comp = 0
+    max_child_comm = 0
+    for child in graph[path_tail]:
+        child_path = nodes_paths_mapping[child]
+        if child_path not in path_parents:
+            path_parents[child_path] = 0
+        path_parents[child_path] = max(path_parents[child_path], edges_weights[path_tail][child])
+        max_child_comm = max(max_child_comm, edges_weights[path_tail][child])
+        if nodes_weighted_levels[child] < path_first_snk:
+            path_first_snk = nodes_weighted_levels[child]
+            path_parents[child_path] = edges_weights[path_tail][child]
+            first_child_comp = analysis_graph[child].duration
+
+    path_comm += max_child_comm
+
+    last_parent_comp = 0
+    for parent in rev_graph[path_head]:
+        path_comm += edges_weights[parent][path_head]
+        if nodes_weighted_levels[parent] > path_last_src:
+            path_last_src = nodes_weighted_levels[parent]
+            parent_path = nodes_paths_mapping[parent]
+            last_parent_comp = analysis_graph[parent].duration
+            if parent_path not in path_parents:
+                path_parents[parent_path] = 0
+            path_parents[parent_path] += edges_weights[parent][path_head]
+
+    path_ranges_subtract.append(last_parent_comp + first_child_comp)
+
+    max_comm = 0
+    max_comm_indx = 0
+    for path_parent, comm in path_parents.items():
+        if comm > max_comm:
+            max_comm = comm
+            max_comm_indx = path_parent
+
+    paths_parents.append(max_comm_indx)
+
+    paths_comms.append(path_comm)
+    paths_ranges.append([path_last_src, path_first_snk])
 
 # get the average path length
 after_heavy_paths_count = 0
@@ -360,115 +414,22 @@ for path in paths:
 
 average_path_len = round(after_heavy_paths_lengths / after_heavy_paths_count)
 
-print(average_path_len)
-
 # getting initial groups
 initial_groups = copy.deepcopy(paths)
 initial_groups_indices = [1] * num_paths
 path_joined_group = {}
-
-for i in range(0, num_paths - 1):
-    current_group = initial_groups[i]
-    current_group_weight = groups_weights[i]
-    group_comm_time = 0
-    total_branching_potential = 0
-    branch_start = ''
-    branch_end = ''
-    branching_main_path = groups_parents[i]
-    sibling_from_branching_main_path = ''
-    current_group_siblings_potentials = 0
-    sibling_from_branching_main_path_weight = 0
-    
-
-    if (current_group_weight >= average_node_weight or len(current_group) >= average_path_len) and current_group_weight > 0:
-        if current_group[0] != source_node_name and current_group[len(current_group) - 1] != sink_node_name:
-            for src_node in rev_graph[current_group[0]]:
-                if nodes_paths_mapping[src_node] == branching_main_path:
-                    branch_start = src_node
-            min_sink_level = math.inf
-            for dst_node in graph[current_group[len(current_group) - 1]]:
-                if nodes_paths_mapping[dst_node] == branching_main_path:
-                    branch_end = dst_node
-                if analysis_graph[dst_node].level < min_sink_level:
-                    min_sink_level = analysis_graph[dst_node].level
-            
-            if min_sink_level - analysis_graph[current_group[0]].level > len(current_group) * average_path_len:
-                continue
-
-            if branch_start != '' and branch_end != '':
-                current_group_siblings_heads = graph[branch_start]
-
-                for node in current_group_siblings_heads:
-                    if node == current_group[0]:
-                        continue
-                    if nodes_paths_mapping[node] != branching_main_path:
-                        current_group_siblings_potentials = current_group_siblings_potentials + \
-                            paths_max_potential[nodes_paths_mapping[node]]
-                    else:
-                        sibling_from_branching_main_path = node
-                        traversal_queue = [sibling_from_branching_main_path]
-                        visited_nodes = {}
-                        while len(traversal_queue) > 0:
-                            current_node = traversal_queue.pop(0)
-                            if current_node != branch_end and current_node not in visited_nodes and analysis_graph[current_node].level < analysis_graph[branch_end].level:
-                                sibling_from_branching_main_path_weight = sibling_from_branching_main_path_weight + \
-                                    analysis_graph[current_node].duration
-                                traversal_queue = traversal_queue + \
-                                    graph[current_node]
-                            visited_nodes[current_node] = 1
-
-                total_branching_potential = (
-                    current_group_siblings_potentials) + sibling_from_branching_main_path_weight
-                in_tensor_size = 0
-                out_tensor_size = 0
-                if branch_start in tensors_sizes:
-                    in_tensor_size = tensors_sizes[branch_start]
-                else:
-                    in_tensor_size = average_tensor_size_if_not_provided
-                if current_group[len(current_group) - 1] in tensors_sizes:
-                    out_tensor_size = tensors_sizes[current_group[len(current_group) - 1]]
-                else:
-                    out_tensor_size = average_tensor_size_if_not_provided
-
-                group_comm_time = comm_latency * 2 + \
-                    (in_tensor_size + out_tensor_size) * comm_transfer_rate
-
-                if group_comm_time >= total_branching_potential + current_group_weight:
-                    while initial_groups_indices[branching_main_path] == 0:
-                        # union find like stuff
-                        branching_main_path = path_joined_group[branching_main_path]
-                    path_joined_group[i] = branching_main_path
-                    initial_groups_indices[i] = 0
-                    groups_weights[branching_main_path] = groups_weights[branching_main_path] + \
-                        groups_weights[i]
-                    if len(initial_groups[branching_main_path]) > 1:
-                        main_path_tail = initial_groups[branching_main_path].pop(
-                            len(initial_groups[branching_main_path]) - 1)
-                        initial_groups[branching_main_path] = initial_groups[branching_main_path] + \
-                            initial_groups[i]
-                        initial_groups[branching_main_path].append(
-                            main_path_tail)
-                    else:
-                        initial_groups[branching_main_path] = initial_groups[branching_main_path] + \
-                            initial_groups[i]
-    else:
-        if branching_main_path == -1:
-            branching_main_path = nodes_paths_mapping[ rev_graph[current_group[0]][0] ]
-        while initial_groups_indices[branching_main_path] == 0:
-            branching_main_path = path_joined_group[branching_main_path]
-        path_joined_group[i] = branching_main_path
+paths_become_groups = {}
+for i in range(0, len(paths) - 1 ):
+    if i in paths_become_groups:
+        continue
+    path = paths[i]
+    path_parent = paths_parents[i]
+    path_max_potential = ( work_sums[ levels_indices_map[paths_ranges[i][1]] ] - work_sums[ levels_indices_map[paths_ranges[i][0]] ] ) - ( groups_weights[i]  + path_ranges_subtract[i] )
+    if paths_comms[i] >= path_max_potential:
         initial_groups_indices[i] = 0
-        groups_weights[branching_main_path] = groups_weights[branching_main_path] + \
-            groups_weights[i]
-        if len(initial_groups[branching_main_path]) > 1:
-            main_path_tail = initial_groups[branching_main_path].pop(
-                len(initial_groups[branching_main_path]) - 1)
-            initial_groups[branching_main_path] = initial_groups[branching_main_path] + \
-                initial_groups[i]
-            initial_groups[branching_main_path].append(main_path_tail)
-        else:
-            initial_groups[branching_main_path] = initial_groups[branching_main_path] + \
-                initial_groups[i]
+        groups_weights[path_parent] += groups_weights[i]
+        initial_groups[path_parent] += initial_groups[i]
+
 tmp_initial_groups = initial_groups
 initial_groups = []
 tmp_groups_weights = groups_weights
@@ -483,7 +444,7 @@ for i in range(0, num_paths):
 # parts work distribution over levels
 tasks_per_levels = []
 max_levels = [0]*len(initial_groups)
-min_levels = [20000]*len(initial_groups)
+min_levels = [1000000]*len(initial_groups)
 
 for i in range(0, len(initial_groups)):
     tasks_per_levels.append(collections.OrderedDict())
@@ -629,7 +590,7 @@ for i in range(0, to_be_merged_groups_len):
     sink_level = math.inf
     for snk_node in graph[current_group[-1]]:
         if int(analysis_graph[snk_node].level) < sink_level:
-            sink_level = int(analysis_graph[dst_node].level)
+            sink_level = int(analysis_graph[snk_node].level)
 
     spanning_over = sink_level - min_level
     to_be_merged_groups_lengths[i] = len(current_group)
@@ -642,28 +603,27 @@ for i in range(0, to_be_merged_groups_len):
     else:
         to_be_merged_groups_densities[i] = to_be_merged_groups_weights[i] / spanning_over
 
-normalized_densities_den = max(to_be_merged_groups_densities) - min(to_be_merged_groups_densities) + 1
-normalized_lengths_den = max(to_be_merged_groups_lengths) - min(to_be_merged_groups_lengths) + 1
-normalized_empty_spots_den = max(to_be_merged_groups_empty_spots) - min(to_be_merged_groups_empty_spots) + 1
-normalized_weights_den = max(to_be_merged_groups_weights) - min(to_be_merged_groups_weights) + 1
-normalized_densities_sub = min(to_be_merged_groups_densities)
-normalized_lengths_sub = min(to_be_merged_groups_lengths)
-normalized_weights_sub = min(to_be_merged_groups_weights)
-normalized_empty_spots_sub = min(to_be_merged_groups_empty_spots)
+if to_be_merged_groups_densities:
+    normalized_densities_den = max(to_be_merged_groups_densities) - min(to_be_merged_groups_densities) + 1
+    normalized_lengths_den = max(to_be_merged_groups_lengths) - min(to_be_merged_groups_lengths) + 1
+    normalized_empty_spots_den = max(to_be_merged_groups_empty_spots) - min(to_be_merged_groups_empty_spots) + 1
+    normalized_weights_den = max(to_be_merged_groups_weights) - min(to_be_merged_groups_weights) + 1
+    normalized_densities_sub = min(to_be_merged_groups_densities)
+    normalized_lengths_sub = min(to_be_merged_groups_lengths)
+    normalized_weights_sub = min(to_be_merged_groups_weights)
+    normalized_empty_spots_sub = min(to_be_merged_groups_empty_spots)
 
-for i in range(0, to_be_merged_groups_len):
-    to_be_merged_groups_sorting_criteria[i] = (to_be_merged_groups_weights[i] - normalized_weights_sub) / normalized_weights_den + \
-    (to_be_merged_groups_densities[i] - normalized_densities_sub) / normalized_densities_den + \
-        (to_be_merged_groups_lengths[i] - normalized_lengths_sub) / (normalized_lengths_den) \
-        - (to_be_merged_groups_empty_spots[i] - normalized_empty_spots_sub) / normalized_empty_spots_den - penalize_small_paths[i]
+    for i in range(0, to_be_merged_groups_len):
+        to_be_merged_groups_sorting_criteria[i] = (to_be_merged_groups_weights[i] - normalized_weights_sub) / normalized_weights_den + \
+        (to_be_merged_groups_densities[i] - normalized_densities_sub) / normalized_densities_den + \
+            (to_be_merged_groups_lengths[i] - normalized_lengths_sub) / (normalized_lengths_den) \
+            - (to_be_merged_groups_empty_spots[i] - normalized_empty_spots_sub) / normalized_empty_spots_den - penalize_small_paths[i]
 
-total_gain = 0
-
-to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels = \
-    (list(t) for t in zip(*sorted(zip(to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels), reverse=True)))
-cntt = 0
-# merging the groups
-print("hhhhhhhhh")
+    to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels = \
+        (list(t) for t in zip(*sorted(zip(to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels), reverse=True)))
+    cntt = 0
+    # merging the groups
+    print("hhhhhhhhh")
 for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
     to_be_merged_group = to_be_merged_groups[to_be_merged_group_index]
     branch_main_path_indx = -1
@@ -693,7 +653,7 @@ for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
                     to_be_merged_group_comms[nodes_groups[parent_node]] += edges_weights[parent_node][node] 
                 to_be_merged_group_total_comm += edges_weights[parent_node][node]
     
-    src_min_level = int(analysis_graph[to_be_merged_group[0]].level)
+    src_min_level = int(analysis_graph[to_be_merged_group[0]].level - 1)
 
     for dst_node in graph[to_be_merged_group[-1]]:
         if int(analysis_graph[dst_node].level) < min_sink_level:
@@ -703,7 +663,7 @@ for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
     merge_destination_index = 0
     
     for i in range(0, no_of_desired_groups):
-        sum_in_targeted_levels = getsum(work_trees[i], min_sink_level - 1) - getsum(work_trees[i], src_min_level)  
+        sum_in_targeted_levels = getsum(work_trees[i], min_sink_level) - getsum(work_trees[i], src_min_level)  
         
         sum_in_targeted_levels += (to_be_merged_group_total_comm - to_be_merged_group_comms[i])
 
@@ -780,8 +740,9 @@ for initial_group in initial_groups:
 
     initial_group_indx += 1
 
-swap_groups_sorting_criteria, initial_groups_latest_sorces_levels, initial_groups_earliest_sink_levels, initial_groups_indices, containing_groups_indices = (list(t) for t in zip(
-        *sorted(zip(swap_groups_sorting_criteria, initial_groups_latest_sorces_levels, initial_groups_earliest_sink_levels, initial_groups_indices, containing_groups_indices))))
+if swap_groups_sorting_criteria:
+    swap_groups_sorting_criteria, initial_groups_latest_sorces_levels, initial_groups_earliest_sink_levels, initial_groups_indices, containing_groups_indices = (list(t) for t in zip(
+            *sorted(zip(swap_groups_sorting_criteria, initial_groups_latest_sorces_levels, initial_groups_earliest_sink_levels, initial_groups_indices, containing_groups_indices))))
 
 no_of_swap_groups = len(initial_groups_indices)
 containing_group_levels_work_in_swap_levels = [0] * no_of_swap_groups
@@ -920,6 +881,13 @@ print('total swapping gain = ' + str(total_swapping_gain))
 total_switching_gain = 0
 switching_nodes_pure_parents = []
 switching_nodes_pure_children = []
+#map, helpful to find nodes in a level in O(1)
+levels_nodes = [None] * no_of_levels
+for node, props in analysis_graph.items():
+    if node in all_nodes:
+        if levels_nodes[props.level] == None:
+            levels_nodes[props.level] = []
+        levels_nodes[props.level].append(node)
 #start from level 2, since level 0 contains src -added by me- and 1 contains nodes that are not children of any node in the original graph
 #exclude the last level since it only contains the sink
 for i in range(2, no_of_levels - 1):
@@ -1100,7 +1068,7 @@ def prepare_for_memory_balancing_round(round_no):
         for adj_node in graph[current_node]:
             adj_node_group = nodes_groups[adj_node]
             nodes_levels_scheduled[adj_node] = \
-                max([current_node_end_time + (int(edges_weights[current_node][adj_node]) if current_node_group != nodes_groups[adj_node] else 1), \
+                max([current_node_end_time + (int(edges_weights[current_node][adj_node]) if current_node_group != nodes_groups[adj_node] else 0), \
                     groups_times_till_now[adj_node_group], nodes_levels_scheduled[adj_node]])
             tmp_nodes_in_degrees[adj_node] -= 1
             if tmp_nodes_in_degrees[adj_node] == 0:

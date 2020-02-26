@@ -34,7 +34,7 @@ in12 = io_folder_path + 'vanilla_cleaned.place'
 out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
-no_of_desired_groups = 4
+no_of_desired_groups = 2
 memory_limit_per_group = 32 * 1024 * 1024 * 1024
 
 comm_latency = 45
