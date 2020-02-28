@@ -210,7 +210,7 @@ res_sum = 0
 norm_sum = 0
 
 for node, mem in nodes_memory.items():
-    if mem > 0 and nodes_groups[node] == 6:
+    if mem > 0 and nodes_groups[node] == 0 and nodes_levels[node] < 40000:
         if node in var_ops:
             var_count += 1
             var_sum += mem

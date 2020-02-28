@@ -10,6 +10,7 @@ import random
 import queue
 import time
 import numpy as np
+import statistics
 
 # folder containing the work files
 io_folder_path = utils.io_folder_path
@@ -161,7 +162,9 @@ with open(in12, 'r') as f:
         splits = line.split(' ')
         vanilla_placement[splits[0]] = splits[1]
 
-# get_node_average_weiht
+t0 = time.time()
+
+# get_node_average_weight
 total_nodes_weight = 0
 for node, node_props in analysis_graph.items():
     total_nodes_weight = total_nodes_weight + node_props.duration
@@ -316,6 +319,8 @@ paths_lengths, groups_weights, paths = (list(t) for t in zip(
 print('num of paths: ' + str(len(paths)))
 print(paths_lengths[-20:])
 
+print('paths obtained: ' + str( time.time() - t0 ))
+t0 = time.time()
 # which node is in which path
 nodes_paths_mapping[source_node_name] = num_paths - 1
 nodes_paths_mapping[sink_node_name] = num_paths - 1
@@ -414,6 +419,8 @@ for path in paths:
 
 average_path_len = round(after_heavy_paths_lengths / after_heavy_paths_count)
 
+print('averge path len: ' + str(average_path_len))
+
 # getting initial groups
 initial_groups = copy.deepcopy(paths)
 initial_groups_indices = [1] * num_paths
@@ -462,6 +469,8 @@ for i in range(0, len(initial_groups)):
         if node_level > max_levels[i]:
             max_levels[i] = node_level
 
+print('Initial merging is done: ' + str( time.time() - t0 ))
+t0 = time.time()
 # getting main groups-------------------------------------------------
 
 # Returns sum of arr[0..index]. This function assumes 
@@ -556,6 +565,8 @@ for i in range(0, len(initial_groups) - no_of_desired_groups):
     to_be_merged_groups_weights.append(groups_weights[i])
 
 # parts work distribution over levels
+to_be_merged_groups_earliest_sink_levels = []
+to_be_merged_groups_latest_src_levels = []
 to_be_merged_groups_tasks_per_levels = []
 to_be_merged_groups_len = len(to_be_merged_groups)
 to_be_merged_groups_max_levels = [0] * to_be_merged_groups_len
@@ -565,8 +576,10 @@ to_be_merged_groups_lengths = [0] * to_be_merged_groups_len
 to_be_merged_groups_empty_spots = [0] * to_be_merged_groups_len
 to_be_merged_groups_sorting_criteria = [0] * to_be_merged_groups_len
 penalize_small_paths = [0] * to_be_merged_groups_len
+to_be_merged_groups_indices = []
 
 for i in range(0, to_be_merged_groups_len):
+    to_be_merged_groups_indices.append(i)
     to_be_merged_groups_tasks_per_levels.append(collections.OrderedDict())
     current_group = to_be_merged_groups[i]
     min_level = math.inf
@@ -598,6 +611,15 @@ for i in range(0, to_be_merged_groups_len):
     if len(current_group) < average_path_len:
         penalize_small_paths[i] = 1
 
+    earliest_sink_evel = math.inf
+    end_node = current_group[-1]
+    for child in graph[end_node]:
+        if analysis_graph[child].level < earliest_sink_evel:
+            earliest_sink_evel = analysis_graph[child].level
+
+    to_be_merged_groups_earliest_sink_levels.append(earliest_sink_evel)
+    to_be_merged_groups_latest_src_levels.append( analysis_graph[current_group[0]].level - 1 )
+
     if spanning_over <= 0:
         to_be_merged_groups_densities[i] = 0
     else:
@@ -622,8 +644,238 @@ if to_be_merged_groups_densities:
     to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels = \
         (list(t) for t in zip(*sorted(zip(to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels), reverse=True)))
     cntt = 0
-    # merging the groups
-    print("hhhhhhhhh")
+    heaviest_final_group_index = 0
+    max_sum = 0
+    first_balancing_wave_group_indices = []
+    first_balancing_wave_groups_lengths = []
+    first_balancing_wave_groups_candidate_destinations = []
+    for i in range(0, no_of_desired_groups):
+        current_sum = getsum(work_trees[i], no_of_levels - 1)
+        if current_sum > max_sum:
+            max_sum = current_sum
+            heaviest_final_group_index = i
+
+    indx = 0
+    paths_lengths = paths_lengths[:-no_of_desired_groups]
+    average_path_len = math.ceil(sum(paths_lengths) / len(paths_lengths))
+    std_path_len = statistics.stdev(paths_lengths)
+    fully_contaied_map = {}
+
+    for tbg in to_be_merged_groups:
+        if len(tbg) > min(round(average_path_len + std_path_len), no_of_levels):
+            start_node = tbg[0]
+            end_node = tbg[-1]
+            end_node_children = graph[end_node]
+
+            fully_contaied = True 
+            first_child_group = (nodes_groups[end_node_children[0]] if end_node_children[0] != sink_node_name else -2)
+            if first_child_group != -2:
+                for child in end_node_children:
+                    if child != sink_node_name and nodes_groups[child] != first_child_group:
+                        fully_contaied = False
+                        break
+            if fully_contaied:
+                if first_child_group == -2:
+                    first_child_group = (nodes_groups[rev_graph[start_node][0]] if nodes_groups[rev_graph[start_node][0]] != source_node_name else -2)
+                if first_child_group != -2:
+                    for parent in rev_graph[start_node]:
+                        if parent != source_node_name and nodes_groups[parent] != first_child_group:
+                            fully_contaied = False
+
+            to_be_merged_group_weight = to_be_merged_groups_weights[indx]
+            if fully_contaied:# != heaviest_final_group_index:#directly_connected_to_heaviest and (snk_direct_connection or src_direct_connection):
+                if first_child_group != -2 and first_child_group != heaviest_final_group_index:
+                    sum_in_targeted_levels_i = getsum(\
+                        work_trees[first_child_group], to_be_merged_groups_earliest_sink_levels[indx]) - getsum(work_trees[first_child_group], \
+                            to_be_merged_groups_latest_src_levels[indx])
+                    
+                    sum_in_targeted_levels_0 = getsum(\
+                        work_trees[heaviest_final_group_index], to_be_merged_groups_earliest_sink_levels[indx]) - getsum(work_trees[heaviest_final_group_index], \
+                            to_be_merged_groups_latest_src_levels[indx])
+
+                    if sum_in_targeted_levels_0 - sum_in_targeted_levels_i > to_be_merged_group_weight:
+                        first_balancing_wave_group_indices.append(indx)
+                        first_balancing_wave_groups_lengths.append(
+                            to_be_merged_groups_lengths[indx])
+                        first_balancing_wave_groups_candidate_destinations.append(
+                            first_child_group)
+                else:
+                    for i in range(0, no_of_desired_groups):
+                        if i == first_child_group:
+                            continue
+                        sum_in_targeted_levels_i = getsum(
+                            work_trees[i], analysis_graph[end_node].level) - getsum(work_trees[i], analysis_graph[start_node].level)
+                        sum_in_targeted_levels_0 = getsum(work_trees[heaviest_final_group_index], analysis_graph[end_node].level) - \
+                            getsum(work_trees[heaviest_final_group_index],
+                                analysis_graph[start_node].level)
+
+                        if sum_in_targeted_levels_0 - sum_in_targeted_levels_i > to_be_merged_group_weight:
+                            first_balancing_wave_group_indices.append(indx)
+                            first_balancing_wave_groups_lengths.append(
+                                to_be_merged_groups_lengths[indx])
+                            first_balancing_wave_groups_candidate_destinations.append(
+                                i)
+                            break
+        indx += 1
+    
+    first_balancing_wave_groups_lengths, first_balancing_wave_group_indices, first_balancing_wave_groups_candidate_destinations = \
+        (list(t) for t in zip(*sorted(zip(first_balancing_wave_groups_lengths, first_balancing_wave_group_indices, first_balancing_wave_groups_candidate_destinations), \
+            reverse=True)))
+
+    for first_balancing_wave_candidate_i in range(0, len(first_balancing_wave_group_indices)):
+        current_candidate_indx = first_balancing_wave_group_indices[
+            first_balancing_wave_candidate_i]
+        current_destination = first_balancing_wave_groups_candidate_destinations[
+            first_balancing_wave_candidate_i]
+        current_candidate = to_be_merged_groups[current_candidate_indx]
+        terminal_comms = 0
+        start_node = current_candidate[0]
+        end_node = current_candidate[-1]
+        end_node_children = graph[end_node]
+        earliest_sink_evel = math.inf
+        for child in end_node_children:
+            if analysis_graph[child].level < earliest_sink_evel:
+                earliest_sink_evel = analysis_graph[child].level
+            if nodes_groups[child] == heaviest_final_group_index:
+                terminal_comms = max(
+                    terminal_comms, edges_weights[end_node][child])
+
+        for parent in rev_graph[start_node]:
+            if nodes_groups[parent] == heaviest_final_group_index:
+                terminal_comms += edges_weights[parent][start_node]
+
+        merge = False
+        while not merge and current_destination < no_of_desired_groups:
+            sum_in_targeted_levels_i = getsum(\
+                        work_trees[current_destination], to_be_merged_groups_earliest_sink_levels[current_destination]) - getsum(work_trees[current_destination], \
+                            to_be_merged_groups_latest_src_levels[current_destination])
+                    
+            sum_in_targeted_levels_0 = getsum(\
+                work_trees[heaviest_final_group_index], to_be_merged_groups_earliest_sink_levels[current_destination]) - getsum(work_trees[heaviest_final_group_index], \
+                    to_be_merged_groups_latest_src_levels[current_destination])
+
+            if (sum_in_targeted_levels_0 - sum_in_targeted_levels_i) > (terminal_comms + to_be_merged_groups_weights[current_candidate_indx]):
+                merge = True
+                break
+            current_destination += 1
+
+        if merge:
+            print(to_be_merged_groups_lengths[current_candidate_indx])
+            merge_min_level = min(
+                to_be_merged_groups_min_levels[current_candidate_indx], final_groups_min_levels[current_destination])
+            merge_max_level = max(
+                to_be_merged_groups_max_levels[current_candidate_indx], final_groups_max_levels[current_destination])
+            final_groups_weights[current_destination] += to_be_merged_groups_weights[current_candidate_indx]
+            final_groups[current_destination] += current_candidate
+            final_groups_min_levels[current_destination] = merge_min_level
+            final_groups_max_levels[current_destination] = merge_max_level
+            merge_src_levels_tasks = to_be_merged_groups_tasks_per_levels[current_candidate_indx]
+
+            for node in current_candidate:
+                nodes_groups[node] = current_destination
+
+            for level, tasks_sum in merge_src_levels_tasks.items():
+                final_groups_work_per_levels[current_destination][level] += tasks_sum
+                updatebit(work_trees[current_destination],
+                          no_of_levels, level, tasks_sum)
+    
+    indx = 0
+    for tbg in to_be_merged_groups:
+        start_node = tbg[0]
+        end_node = tbg[-1]
+        end_node_children = graph[end_node]
+
+        fully_contaied = True 
+        first_child_group = (nodes_groups[end_node_children[0]] if end_node_children[0] != sink_node_name else -2)
+        if first_child_group != -2:
+            for child in end_node_children:
+                if child != sink_node_name and nodes_groups[child] != first_child_group:
+                    fully_contaied = False
+                    break
+        if fully_contaied:
+            if first_child_group == -2:
+                first_child_group = (nodes_groups[rev_graph[start_node][0]] if nodes_groups[rev_graph[start_node][0]] != source_node_name else -2)
+            if first_child_group != -2:
+                for parent in rev_graph[start_node]:
+                    if parent != source_node_name and nodes_groups[parent] != first_child_group:
+                        fully_contaied = False
+
+        if fully_contaied and first_child_group >= 0:
+            heaviest_final_group_index = 0
+            max_sum = 0
+            for i in range(0, no_of_desired_groups):
+                current_sum = getsum(work_trees[i], no_of_levels - 1)
+                if current_sum > max_sum:
+                    max_sum = current_sum
+                    heaviest_final_group_index = i
+            
+            if heaviest_final_group_index != first_child_group:
+                sum_in_targeted_levels_i = getsum(\
+                            work_trees[first_child_group], to_be_merged_groups_earliest_sink_levels[indx]) - getsum(work_trees[first_child_group], \
+                                to_be_merged_groups_latest_src_levels[first_child_group])
+                        
+                sum_in_targeted_levels_0 = getsum(\
+                    work_trees[heaviest_final_group_index], to_be_merged_groups_earliest_sink_levels[indx]) - getsum(work_trees[heaviest_final_group_index], \
+                        to_be_merged_groups_latest_src_levels[indx])
+                        
+                if to_be_merged_groups_weights[indx] + sum_in_targeted_levels_i <= sum_in_targeted_levels_0:
+                    print('dddddddddddd')
+
+            """ if fully_contaied and first_child_group == 1 and analysis_graph[tbg[0]].level > 1:
+                print('---' + str(len(tbg)) ) """
+        
+
+        indx += 1
+
+print('Initial merging is done: ' + str(time.time() - t0))
+t0 = time.time()
+
+""" indx = 0
+for tbg in to_be_merged_groups:
+    #if len(tbg) > min(round(average_path_len + std_path_len), max(math.sqrt(no_of_levels), average_path_len)):
+    if nodes_groups[tbg[0]] == -1:
+        start_node = tbg[0]
+        end_node = tbg[-1]
+        end_node_children = graph[end_node]
+
+        directly_connected_to_heaviest = True
+        src_direct_connection = False
+        snk_direct_connection = False
+        for child in end_node_children:
+            if nodes_groups[child] == 1 or child == sink_node_name:
+                src_direct_connection = True
+            if nodes_groups[child] != -1 and nodes_groups[child] != 1 and child != sink_node_name:
+                directly_connected_to_heaviest = False
+
+        if directly_connected_to_heaviest:
+            for parent in rev_graph[start_node]:
+                if nodes_groups[parent] == 1 or parent == source_node_name:
+                    snk_direct_connection = True
+                if nodes_groups[parent] != -1 and nodes_groups[parent] != 1 and parent != source_node_name:
+                    directly_connected_to_heaviest = False
+        
+        if directly_connected_to_heaviest and (snk_direct_connection and src_direct_connection) and to_be_merged_groups_lengths[indx] > 0:
+            print(to_be_merged_groups_lengths[indx])
+    
+    indx += 1 """
+
+""" for to_be_merged_group in to_be_merged_groups:
+    if len(graph[to_be_merged_group[-1]]) > 1 or len(rev_graph[to_be_merged_group[0]]) > 1:
+        print(len(to_be_merged_group)) """
+""" levels_work = {}
+for level in range(0, no_of_levels):
+    levels_work[level] = [0] * 2
+
+for node in all_nodes.keys():
+    if nodes_groups[node] != -1:
+        levels_work[analysis_graph[node].level][nodes_groups[node]] += 1
+
+for level, work in levels_work.items():
+    print(str(level) + '::' + str(work[0]) + '::' +str(work[1]) )  """
+
+to_be_merged_groups_lengths, to_be_merged_groups_indices = \
+        (list(t) for t in zip(*sorted(zip(to_be_merged_groups_lengths, to_be_merged_groups_indices), reverse=True)))
+# merging the groups
 for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
     to_be_merged_group = to_be_merged_groups[to_be_merged_group_index]
     branch_main_path_indx = -1
@@ -688,10 +940,11 @@ for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
         final_groups_work_per_levels[merge_destination_index][level] += tasks_sum
         updatebit(work_trees[merge_destination_index], no_of_levels, level, tasks_sum)
 
-nodes_groups[sink_node_name] = 0
-print("gggggggggg")       
+print('Final merging is done: ' + str( time.time() - t0 ))
+t0 = time.time()      
 #post processing paths switching:
 # work destribution among levels:
+nodes_groups[sink_node_name] = 0
 total_swapping_gain = 0
 initial_groups_no = len(initial_groups)
 initial_groups_indices = []
@@ -714,6 +967,7 @@ for initial_group in initial_groups:
     for child in end_node_children:
         if nodes_groups[child] != first_child_group:
             totally_contained = False
+            break
 
     for parent in rev_graph[start_node]:
         if nodes_groups[parent] != first_child_group:
@@ -793,6 +1047,11 @@ for group_indx in range(no_of_swap_groups - 2, -1, -1):
     comm_with_containing_groups[group_indx] = comm_with_containing_group
     comm_with_its_groups[group_indx] = comm_with_its_group
     group_indx += 1
+
+print('bbbbbbbbbbbbbbbbb')
+print(no_of_swap_groups)
+print('Refinement_1_1 is done: ' + str( time.time() - t0 ))
+t0 = time.time()
 
 for to_be_swapped_group_indx in range(0, no_of_swap_groups - 1):
     to_be_swapped_group_end_level = initial_groups_earliest_sink_levels[to_be_swapped_group_indx]
@@ -876,6 +1135,8 @@ for to_be_swapped_group_indx in range(0, no_of_swap_groups - 1):
 
 print('total swapping gain = ' + str(total_swapping_gain))
 
+print('Refinement_1 is done: ' + str( time.time() - t0 ))
+t0 = time.time()
 
 #post processing, switching nodes placement modification:
 total_switching_gain = 0
@@ -993,6 +1254,8 @@ for group in tmp_initial_groups:
 
 print('total_switching_gain = ' + str(total_switching_gain))
 
+print('Refinement is done: ' + str( time.time() - t0 ))
+t0 = time.time()
 #handle collocation groups:
 for collocation_group in collocations:
     final_groups_indices = [i for i in range(0, no_of_desired_groups)]
@@ -1068,7 +1331,7 @@ def prepare_for_memory_balancing_round(round_no):
         for adj_node in graph[current_node]:
             adj_node_group = nodes_groups[adj_node]
             nodes_levels_scheduled[adj_node] = \
-                max([current_node_end_time + (int(edges_weights[current_node][adj_node]) if current_node_group != nodes_groups[adj_node] else 0), \
+                max([current_node_end_time + (int(edges_weights[current_node][adj_node]) if current_node_group != nodes_groups[adj_node] else 1), \
                     groups_times_till_now[adj_node_group], nodes_levels_scheduled[adj_node]])
             tmp_nodes_in_degrees[adj_node] -= 1
             if tmp_nodes_in_degrees[adj_node] == 0:
@@ -1214,13 +1477,23 @@ def prepare_for_memory_balancing_round(round_no):
     for node in var_nodes.keys():
         residual_memories[nodes_groups[node]] += nodes_memory[node]
 
+    """ print('-----------------')
+    for group_num in range(0, no_of_desired_groups):
+        print(residual_memories[group_num] / (1024 * 1024 * 1024))
+    print('-----------------') """
+
     for node, mem in nodes_res_memory.items():
         if node not in ref_nodes and node not in var_nodes:
             residual_memories[nodes_groups[node]] += mem
 
     for group_num in range(0, no_of_desired_groups):
-        final_groups_memory_consumptions[group_num][:] += residual_memories[group_num]
         print(residual_memories[group_num] / (1024 * 1024 * 1024))
+    print('-----------------')
+
+    for group_num in range(0, no_of_desired_groups):
+        final_groups_memory_consumptions[group_num][:] += residual_memories[group_num]
+        
+
     """ for i in range(0, len(scheduled_levels_list)):
         node = nodes_list[i]
         if node not in var_nodes and node not in ref_nodes:
@@ -1284,7 +1557,8 @@ def prepare_for_memory_balancing_round(round_no):
         if node_scheduled_level not in visited_levels:
             visited_levels[node_scheduled_level] = [0] * no_of_desired_groups
         visited_levels[node_scheduled_level][node_group] = 1
-
+    print([final_groups_memory_consumptions[0][0]])
+    print([final_groups_memory_consumptions[0][1]])
     return [final_groups_memory_consumptions, nodes_list, scheduled_levels_list, memory_limit_is_exceeded]
 
 
@@ -1314,17 +1588,20 @@ for group_no in range(0, no_of_desired_groups):
     ineffective_resident_nodes = {}
     ineffective_resident_nodes_heap = []
     [final_groups_memory_consumptions, nodes_list, scheduled_levels_list, memory_limit_is_exceeded] = prepare_for_memory_balancing_round(group_no)
+    
+    bad_levels_for_print = []
 
     if memory_limit_is_exceeded:
         print('limit is exceeded')
         """ max_mem = 0
-        for level in scheduled_levels_list:
+        for level in levels_indices_map.keys():
             _str = '' + str(level) + '::'
             sum_in_level = 0
             prntt = False
             for grpp in range(0, no_of_desired_groups):
                 sum_in_level += final_groups_memory_consumptions[grpp][levels_indices_map[level]]
-                if final_groups_memory_consumptions[grpp][levels_indices_map[level]] > 25:
+                if final_groups_memory_consumptions[grpp][levels_indices_map[level]] > 80  * (1024 * 1024 * 1024):
+                    bad_levels_for_print.append(level)
                     prntt = True
                 _str += str(final_groups_memory_consumptions[grpp][levels_indices_map[level]] / (1024 * 1024 * 1024)) + ' '
             if sum_in_level > max_mem:
@@ -1332,7 +1609,7 @@ for group_no in range(0, no_of_desired_groups):
             if prntt:
                 print(_str) """
     else:
-        max_mem = 0
+        """ max_mem = 0
         for level in scheduled_levels_list:
             _str = '' + str(level) + '::'
             sum_in_level = 0
@@ -1345,7 +1622,7 @@ for group_no in range(0, no_of_desired_groups):
             if sum_in_level > max_mem:
                 max_mem = sum_in_level
             if prntt:
-                print(_str)
+                print(_str) """
         break
     
     node_index = len(nodes_list) - 1
@@ -1373,7 +1650,7 @@ for group_no in range(0, no_of_desired_groups):
                 for level, mem in nodes_parents_levels_to_memory[node].items():
                     if level <= scheduled_level:
                         for parent in nodes_parents_levels_to_nodes_names[node][level]:
-                            if (nodes_groups[parent] == node_group or level < scheduled_level) and not(nodes_groups[parent] == group_no and parent in resident_nodes):
+                            if (nodes_groups[parent] == node_group or level < scheduled_level) or not(nodes_groups[parent] == group_no and parent in resident_nodes):
                                 if node not in nodes_active_parents:
                                     nodes_active_parents[node] = []
                                 if scheduled_level == parents_last_active_levels[parent][node_group]:
@@ -1403,7 +1680,6 @@ for group_no in range(0, no_of_desired_groups):
                 print(_str)
 
                 print(overflow) """
-                print(scheduled_level)
                 while overflow > 0 and (criteria_heap or big_nodes or resident_nodes_heap or collocated_nodes_heap):
                     from_big_nodes = False
                     heaps_are_empty = False
@@ -1484,7 +1760,7 @@ for group_no in range(0, no_of_desired_groups):
                         parents_to_remove = []
                         if node_name in nodes_active_parents:
                             for parent in nodes_active_parents[node_name]: 
-                                if nodes_levels_scheduled[parent] > scheduled_level or nodes_groups[parent] != node_group:
+                                if nodes_levels_scheduled[parent] > scheduled_level or nodes_groups[parent] != node_group and not (nodes_groups[parent] == group_no and parent in resident_nodes):
                                     parents_to_remove.append(parent)
                                     nodes_mem_potentials[node_name] -= nodes_memory[parent]
                                     node_updated = True
@@ -1524,7 +1800,7 @@ for group_no in range(0, no_of_desired_groups):
                                 levels_to_subtract_at_from_subtract_value = {}
                                 levels_to_subtract_at_from_add_value = {}
 
-                                if node_name in nodes_active_parents or (node_name in resident_nodes and node_name not in visited_nodes):
+                                if node_name in nodes_active_parents or node_name in resident_nodes:
                                     for parent in rev_graph[node_name]:
                                         if not(nodes_groups[parent] == group_no and parent in resident_nodes):
                                             parent_memory = nodes_memory[parent]
@@ -1576,23 +1852,26 @@ for group_no in range(0, no_of_desired_groups):
                                             final_groups_memory_consumptions[final_group_indx][:] += nodes_mem_potentials[node_name] 
                                     else:
                                         if node_name in resident_nodes:
-                                            resident_memory_first_affected_level = parents_last_active_levels[node_name][final_group_indx]
-                                            final_groups_memory_consumptions[final_group_indx][ levels_indices_map[resident_memory_first_affected_level] + 1 : len(scheduled_levels_list) ] += \
-                                                nodes_res_memory[node_name]
-                                            if np.amax( final_groups_memory_consumptions[final_group_indx][ levels_indices_map[resident_memory_first_affected_level] + 1: \
-                                                len(scheduled_levels_list)] ) > memory_limit_per_group:
-                                                merged = False
-                                                final_groups_memory_consumptions[final_group_indx][ levels_indices_map[resident_memory_first_affected_level] + 1 : len(scheduled_levels_list) ] \
-                                                    -= nodes_res_memory[node_name]
+                                            resident_memory_first_affected_level = levels_indices_map[ parents_last_active_levels[node_name][final_group_indx] ] + 1
+                                            if resident_memory_first_affected_level < len(levels_indices_map):
+                                                final_groups_memory_consumptions[final_group_indx][ resident_memory_first_affected_level : len(levels_indices_map) ] += \
+                                                    nodes_res_memory[node_name]
+                                                if np.amax( final_groups_memory_consumptions[final_group_indx][ : \
+                                                    len(scheduled_levels_list)] ) > memory_limit_per_group:
+                                                    merged = False
+                                                    final_groups_memory_consumptions[final_group_indx][ resident_memory_first_affected_level : len(levels_indices_map) ] \
+                                                        -= nodes_res_memory[node_name]
 
-                                            resident_memory_first_affected_level = parents_first_active_levels[node_name][final_group_indx]
-                                            final_groups_memory_consumptions[final_group_indx][ 0 : levels_indices_map[resident_memory_first_affected_level] ] += \
-                                                nodes_res_memory[node_name]
-                                            if np.amax( final_groups_memory_consumptions[final_group_indx][ 0 : levels_indices_map[resident_memory_first_affected_level] ] \
-                                                ) > memory_limit_per_group:
-                                                merged = False
-                                                final_groups_memory_consumptions[final_group_indx][ 0 : levels_indices_map[resident_memory_first_affected_level] ] \
-                                                    -= nodes_res_memory[node_name]
+                                            resident_memory_first_affected_level = levels_indices_map[parents_first_active_levels[node_name][final_group_indx]]
+                                            if resident_memory_first_affected_level > 0:
+                                                final_groups_memory_consumptions[final_group_indx][ 0 : resident_memory_first_affected_level ] += \
+                                                    nodes_res_memory[node_name]
+                                                
+                                                if np.amax( final_groups_memory_consumptions[final_group_indx][ 0 :  ] \
+                                                    ) > memory_limit_per_group:
+                                                    merged = False
+                                                    final_groups_memory_consumptions[final_group_indx][ 0 : resident_memory_first_affected_level ] \
+                                                        -= nodes_res_memory[node_name]
     
                                         if final_groups_memory_consumptions[final_group_indx][ levels_indices_map[candidate_node_level]] + nodes_memory[node_name] >\
                                              memory_limit_per_group:
@@ -1622,12 +1901,15 @@ for group_no in range(0, no_of_desired_groups):
                                         final_groups_memory_consumptions[node_group][:] -= nodes_mem_potentials[node_name]
                                     else:
                                         if node_name in resident_nodes:
-                                            resident_memory_first_affected_level = parents_last_active_levels[node_name][group_no]
-                                            final_groups_memory_consumptions[node_group][ levels_indices_map[resident_memory_first_affected_level] + 1 : len(scheduled_levels_list) ] -= \
-                                                nodes_res_memory[node_name]
-                                            resident_memory_first_affected_level = parents_first_active_levels[node_name][final_group_indx]
-                                            final_groups_memory_consumptions[final_group_indx][ 0 : levels_indices_map[resident_memory_first_affected_level] ] -= \
-                                                nodes_res_memory[node_name] 
+                                            resident_memory_first_affected_level = levels_indices_map[parents_last_active_levels[node_name][group_no]] + 1
+                                            if resident_memory_first_affected_level < len(levels_indices_map):
+                                                final_groups_memory_consumptions[node_group][ resident_memory_first_affected_level : len(levels_indices_map) ] -= \
+                                                    nodes_res_memory[node_name]
+                                            
+                                            resident_memory_first_affected_level = levels_indices_map[parents_first_active_levels[node_name][group_no]]
+                                            if resident_memory_first_affected_level > 0:
+                                                final_groups_memory_consumptions[node_group][ 0 : resident_memory_first_affected_level ] -= \
+                                                    nodes_res_memory[node_name]
                                     
                                         final_groups_memory_consumptions[node_group][ levels_indices_map[candidate_node_level]] -= nodes_memory[node_name]
                                     
@@ -1684,49 +1966,43 @@ for group_no in range(0, no_of_desired_groups):
                                     non_mergable_nodes[group_no].append(node)
                             
             if overflow > 0:
-                """ max_mem = 0
-                for level in scheduled_levels_list:
-                    _str = '' + str(level) + '::'
-                    sum_in_level = 0
-                    prntt = False
-                    for grpp in range(0, no_of_desired_groups):
-                        sum_in_level += final_groups_memory_consumptions[level][grpp]
-                        if final_groups_memory_consumptions[level][grpp] > memory_limit_per_group:
-                            prntt = True
-                        _str += str(final_groups_memory_consumptions[level][grpp] / (1024 * 1024 * 1024)) + ' '
-                    if sum_in_level > max_mem:
-                        max_mem = sum_in_level
-                    if prntt:
-                        print(_str) """
                 print('cannot be addressed')
                 #print(analysis_graph[node].level)
                 print(overflow/(1024 * 1024 * 1024))
-
+                """ parents_last_active_levels = {}
+                parents_first_active_levels = {}
+                parents_last_active_no_ops_levels = {}
+                parents_all_active_levels = {}
+                nodes_parents_levels_to_memory = {}
+                nodes_parents_levels_to_nodes_names = {}
+                nodes_earliest_parents_levels = {}
+                nodes_comms = {}
+                nodes_levels_scheduled = {}
+                tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
+                final_groups_memory_consumptions = None
+                nodes_indices_map = {}
+                levels_indices_map = {}
+                nodes_mem_potentials = {}
+                collocated_nodes_heap = []
+                resident_nodes_heap = []
+                ineffective_resident_nodes = {}
+                ineffective_resident_nodes_heap = []
+                [final_groups_memory_consumptions, nodes_list, scheduled_levels_list, memory_limit_is_exceeded] = prepare_for_memory_balancing_round(1)
                 max_mem = 0
-                for level in scheduled_levels_list:
+                for level in levels_indices_map.keys():
                     _str = '' + str(level) + '::'
                     sum_in_level = 0
                     prntt = False
                     for grpp in range(0, no_of_desired_groups):
                         sum_in_level += final_groups_memory_consumptions[grpp][levels_indices_map[level]]
-                        if final_groups_memory_consumptions[grpp][levels_indices_map[level]] > 29 * (1024 * 1024 * 1024):
+                        if final_groups_memory_consumptions[grpp][levels_indices_map[level]] > 28 * (1024 * 1024 * 1024):
                             prntt = True
                         _str += str(final_groups_memory_consumptions[grpp][levels_indices_map[level]] / (1024 * 1024 * 1024)) + ' '
                     if sum_in_level > max_mem:
                         max_mem = sum_in_level
                     if prntt:
                         print(_str)
-
-                _str = '' + str(scheduled_level) + '::'
-                for grpp in range(0, no_of_desired_groups):
-                    _str += str(final_groups_memory_consumptions[grpp][levels_indices_map[scheduled_level]] / (1024 * 1024 * 1024)) + ' '
-                print(len(resident_nodes_heap))
-                print(len(collocated_nodes_heap))
-                print(len(criteria_heap))
-                print(len(big_nodes))
-                print(analysis_graph[node].level)
-                print(_str)
-
+ """
                 exit()
 
         node_index -= 1

@@ -5,7 +5,7 @@ import utils
 
 io_folder_path = utils.io_folder_path
 
-ins =  ['colocation_32.txt', 'vanilla_cleaned.place', utils.network_app+'.dot']#,'tensors_sz_32.txt', 'timeline_step17.json', utils.network_app+'.dot']
+ins =  ['timeline_step17.json']#,'tensors_sz_32.txt', 'timeline_step17.json', utils.network_app+'.dot']
 
 for in_i in ins:
     in_i = io_folder_path + in_i

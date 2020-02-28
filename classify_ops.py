@@ -43,7 +43,7 @@ with open(in2, 'r') as f:
             no_ops[splits[0]] = 1
         elif len(splits) > 2 and splits[2] == 'true':
             ref_ops[splits[0]] = 1
-            if splits[1] in ['variablev2', 'variable']:
+            if splits[1] in ['variablev2', 'variable', 'const']:
                 var_ops[splits[0]] = 1
 
 vanilla_placement = {}

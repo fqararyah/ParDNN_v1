@@ -80,8 +80,6 @@ with open(in1, 'r') as f:
 
                 if len(mem_cons) > 2:
                     res_cons = text_to_bytes(mem_cons[2].split('/')[0])
-                    if node_name == 'gradients/AddN_1524/tmp_var'.lower():
-                        print(res_cons)
                     if res_cons > 0:
                         if node_name in all_nodes:
                             res_memory[node_name] = res_cons
@@ -126,7 +124,8 @@ for node, val in all_nodes.items():
                 nodes_memory[node] = nf_nodes_memory[node_name]
                 print(nf_nodes_memory[node_name])
                 break
-        
+
+    if (val == 1 or node not in res_memory or res_memory[node] == 0) and not node.startswith('^') and node not in no_op_nodes and node not in do_not_check_ops:
         for node_name in nf_res_memory.keys():
             if node in node_name:
                 res_memory[node] = nf_res_memory[node_name]

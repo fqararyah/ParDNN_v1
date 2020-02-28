@@ -8,7 +8,7 @@ io_folder_path = utils.io_folder_path
 
 network_app = utils.network_app
 
-in1 = io_folder_path + network_app + '_low.dot'
+in1 = io_folder_path + network_app + '.dot'
 in2 = io_folder_path + 'tensors_sz_32.txt'
 
 out = io_folder_path + network_app + 't_low.dot'
@@ -19,7 +19,7 @@ graph = {}
 # constructing the graph and initializing the nodes levels from the dot file
 with open(in1, 'r') as f:
     for line in f:
-        line = utils.clean_line(line)
+        line = utils.clean_line(line).lower()
         nodes = line.split("->")
         if len(nodes) > 1:
             all_nodes[nodes[0]] = "1"
