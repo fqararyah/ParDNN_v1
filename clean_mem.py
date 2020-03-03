@@ -3,7 +3,6 @@ import utils
 io_folder_path = utils.io_folder_path
 in1 = io_folder_path + 'mem.txt'
 in2 = io_folder_path + utils.network_app + '_src_sink_low.dot'
-in3 = io_folder_path + 'memory_tensors.txt'
 in4 = io_folder_path + 'no_ops.txt'
 in5 = io_folder_path + 'operations_attributes.txt'
 out1 = io_folder_path + 'memory.txt'
@@ -20,17 +19,6 @@ with open(in2, 'r') as f:
         if len(splits) > 1:
             all_nodes[splits[0]] = 1
             all_nodes[splits[1]] = 1
-
-tensors_sizes = {}
-edges_weights = {}
-# get tensors sizes
-with open(in3, 'r') as f:
-    for line in f:
-        line = utils.clean_line(line)
-        splitted = line.split('::')
-        tensor_size = int(splitted[1])
-        tensor_name = splitted[0].lower()
-        tensors_sizes[tensor_name] = tensor_size
 
 no_op_nodes = {}
 with open(in4, 'r') as f:

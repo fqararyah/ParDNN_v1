@@ -1,4 +1,4 @@
-#simport clean_logs
+import clean_logs
 import classify_ops
 import transform_dag
 import add_src_sink

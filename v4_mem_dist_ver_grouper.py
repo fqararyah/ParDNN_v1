@@ -36,7 +36,7 @@ in12 = io_folder_path + 'vanilla_cleaned.place'
 out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
-no_of_desired_groups = 2
+no_of_desired_groups =2
 memory_limit_per_group = 30 * 1024 * 1024 * 1024
 
 #tst
@@ -260,8 +260,8 @@ nodes_to_visit = list(all_nodes.keys())
 tmp_rev_graph = copy.deepcopy(rev_graph)
 tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
 
-nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights)
-
+nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights, src_nodes=[sink_node_name])
+strongly_uni_cp = False
 
 for node, weighted_level in nodes_weighted_levels.items():
     heapq.heappush(free_nodes, (-weighted_level, node))
@@ -319,7 +319,8 @@ paths_lengths, groups_weights, paths = (list(t) for t in zip(
     *sorted(zip(paths_lengths, groups_weights, paths))))
 print('num of paths: ' + str(len(paths)))
 print(paths_lengths[-20:])
-
+if len(paths[-1]) / (len(paths[-2]) + 1) > 10:
+    strongly_uni_cp = True 
 print('paths obtained: ' + str( time.time() - t0 ))
 t0 = time.time()
 # which node is in which path
@@ -333,7 +334,8 @@ for i in range(0, num_paths):
 groups_parents = {}
 paths_max_potential = copy.deepcopy(groups_weights)
 levels_work_sums = {}
-nodes_weighted_levels = get_nodes_weighted_levels(graph= graph, grouped= True, edges_weights = edges_weights, nodes_groups= nodes_paths_mapping, is_rev= False, _nodes_in_degrees= nodes_in_degrees)
+nodes_weighted_levels = get_nodes_weighted_levels(graph= graph, grouped= True, edges_weights = edges_weights, nodes_groups= nodes_paths_mapping, \
+    is_rev= False, _nodes_in_degrees= nodes_in_degrees, src_nodes= [source_node_name])
 for node, level in nodes_weighted_levels.items():
     if level not in levels_work_sums:
         levels_work_sums[level] = 0
@@ -685,7 +687,6 @@ for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
 
     min_sum_in_targeted_levels = math.inf
     merge_destination_index = 0
-    
     for i in range(0, no_of_desired_groups):
         sum_in_targeted_levels = getsum(work_trees[i], min_sink_level) - getsum(work_trees[i], src_min_level)  
         
@@ -1029,8 +1030,8 @@ t0 = time.time()
 
 improvement_achieved = True
 iter = 0
-while iter < no_of_desired_groups:
-    iter += 1
+iterations_threshold = (1 if strongly_uni_cp else no_of_desired_groups + 1)
+while improvement_achieved and iter < iterations_threshold:
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     improvement_achieved = False
     nodes_levels_scheduled = {}
@@ -1056,6 +1057,8 @@ while iter < no_of_desired_groups:
             tmp_nodes_in_degrees[adj_node] -= 1
             if tmp_nodes_in_degrees[adj_node] == 0:
                 heapq.heappush(traversal_queue, (nodes_levels_scheduled[adj_node],adj_node))
+    if iter == 0 or iter == no_of_desired_groups + 1:
+        print('nodes_levels_scheduled is: ' + str(nodes_levels_scheduled[sink_node_name]))
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     nodes_levels_scheduled_bottom = {}
     tmp_nodes_in_degrees = copy.deepcopy(rev_nodes_in_degrees)
@@ -1065,7 +1068,10 @@ while iter < no_of_desired_groups:
     traversal_queue = []
     heapq.heappush(traversal_queue, (nodes_levels_scheduled_bottom[source_node_name], sink_node_name))
     groups_times_till_now = [0] * no_of_desired_groups
-
+    nodes_weighted_levels_t = get_nodes_weighted_levels(graph= graph, grouped= True, edges_weights = edges_weights, nodes_groups= nodes_paths_mapping, \
+    is_rev= False, _nodes_in_degrees= nodes_in_degrees, src_nodes= [source_node_name])
+    nodes_weighted_levels_b = get_nodes_weighted_levels(graph= graph, grouped= True, edges_weights = edges_weights, nodes_groups= nodes_paths_mapping, \
+    is_rev= True, _nodes_in_degrees= nodes_in_degrees, src_nodes= [sink_node_name])
     while traversal_queue:
         [current_node_start_time, current_node] = heapq.heappop(traversal_queue)
         groups_times_till_now[nodes_groups[current_node]] += analysis_graph[current_node].duration
@@ -1085,10 +1091,12 @@ while iter < no_of_desired_groups:
         max_rev_adj = ''
         max_rev_level = 0
         for rev_adj in rev_graph[current_node]:
-            rev_level = nodes_levels_scheduled[rev_adj] + analysis_graph[rev_adj].duration + edges_weights[rev_adj][current_node]
+            rev_level = nodes_weighted_levels_t[rev_adj] + nodes_weighted_levels_b[rev_adj]
             if rev_level > max_rev_level:
                 max_rev_level = rev_level
                 max_rev_adj = rev_adj
+        if max_rev_adj == '':
+            max_rev_adj = source_node_name
         ds.append(max_rev_adj)
         current_node = max_rev_adj
 
@@ -1143,7 +1151,7 @@ while iter < no_of_desired_groups:
                 nodes_groups[switch_dst_node] = nodes_groups[switch_src_node]
                 for node in graph[switch_dst_node]:
                     nodes_levels_scheduled[node] =  switch_dst_new_level + (edges_weights[switch_dst_node][node] if nodes_groups[node] != switch_dst_node_group else 0)
-            
+    iter += 1       
     #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 #print('total_switching_gain = ' + str(total_switching_gain))
