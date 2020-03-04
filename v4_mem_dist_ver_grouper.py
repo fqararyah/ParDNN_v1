@@ -36,7 +36,7 @@ in12 = io_folder_path + 'vanilla_cleaned.place'
 out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
-no_of_desired_groups =2
+no_of_desired_groups = 2
 memory_limit_per_group = 30 * 1024 * 1024 * 1024
 
 #tst
@@ -438,7 +438,16 @@ for i in range(0, len(paths) - 1 ):
     if paths_comms[i] >= path_max_potential:
         initial_groups_indices[i] = 0
         groups_weights[path_parent] += groups_weights[i]
+        path_tail_level = analysis_graph[initial_groups[parent_path][-1]].level
+        tail_node = ''
+        if path_tail_level > analysis_graph[initial_groups[i][-1]].level:
+            tail_node = initial_groups[parent_path].pop()
+        
         initial_groups[path_parent] += initial_groups[i]
+
+        if tail_node != '':
+            initial_groups[path_parent].append(tail_node)
+
 
 tmp_initial_groups = initial_groups
 initial_groups = []
@@ -695,6 +704,16 @@ for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
         if sum_in_targeted_levels < min_sum_in_targeted_levels:
             min_sum_in_targeted_levels = sum_in_targeted_levels
             merge_destination_index = i
+    
+    max_self_comm = to_be_merged_group_comms[merge_destination_index]
+    for i in range(0, no_of_desired_groups):
+        if i != merge_destination_index:
+            sum_in_targeted_levels = getsum(work_trees[i], min_sink_level) - getsum(work_trees[i], src_min_level)  
+            sum_in_targeted_levels += (to_be_merged_group_total_comm - to_be_merged_group_comms[i])
+            if sum_in_targeted_levels == min_sum_in_targeted_levels and to_be_merged_group_comms[i] > max_self_comm:
+                merge_destination_index = i
+                max_self_comm = to_be_merged_group_comms[i]
+                print('fffffffffff')
 
     merge_min_level = min(
         to_be_merged_groups_min_levels[to_be_merged_group_index], final_groups_min_levels[merge_destination_index])
