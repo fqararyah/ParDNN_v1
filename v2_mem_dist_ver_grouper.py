@@ -725,6 +725,7 @@ for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
 
 print('Final merging is done: ' + str( time.time() - t0 ))
 t0 = time.time()      
+print(nodes_groups)
 #post processing paths switching:
 # work destribution among levels:
 nodes_groups[sink_node_name] = 0
