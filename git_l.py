@@ -220,6 +220,8 @@ for node, mem in nodes_memory.items():
         elif node in nodes_res_memory:
             res_count += 1
             res_sum += mem
+            if mem > 100000000:
+                print(mem)
         else:
              norm_count += 1
              norm_sum += mem

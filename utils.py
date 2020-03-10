@@ -5,8 +5,8 @@ import random
 # folder containing the work files
 #io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_4800/'
 
-io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/inc/ppr/'
-network_app = 'ppr'
+io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/inc/rnn/'
+network_app = 'rnn'
 
 # output file
 in1 = io_folder_path + 'nodes_average_durations.txt'
@@ -27,6 +27,15 @@ def read_nodes_durations():
             splits = line.split('::')
             nodes_durations[splits[0]] = splits[1]
 
+
+def read_profiling_file_v2(filename):
+    profiling_dict = {}
+    read_nodes_durations()
+    for node, duration in nodes_durations.items():
+        node_properties = nodeProps.NodeProps()
+        node_properties.duration = int( round(float(duration)) )
+        profiling_dict[node] = node_properties
+    return profiling_dict
 
 def read_profiling_file(file_name, averages = False):
     read_nodes_durations()

@@ -260,12 +260,13 @@ nodes_to_visit = list(all_nodes.keys())
 tmp_rev_graph = copy.deepcopy(rev_graph)
 tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
 
-nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights)
-
+nodes_weighted_levels = get_nodes_weighted_levels(rev_graph, edges_weights, src_nodes=[sink_node_name])
+strongly_uni_cp = False
 
 for node, weighted_level in nodes_weighted_levels.items():
     heapq.heappush(free_nodes, (-weighted_level, node))
 
+tmp_rev_nodes_in_degrees = copy.deepcopy(rev_nodes_in_degrees)
 while free_nodes:
     current_node = heapq.heappop(free_nodes)[1]
     while current_node in visited and free_nodes:
@@ -301,7 +302,7 @@ while free_nodes:
                 heapq.heappush(free_nodes, (-weighted_level, node))
 
         for node in current_path:
-            del rev_nodes_in_degrees[node]
+            del tmp_rev_nodes_in_degrees[node]
             for adj_node in graph[node]:
                 tmp_nodes_in_degrees[adj_node] -= 1
                 if adj_node in visited and tmp_nodes_in_degrees[adj_node] == 0:
@@ -318,7 +319,8 @@ paths_lengths, groups_weights, paths = (list(t) for t in zip(
     *sorted(zip(paths_lengths, groups_weights, paths))))
 print('num of paths: ' + str(len(paths)))
 print(paths_lengths[-20:])
-
+if len(paths[-1]) / (len(paths[-2]) + 1) > 10:
+    strongly_uni_cp = True 
 print('paths obtained: ' + str( time.time() - t0 ))
 t0 = time.time()
 # which node is in which path
@@ -332,7 +334,8 @@ for i in range(0, num_paths):
 groups_parents = {}
 paths_max_potential = copy.deepcopy(groups_weights)
 levels_work_sums = {}
-nodes_weighted_levels = get_nodes_weighted_levels(graph= graph, grouped= True, edges_weights = edges_weights, nodes_groups= nodes_paths_mapping, is_rev= False, _nodes_in_degrees= nodes_in_degrees)
+nodes_weighted_levels = get_nodes_weighted_levels(graph= graph, grouped= True, edges_weights = edges_weights, nodes_groups= nodes_paths_mapping, \
+    is_rev= False, _nodes_in_degrees= nodes_in_degrees, src_nodes= [source_node_name])
 for node, level in nodes_weighted_levels.items():
     if level not in levels_work_sums:
         levels_work_sums[level] = 0
@@ -420,7 +423,7 @@ for path in paths:
 average_path_len = round(after_heavy_paths_lengths / after_heavy_paths_count)
 
 print('averge path len: ' + str(average_path_len))
-
+print(paths)
 # getting initial groups
 initial_groups = copy.deepcopy(paths)
 initial_groups_indices = [1] * num_paths
@@ -435,7 +438,17 @@ for i in range(0, len(paths) - 1 ):
     if paths_comms[i] >= path_max_potential:
         initial_groups_indices[i] = 0
         groups_weights[path_parent] += groups_weights[i]
+        path_tail_level = analysis_graph[initial_groups[parent_path][-1]].level
+        if '9' in initial_groups[i]:
+            print(path_tail_level)
+        tail_node = ''
+        if path_tail_level > analysis_graph[initial_groups[i][-1]].level:
+            tail_node = initial_groups[parent_path].pop()
+        
         initial_groups[path_parent] += initial_groups[i]
+
+        if tail_node != '':
+            initial_groups[path_parent].append(tail_node)
 
 tmp_initial_groups = initial_groups
 initial_groups = []
@@ -528,7 +541,7 @@ final_groups = []
 final_groups_weights = []
 to_be_merged_groups = []
 to_be_merged_groups_weights = []
-
+print(initial_groups)
 for i in range(1, no_of_desired_groups + 1):
     final_groups.append(copy.deepcopy(initial_groups[-i]))
     final_groups_weights.append(groups_weights[-i])
@@ -641,240 +654,11 @@ if to_be_merged_groups_densities:
             (to_be_merged_groups_lengths[i] - normalized_lengths_sub) / (normalized_lengths_den) \
             - (to_be_merged_groups_empty_spots[i] - normalized_empty_spots_sub) / normalized_empty_spots_den - penalize_small_paths[i]
 
-    to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels = \
-        (list(t) for t in zip(*sorted(zip(to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels), reverse=True)))
-    cntt = 0
-    heaviest_final_group_index = 0
-    max_sum = 0
-    first_balancing_wave_group_indices = []
-    first_balancing_wave_groups_lengths = []
-    first_balancing_wave_groups_candidate_destinations = []
-    for i in range(0, no_of_desired_groups):
-        current_sum = getsum(work_trees[i], no_of_levels - 1)
-        if current_sum > max_sum:
-            max_sum = current_sum
-            heaviest_final_group_index = i
+    to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups, to_be_merged_groups_max_levels\
+        , to_be_merged_groups_tasks_per_levels, to_be_merged_groups_lengths = \
+        (list(t) for t in zip(*sorted(zip(to_be_merged_groups_sorting_criteria, to_be_merged_groups_weights, to_be_merged_groups_min_levels, to_be_merged_groups,\
+             to_be_merged_groups_max_levels, to_be_merged_groups_tasks_per_levels, to_be_merged_groups_lengths), reverse=True)))
 
-    indx = 0
-    paths_lengths = paths_lengths[:-no_of_desired_groups]
-    average_path_len = math.ceil(sum(paths_lengths) / len(paths_lengths))
-    std_path_len = statistics.stdev(paths_lengths)
-    fully_contaied_map = {}
-
-    for tbg in to_be_merged_groups:
-        if len(tbg) > min(round(average_path_len + std_path_len), no_of_levels):
-            start_node = tbg[0]
-            end_node = tbg[-1]
-            end_node_children = graph[end_node]
-
-            fully_contaied = True 
-            first_child_group = (nodes_groups[end_node_children[0]] if end_node_children[0] != sink_node_name else -2)
-            if first_child_group != -2:
-                for child in end_node_children:
-                    if child != sink_node_name and nodes_groups[child] != first_child_group:
-                        fully_contaied = False
-                        break
-            if fully_contaied:
-                if first_child_group == -2:
-                    first_child_group = (nodes_groups[rev_graph[start_node][0]] if nodes_groups[rev_graph[start_node][0]] != source_node_name else -2)
-                if first_child_group != -2:
-                    for parent in rev_graph[start_node]:
-                        if parent != source_node_name and nodes_groups[parent] != first_child_group:
-                            fully_contaied = False
-
-            to_be_merged_group_weight = to_be_merged_groups_weights[indx]
-            if fully_contaied:# != heaviest_final_group_index:#directly_connected_to_heaviest and (snk_direct_connection or src_direct_connection):
-                if first_child_group != -2 and first_child_group != heaviest_final_group_index:
-                    sum_in_targeted_levels_i = getsum(\
-                        work_trees[first_child_group], to_be_merged_groups_earliest_sink_levels[indx]) - getsum(work_trees[first_child_group], \
-                            to_be_merged_groups_latest_src_levels[indx])
-                    
-                    sum_in_targeted_levels_0 = getsum(\
-                        work_trees[heaviest_final_group_index], to_be_merged_groups_earliest_sink_levels[indx]) - getsum(work_trees[heaviest_final_group_index], \
-                            to_be_merged_groups_latest_src_levels[indx])
-
-                    if sum_in_targeted_levels_0 - sum_in_targeted_levels_i > to_be_merged_group_weight:
-                        first_balancing_wave_group_indices.append(indx)
-                        first_balancing_wave_groups_lengths.append(
-                            to_be_merged_groups_lengths[indx])
-                        first_balancing_wave_groups_candidate_destinations.append(
-                            first_child_group)
-                else:
-                    for i in range(0, no_of_desired_groups):
-                        if i == first_child_group:
-                            continue
-                        sum_in_targeted_levels_i = getsum(
-                            work_trees[i], analysis_graph[end_node].level) - getsum(work_trees[i], analysis_graph[start_node].level)
-                        sum_in_targeted_levels_0 = getsum(work_trees[heaviest_final_group_index], analysis_graph[end_node].level) - \
-                            getsum(work_trees[heaviest_final_group_index],
-                                analysis_graph[start_node].level)
-
-                        if sum_in_targeted_levels_0 - sum_in_targeted_levels_i > to_be_merged_group_weight:
-                            first_balancing_wave_group_indices.append(indx)
-                            first_balancing_wave_groups_lengths.append(
-                                to_be_merged_groups_lengths[indx])
-                            first_balancing_wave_groups_candidate_destinations.append(
-                                i)
-                            break
-        indx += 1
-    
-    first_balancing_wave_groups_lengths, first_balancing_wave_group_indices, first_balancing_wave_groups_candidate_destinations = \
-        (list(t) for t in zip(*sorted(zip(first_balancing_wave_groups_lengths, first_balancing_wave_group_indices, first_balancing_wave_groups_candidate_destinations), \
-            reverse=True)))
-
-    for first_balancing_wave_candidate_i in range(0, len(first_balancing_wave_group_indices)):
-        current_candidate_indx = first_balancing_wave_group_indices[
-            first_balancing_wave_candidate_i]
-        current_destination = first_balancing_wave_groups_candidate_destinations[
-            first_balancing_wave_candidate_i]
-        current_candidate = to_be_merged_groups[current_candidate_indx]
-        terminal_comms = 0
-        start_node = current_candidate[0]
-        end_node = current_candidate[-1]
-        end_node_children = graph[end_node]
-        earliest_sink_evel = math.inf
-        for child in end_node_children:
-            if analysis_graph[child].level < earliest_sink_evel:
-                earliest_sink_evel = analysis_graph[child].level
-            if nodes_groups[child] == heaviest_final_group_index:
-                terminal_comms = max(
-                    terminal_comms, edges_weights[end_node][child])
-
-        for parent in rev_graph[start_node]:
-            if nodes_groups[parent] == heaviest_final_group_index:
-                terminal_comms += edges_weights[parent][start_node]
-
-        merge = False
-        while not merge and current_destination < no_of_desired_groups:
-            sum_in_targeted_levels_i = getsum(\
-                        work_trees[current_destination], to_be_merged_groups_earliest_sink_levels[current_destination]) - getsum(work_trees[current_destination], \
-                            to_be_merged_groups_latest_src_levels[current_destination])
-                    
-            sum_in_targeted_levels_0 = getsum(\
-                work_trees[heaviest_final_group_index], to_be_merged_groups_earliest_sink_levels[current_destination]) - getsum(work_trees[heaviest_final_group_index], \
-                    to_be_merged_groups_latest_src_levels[current_destination])
-
-            if (sum_in_targeted_levels_0 - sum_in_targeted_levels_i) > (terminal_comms + to_be_merged_groups_weights[current_candidate_indx]):
-                merge = True
-                break
-            current_destination += 1
-
-        if merge:
-            print(to_be_merged_groups_lengths[current_candidate_indx])
-            merge_min_level = min(
-                to_be_merged_groups_min_levels[current_candidate_indx], final_groups_min_levels[current_destination])
-            merge_max_level = max(
-                to_be_merged_groups_max_levels[current_candidate_indx], final_groups_max_levels[current_destination])
-            final_groups_weights[current_destination] += to_be_merged_groups_weights[current_candidate_indx]
-            final_groups[current_destination] += current_candidate
-            final_groups_min_levels[current_destination] = merge_min_level
-            final_groups_max_levels[current_destination] = merge_max_level
-            merge_src_levels_tasks = to_be_merged_groups_tasks_per_levels[current_candidate_indx]
-
-            for node in current_candidate:
-                nodes_groups[node] = current_destination
-
-            for level, tasks_sum in merge_src_levels_tasks.items():
-                final_groups_work_per_levels[current_destination][level] += tasks_sum
-                updatebit(work_trees[current_destination],
-                          no_of_levels, level, tasks_sum)
-    
-    indx = 0
-    for tbg in to_be_merged_groups:
-        start_node = tbg[0]
-        end_node = tbg[-1]
-        end_node_children = graph[end_node]
-
-        fully_contaied = True 
-        first_child_group = (nodes_groups[end_node_children[0]] if end_node_children[0] != sink_node_name else -2)
-        if first_child_group != -2:
-            for child in end_node_children:
-                if child != sink_node_name and nodes_groups[child] != first_child_group:
-                    fully_contaied = False
-                    break
-        if fully_contaied:
-            if first_child_group == -2:
-                first_child_group = (nodes_groups[rev_graph[start_node][0]] if nodes_groups[rev_graph[start_node][0]] != source_node_name else -2)
-            if first_child_group != -2:
-                for parent in rev_graph[start_node]:
-                    if parent != source_node_name and nodes_groups[parent] != first_child_group:
-                        fully_contaied = False
-
-        if fully_contaied and first_child_group >= 0:
-            heaviest_final_group_index = 0
-            max_sum = 0
-            for i in range(0, no_of_desired_groups):
-                current_sum = getsum(work_trees[i], no_of_levels - 1)
-                if current_sum > max_sum:
-                    max_sum = current_sum
-                    heaviest_final_group_index = i
-            
-            if heaviest_final_group_index != first_child_group:
-                sum_in_targeted_levels_i = getsum(\
-                            work_trees[first_child_group], to_be_merged_groups_earliest_sink_levels[indx]) - getsum(work_trees[first_child_group], \
-                                to_be_merged_groups_latest_src_levels[first_child_group])
-                        
-                sum_in_targeted_levels_0 = getsum(\
-                    work_trees[heaviest_final_group_index], to_be_merged_groups_earliest_sink_levels[indx]) - getsum(work_trees[heaviest_final_group_index], \
-                        to_be_merged_groups_latest_src_levels[indx])
-                        
-                if to_be_merged_groups_weights[indx] + sum_in_targeted_levels_i <= sum_in_targeted_levels_0:
-                    print('dddddddddddd')
-
-            """ if fully_contaied and first_child_group == 1 and analysis_graph[tbg[0]].level > 1:
-                print('---' + str(len(tbg)) ) """
-        
-
-        indx += 1
-
-print('Initial merging is done: ' + str(time.time() - t0))
-t0 = time.time()
-
-""" indx = 0
-for tbg in to_be_merged_groups:
-    #if len(tbg) > min(round(average_path_len + std_path_len), max(math.sqrt(no_of_levels), average_path_len)):
-    if nodes_groups[tbg[0]] == -1:
-        start_node = tbg[0]
-        end_node = tbg[-1]
-        end_node_children = graph[end_node]
-
-        directly_connected_to_heaviest = True
-        src_direct_connection = False
-        snk_direct_connection = False
-        for child in end_node_children:
-            if nodes_groups[child] == 1 or child == sink_node_name:
-                src_direct_connection = True
-            if nodes_groups[child] != -1 and nodes_groups[child] != 1 and child != sink_node_name:
-                directly_connected_to_heaviest = False
-
-        if directly_connected_to_heaviest:
-            for parent in rev_graph[start_node]:
-                if nodes_groups[parent] == 1 or parent == source_node_name:
-                    snk_direct_connection = True
-                if nodes_groups[parent] != -1 and nodes_groups[parent] != 1 and parent != source_node_name:
-                    directly_connected_to_heaviest = False
-        
-        if directly_connected_to_heaviest and (snk_direct_connection and src_direct_connection) and to_be_merged_groups_lengths[indx] > 0:
-            print(to_be_merged_groups_lengths[indx])
-    
-    indx += 1 """
-
-""" for to_be_merged_group in to_be_merged_groups:
-    if len(graph[to_be_merged_group[-1]]) > 1 or len(rev_graph[to_be_merged_group[0]]) > 1:
-        print(len(to_be_merged_group)) """
-""" levels_work = {}
-for level in range(0, no_of_levels):
-    levels_work[level] = [0] * 2
-
-for node in all_nodes.keys():
-    if nodes_groups[node] != -1:
-        levels_work[analysis_graph[node].level][nodes_groups[node]] += 1
-
-for level, work in levels_work.items():
-    print(str(level) + '::' + str(work[0]) + '::' +str(work[1]) )  """
-
-to_be_merged_groups_lengths, to_be_merged_groups_indices = \
-        (list(t) for t in zip(*sorted(zip(to_be_merged_groups_lengths, to_be_merged_groups_indices), reverse=True)))
 # merging the groups
 for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
     to_be_merged_group = to_be_merged_groups[to_be_merged_group_index]
@@ -913,7 +697,6 @@ for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
 
     min_sum_in_targeted_levels = math.inf
     merge_destination_index = 0
-    
     for i in range(0, no_of_desired_groups):
         sum_in_targeted_levels = getsum(work_trees[i], min_sink_level) - getsum(work_trees[i], src_min_level)  
         
@@ -942,6 +725,7 @@ for to_be_merged_group_index in range(0, len(to_be_merged_groups)):
 
 print('Final merging is done: ' + str( time.time() - t0 ))
 t0 = time.time()      
+print(nodes_groups)
 #post processing paths switching:
 # work destribution among levels:
 nodes_groups[sink_node_name] = 0
@@ -1048,8 +832,6 @@ for group_indx in range(no_of_swap_groups - 2, -1, -1):
     comm_with_its_groups[group_indx] = comm_with_its_group
     group_indx += 1
 
-print('bbbbbbbbbbbbbbbbb')
-print(no_of_swap_groups)
 print('Refinement_1_1 is done: ' + str( time.time() - t0 ))
 t0 = time.time()
 
@@ -1142,7 +924,7 @@ t0 = time.time()
 total_switching_gain = 0
 switching_nodes_pure_parents = []
 switching_nodes_pure_children = []
-#map, helpful to find nodes in a level in O(1)
+#map, helpful to fipostnd nodes in a level in O(1)
 levels_nodes = [None] * no_of_levels
 for node, props in analysis_graph.items():
     if node in all_nodes:
@@ -1253,6 +1035,137 @@ for group in tmp_initial_groups:
         initial_groups.append(group)
 
 print('total_switching_gain = ' + str(total_switching_gain))
+
+print('Refinement is done: ' + str( time.time() - t0 ))
+t0 = time.time()
+
+improvement_achieved = True
+iter = 0
+iterations_threshold = (1 if strongly_uni_cp else no_of_desired_groups + 1)
+while improvement_achieved and iter < 0:
+    #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    improvement_achieved = False
+    nodes_levels_scheduled = {}
+    tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
+    for node in all_nodes.keys():
+            nodes_levels_scheduled[node] = 0
+
+    traversal_queue = []
+    heapq.heappush(traversal_queue, (nodes_levels_scheduled[source_node_name], source_node_name))
+    groups_times_till_now = [0] * no_of_desired_groups
+
+    while traversal_queue:
+        [current_node_start_time, current_node] = heapq.heappop(traversal_queue)
+        current_node_end_time = current_node_start_time + analysis_graph[current_node].duration
+        groups_times_till_now[nodes_groups[current_node]] += analysis_graph[current_node].duration
+        current_node_group = nodes_groups[current_node]
+
+        for adj_node in graph[current_node]:
+            adj_node_group = nodes_groups[adj_node]
+            nodes_levels_scheduled[adj_node] = \
+                max([current_node_end_time + (int(edges_weights[current_node][adj_node]) if current_node_group != nodes_groups[adj_node] else 1), \
+                    groups_times_till_now[adj_node_group], nodes_levels_scheduled[adj_node]])
+            tmp_nodes_in_degrees[adj_node] -= 1
+            if tmp_nodes_in_degrees[adj_node] == 0:
+                heapq.heappush(traversal_queue, (nodes_levels_scheduled[adj_node],adj_node))
+    if iter == 0 or iter == no_of_desired_groups + 1:
+        print('nodes_levels_scheduled is: ' + str(nodes_levels_scheduled[sink_node_name]))
+    #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    nodes_levels_scheduled_bottom = {}
+    tmp_nodes_in_degrees = copy.deepcopy(rev_nodes_in_degrees)
+    for node in all_nodes.keys():
+        nodes_levels_scheduled_bottom[node] = 0
+
+    traversal_queue = []
+    heapq.heappush(traversal_queue, (nodes_levels_scheduled_bottom[source_node_name], sink_node_name))
+    groups_times_till_now = [0] * no_of_desired_groups
+    nodes_weighted_levels_t = get_nodes_weighted_levels(graph= graph, grouped= True, edges_weights = edges_weights, nodes_groups= nodes_paths_mapping, \
+    is_rev= False, _nodes_in_degrees= nodes_in_degrees, src_nodes= [source_node_name])
+    nodes_weighted_levels_b = get_nodes_weighted_levels(graph= graph, grouped= True, edges_weights = edges_weights, nodes_groups= nodes_paths_mapping, \
+    is_rev= True, _nodes_in_degrees= nodes_in_degrees, src_nodes= [sink_node_name])
+    while traversal_queue:
+        [current_node_start_time, current_node] = heapq.heappop(traversal_queue)
+        groups_times_till_now[nodes_groups[current_node]] += analysis_graph[current_node].duration
+        current_node_group = nodes_groups[current_node]
+
+        for adj_node in rev_graph[current_node]:
+            adj_node_group = nodes_groups[adj_node]
+            nodes_levels_scheduled_bottom[adj_node] = max([current_node_start_time + (int(edges_weights[adj_node][current_node]) if current_node_group != nodes_groups[adj_node] else 1)\
+                + analysis_graph[adj_node].duration , groups_times_till_now[adj_node_group] + analysis_graph[adj_node].duration, nodes_levels_scheduled_bottom[adj_node]])
+            tmp_nodes_in_degrees[adj_node] -= 1
+            if tmp_nodes_in_degrees[adj_node] == 0:
+                heapq.heappush(traversal_queue, (nodes_levels_scheduled_bottom[adj_node],adj_node))
+    #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    current_node = sink_node_name
+    ds = [sink_node_name]
+    while current_node != source_node_name:
+        max_rev_adj = ''
+        max_rev_level = 0
+        for rev_adj in rev_graph[current_node]:
+            rev_level = nodes_weighted_levels_t[rev_adj] + nodes_weighted_levels_b[rev_adj]
+            if rev_level > max_rev_level:
+                max_rev_level = rev_level
+                max_rev_adj = rev_adj
+        if max_rev_adj == '':
+            max_rev_adj = source_node_name
+        ds.append(max_rev_adj)
+        current_node = max_rev_adj
+
+    nodes_list = nodes_levels_scheduled.keys()
+    scheduled_levels_list = nodes_levels_scheduled.values()
+
+    scheduled_levels_list, nodes_list = (list(t) for t in zip(
+        *sorted(zip(scheduled_levels_list, nodes_list))))
+    nodes_indices_map = {}
+    indx = 0
+    for node in nodes_list:
+        nodes_indices_map[node] = indx
+        indx += 1
+    # be careful, the path is backward traversal result -> i+1 is parent of i.
+    for i in range(len(ds) - 2, -1, -1):
+        switch_src_node_group = nodes_groups[ds[i + 1]]
+        switch_dst_node_group = nodes_groups[ds[i]]
+        if switch_src_node_group != switch_dst_node_group:
+            switch_src_node = ds[i+1]
+            switch_dst_node = ds[i]
+            switch_dst_old_level = nodes_levels_scheduled[switch_dst_node]
+            after_switch_dst_max_time = 0
+            the_node_after_dst = ds[i-1]
+            if i > 0:
+                after_switch_dst_max_time = nodes_levels_scheduled[the_node_after_dst] + nodes_levels_scheduled_bottom[the_node_after_dst]
+            node_indx = nodes_indices_map[switch_src_node]
+            node_end = nodes_levels_scheduled[switch_src_node] + analysis_graph[switch_src_node].duration
+            last_node_before_dst = switch_src_node
+            while node_indx < len(nodes_list) and nodes_levels_scheduled[nodes_list[node_indx]] <= node_end:
+                if nodes_groups[nodes_list[node_indx]] == switch_src_node:
+                    last_node_before_dst = nodes_list[node_indx]
+                node_end = nodes_levels_scheduled[nodes_list[node_indx]] + analysis_graph[nodes_list[node_indx]].duration
+                node_indx += 1
+            switch_dst_new_level = nodes_levels_scheduled[last_node_before_dst] + analysis_graph[last_node_before_dst].duration
+            for rev_adj in rev_graph[switch_dst_node]:
+                a_level = nodes_levels_scheduled[rev_adj] + analysis_graph[rev_adj].duration + edges_weights[rev_adj][switch_dst_node]
+                if a_level > switch_dst_new_level:
+                    switch_dst_new_level = a_level
+
+            merge = False
+            if switch_dst_new_level <= switch_dst_old_level:
+                if switch_dst_node != sink_node_name:
+                    merge = True
+                    for adj in graph[switch_dst_node]:
+                        if adj == the_node_after_dst:
+                            continue
+                        if switch_dst_new_level + (edges_weights[switch_dst_node][adj] if nodes_groups[adj] != switch_src_node_group else 0) + nodes_levels_scheduled_bottom[adj] \
+                            >= max(after_switch_dst_max_time,  nodes_levels_scheduled[adj] + nodes_levels_scheduled_bottom[adj]):
+                            merge = False
+            if merge:
+                improvement_achieved = True
+                nodes_groups[switch_dst_node] = nodes_groups[switch_src_node]
+                for node in graph[switch_dst_node]:
+                    nodes_levels_scheduled[node] =  switch_dst_new_level + (edges_weights[switch_dst_node][node] if nodes_groups[node] != switch_dst_node_group else 0)
+    iter += 1       
+    #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+#print('total_switching_gain = ' + str(total_switching_gain))
 
 print('Refinement is done: ' + str( time.time() - t0 ))
 t0 = time.time()

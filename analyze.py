@@ -12,12 +12,12 @@ in1 = io_folder_path + 'timeline_step17_low.json'
 # 'nodes_levels.txt'#'part_8_1799_src_sink_nodes_levels.txt'
 in2 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'#'part_1_39_src_sink_nodes_levels.txt'
 #in3 = io_folder_path + 'fareed/mixed_h_zoltan/mixed_h_zoltan_2_cleaned.place'
-in3 = io_folder_path + 'ver_grouper_placement_e_nc.place'#'mixed_placement_v_part_nc.place'#'vanilla_cleaned_low.place'#'mixed_placement_v_part_nc.place'
+in3 = io_folder_path + 'placement.place'#'mixed_placement_v_part_nc.place'#'vanilla_cleaned_low.place'#'mixed_placement_v_part_nc.place'
 in4 = io_folder_path + network_app + '_src_sink_low.dot' #'part_1_39_src_sink.dot'  #part_8_1799
 in5 = io_folder_path + 'tensors_sz_32_low.txt'
 in6 = io_folder_path + 'memory.txt'
 
-analysis_graph = utils.read_profiling_file(in1, True)
+analysis_graph = utils.read_profiling_file_v2(in1)
 
 
 class LevelProps:
@@ -99,8 +99,8 @@ offset_x = 20
 offset_y = 20
 graphics_window_width = 1300
 graphics_window_height = 600
-levels_to_represent = min(50, int(max_level))
-start_from_level = 150
+levels_to_represent = min(30, int(max_level))
+start_from_level = 100
 end_at_level = start_from_level + levels_to_represent
 first_node_in_the_graph_to_show_start_time = 0
 last_node_in_the_graph_to_show_end_time = 8
