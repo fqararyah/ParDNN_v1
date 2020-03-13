@@ -444,19 +444,19 @@ for i in range(0, len(paths) - 1):
     path_parent = paths_parents[i]
     path_max_potential = (work_sums[levels_indices_map[paths_ranges[i][1]]] -
                           work_sums[levels_indices_map[paths_ranges[i][0]]]) - (groups_weights[i] + path_ranges_subtract[i])
-    if max(paths_comms[i][0], paths_comms[i][1]) >= path_max_potential:
+    if groups_weights[i] == 0 or max(paths_comms[i][0], paths_comms[i][1]) >= path_max_potential:
         initial_groups_indices[i] = 0
         groups_weights[path_parent] += groups_weights[i]
-        path_tail_level = analysis_graph[initial_groups[parent_path][-1]].level
+        path_tail_level = analysis_graph[initial_groups[path_parent][-1]].level
         tail_node = ''
         if path_tail_level > analysis_graph[initial_groups[i][-1]].level:
-            tail_node = initial_groups[parent_path].pop()
+            tail_node = initial_groups[path_parent].pop()
 
         initial_groups[path_parent] += initial_groups[i]
 
         if tail_node != '':
             initial_groups[path_parent].append(tail_node)
-
+        #print(i)
 
 tmp_initial_groups = initial_groups
 initial_groups = []
@@ -549,8 +549,9 @@ def construct(arr, n):
     return BITTree
 
 
-""" groups_weights, initial_groups = (list(t) for t in zip(
-    *sorted(zip(groups_weights, initial_groups)))) """
+groups_weights, initial_groups = (list(t) for t in zip(
+    *sorted(zip(groups_weights, initial_groups))))
+
 final_groups = []
 final_groups_weights = []
 to_be_merged_groups = []

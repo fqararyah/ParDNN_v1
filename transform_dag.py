@@ -1,5 +1,6 @@
 import utils
 import json
+import re
 
 #io_folder_path = 'C:/Users/fareed/PycharmProjects/tf_project/resnet/winter_34_my_timing/time_steps_32_b_480/'
 # input files
@@ -37,6 +38,14 @@ for node in all_nodes.keys():
                 graph[normal_node].append(node)
             else:
                 graph[normal_node] = [node]
+    sub_ten = re.search(r'\d+$', node)
+    if sub_ten is not None and node[sub_ten.span()[0] - 1] == ':':
+        normal_node = node[0:sub_ten.span()[0] - 1]
+        if normal_node in graph.keys():
+            graph[normal_node] += graph[node]
+        else:
+             graph[normal_node] = graph[node]
+        del graph[node]
 
 with open(out, 'w') as f:
     f.write('digraph{\n')
