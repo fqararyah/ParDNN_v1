@@ -35,16 +35,22 @@ no_ops = {}
 ref_ops = {}
 var_ops = {}
 ops_types = {}
+const_ops = {}
 with open(in2, 'r') as f:
     for line in f:
         splits = utils.clean_line(line).lower().split('::')
         ops_types[splits[0]] = splits[1]
+        if splits[0].lower() not in graph:# fareed recheck
+          continue
         if splits[1] == 'noop':
             no_ops[splits[0]] = 1
-        elif len(splits) > 2 and splits[2] == 'true':
-            ref_ops[splits[0]] = 1
-            if splits[1] in ['variablev2', 'variable', 'const']:
-                var_ops[splits[0]] = 1
+        elif splits[1] in ['variablev2', 'variable']: 
+          var_ops[splits[0]] = 1
+        elif splits[1] == 'const':
+          const_ops[splits[0]] = 1
+        if len(splits) > 2 and splits[2] == 'true' or 'isvariableinitialized' in splits[0]:   
+            if splits[0] not in var_ops:
+                ref_ops[splits[0]] = 1
 
 vanilla_placement = {}
 with open(in3, 'r') as f:
@@ -53,6 +59,9 @@ with open(in3, 'r') as f:
         splits = line.split(' ')
         vanilla_placement[splits[0]] = splits[1]
 
+"""for node in graph:
+  if node.startswith("^"):
+    no_ops[node]=1"""
 """ for node in graph['rnnlm/softmax_w']:
     if vanilla_placement[node] != '-1':
         print(node)
@@ -67,26 +76,91 @@ for node in graph['batch_time']:
 
 collocations = {}
 collocated = {}
+for node in graph:
+  if node.startswith('^'):
+    continue
+  if node.endswith(('applyadam','applymomentum')) and node in ref_ops:
+    collocated[node] = rev_graph[node][0]
+    if node not in collocations:
+      collocations[rev_graph[node][0]] = [node]
+    for rev_adj in rev_graph[node]:
+      if rev_adj == rev_graph[node][0] or (rev_adj not in ref_ops and rev_adj not in var_ops):
+        continue
+      collocated[rev_adj] = rev_graph[node][0]
+      collocations[rev_graph[node][0]].append(rev_adj)
+      for adj in graph[rev_adj]:
+        if adj == node or (adj not in ref_ops and adj not in var_ops):
+          continue
+        collocated[adj] = rev_graph[node][0]
+        collocations[rev_graph[node][0]].append(adj)
+
+for node in graph:
+  if node.startswith('^'):
+    continue
+  if node.endswith('assign') and node in ref_ops:
+    if node in collocated:
+      continue
+    ref_node = rev_graph[node][0]
+    if 'unit_3_99/bn_1/beta/assign' in node:
+        print(ref_node)
+    if ref_node not in collocations:
+      collocations[ref_node] = [node]
+    else:
+      collocations[ref_node].append(node)
+    collocated[node] = ref_node
+
+    for rev_adj in rev_graph[node]:
+      if rev_adj not in ref_ops or rev_adj not in var_ops:
+        continue
+      collocations[ref_node].append(rev_adj)
+      collocated[rev_adj] = ref_node
+
+for node in ref_ops.keys():
+  if node not in collocated:
+    for rev_adj in rev_graph[node]:
+      if rev_adj in collocations:
+        collocations[rev_adj].append(node)
+        collocated[node] = rev_adj
+
 for node in var_ops.keys():
-    list_to_add_to = []
-    if vanilla_placement[node] != '-1':
+    if node + '/read' in graph:
+      if node in collocations:
+          collocations[node].append(node + '/read')
+      else:
+          collocations[collocated[node]].append(node + '/read')
+
+""" for node in var_ops.keys():
+    in_collocations = False
+    if node not in vanilla_placement or vanilla_placement[node] != '-1':
         if node not in collocated:
+            collocated[node] = node
             collocations[node] = []
-            list_to_add_to = collocations[node]
-            collocated[node] = ''
         else:
-            list_to_add_to = collocations[collocated[node]]
+            in_collocations = True
         for adj in graph[node]:
-            if adj in ref_ops and adj not in collocated and vanilla_placement[adj] != '-1':
-                list_to_add_to.append(adj)
+            if (adj in ref_ops or adj in var_ops) and adj not in collocated and (adj not in vanilla_placement or vanilla_placement[adj] != '-1'):
+                if in_collocations:
+                  collocations[collocated[node]].append(adj)
+                else:
+                  collocations[node].append(adj)
                 collocated[adj] = node
                 for rev_adj in rev_graph[adj]:
-                    if rev_adj in ref_ops and rev_adj not in collocated and vanilla_placement[rev_adj] != '-1':
-                        list_to_add_to.append(rev_adj)
+                    if adj == 'unit_3_100/bn_1/gamma/momentum/assign':
+                      print(rev_adj)
+                    if rev_adj != node and (rev_adj in ref_ops or rev_adj in var_ops) and rev_adj not in collocated and (rev_adj not in vanilla_placement or vanilla_placement[rev_adj] != '-1'):
                         collocated[rev_adj] = node
+                        if adj == 'unit_3_100/bn_1/gamma/momentum/assign':
+                          print(rev_adj)
+                        if in_collocations:
+                          collocations[collocated[node]].append(rev_adj)
+                        else:
+                          collocations[node].append(rev_adj) """
 
 with open(out1, 'w') as f:
     for var_node in var_ops.keys():
+        f.write(var_node + '\n')
+
+    for var_node in const_ops.keys():
         f.write(var_node + '\n')
 
 with open(out2, 'w') as f:

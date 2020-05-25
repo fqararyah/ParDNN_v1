@@ -19,8 +19,6 @@ in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'
 in6 = io_folder_path + 'memory.txt'
 in6_b = io_folder_path + 'res_memory.txt'
 in7 = io_folder_path + 'placement.place'
-in8 = io_folder_path + 'nf_memory.txt'
-in8_b = io_folder_path + 'nf_res_memory.txt'
 
 graph = {}
 rev_graph = {}
@@ -83,34 +81,9 @@ with open(in6_b, 'r') as f:
         node_name = splitted[0].lower()
         nodes_res_memory[node_name] = int(splitted[1])
 
-nf_nodes_memory = {}
-# get memory consumption
-with open(in8, 'r') as f:
-    for line in f:
-        line = utils.clean_line(line)
-        splitted = line.split('::')
-        node_name = splitted[0].lower()
-        nf_nodes_memory[node_name] = int(splitted[1])
 
-nf_nodes_res_memory = {}
-# get memory consumption
-with open(in8_b, 'r') as f:
-    for line in f:
-        line = utils.clean_line(line)
-        splitted = line.split('::')
-        node_name = splitted[0].lower()
-        nf_nodes_res_memory[node_name] = int(splitted[1])
 
-smm = 0
-for node, mem in nf_nodes_memory.items():
-    smm += mem
 
-print('not found mem cons:: ' + str(smm / (1024 * 1024 * 1024) ))
-smm = 0
-for node, mem in nf_nodes_res_memory.items():
-    smm += mem
-
-print('not found residual mem cons:: ' + str(smm / (1024 * 1024 * 1024) ))
 
 no_of_groups = 0
 nodes_groups = {}
@@ -199,73 +172,41 @@ print(count)
 for node, count in non_ref_nodes_with_no_op_child.items():
     print(node) """
 
-var_count = 0
-ref_count = 0
-res_count = 0
-norm_count = 0
+for g_no in range(0, 8):
+  var_count = 0
+  ref_count = 0
+  res_count = 0
+  norm_count = 0
 
-var_sum = 0
-ref_sum = 0
-res_sum = 0
-norm_sum = 0
+  var_sum = 0
+  ref_sum = 0
+  res_sum = 0
+  norm_sum = 0
+  for node, mem in nodes_memory.items():
+      if mem > 0 and node in nodes_groups and nodes_groups[node] == 0:# and nodes_levels[node] < 40000:
+          if node in var_ops:
+              var_count += 1
+              var_sum += mem
+          elif node in ref_ops:
+              ref_count += 1
+              ref_sum += mem
+          elif node in nodes_res_memory:
+              res_count += 1
+              res_sum += mem
+              #if mem > 100000000:
+                  #print(mem)
+          else:
+              norm_count += 1
+              norm_sum += mem
 
-for node, mem in nodes_memory.items():
-    if mem > 0 and nodes_groups[node] == 0 and nodes_levels[node] < 40000:
-        if node in var_ops:
-            var_count += 1
-            var_sum += mem
-        elif node in ref_ops:
-            ref_count += 1
-            ref_sum += mem
-        elif node in nodes_res_memory:
-            res_count += 1
-            res_sum += mem
-            if mem > 100000000:
-                print(mem)
-        else:
-             norm_count += 1
-             norm_sum += mem
+  print('-----------------------')
+  print('var_count: ' + str(var_count)) 
+  print('ref_count: ' + str(ref_count)) 
+  print('res_count: ' + str(res_count)) 
+  print('norm_count: ' + str(norm_count)) 
 
-print('-----------------------')
-print('var_count: ' + str(var_count)) 
-print('ref_count: ' + str(ref_count)) 
-print('res_count: ' + str(res_count)) 
-print('norm_count: ' + str(norm_count)) 
-
-print('var_sum: ' + str( var_sum / (1024 * 1024 * 1024) )) 
-print('ref_sum: ' + str(ref_sum / (1024 * 1024 * 1024) )) 
-print('res_sum: ' + str(res_sum / (1024 * 1024 * 1024) )) 
-print('norm_sum: ' + str(norm_sum / (1024 * 1024 * 1024) )) 
-print('-----------------------')
-
-""" for node in rev_graph.keys():
-    if node in ref_ops:
-        for rev_adjs in rev_graph[node]:
-            if rev_adj not in ref_ops and not rev_adj.startswith('^') and rev_adj not in no_ops:
-                print(rev_adj)  """
-
-levels = {}
-for node in graph.keys():
-    if node not in ref_ops and node not in var_ops and node not in nodes_res_memory and nodes_memory[node] > 0:
-        for adj in graph[node]:
-            if adj in no_ops or adj.startswith('^'):
-                #print(node + '::' + adj + '::' + str(nodes_memory[node]) + ' :: ' + str(nodes_levels[node]) )
-                if nodes_levels[node] not in levels:
-                    levels[nodes_levels[node]] = 0
-                levels[nodes_levels[node]] += nodes_memory[node]
-
-""" for level, count in levels.items():
-    if count > 1:
-        print(str(level) + '::' + str(count))  """
-
-smm = 0
-for node in rev_graph['snk']:
-    if (node in nodes_memory and nodes_memory[node] > 0):
-        smm += nodes_memory[node]
-    if (node in nodes_res_memory and nodes_res_memory[node] > 0):
-        smm += nodes_res_memory[node]
-    if node.startswith('^'):
-        print(1)
-
-print(smm)
-#print(smm / (1024*1024*1024))
+  print('var_sum: ' + str( var_sum / (1024 * 1024 * 1024) )) 
+  print('ref_sum: ' + str(ref_sum / (1024 * 1024 * 1024) )) 
+  print('res_sum: ' + str(res_sum / (1024 * 1024 * 1024) )) 
+  print('norm_sum: ' + str(norm_sum / (1024 * 1024 * 1024) )) 
+  print('-----------------------')

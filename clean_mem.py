@@ -5,10 +5,33 @@ in1 = io_folder_path + 'mem.txt'
 in2 = io_folder_path + utils.network_app + '_src_sink_low.dot'
 in4 = io_folder_path + 'no_ops.txt'
 in5 = io_folder_path + 'operations_attributes.txt'
+in6 = io_folder_path + 'tensors_sz_32_low.txt'
 out1 = io_folder_path + 'memory.txt'
 out1_1 = io_folder_path + 'nf_memory.txt'
 out2 = io_folder_path + 'res_memory.txt'
 out2_1 = io_folder_path + 'nf_res_memory.txt'
+
+in10 = io_folder_path + 'ref_nodes.txt'
+
+ref_nodes = {}
+with open(in10, 'r') as f:
+    for line in f:
+        ref_nodes[utils.clean_line(line)] = 1
+
+in11 = io_folder_path + 'var_nodes.txt'
+var_nodes = {}
+with open(in11, 'r') as f:
+    for line in f:
+        var_nodes[utils.clean_line(line)] = 1
+
+in12 = io_folder_path + 'collocations.txt'
+collocations = {}
+with open(in12, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        splits = line.split("::")
+        for node in splits:
+            collocations[node] = 1
 
 all_nodes = {}
 
@@ -19,6 +42,15 @@ with open(in2, 'r') as f:
         if len(splits) > 1:
             all_nodes[splits[0]] = 1
             all_nodes[splits[1]] = 1
+
+tensors_sizes = {}
+with open(in6, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        splitted = line.split('::')
+        tensor_size = int(splitted[1])
+        tensor_name = splitted[0]
+        tensors_sizes[tensor_name] = tensor_size
 
 no_op_nodes = {}
 with open(in4, 'r') as f:
@@ -52,6 +84,7 @@ nf_nodes_memory = {}
 additional_memory = {}
 res_memory = {}
 nf_res_memory = {}
+leaking = True
 with open(in1, 'r') as f:
     for line in f:
         if not '_TFProfRoot' in line:
@@ -68,7 +101,7 @@ with open(in1, 'r') as f:
 
                 if len(mem_cons) > 2:
                     res_cons = text_to_bytes(mem_cons[2].split('/')[0])
-                    if res_cons > 0:
+                    if res_cons > 0 and node_name not in var_nodes:#(not leaking or node_name in var_nodes):
                         if node_name in all_nodes:
                             res_memory[node_name] = res_cons
                         else:
@@ -103,38 +136,73 @@ with open(in1, 'r') as f:
             
 print(sum_inits/(1024*1024*1024))
 
-for node, val in all_nodes.items():
-    found = False
+""" for node, val in all_nodes.items():
+    #found = False
     if (val == 1 or nodes_memory[node] == 0) and not node.startswith('^') and node not in no_op_nodes and node not in do_not_check_ops:
         for node_name in nf_nodes_memory.keys():
             if node in node_name:
                 found = True
                 nodes_memory[node] = nf_nodes_memory[node_name]
-                print(nf_nodes_memory[node_name])
-                break
+                break 
 
     if (val == 1 or node not in res_memory or res_memory[node] == 0) and not node.startswith('^') and node not in no_op_nodes and node not in do_not_check_ops:
         for node_name in nf_res_memory.keys():
             if node in node_name:
                 res_memory[node] = nf_res_memory[node_name]
-                print(nf_res_memory[node_name])
-                break
+                break  """
 
-    if not found and val == 1:        
+for node, val in all_nodes.items():
+    if val == 1:        
         nodes_memory[node] = 0
-        
+smm = 0
+
+"""for node, size in nodes_memory.items():
+  if node in tensors_sizes and size > tensors_sizes[node] and node not in ref_nodes:
+    print(node + '::' + str(size - (tensors_sizes[node] if node in tensors_sizes else size))) """
+
+""" for node, size in tensors_sizes.items():
+    if (node not in nodes_memory or size > nodes_memory[node]) and node not in ref_nodes and not 'control_dependency':# in node and not node.endswith('read'): 
+        smm += size - (nodes_memory[node] if node in nodes_memory else 0)
+        #print(node + '::' + str(size - (nodes_memory[node] if node in nodes_memory else 0)))
+        nodes_memory[node] = size
+
+print(smm/(1024*1024*1024)) """
+
+summ = 0
 with open(out1, 'w') as f:
     for key, val in nodes_memory.items():
         f.write(key + '::' + str(int(val)) + '\n')
+        summ += val
+print(summ/1000000000)
 
+summ = 0
+print(len(res_memory))
+res_memory= {}
 with open(out2, 'w') as f:
     for key, val in res_memory.items():
         f.write(key + '::' + str(int(val)) + '\n')
+        summ += val
 
-with open(out1_1, 'w') as f:
+print(summ/1000000000)
+
+
+""" with open(out1_1, 'w') as f:
     for key, val in nf_nodes_memory.items():
         f.write(key + '::' + str(int(val)) + '\n')
 
 with open(out2_1, 'w') as f:
     for key, val in nf_res_memory.items():
-        f.write(key + '::' + str(int(val)) + '\n')
+        f.write(key + '::' + str(int(val)) + '\n') """
+
+
+
+
+"""not node_name.endswith(('transpose', 'transpose_1', 'transpose_2', 'transpose_3', 'transpose_4','transpose_5', \
+                                                                'slice', 'slice_1', 'slice_2', 'slice_3', 'slice_4', 'slice_5',\
+                                                                'cast',\
+                                                                'split','split_1', 'split_2', 'split_3', 'split_4', 'split_5', \
+                                                                'concat', 'concat_1', 'concat_2', 'concat_3', 'concat_4',
+                                                                'stridedslicegrad', 
+                                                                'randomuniform',
+                                                                'matmul', 'matmul_1', 'matmul_2', 'matmul_3', 'matmul_4', 
+                                                                'pad'))"""

@@ -58,8 +58,13 @@ for i in range(0, len(outs)):
     while not src_nodes.empty():
         current_node = src_nodes.get()
         current_level = nodes_levels[current_node]
+        if current_node == "birnn/stack_bidirectional_rnn/cell_0/bidirectional_rnn/bw/bw/while/identity_1":
+                print(graph[current_node]) 
         if current_node in graph.keys():
             for adj in graph[current_node]:
+                if adj == "birnn/stack_bidirectional_rnn/cell_0/bidirectional_rnn/bw/bw/while/merge_1":
+                    print(current_node)
+                    print(in_degrees[adj])
                 in_degrees[adj] -= 1
                 if in_degrees[adj] == 0:
                     src_nodes.put(adj)

@@ -1,6 +1,6 @@
 # node class: name and level:
 class NodeProps:
-    def __init__(self, duration = 0, level = -1, start_time = -1 , end_time = -1, part = -1, parents = [], children = []):
+    def __init__(self, duration = 1, level = -1, start_time = -1 , end_time = -1, part = -1, parents = [], children = []):
         self.duration = duration
         self.level = level
         self.start_time = start_time

@@ -36,7 +36,7 @@ in12 = io_folder_path + 'vanilla_cleaned.place'
 out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
-no_of_desired_groups = 8
+no_of_desired_groups = 4
 memory_limit_per_group = 30 * 1024 * 1024 * 1024
 
 #tst
@@ -86,7 +86,7 @@ with open(in9, 'r') as f:
         no_op_nodes[utils.clean_line(line)] = 1
 
 # getting time (weight) info for nodes
-analysis_graph = utils.read_profiling_file(in2, True)
+analysis_graph = utils.read_profiling_file_v2(in2)
 
 sudo_nodes = {}
 for node, node_props in all_nodes.items():
@@ -295,7 +295,7 @@ while free_nodes:
         paths.append(current_path)
         groups_weights.append(current_path_weight)
         paths_lengths.append(len(current_path))
-        if len(paths) <= no_of_desired_groups or current_path_weight_with_comm >= groups_weights[0]:
+        if len(paths) <= no_of_desired_groups or current_path_weight_with_comm >= groups_weights[0]/200:
             nodes_weighted_levels = get_nodes_weighted_levels(graph = tmp_rev_graph, edges_weights = edges_weights, src_nodes= src_nodes, previosly_visited= visited)
             free_nodes = []
             for node, weighted_level in nodes_weighted_levels.items():
@@ -547,18 +547,21 @@ def get_nodes_levels_dsc(_graph, edges_weights, bottom_levels, nodes_clusters = 
             if node in graph_keys:
                 graph_keys[node] = 1
 
-    traversal_queueu = queue.Queue()
+    traversal_queue = queue.Queue()
     for node, source_node in graph_keys.items():
         if source_node == 0:
             if bottom_levels:
                 nodes_levels[node] = analysis_graph[node].duration
             else:
                 nodes_levels[node] = 0
-            traversal_queueu.put(node)
+            traversal_queue.put(node)
 
+    traversal_queue = []
+    heapq.heappush(traversal_queue, (0, source_node_name))
     # start the traversal
-    while not traversal_queueu.empty():
-        current_node = traversal_queueu.get()
+    while traversal_queue:
+        current_node = heapq.heappop(traversal_queue)
+        current_node = current_node[1]
         if current_node in _graph:
             adj_nodes = _graph[current_node]
         else:
@@ -582,7 +585,7 @@ def get_nodes_levels_dsc(_graph, edges_weights, bottom_levels, nodes_clusters = 
                 nodes_levels[adj_node] = new_level
             nodes_in_degrees[adj_node] -= 1
             if nodes_in_degrees[adj_node] == 0:
-                traversal_queueu.put(adj_node)
+                heapq.heappush(traversal_queue, (nodes_levels[current_node], adj_node))
 
     return nodes_levels
 
@@ -645,8 +648,40 @@ print('finish time: ' + str(makespan))
 print('Final merging is done: ' + str( time.time() - t0 ))
 t0 = time.time()      
 
-nodes_levels = get_nodes_levels_dsc(graph,edges_weights, False, nodes_final_clusters)
+#nodes_levels = get_nodes_levels_dsc(graph,edges_weights, False, nodes_final_clusters)
 
-makespan = calc_finish_time(len(nodes_final_clusters), nodes_final_clusters, nodes_levels, graph)
+# get nodes in degrees for the topological sort
+nodes_in_degrees = {}
+for node in all_nodes:
+    if node in rev_graph:
+        nodes_in_degrees[node] = len(rev_graph[node])
+    else:
+        nodes_in_degrees[node] = 0
 
-print('finish time: ' + str(makespan))
+traversal_queue = []
+heapq.heappush(traversal_queue,(0, source_node_name))
+groups_times_till_now = [0] * no_of_desired_groups
+nodes_levels_scheduled = {}
+for node in all_nodes:
+  nodes_levels_scheduled[node] = 0
+while traversal_queue:
+  current_node = heapq.heappop(traversal_queue)
+  node_level = current_node[0]
+  node_name = current_node[1]
+  current_node_group = nodes_final_clusters[node_name]
+  groups_times_till_now[current_node_group] = max(groups_times_till_now[current_node_group], node_level + analysis_graph[node_name].duration)
+  for adj in graph[node_name]:
+    adj_node_group = nodes_final_clusters[adj]
+    new_level = groups_times_till_now[adj_node_group]
+    if adj_node_group != current_node_group:
+      new_level = max(nodes_levels_scheduled[adj], \
+        max(new_level, node_level + analysis_graph[node_name].duration + edges_weights[node_name][adj]))
+    
+    nodes_levels_scheduled[adj] = new_level
+    nodes_in_degrees[adj] -= 1
+    if nodes_in_degrees[adj] == 0:    
+      heapq.heappush(traversal_queue, (new_level, adj))
+
+#makespan = calc_finish_time(len(nodes_final_clusters), nodes_final_clusters, nodes_levels, graph)
+        
+print('finish time: ' + str(nodes_levels_scheduled[sink_node_name]))

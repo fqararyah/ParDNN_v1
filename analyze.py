@@ -16,6 +16,7 @@ in3 = io_folder_path + 'placement.place'#'mixed_placement_v_part_nc.place'#'vani
 in4 = io_folder_path + network_app + '_src_sink_low.dot' #'part_1_39_src_sink.dot'  #part_8_1799
 in5 = io_folder_path + 'tensors_sz_32_low.txt'
 in6 = io_folder_path + 'memory.txt'
+in6_b = io_folder_path + 'res_memory.txt'
 
 analysis_graph = utils.read_profiling_file_v2(in1)
 
@@ -99,7 +100,7 @@ offset_x = 20
 offset_y = 20
 graphics_window_width = 1300
 graphics_window_height = 600
-levels_to_represent = min(30, int(max_level))
+levels_to_represent = min(400, int(max_level))
 start_from_level = 100
 end_at_level = start_from_level + levels_to_represent
 first_node_in_the_graph_to_show_start_time = 0
@@ -339,6 +340,13 @@ with open(in6, 'r') as f:
         splitted = line.split('::')
         nodes_memory[splitted[0]] = splitted[1] """
 
+nodes_res_memory = {}
+with open(in6_b, 'r') as f:
+    for line in f:
+        line = utils.clean_line(line)
+        splitted = line.split('::')
+        node_name = splitted[0].lower()
+        nodes_res_memory[node_name] = int(splitted[1])
 
 gvz = {}
 gvz_colors = {}
@@ -418,12 +426,12 @@ with open(io_folder_path + '/vis/' + 'part_' + str(start_from_level) + '_' + str
         tensor_size = str(int(int(tensors_sizes[nodes_keys_mappig[src]]) * comm_transfer_rate +
                               comm_latency)) if nodes_keys_mappig[src] in tensors_sizes else '?'
         f.write(
-            '"' + src + '" [style=filled, fillcolor = ' + gvz_colors[src] + ' tooltip="' + nodes_keys_mappig[src] + '"]\n')
+            '"' + src + '" [style=filled, fillcolor = ' + (gvz_colors[src] if src in nodes_res_memory else 'black') + ' tooltip="' + nodes_keys_mappig[src] + '"]\n')
         for dst_item in dst:
             f.write('"' + str(src) + '"' + ' -> ' +
                     '"' + str(dst_item) + '"' + ('[ label="' + tensor_size + '" ]\n' if with_tensors else '\n'))
             f.write(
-                '"' + dst_item + '" [style=filled, fillcolor = ' + gvz_colors[dst_item] + ' tooltip="' + nodes_keys_mappig[dst_item] + '"]\n')
+                '"' + dst_item + '" [style=filled, fillcolor = ' + (gvz_colors[dst_item] if dst_item in nodes_res_memory else 'black') + ' tooltip="' + nodes_keys_mappig[dst_item] + '"]\n')
     f.write("}")
 
 utils.write_dot_of_nodes_at_levels(start_from_level, end_at_level, nodes_levels, in4,

@@ -1,7 +1,7 @@
 import clean_logs
-import classify_ops
 import transform_dag
 import add_src_sink
+import classify_ops
 import reverse_graph
 import topological_sort
 import avg_times
