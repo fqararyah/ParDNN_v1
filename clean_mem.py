@@ -177,7 +177,7 @@ print(summ/1000000000)
 
 summ = 0
 print(len(res_memory))
-res_memory= {}
+#res_memory= {}
 with open(out2, 'w') as f:
     for key, val in res_memory.items():
         f.write(key + '::' + str(int(val)) + '\n')
@@ -186,6 +186,10 @@ with open(out2, 'w') as f:
 print(summ/1000000000)
 
 
+for node in var_nodes:
+  if nodes_memory[node] > tensors_sizes[node]:
+    if (nodes_memory[node] - tensors_sizes[node]) / 1000000 >= 1.0:
+      print(node + '::' + str( (nodes_memory[node] - tensors_sizes[node]) / 1000000))
 """ with open(out1_1, 'w') as f:
     for key, val in nf_nodes_memory.items():
         f.write(key + '::' + str(int(val)) + '\n')

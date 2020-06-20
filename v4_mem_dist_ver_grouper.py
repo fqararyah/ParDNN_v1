@@ -37,7 +37,7 @@ out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
 no_of_desired_groups = 2
-memory_limit_per_group = 3200 * 1024 * 1024 * 1024
+memory_limit_per_group = 30 * 1024 * 1024 * 1024
 
 # tst
 comm_latency = 45
@@ -155,6 +155,10 @@ with open(in11, 'r') as f:
     for line in f:
         var_nodes[utils.clean_line(line)] = 1
 
+""" for node in var_nodes:
+  if node not in nodes_collocation_groups:
+    print('xxx')
+ """
 vanilla_placement = {}
 with open(in12, 'r') as f:
     for line in f:
@@ -1624,7 +1628,7 @@ def prepare_for_memory_balancing_round(round_no):
             final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]
                                                          ] += commulative_memory_from_parents_to_children[node_group]
 
-        if final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]] > (3200 * 1024 * 1024 * 1024):
+        if final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]] > (32 * 1024 * 1024 * 1024):
             memory_limit_is_exceeded = True
             if node_group < exceeding_group_no: 
                 exceeding_group_no = node_group
@@ -1709,6 +1713,7 @@ non_mergable_nodes = []
 for i in range(0, no_of_desired_groups):
     non_mergable_nodes.append([])
 
+mov_count = 0
 fuck = 0
 group_no = 0
 while False:
@@ -2025,6 +2030,7 @@ while False:
                                               str(nodes_mem_potentials[node_name]))
                                     merged_nodes[node_name] = 1
                                     nodes_groups[node_name] = final_group_indx
+                                    mov_count += 1
 
                                     if node_name in var_nodes:
                                         final_groups_memory_consumptions[node_group][:
@@ -2049,6 +2055,7 @@ while False:
                                         collocation_group_indx = nodes_collocation_groups[node_name]
                                         for coll_node in collocations[collocation_group_indx]:
                                             nodes_groups[coll_node] = final_group_indx
+                                            mov_count += 1
 
                                     if node_name not in var_nodes:
                                         for child in graph[node_name]:
@@ -2152,12 +2159,16 @@ for level in levels_indices_map.keys():
         print(_str)
 print(fuck) """
 
+print('moved nodes::' + str(mov_count))
+
 with open(out1, 'w') as f:
     smm = [0] * (no_of_desired_groups + 1)
     light_levels_sum = [0] * (no_of_desired_groups + 1)
     cntt = [0] * (no_of_desired_groups + 1)
     count = [0] * (no_of_desired_groups + 1)
     for node, group in nodes_groups.items():
+        #if node in var_nodes or node in ref_nodes or node in var_nodes:
+            #continue
         if node in vanilla_placement and vanilla_placement[node] == '-1':
             f.write(node + ' -1\n')
         else:

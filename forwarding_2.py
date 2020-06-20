@@ -68,6 +68,7 @@ with open(in3, 'r') as f:
       else:
         exists = False
         smm += int(splits[2])
+        print(splits[1])
 
       if (node not in res_nodes or res_nodes[node] < int(splits[2])):
         overall += int(splits[2])
@@ -80,14 +81,20 @@ print('wasted mem::' + str(smm/(1024*1024*1024)))
 print('overall mem::' + str(overall/(1024*1024*1024)))
 
 mappings = {}
+included = {}
 forwarding_paths = {}
 for node in res_nodes:
   src = node
   forwarding_paths[src] = []
+  included[src] = 1
   while src in forwarding_parent:
-    if forwarding_parent[src] not in res_nodes or res_nodes[forwarding_parent[src]] <= res_nodes[node]:
-      forwarding_paths[node].append(forwarding_parent[src])
-      src = forwarding_parent[src]
+    if forwarding_parent[src] not in res_nodes or res_nodes[forwarding_parent[src]] <= res_nodes[node] and src not in included:
+      if forwarding_parent[src] not in included:
+        forwarding_paths[node].append(forwarding_parent[src])
+        included[forwarding_parent[src]] = 1
+        src = forwarding_parent[src]
+      else:
+        break
     else:
       break
   
@@ -138,6 +145,11 @@ with open(out2, 'w') as f:
 
 smm = 0
 
+for path in forwarding_paths.values():
+  smm += len(path)
+print(smm)
+
+smm = 0
 for node, path in forwarding_paths.items():
   #print(path)
   node = node.lower()
