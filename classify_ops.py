@@ -78,6 +78,7 @@ collocations = {}
 collocated = {}
 for node in graph:
   if node.startswith('^'):
+    no_ops[node] = 1
     continue
   if node.endswith(('applyadam','applymomentum')) and node in ref_ops:
     collocated[node] = rev_graph[node][0]

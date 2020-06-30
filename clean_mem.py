@@ -1,4 +1,5 @@
 import utils
+from os import walk
 
 io_folder_path = utils.io_folder_path
 in1 = io_folder_path + 'mem.txt'
@@ -7,9 +8,6 @@ in4 = io_folder_path + 'no_ops.txt'
 in5 = io_folder_path + 'operations_attributes.txt'
 in6 = io_folder_path + 'tensors_sz_32_low.txt'
 out1 = io_folder_path + 'memory.txt'
-out1_1 = io_folder_path + 'nf_memory.txt'
-out2 = io_folder_path + 'res_memory.txt'
-out2_1 = io_folder_path + 'nf_res_memory.txt'
 
 in10 = io_folder_path + 'ref_nodes.txt'
 
@@ -80,76 +78,46 @@ def text_to_bytes(mem_cons):
     return node_mem_cons
 
 nodes_memory = {}
-nf_nodes_memory = {}
-additional_memory = {}
-res_memory = {}
-nf_res_memory = {}
-leaking = True
-with open(in1, 'r') as f:
-    for line in f:
-        if not '_TFProfRoot' in line:
-            line = utils.clean_line_keep_spaces(line)
-            splits = line.split('::(')
-            if len(splits) < 2:
-                splits = line.split(' (')
 
-            if len(splits) > 1:
-                node_name = splits[0].lower()
-                node_name = utils.clean_line(node_name)
+files = []
+for (dirpath, dirnames, filenames) in walk(io_folder_path):
+    files.extend(filenames)
+    break
 
-                mem_cons = utils.clean_line(splits[1]).split(',')
+for _file in files:
+  if 'mem_' in _file:
+    with open(io_folder_path + _file, 'r') as f:
+        for line in f:
+            if not '_TFProfRoot' in line:
+                line = utils.clean_line_keep_spaces(line)
+                splits = line.split('::(')
+                if len(splits) < 2:
+                    splits = line.split(' (')
 
-                if len(mem_cons) > 2:
-                    res_cons = text_to_bytes(mem_cons[2].split('/')[0])
-                    if res_cons > 0 and node_name not in var_nodes:#(not leaking or node_name in var_nodes):
-                        if node_name in all_nodes:
-                            res_memory[node_name] = res_cons
-                        else:
-                            nf_res_memory[node_name] = res_cons
+                if len(splits) > 1:
+                    node_name = splits[0].lower()
+                    node_name = utils.clean_line(node_name)
 
-                mem_cons = mem_cons[-1]
-                mem_cons = mem_cons.split('/')[0]
+                    mem_cons = utils.clean_line(splits[1]).split(',')
 
-                node_mem_cons = text_to_bytes(mem_cons)
-                
-                #if node_name in tensors_sizes:
-                #    nodes_memory[node_name] = abs(max(tensors_sizes[node_name], node_mem_cons))
-                #else:
-                if node_name in all_nodes:
-                    nodes_memory[node_name] = node_mem_cons
-                elif node_mem_cons > 0:
-                    nf_nodes_memory[node_name] = node_mem_cons
-                    #if node_name in all_nodes and node_mem_cons > 0:
-                    #   print(node_mem_cons)
-                
-                    #print(node_name + ' ' + str(node_mem_cons))
-                #if node_mem_cons > 0 and node_name in all_nodes:
-                # print(node_name)
+                    mem_cons = mem_cons[-1]
+                    mem_cons = mem_cons.split('/')[0]
 
-                if node_name in all_nodes:
-                    all_nodes[node_name] = 0
+                    node_mem_cons = text_to_bytes(mem_cons)
+          
+                    if node_name in all_nodes:
+                      if node_name not in nodes_memory or nodes_memory[node_name] < node_mem_cons:
+                        nodes_memory[node_name] = node_mem_cons
 
-                if node_name not in all_nodes:
-                    if node_name in nodes_memory and nodes_memory[node_name] > 0:
-                        print(node_name)
-                        sum_inits += nodes_memory[node_name]
+                    if node_name in all_nodes:
+                        all_nodes[node_name] = 0
+
+                    #if node_name not in all_nodes:
+                    #    if node_name in nodes_memory and nodes_memory[node_name] > 0:
+                    #        print(node_name)
+                    #        sum_inits += nodes_memory[node_name]
             
-print(sum_inits/(1024*1024*1024))
-
-""" for node, val in all_nodes.items():
-    #found = False
-    if (val == 1 or nodes_memory[node] == 0) and not node.startswith('^') and node not in no_op_nodes and node not in do_not_check_ops:
-        for node_name in nf_nodes_memory.keys():
-            if node in node_name:
-                found = True
-                nodes_memory[node] = nf_nodes_memory[node_name]
-                break 
-
-    if (val == 1 or node not in res_memory or res_memory[node] == 0) and not node.startswith('^') and node not in no_op_nodes and node not in do_not_check_ops:
-        for node_name in nf_res_memory.keys():
-            if node in node_name:
-                res_memory[node] = nf_res_memory[node_name]
-                break  """
+#print(sum_inits/(1024*1024*1024))
 
 for node, val in all_nodes.items():
     if val == 1:        
@@ -160,13 +128,13 @@ smm = 0
   if node in tensors_sizes and size > tensors_sizes[node] and node not in ref_nodes:
     print(node + '::' + str(size - (tensors_sizes[node] if node in tensors_sizes else size))) """
 
-""" for node, size in tensors_sizes.items():
-    if (node not in nodes_memory or size > nodes_memory[node]) and node not in ref_nodes and not 'control_dependency':# in node and not node.endswith('read'): 
+for node, size in tensors_sizes.items():
+    if (node not in nodes_memory or size > nodes_memory[node]) and node not in ref_nodes and not 'control_dependency'in node and node not in no_op_nodes: #and not node.endswith('read'): 
         smm += size - (nodes_memory[node] if node in nodes_memory else 0)
         #print(node + '::' + str(size - (nodes_memory[node] if node in nodes_memory else 0)))
         nodes_memory[node] = size
 
-print(smm/(1024*1024*1024)) """
+print(smm/(1024*1024*1024))
 
 summ = 0
 with open(out1, 'w') as f:
@@ -175,38 +143,14 @@ with open(out1, 'w') as f:
         summ += val
 print(summ/1000000000)
 
-summ = 0
-print(len(res_memory))
-#res_memory= {}
-with open(out2, 'w') as f:
-    for key, val in res_memory.items():
-        f.write(key + '::' + str(int(val)) + '\n')
-        summ += val
-
-print(summ/1000000000)
-
-
-for node in var_nodes:
-  if nodes_memory[node] > tensors_sizes[node]:
+smm = 0
+for node in nodes_memory:
+  if node.endswith(('reshape', 'reshape_1')):
+    smm += nodes_memory[node]
+  if node in tensors_sizes and nodes_memory[node] > tensors_sizes[node]:
     if (nodes_memory[node] - tensors_sizes[node]) / 1000000 >= 1.0:
-      print(node + '::' + str( (nodes_memory[node] - tensors_sizes[node]) / 1000000))
-""" with open(out1_1, 'w') as f:
-    for key, val in nf_nodes_memory.items():
-        f.write(key + '::' + str(int(val)) + '\n')
+      print('1-' + node + '::' + str( (nodes_memory[node] - tensors_sizes[node]) / 1000000))
+  elif node not in tensors_sizes and nodes_memory[node] > 0:
+      print('2-' + node + '::' + str( (nodes_memory[node]) / 1000000))
 
-with open(out2_1, 'w') as f:
-    for key, val in nf_res_memory.items():
-        f.write(key + '::' + str(int(val)) + '\n') """
-
-
-
-
-"""not node_name.endswith(('transpose', 'transpose_1', 'transpose_2', 'transpose_3', 'transpose_4','transpose_5', \
-                                                                'slice', 'slice_1', 'slice_2', 'slice_3', 'slice_4', 'slice_5',\
-                                                                'cast',\
-                                                                'split','split_1', 'split_2', 'split_3', 'split_4', 'split_5', \
-                                                                'concat', 'concat_1', 'concat_2', 'concat_3', 'concat_4',
-                                                                'stridedslicegrad', 
-                                                                'randomuniform',
-                                                                'matmul', 'matmul_1', 'matmul_2', 'matmul_3', 'matmul_4', 
-                                                                'pad'))"""
+print('vars sum::'+str(smm / (1024*1024*1024)))

@@ -51,9 +51,10 @@ for i in range(0, len(outs)):
 
     for key, val in src_nodes_map.items():
         if val == 1:
+            print(key)
             src_nodes.put(key)
             nodes_levels[key] = 0
-
+    print('---------')
     # topological sort
     while not src_nodes.empty():
         current_node = src_nodes.get()

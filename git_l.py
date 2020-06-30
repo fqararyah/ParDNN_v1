@@ -17,7 +17,7 @@ in1 = io_folder_path + network_app + \
 in2 = io_folder_path + 'operations_attributes.txt'
 in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'
 in6 = io_folder_path + 'memory.txt'
-in6_b = io_folder_path + 'res_memory.txt'
+in6_b = io_folder_path + 'res_nodes_cleaned.txt'
 in7 = io_folder_path + 'placement.place'
 
 graph = {}
@@ -183,7 +183,7 @@ for g_no in range(0, 8):
   res_sum = 0
   norm_sum = 0
   for node, mem in nodes_memory.items():
-      if mem > 0 and node in nodes_groups and nodes_groups[node] == 0:# and nodes_levels[node] < 40000:
+      if mem > 0 and node in nodes_groups and nodes_groups[node] == 1:# and nodes_levels[node] < 40000:
           if node in var_ops:
               var_count += 1
               var_sum += mem

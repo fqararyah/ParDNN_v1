@@ -37,13 +37,13 @@ in12 = io_folder_path + 'vanilla_cleaned.place'
 out1 = io_folder_path + 'placement.place'
 
 # grouper parameters
-no_of_desired_groups = 2
-memory_limit_per_group = 28 * 1024 * 1024 * 1024
+no_of_desired_groups = 4
+memory_limit_per_group = 26 * 1024 * 1024 * 1024
 
 # tst
 comm_latency = 45
 average_tensor_size_if_not_provided = 1
-comm_transfer_rate = 1000000 / (140 * 1024 * 1024 * 1024)
+comm_transfer_rate = 1000000 / (50 * 1024 * 1024 * 1024)
 
 # will contain the graph as an adgacency list
 graph = {}
@@ -197,16 +197,25 @@ for node in all_nodes:
 sum_comms = 0
 sum_comps = 0
 for node in graph.keys():
-  sum_comps += analysis_graph[node].duration
-  if node in edges_weights and graph[node] and node not in var_nodes:
-    for adj_node in graph[node]:
-        sum_comms += edges_weights[node][adj_node]
+    sum_comps += analysis_graph[node].duration
+    if node in edges_weights and graph[node] and node not in var_nodes:
+        for adj_node in graph[node]:
+            sum_comms += edges_weights[node][adj_node]
 
 # nodes bottom levels
 
+""" for node in graph:
+  no_ops_parent = True
+  for adj in graph[node]:
+    if adj not in no_op_nodes and 'control_dep' not in adj and 'group_dep' not in adj:
+      no_ops_parent = False
+      break
+  if no_ops_parent and node not in ref_nodes and node not in no_op_nodes:
+    print(node)
+exit() """
 
 def get_nodes_weighted_levels(graph, edges_weights, src_nodes=None, previosly_visited=[], grouped=False, nodes_groups={}, is_rev=True, _nodes_in_degrees=rev_nodes_in_degrees):
-    # getting the sources of the graph to start the topological traversal from them
+        # getting the sources of the graph to start the topological traversal from them
     graph_keys = {}
     nodes_weighted_levels = {}
     tmp_nodes_in_degrees = copy.deepcopy(_nodes_in_degrees)
@@ -276,9 +285,9 @@ tmp_nodes_in_degrees = copy.deepcopy(nodes_in_degrees)
 nodes_weighted_levels = get_nodes_weighted_levels(
     rev_graph, edges_weights, src_nodes=[sink_node_name])
 strongly_uni_cp = False
-
 for node, weighted_level in nodes_weighted_levels.items():
     heapq.heappush(free_nodes, (-weighted_level, node))
+
 
 tmp_rev_nodes_in_degrees = copy.deepcopy(rev_nodes_in_degrees)
 while free_nodes:
@@ -571,7 +580,6 @@ groups_weights, initial_groups = (list(t) for t in zip(
     *sorted(zip(groups_weights, initial_groups))))
 initial_groups.append(first_initial_group)
 groups_weights.append(fisrt_group_weight)
-print(initial_groups[-1][-1])
 
 final_groups = []
 final_groups_weights = []
@@ -1268,13 +1276,6 @@ while improvement_achieved and iter < iterations_threshold:
                                                     (switch_src_new_level + analysis_graph[switch_src_node].duration + (edges_weights[switch_src_node][adj] if nodes_groups[adj] != switch_dst_node_group else 0) +
                                                      nodes_levels_scheduled_bottom[adj]))
 
-                    """ print('-------------------')
-                    print(nodes_levels_scheduled_bottom[switch_dst_node])
-                    print(switch_src_new_level)
-                    print(current_max_reduction)
-                    print(switch_src_node)
-                    print(switch_dst_node)
-                    print('-------------------')  """
                     if reduced and current_max_reduction > max_reduction:
                         max_reduction = current_max_reduction
                         improvement_achieved = True
@@ -1338,8 +1339,6 @@ while improvement_achieved and iter < iterations_threshold:
     iter += 1
     # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-#print('total_switching_gain = ' + str(total_switching_gain))
-# exit()
 print('Refinement is done: ' + str(time.time() - t0))
 t0 = time.time()
 # handle collocation groups:
@@ -1396,6 +1395,8 @@ with open(in6_b, 'r') as f:
         splitted = line.split('::')
         node_name = splitted[0].lower()
         nodes_res_memory[node_name] = int(splitted[1])
+        if node_name not in nodes_memory or nodes_memory[node_name] < int(splitted[1]):
+          nodes_memory[node_name] = int(splitted[1])
         res_nodes[node_name] = 1
 
 forwarding_paths = {}
@@ -1412,20 +1413,7 @@ with open(in6_c, 'r') as f:
                 forwarding_paths_mapping[node] = splits[0]
 
             terminal_nodes[splits[-1]] = splits[0]
-            if splits[0] == 'gradients/l2_loss/l2loss_405_grad/mul':
-                print(
-                    'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh')
-                print(splits[-1])
-            if splits[-1] == 'gradients/unit_1_48/bn_2/batchnorm/mul_grad/mul':
-                print('ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ')
-                print(splits[0])
             forwarding_paths[splits[0]] = splits[1:]
-
-for node, src in terminal_nodes.items():
-    max_leveled = ''
-    max_level = 0
-    if src == 'gradients/addn_14':
-        print('kkkkkkkkkkkkkkkkkkkkkkk')
 
 for node in res_nodes.keys():
     if node not in forwarding_paths_mapping:
@@ -1472,26 +1460,27 @@ def prepare_for_memory_balancing_round(round_no):
                 max([current_node_end_time + (int(edges_weights[current_node][adj_node]) if current_node_group != nodes_groups[adj_node] else 1),
                      groups_times_till_now[adj_node_group], nodes_levels_scheduled[adj_node]])
             tmp_nodes_in_degrees[adj_node] -= 1
-            # print(tmp_nodes_in_degrees[adj_node])
             if tmp_nodes_in_degrees[adj_node] == 0:
-                # print(adj_node)
                 heapq.heappush(traversal_queue,
                                (nodes_levels_scheduled[adj_node], adj_node))
 
-    # print('---------------------++--------------------------')
+    nodes_last_sudo_child ={}
+    for node in graph:
+      if node in ref_nodes or '/read' in node:
+        continue
+      for adj in graph[node]:
+        if adj in no_op_nodes or 'control_dep' in adj:
+          if node not in nodes_last_sudo_child or nodes_levels_scheduled[adj] > nodes_last_sudo_child[node]:
+            nodes_last_sudo_child[node] = nodes_levels_scheduled[adj]
 
     for node, src in terminal_nodes.items():
         max_leveled = ''
         max_level = 0
         for child in graph[node]:
-            # if src == 'unit_1_52/conv_2/kernel/initializer/random_normal/randomstandardnormal':
-            #  print(nodes_levels_scheduled[child])
             if nodes_levels_scheduled[child] > max_level:
                 max_level = nodes_levels_scheduled[child]
                 max_leveled = child
 
-        if src == 'unit_2_33/bn_2/cond/merge_1':
-            print('kkkkkkkkkkkkkkkkkkkkkkk')
         after_terminal_nodes[src] = max_leveled
 
     for node, parents in rev_graph.items():
@@ -1537,8 +1526,11 @@ def prepare_for_memory_balancing_round(round_no):
                                                                                                                          (node in forwarding_paths_mapping and child in forwarding_paths_mapping and forwarding_paths_mapping[
                                                                                                                           child] != forwarding_paths_mapping[node])
                                                                                                                          or nodes_groups[child] != nodes_groups[node]
-                                                                                                                         ):
-                      # and 'control_dep' not in child and not child.startswith('^'):
+                                                                                                                         ) and\
+                                                                                                                           (('read' not in node and node not in ref_nodes)
+                                                                                                                            or nodes_groups[node]
+                                                                                                                             != nodes_groups[child]):
+                        # and 'control_dep' not in child and not child.startswith('^'):
                 parents_all_active_levels[node][child_group].append(
                     child_level)
                 if child_level > parents_last_active_levels[node][child_group]:
@@ -1602,45 +1594,12 @@ def prepare_for_memory_balancing_round(round_no):
         for end in ends:
             ends_levels[end] = level
 
-    for src, path in forwarding_paths.items():
-        path_comm_cost = [0] * no_of_desired_groups
-        for child in graph[src]:
-            path_comm_cost[nodes_groups[child]] = max(
-                path_comm_cost[nodes_groups[child]], edges_weights[src][child])
-        for parent in rev_graph[src]:
-            path_comm_cost[nodes_groups[parent]] += edges_weights[parent][src]
-
-        for node in path:
-            added = False
-            for child in graph[node]:
-                cost = edges_weights[node][child]
-                if cost != 0:
-                    path_comm_cost[nodes_groups[child]] += cost
-                    break
-            for parent in rev_graph[node]:
-                path_comm_cost[nodes_groups[parent]
-                               ] += edges_weights[parent][node]
-
-        forwarding_paths_comms[src] = path_comm_cost
-
-    """ if round_no == 5:
-      smm = 0
-      for col, mem in nodes_mem_potentials.items():
-        print(col + '::' + str(mem))
-        smm += mem
-      print(smm)
-      exit() """
     final_groups_memory_consumptions = np.zeros(
         (no_of_desired_groups, len(levels_indices_map)), dtype=np.int64)
 
     residual_memories = [0] * no_of_desired_groups
     for node in var_nodes.keys():
         residual_memories[nodes_groups[node]] += nodes_memory[node]
-
-    """ print('-----------------')
-    for group_num in range(0, no_of_desired_groups):
-        print(residual_memories[group_num] / (1024 * 1024 * 1024))
-    print('-----------------') """
 
     for src, path in forwarding_paths.items():
         path_src_level = nodes_levels_scheduled[src]
@@ -1649,35 +1608,33 @@ def prepare_for_memory_balancing_round(round_no):
             start_levels_forwarding_paths[path_src_level] = []
         start_levels_forwarding_paths[path_src_level].append(src)
 
-#      print(src)
-   #     print(after_terminal_nodes[src])
-    #    print(len(after_terminal_nodes))
-     #   print('-------------------------')
         path_dst_level = nodes_levels_scheduled[after_terminal_nodes[src]]
-        #ter = after_terminal_nodes[src]
 
         forwarding_paths_end_levels[src] = path_dst_level
         if path_dst_level not in end_levels_forwarding_paths:
             end_levels_forwarding_paths[path_dst_level] = []
         end_levels_forwarding_paths[path_dst_level].append(src)
 
+    for node, last_sudo_level in nodes_last_sudo_child.items():
+      if nodes_memory[node] == 0:
+        continue
+      final_groups_memory_consumptions[nodes_groups[node]][levels_indices_map[nodes_levels_scheduled[node]] : levels_indices_map[last_sudo_level] ] +=\
+         nodes_memory[node]
+
     for src, start_level in forwarding_paths_start_levels.items():
         end_level = forwarding_paths_end_levels[src]
-        final_groups_memory_consumptions[nodes_groups[src]][levels_indices_map[start_level]                                                            :levels_indices_map[end_level]] += nodes_res_memory[src]
+        final_groups_memory_consumptions[nodes_groups[src]][levels_indices_map[start_level]:levels_indices_map[end_level]] += nodes_res_memory[src]
 
-        # if end_level - start_level > 776:
-        # print(str(start_level-end_level)+'::'+str(nodes_res_memory[src]))
-
-    """ for group_num in range(0, no_of_desired_groups):
-        print(residual_memories[group_num] / (1024 * 1024 * 1024))"""
     print('rr-------------rr')
 
     for group_num in range(0, no_of_desired_groups):
+        print(
+            np.amax(final_groups_memory_consumptions[group_num])/(1024*1024*1024))
         final_groups_memory_consumptions[group_num][:
                                                     ] += residual_memories[group_num]
         print(
             np.amax(final_groups_memory_consumptions[group_num])/(1024*1024*1024))
-
+        print("----------------------------------")
         if np.amax(final_groups_memory_consumptions[group_num]) > memory_limit_per_group + 2*1024*1024*1024:
             if group_num < exceeding_group_no:
                 exceeding_group_no = group_num
@@ -1698,19 +1655,15 @@ def prepare_for_memory_balancing_round(round_no):
             continue
 
         final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]] += (
-            node_memory if (node not in var_nodes and node not in ref_nodes) else 0)
+            node_memory if (node not in var_nodes and node not in ref_nodes and not 'read' in node) else 0)
         if node_scheduled_level not in visited_levels or visited_levels[node_scheduled_level][node_group] == 0:
             final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]
                                                          ] += commulative_memory_from_parents_to_children[node_group]
 
-        if final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]] > (29 * 1024 * 1024 * 1024):
+        if final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]] > (26 * 1024 * 1024 * 1024):
             memory_limit_is_exceeded = True
             if node_group < exceeding_group_no:
                 exceeding_group_no = node_group
-            """ print(final_groups_memory_consumptions[node_group][levels_indices_map[node_scheduled_level]])
-            print(node_scheduled_level)
-            print(node_group)
-            print('----------------------') """
 
         if node_indx in ends_levels and node_scheduled_level == ends_levels[node_indx]:
             commulative_memory_from_parents_to_children[
@@ -1729,13 +1682,40 @@ def prepare_for_memory_balancing_round(round_no):
                     subtract_commulative_memory_at[level][group_num] += node_memory
                 # else:
                   # if not node.endswith('/read'):
-                    #commulative_memory_from_parents_to_children[node_group] += node_memory
+                    # commulative_memory_from_parents_to_children[node_group] += node_memory
 
         if node_scheduled_level not in visited_levels:
             visited_levels[node_scheduled_level] = [0] * no_of_desired_groups
         visited_levels[node_scheduled_level][node_group] = 1
     print('bfbfbbfbfbf')
+    smm = 0
     if exceeding_group_no < no_of_desired_groups:
+
+        for src, path in forwarding_paths.items():
+          path_comm_cost = [0] * no_of_desired_groups
+          for child in graph[src]:
+            if nodes_groups[child] == exceeding_group_no:
+              path_comm_cost[nodes_groups[child]] = max(
+                  path_comm_cost[nodes_groups[child]], edges_weights[src][child])
+          for parent in rev_graph[src]:
+            if nodes_groups[parent] == exceeding_group_no:
+              path_comm_cost[nodes_groups[parent]] += edges_weights[parent][src]
+
+          for node in path:
+              added = False
+              for child in graph[node]:
+                  cost = edges_weights[node][child]
+                  if cost != 0:
+                    if nodes_groups[child] == exceeding_group_no:
+                      path_comm_cost[nodes_groups[child]] += cost
+                      break
+              for parent in rev_graph[node]:
+                if nodes_groups[parent] == exceeding_group_no:
+                  path_comm_cost[nodes_groups[parent]
+                                ] += edges_weights[parent][node]
+
+          forwarding_paths_comms[src] = path_comm_cost
+
         for collocation_group in collocations:
             collocation_final_group = nodes_groups[collocation_group[0]]
             if collocation_final_group == exceeding_group_no:
@@ -1766,15 +1746,18 @@ def prepare_for_memory_balancing_round(round_no):
                     for rev_adj in rev_graph[collocation_node]:
                         if nodes_groups[rev_adj] != collocation_final_group:
                             group_outside_comms += edges_weights[rev_adj][collocation_node]
-                        if rev_adj not in collocation_group:
+                        elif rev_adj not in collocation_group:
                             group_inside_comms += edges_weights[rev_adj][collocation_node]
 
                 nodes_mem_potentials[a_var_node] = collocation_group_memory
+                smm += collocation_group_memory
                 nodes_comms[a_var_node] = [
                     group_outside_comms] * no_of_desired_groups
                 nodes_comms[a_var_node][collocation_final_group] = group_inside_comms
-                heapq.heappush(collocated_nodes_heap, ((
-                    group_inside_comms + collocation_group_comp + 1) / (collocation_group_memory + 0.1), a_var_node))
+                heapq.heappush(collocated_nodes_heap, (-(
+                    group_inside_comms + 1) / (collocation_group_memory + 0.1), a_var_node))
+
+    print(smm)
 
     start_levels = start_levels_forwarding_paths.keys()
     start_levels_paths = start_levels_forwarding_paths.values()
@@ -1811,6 +1794,7 @@ while True:
     levels_indices_map = {}
     nodes_mem_potentials = {}
     collocated_nodes_heap = []
+    collocated_node_mem_mapping = {}
 
     print('before')
     [final_groups_memory_consumptions, nodes_list, scheduled_levels_list,
@@ -1845,21 +1829,30 @@ while True:
             if nodes_groups[this_node_path] == overflowed_group_no:
                 if this_node_path not in forwarded_paths_in_heap:
                     forwarded_paths_in_heap[this_node_path] = 1
-                    heapq.heappush(forwarding_paths_heap, ((forwarding_paths_comms[this_node_path][overflowed_group_no] + 0.1) / (nodes_res_memory[this_node_path] + 1),
+                    heapq.heappush(forwarding_paths_heap, (-(forwarding_paths_comms[this_node_path][overflowed_group_no] + 1) / (nodes_res_memory[this_node_path] + 0.1),
                                                            this_node_path))
         elif nodes_groups[this_level_node] == overflowed_group_no and this_level_node not in var_nodes and this_level_node not in ref_nodes and this_level_node \
-                not in no_op_nodes and 'control_dependency' not in this_level_node:
+                not in no_op_nodes and 'control_dependency' not in this_level_node and '/read' not in this_level_node:
             mem_pot = 0
             comm = 0
+            for child in graph[this_level_node]:
+              if nodes_groups[child] == overflowed_group_no:
+                comm = max(comm, edges_weights[this_level_node][child])
             for parent in rev_graph[this_level_node]:
-                if parent not in var_nodes and parent not in ref_nodes:
-                    comm += edges_weights[parent][this_level_node]
-                    mem_pot += max(nodes_memory[parent],
-                                   nodes_res_memory[parent])
+                if nodes_groups[parent] == overflowed_group_no:
+                  comm += edges_weights[parent][this_level_node]
+                if (parent not in ref_nodes and '/read' not in parent) or nodes_groups[parent] != overflowed_group_no:
+                  start_subtraction_level = nodes_levels_scheduled[parent]
+                  for child in graph[parent]:
+                      if child != this_level_node and nodes_groups[child] == this_level_node:
+                          if nodes_levels_scheduled[child] > start_subtraction_level:
+                              start_subtraction_level = nodes_levels_scheduled[child]
+                if start_subtraction_level < this_level:
+                  mem_pot += nodes_memory[parent]
             smm += mem_pot
-            if mem_pot > 0:
-                heapq.heappush(normal_nodes_heap,
-                               (-mem_pot/(comm+0.1), this_level_node))
+            # if mem_pot > 0:
+            heapq.heappush(normal_nodes_heap, ((comm+1) /
+                           (mem_pot + 0.1), this_level_node))
 
         if nodes_groups[this_level_node] != overflowed_group_no:
             node_index -= 1
@@ -1895,10 +1888,8 @@ while True:
 
             final_group_indx = -1
             min_val = math.inf
-            for iii in range(no_of_desired_groups):
-              if np.amax(final_groups_memory_consumptions[iii][:]) <min_val:
-                min_val = np.amax(final_groups_memory_consumptions[iii][:])
-                final_group_indx = iii
+            max_vals = np.amax(final_groups_memory_consumptions, axis=1)
+            final_group_indx = np.argmin(max_vals)
 
             if final_group_indx != overflowed_group_no:
                 merged = True
@@ -1918,11 +1909,28 @@ while True:
                             forwarding_paths_start_levels[candidate_node]]:levels_indices_map[forwarding_paths_end_levels[candidate_node]]] += nodes_res_memory[candidate_node] + 0
                 else:
                     for parent in rev_graph[candidate_node]:
-                        final_groups_memory_consumptions[final_group_indx][nodes_levels_scheduled[parent]                                                                           :nodes_levels_scheduled[candidate_node]] += nodes_memory[parent]
+                      if (parent not in ref_nodes and '/read' not in parent) or nodes_groups[parent] != final_group_indx:
+                        start_subtraction_level = nodes_levels_scheduled[parent]
+                        for child in graph[parent]:
+                            if child != candidate_node and nodes_groups[child] == final_group_indx:
+                                if nodes_levels_scheduled[child] > start_subtraction_level:
+                                    start_subtraction_level = nodes_levels_scheduled[child]
+
+                        final_groups_memory_consumptions[final_group_indx][levels_indices_map[start_subtraction_level]:levels_indices_map[\
+                          nodes_levels_scheduled[candidate_node]]] += nodes_memory[parent]
+                          
                     if np.amax(final_groups_memory_consumptions[final_group_indx][0]) > memory_limit_per_group:
                         for parent in rev_graph[candidate_node]:
-                            final_groups_memory_consumptions[final_group_indx][levels_indices_map[nodes_levels_scheduled[parent]]:
-                                                                               levels_indices_map[nodes_levels_scheduled[candidate_node]]] -= nodes_memory[parent]
+                          if (parent not in ref_nodes and '/read' not in parent) or nodes_groups[parent] != final_group_indx:
+                            start_subtraction_level = nodes_levels_scheduled[parent]
+                            for child in graph[parent]:
+                                if child != candidate_node and nodes_groups[child] == final_group_indx:
+                                    if nodes_levels_scheduled[child] > start_subtraction_level:
+                                        start_subtraction_level = nodes_levels_scheduled[child]
+
+                            final_groups_memory_consumptions[final_group_indx][levels_indices_map[start_subtraction_level]:levels_indices_map[\
+                              nodes_levels_scheduled[candidate_node]]] -= nodes_memory[parent]
+
                         merged = False
                 if merged:
                     if candidate_node in var_nodes:
@@ -1960,6 +1968,8 @@ while True:
                         nodes_groups[candidate_node] = final_group_indx
                         moved_nodes += 1
                         for parent in rev_graph[candidate_node]:
+                            if ('/read' in parent or parent in ref_nodes) and nodes_groups[parent] == overflowed_group_no:
+                              continue
                             start_subtraction_level = nodes_levels_scheduled[parent]
                             for child in graph[parent]:
                                 if child != candidate_node and nodes_groups[child] == overflowed_group_no:
@@ -1968,10 +1978,7 @@ while True:
                             if start_subtraction_level < nodes_levels_scheduled[candidate_node]:
                                 final_groups_memory_consumptions[overflowed_group_no][levels_indices_map[start_subtraction_level]+1:
                                                                                       levels_indices_map[nodes_levels_scheduled[candidate_node]]+1] -= nodes_memory[parent]
-                            # print('nmp::'+str(nodes_memory[parent]))
 
-                    # if overflow > 0:
-                    #  print(overflow)
                     overflow = final_groups_memory_consumptions[overflowed_group_no][
                         levels_indices_map[this_level]] - memory_limit_per_group
 
@@ -1980,16 +1987,17 @@ while True:
                 final_group_indx = -1
                 min_val = math.inf
                 for iii in range(no_of_desired_groups):
-                  if np.amax(final_groups_memory_consumptions[iii][:]) <min_val:
-                    min_val = np.amax(final_groups_memory_consumptions[iii][:])
-                    final_group_indx = iii
+                    if np.amax(final_groups_memory_consumptions[iii][:]) < min_val:
+                        min_val = np.amax(
+                            final_groups_memory_consumptions[iii][:])
+                        final_group_indx = iii
                 if final_group_indx == overflowed_group_no:
-                  continue
+                    continue
                 if nodes_groups[path_node] == overflowed_group_no and forwarding_paths_start_levels[path_node] < this_level \
                         and forwarding_paths_end_levels[path_node] > this_level:
                     final_groups_memory_consumptions[overflowed_group_no][levels_indices_map[
                         forwarding_paths_start_levels[path_node]]:levels_indices_map[forwarding_paths_end_levels[path_node]]] -= \
-                          nodes_res_memory[path_node] + 0
+                        nodes_res_memory[path_node] + 0
 
                     nodes_groups[path_node] = final_group_indx
                     moved_nodes += 1
@@ -2008,11 +2016,11 @@ while True:
                                 if start_subtraction_level < nodes_levels_scheduled[node]:
                                     final_groups_memory_consumptions[overflowed_group_no][levels_indices_map[start_subtraction_level]+1:
                                                                                           levels_indices_map[nodes_levels_scheduled[node]] + 1] -= nodes_memory[parent] + 0
-    
+
                 overflow = final_groups_memory_consumptions[overflowed_group_no][
-                                levels_indices_map[this_level]] - memory_limit_per_group
-                
-                if overflow <=0:
+                    levels_indices_map[this_level]] - memory_limit_per_group
+
+                if overflow <= 0:
                     break
 
         if overflow > 0:
@@ -2021,9 +2029,9 @@ while True:
             print(len(normal_nodes_heap))
             print(len(forwarding_paths_heap))
             print(analysis_graph[this_level_node].level)
+            print(this_level)
             print(overflow/(1024 * 1024 * 1024))
             smm = 0
-            print(fuck)
 
             parents_last_active_levels = {}
             parents_first_active_levels = {}
@@ -2060,13 +2068,13 @@ while True:
                 if prntt:
                     print(_str)
 
+            print(np.amax(final_groups_memory_consumptions, axis=1))
             exit()
 
         node_index -= 1
 
 max_mem = 0
 print('number of moved nodes= ' + str(moved_nodes))
-print(fuck)
 with open(out1, 'w') as f:
     smm = [0] * (no_of_desired_groups + 1)
     light_levels_sum = [0] * (no_of_desired_groups + 1)

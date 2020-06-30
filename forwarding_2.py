@@ -54,28 +54,22 @@ with open(in2, 'r') as f:
 res_nodes = {}
 smm = 0
 overall = 0
+wasted_nodes = {}
 with open(in3, 'r') as f:
   for line in f:
     line = utils.clean_line(line).lower()
     splits = line.split('::')
     node = ''
     if len(splits) > 2:
-      exists = True
       if splits[1] in all_nodes:
-        node = splits[1]
-      #elif splits[1].split('-')[0] in all_nodes:
-      #  node = splits[1].split('-')[0]
-      else:
-        exists = False
+        if (splits[1] not in res_nodes or res_nodes[splits[1]] < int(splits[2])):
+          overall += int(splits[2])
+          if splits[1] in res_nodes:
+            overall -= res_nodes[splits[1]]
+          res_nodes[splits[1]] = int(splits[2])
+      elif splits[1] not in wasted_nodes:
+        wasted_nodes[splits[1]] = 1
         smm += int(splits[2])
-        print(splits[1])
-
-      if (node not in res_nodes or res_nodes[node] < int(splits[2])):
-        overall += int(splits[2])
-        
-      if exists and (node not in res_nodes or res_nodes[node] < int(splits[2])):
-        res_nodes[node] = int(splits[2])
-      
 
 print('wasted mem::' + str(smm/(1024*1024*1024)))
 print('overall mem::' + str(overall/(1024*1024*1024)))
@@ -105,13 +99,13 @@ with open(out1, 'w') as f:
   for key, val in res_nodes.items():
     f.write(key + '::' + str(val) + '\n')
 
-placement = {}
+""" placement = {}
 with open(in4, 'r') as f:
   for line in f:
     line = utils.clean_line_keep_spaces(line)
     splits = line.split(' ')
     if len(splits) > 1:
-      placement[splits[0]] = splits[1]
+      placement[splits[0]] = splits[1] """
 
 nodes_levels = {}
 with open(in5, 'r') as f:
@@ -150,6 +144,13 @@ for path in forwarding_paths.values():
 print(smm)
 
 smm = 0
+for node, mem in res_nodes.items():
+  if node in all_nodes and (node not in nodes_memory or mem > nodes_memory[node]):
+    smm += mem - (nodes_memory[node] if node in nodes_memory else 0) 
+
+print(smm/(1000000000))
+
+""" smm = 0
 for node, path in forwarding_paths.items():
   #print(path)
   node = node.lower()
@@ -161,4 +162,4 @@ for node, path in forwarding_paths.items():
     nodes_levels[path[-1]] - nodes_levels[node] > 1500 and node in placement and placement[node] == '0':  
     smm += res_nodes[node]
 
-print(smm/(1000*1000*1000))
+print(smm/(1000*1000*1000)) """
