@@ -104,6 +104,9 @@ for _file in files:
                     mem_cons = mem_cons.split('/')[0]
 
                     node_mem_cons = text_to_bytes(mem_cons)
+
+                    if node_name == 'gradients/unit_2_9/bn_2/moments/squareddifference_grad/sub':
+                      print(node_mem_cons)
           
                     if node_name in all_nodes:
                       if node_name not in nodes_memory or nodes_memory[node_name] < node_mem_cons:
@@ -128,13 +131,13 @@ smm = 0
   if node in tensors_sizes and size > tensors_sizes[node] and node not in ref_nodes:
     print(node + '::' + str(size - (tensors_sizes[node] if node in tensors_sizes else size))) """
 
-for node, size in tensors_sizes.items():
+""" for node, size in tensors_sizes.items():
     if (node not in nodes_memory or size > nodes_memory[node]) and node not in ref_nodes and not 'control_dependency'in node and node not in no_op_nodes: #and not node.endswith('read'): 
         smm += size - (nodes_memory[node] if node in nodes_memory else 0)
         #print(node + '::' + str(size - (nodes_memory[node] if node in nodes_memory else 0)))
         nodes_memory[node] = size
 
-print(smm/(1024*1024*1024))
+print(smm/(1024*1024*1024)) """
 
 summ = 0
 with open(out1, 'w') as f:

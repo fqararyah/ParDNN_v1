@@ -1,8 +1,8 @@
 import utils
 
-io_folder_path= 'C:/Users/fareed/PycharmProjects/tf_project/inc/trn/'
+io_folder_path= 'C:/Users/fareed/PycharmProjects/tf_project/inc/e3d/'
 
-in1 = io_folder_path + 'trn_src_sink_nodes_levels_low.txt'
+in1 = io_folder_path + 'e3d_src_sink_nodes_levels_low.txt'
 in2 = io_folder_path + 'memory.txt'
 
 out1 = io_folder_path + 'levels_densities_6.txt'
@@ -67,5 +67,11 @@ densities, densities_memory, levels = (list(t) for t in zip(
 
 with open(out1, 'w') as f:
     for i in range(0, len(levels_density)):
-        f.write('-' + str(levels[i]) +'::' + str(densities[i]) + '::' + str(densities_memory[i] if i in levels_density_memory else 0) + '\n')
+        f.write('-' + str(levels[i]) +'::' + str(densities[i]) + '::' + str(densities_memory[i]/1000000000 if i in levels_density_memory else 0) + '\n')
 
+
+densities_memory, levels = (list(t) for t in zip(
+                *sorted(zip( densities_memory, levels), reverse=True)))
+
+for i in range(10):
+  print(str(densities_memory[i]/1000000000) + '::' + str(levels[i]))
