@@ -42,13 +42,15 @@ with open(in2, 'r') as f:
         ops_types[splits[0]] = splits[1]
         if splits[0].lower() not in graph:# fareed recheck
           continue
-        if splits[1] == 'noop':
+        if splits[1] == 'noop' or 'control_dependency' in splits[0]:
             no_ops[splits[0]] = 1
-        elif splits[1] in ['variablev2', 'variable']: 
+        elif splits[1] in ['variablev2', 'variable', 'varhandleop']: 
           var_ops[splits[0]] = 1
         elif splits[1] == 'const':
           const_ops[splits[0]] = 1
-        if len(splits) > 2 and splits[2] == 'true' or 'isvariableinitialized' in splits[0]:   
+        if (len(splits) > 2 and splits[2] == 'true') or 'isvariableinitialized' in splits[0] or \
+          'assignvariableop' in splits[1] or 'readvariableop' in splits[1] or 'resourceapplyadam' in splits[1] \
+            or 'varisinitializedop' in splits[1]:  
             if splits[0] not in var_ops:
                 ref_ops[splits[0]] = 1
 
@@ -161,8 +163,8 @@ with open(out1, 'w') as f:
     for var_node in var_ops.keys():
         f.write(var_node + '\n')
 
-    for var_node in const_ops.keys():
-        f.write(var_node + '\n')
+    #for var_node in const_ops.keys():
+    #    f.write(var_node + '\n')
 
 with open(out2, 'w') as f:
     for ref_node in ref_ops.keys():

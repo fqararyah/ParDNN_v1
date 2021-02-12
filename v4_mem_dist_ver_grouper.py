@@ -197,7 +197,7 @@ for node in all_nodes:
     else:
         rev_nodes_in_degrees[node] = 0
 
-""" sum_comms = 0
+sum_comms = 0
 sum_comps = 0
 for node in graph.keys():
   sum_comps += analysis_graph[node].duration
@@ -206,7 +206,6 @@ for node in graph.keys():
         sum_comms += edges_weights[node][adj_node]
 
 print('CCR = ' + str(sum_comms/sum_comps))
-exit() """
 
 # nodes bottom levels
 
@@ -336,6 +335,37 @@ while free_nodes:
         current_path_weight_with_comm = 0
         num_paths = num_paths + 1
 
+#dop
+print('DOP = ' + (str( sum_comps / max(groups_weights) )))
+#end dop
+not_imp = {}
+smm = 0
+smm_all = 0
+for node in graph:
+  smm_all += analysis_graph[node].duration
+  if node != sink_node_name and graph[node][0] == sink_node_name and node not in ref_nodes:
+    smm += analysis_graph[node].duration
+    not_imp[node] = 1
+
+cntt = 1
+while cntt != 0:
+  cntt = 0
+  for node in graph:
+    if node != sink_node_name and node not in not_imp and node not in ref_nodes:
+      flag = True
+      for adj_node in graph[node]:
+        if adj_node not in not_imp:
+          flag = False
+      
+      if flag:
+        cntt += 1
+        not_imp[node] = 1
+        analysis_graph[node].duration
+        smm += analysis_graph[node].duration
+    
+print(len(not_imp))
+print(smm/smm_all)
+exit()
 # sort paths from shortest to longest
 first_path = paths.pop(0)
 first_path_len = paths_lengths.pop(0)

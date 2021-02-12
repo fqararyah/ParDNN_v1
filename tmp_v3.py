@@ -15,25 +15,17 @@ import statistics
 # folder containing the work files
 io_folder_path = utils.io_folder_path
 network_app = utils.network_app
-in1 = io_folder_path + network_app + \
-    '_src_sink_low.dot'  # 'part_8_1799_src_sink.dot'
-in2 = io_folder_path + 'timeline_step17_low.json'
-# 'part_8_1799_src_sink_nodes_levels.txt'
+in1 = io_folder_path + 'graph.dot'  # 'part_8_1799_src_sink.dot'
+in2 = io_folder_path + 'weights.txt'
 in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'
-# 'rev_part_8_1799_src_sink_nodes_levels.txt'
-in4 = io_folder_path + 'rev_' + network_app + '_src_sink_nodes_levels_low.txt'
-in4_b = io_folder_path + 'rev_' + network_app + '_src_sink_low.dot'
-in5 = io_folder_path + 'tensors_sz_32_low.txt'
-in6 = io_folder_path + 'memory.txt'
-in6_b = io_folder_path + 'res_memory.txt'
-in8 = io_folder_path + 'collocations.txt'
+in5 = io_folder_path + 'costs.txt'
 in9 = io_folder_path + 'no_ops.txt'
 in10 = io_folder_path + 'ref_nodes.txt'
 in11 = io_folder_path + 'var_nodes.txt'
 in12 = io_folder_path + 'vanilla_cleaned.place'
 
 # output file
-out1 = io_folder_path + 'placement.place'
+out1 = io_folder_path + 'placement_4.place'
 
 # grouper parameters
 no_of_desired_groups = 4
@@ -42,7 +34,7 @@ memory_limit_per_group = 30 * 1024 * 1024 * 1024
 #tst
 comm_latency = 45
 average_tensor_size_if_not_provided = 1
-comm_transfer_rate = 1000000 / (140 * 1024 * 1024 * 1024)
+comm_transfer_rate = 1.0 / (130000)
 
 # will contain the graph as an adgacency list
 graph = {}
@@ -68,17 +60,11 @@ with open(in1, 'r') as f:
                 graph[splits[0]].append(splits[1])
             else:
                 graph[splits[0]] = [splits[1]]
-
-# constructing the graph and initializing the nodes levels from the dot file
-with open(in4_b, 'r') as f:
-    for line in f:
-        line = utils.clean_line(line)
-        nodes = line.split("->")
-        if len(nodes) > 1:
-            if nodes[0] in rev_graph:
-                rev_graph[nodes[0]].append(nodes[1])
+            
+            if splits[1] in rev_graph.keys():
+                rev_graph[splits[1]].append(splits[0])
             else:
-                rev_graph[nodes[0]] = [nodes[1]]
+                rev_graph[splits[1]] = [splits[0]]
 
 no_op_nodes = {}
 with open(in9, 'r') as f:
@@ -131,19 +117,6 @@ with open(in5, 'r') as f:
                     edges_weights[tensor_name][adj_node] = comm_latency
                 else:
                     edges_weights[tensor_name][adj_node] = edge_weight 
-
-collocations = []
-nodes_collocation_groups = {}
-indx = 0
-with open(in8, 'r') as f:
-    for line in f:
-        line = utils.clean_line(line)
-        collocations.append([])
-        splits = line.split("::")
-        for node in splits:
-            collocations[indx].append(node)
-            nodes_collocation_groups[node] = indx
-        indx += 1
 
 ref_nodes = {}
 with open(in10, 'r') as f:
@@ -295,11 +268,11 @@ while free_nodes:
         paths.append(current_path)
         groups_weights.append(current_path_weight)
         paths_lengths.append(len(current_path))
-        if len(paths) <= no_of_desired_groups or current_path_weight_with_comm >= groups_weights[0]/200:
-            nodes_weighted_levels = get_nodes_weighted_levels(graph = tmp_rev_graph, edges_weights = edges_weights, src_nodes= src_nodes, previosly_visited= visited)
-            free_nodes = []
-            for node, weighted_level in nodes_weighted_levels.items():
-                heapq.heappush(free_nodes, (-weighted_level, node))
+        #if len(paths) <= no_of_desired_groups or current_path_weight_with_comm >= groups_weights[0]/200:
+        nodes_weighted_levels = get_nodes_weighted_levels(graph = tmp_rev_graph, edges_weights = edges_weights, src_nodes= src_nodes, previosly_visited= visited)
+        free_nodes = []
+        for node, weighted_level in nodes_weighted_levels.items():
+            heapq.heappush(free_nodes, (-weighted_level, node))
 
         for node in current_path:
             del tmp_rev_nodes_in_degrees[node]
@@ -685,3 +658,31 @@ while traversal_queue:
 #makespan = calc_finish_time(len(nodes_final_clusters), nodes_final_clusters, nodes_levels, graph)
         
 print('finish time: ' + str(nodes_levels_scheduled[sink_node_name]))
+
+changed = {}
+for node_name in graph.keys():
+  if node_name not in var_nodes or node_name in changed:
+    continue
+    
+  to_visit = []
+  node_part = nodes_final_clusters[node_name]
+  to_visit.append(node_name)
+  while len(to_visit) > 0:
+    current_node_name = to_visit.pop(0)
+    changed[current_node_name] = True
+    for adj_node in graph[current_node_name]:
+      #if adj_node == 'generator/e3d-lstm/e3d0/conv3d_1/kernel/Assign'.lower():
+      if adj_node in ref_nodes:
+        nodes_final_clusters[adj_node] = node_part
+        for rev_adj_node in rev_graph[adj_node]:
+          if (rev_adj_node not in changed and rev_adj_node in var_nodes):
+            nodes_final_clusters[rev_adj_node] = node_part
+            to_visit.append(rev_adj_node)
+            changed[rev_adj_node] = True
+            
+with open(out1, 'w') as f:
+    for node, cluster in nodes_final_clusters.items():
+        if node in vanilla_placement and vanilla_placement[node] == '-1':
+            f.write(node + ' ' + str(-1) + '\n')
+        else:
+            f.write(node + ' ' + str(cluster) + '\n')

@@ -8,7 +8,7 @@ import numpy as np
 network_app = utils.network_app
 io_folder_path = utils.io_folder_path
 # input files
-in1 = io_folder_path + 'timeline_step17_low.json'
+in1 = io_folder_path + 'nodes_average_durations_fixed.txt'
 # 'nodes_levels.txt'#'part_8_1799_src_sink_nodes_levels.txt'
 in2 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'#'part_1_39_src_sink_nodes_levels.txt'
 #in3 = io_folder_path + 'fareed/mixed_h_zoltan/mixed_h_zoltan_2_cleaned.place'
@@ -55,21 +55,16 @@ nodes_parts = {}
 no_nodes_parts = False
 
 cnt = 0
-try:
-    # fill parts
-    with open(in3, 'r') as f:
-        for line in f:
-            line = utils.clean_line_keep_spaces(line)
-            splits = line.split(' ')
-            nodes_parts[splits[0]] = splits[1]
-            cnt = cnt + 1
-            if splits[0] in analysis_graph.keys():
-                analysis_graph[splits[0]].part = splits[1]
-except:
-    print('gggggggggggggggggggg')
-    for key, val in analysis_graph.items():
-        analysis_graph[key].part = 0
-    no_nodes_parts = True
+# fill parts
+with open(in3, 'r') as f:
+    for line in f:
+        line = utils.clean_line_keep_spaces(line)
+        splits = line.split(' ')
+        if len(splits) > 1:
+          nodes_parts[splits[0]] = splits[1]
+          cnt = cnt + 1
+          if splits[0] in analysis_graph.keys():
+              analysis_graph[splits[0]].part = splits[1]
 # decleare and initialize levels set
 levels = {}
 for i in range(0, int(max_level)):
@@ -100,8 +95,8 @@ offset_x = 20
 offset_y = 20
 graphics_window_width = 1300
 graphics_window_height = 600
-levels_to_represent = min(400, int(max_level))
-start_from_level = 100
+levels_to_represent = min(200, int(max_level))
+start_from_level = 500
 end_at_level = start_from_level + levels_to_represent
 first_node_in_the_graph_to_show_start_time = 0
 last_node_in_the_graph_to_show_end_time = 8
@@ -116,18 +111,18 @@ graph_duration_to_show = float(
     last_node_in_the_graph_to_show_end_time - first_node_in_the_graph_to_show_start_time)
 
 
-win = GraphWin(width=graphics_window_width, height=graphics_window_height)
+''' win = GraphWin(width=graphics_window_width, height=graphics_window_height)
 win2 = GraphWin(width=graphics_window_width, height=graphics_window_height)
 win3 = GraphWin(width=graphics_window_width, height=graphics_window_height)
 win4 = GraphWin(width=graphics_window_width, height=graphics_window_height)
-win5 = GraphWin(width=graphics_window_width, height=graphics_window_height)
+win5 = GraphWin(width=graphics_window_width, height=graphics_window_height) '''
 
 graphics_window_width = graphics_window_width - 2 * offset_x
 graphics_window_height = graphics_window_height - 2 * offset_y
 
 level_height = graphics_window_height / levels_to_represent
 
-for i in range(start_from_level, end_at_level):
+''' for i in range(start_from_level, end_at_level):
     rectangle_x = offset_x + graphics_window_width * \
         ((levels[i].start_time - first_node_in_the_graph_to_show_start_time) /
          graph_duration_to_show)
@@ -138,13 +133,13 @@ for i in range(start_from_level, end_at_level):
     pt = Point(rectangle_x, rectangle_end_y)
     rect = Rectangle(Point(rectangle_end_x, rectangle_y), pt)
     rect.draw(win)
-    rect.setFill(color="#ff0000")
+    rect.setFill(color="#ff0000") '''
 
 inc = graphics_window_width / 30
 time_inc = int(round(graph_duration_to_show / (30000)))
 line_position = 0
 line_time_label = 0
-for i in range(1, 31):
+''' for i in range(1, 31):
     line = Line(Point(line_position, 0), Point(
         line_position, graphics_window_height))
     line.setOutline(color='#cccccc')
@@ -153,7 +148,7 @@ for i in range(1, 31):
                        1.5 * offset_y), str(line_time_label) + 'ms')
     line_position = line_position + inc
     line_time_label = line_time_label + time_inc
-    lable.draw(win)
+    lable.draw(win) '''
 
 devices_colors = ['red', 'green', 'pink',
                   'yellow', 'black', 'blue', 'gray', 'orange']
@@ -161,7 +156,7 @@ devices = ['gpu1', 'gpu2', 'gpu3', 'gpu4', 'cpu', 'add', 'add', 'add']
 
 
 levels_colors = ["#ff0000"] * int(max_level)
-for node, node_properties in analysis_graph.items():
+''' for node, node_properties in analysis_graph.items():
     node_level = int(node_properties.level)
     if node_level >= start_from_level and node_level < end_at_level:
         rectangle_x = offset_x + graphics_window_width * \
@@ -183,14 +178,14 @@ for node, node_properties in analysis_graph.items():
         bottom_line.draw(win2)
         level_lable = Text(
             Point(offset_x, rectangle_end_y - level_height / 2), node_level)
-        level_lable.draw(win2)
+        level_lable.draw(win2) '''
 
 # drawing axess
 inc = graphics_window_width / 22
 time_inc = int(round(graph_duration_to_show / (22)))
 line_position = 0
 line_time_label = 0
-for i in range(1, 31):
+''' for i in range(1, 31):
     line = Line(Point(line_position, 0), Point(
         line_position, graphics_window_height))
     line.setOutline(color='#cccccc')
@@ -199,9 +194,9 @@ for i in range(1, 31):
                        1.5 * offset_y), str(line_time_label) + 'us')
     line_position = line_position + inc
     line_time_label = line_time_label + time_inc
-    lable.draw(win2)
+    lable.draw(win2) '''
 
-color_legends_dim = 20
+''' color_legends_dim = 20
 for i in range(0, 2 * len(devices_colors), 2):
     color_rect = Rectangle(Point(graphics_window_width, graphics_window_height / 2 + i * color_legends_dim), Point(graphics_window_width + color_legends_dim,
                                                                                                                    graphics_window_height / 2 + (i + 1) * color_legends_dim))
@@ -212,7 +207,7 @@ for i in range(0, 2 * len(devices_colors), 2):
     lable.draw(win2)
     color_sepaerator = Line(Point(graphics_window_width - 40, graphics_window_height / 2 + (i + 2) * color_legends_dim), Point(graphics_window_width + color_legends_dim,
                                                                                                                                graphics_window_height / 2 + (i + 2) * color_legends_dim))
-    color_sepaerator.draw(win2)
+    color_sepaerator.draw(win2) '''
 
 
 levels_current_node_start_points = [0] * max_level
@@ -225,7 +220,7 @@ for i in range(start_from_level, end_at_level):
         max_nodes_per_level_to_show = levels[i].num_nodes
 
 iii = 0
-for node, node_properties in analysis_graph.items():
+''' for node, node_properties in analysis_graph.items():
     iii = iii + 1
     node_level = int(node_properties.level)
     if node_level >= start_from_level and node_level < end_at_level:
@@ -248,7 +243,7 @@ for node, node_properties in analysis_graph.items():
         rect.draw(win3)
         # rect.setFill(devices_colors[int(node_properties.part)])
         levels_current_node_start_points[node_level] = levels_current_node_start_points[node_level] + \
-            node_properties.duration
+            node_properties.duration '''
 
 
 g_node_dim = min(graphics_window_width /
@@ -321,7 +316,7 @@ for i in range(start_from_level, end_at_level):
         nodes_to_be_plotted[node] = current_node_to_be_plotted
         start_point_x = start_point_x + level_distance_between_nodes
 
-for node, node_plot in nodes_to_be_plotted.items():
+''' for node, node_plot in nodes_to_be_plotted.items():
     cir = Circle(Point(node_plot.node_x, node_plot.node_y), g_node_dim / 4)
     if node in nodes_parts:
         cir.setFill(devices_colors[int(nodes_parts[node])%5])
@@ -329,7 +324,7 @@ for node, node_plot in nodes_to_be_plotted.items():
         print("missing node")
     if not node in analysis_graph.keys():
         cir.setFill("#ffffff")
-    cir.draw(win4)
+    cir.draw(win4) '''
 
 
 """ nodes_memory = {}
@@ -341,7 +336,7 @@ with open(in6, 'r') as f:
         nodes_memory[splitted[0]] = splitted[1] """
 
 nodes_res_memory = {}
-with open(in6_b, 'r') as f:
+with open(in6, 'r') as f:
     for line in f:
         line = utils.clean_line(line)
         splitted = line.split('::')
@@ -349,7 +344,6 @@ with open(in6_b, 'r') as f:
         nodes_res_memory[node_name] = int(splitted[1])
 
 gvz = {}
-gvz_colors = {}
 devices_colors_gvz = ['red', 'green', 'pink',
                       'yellow', 'white', 'gray', 'blue', 'orange']
 
@@ -370,7 +364,7 @@ for i in range(start_from_level + 1, end_at_level):
                 else:
                     color_indx = 0
                 edge.setOutline(devices_colors[int(color_indx)%5])
-                edge.draw(win4)
+                #edge.draw(win4)
                 from_node_dur = 0
                 to_node_dur = 0
                 if prev_layer_node in analysis_graph.keys():
@@ -389,27 +383,10 @@ for i in range(start_from_level + 1, end_at_level):
                     gvz[src_key] = [dst_key]
                 else:
                     gvz[src_key].append(dst_key)
-                color_indx = ''
-                if prev_layer_node in nodes_parts:
-                    color_indx = nodes_parts[prev_layer_node]
-                elif prev_layer_node.lower() in nodes_parts:
-                    color_indx = nodes_parts[prev_layer_node.lower()]
-                else:
-                    color_indx = 0
-                gvz_colors[src_key] = devices_colors_gvz[int(
-                    color_indx)%8]
-                if node in nodes_parts:
-                    color_indx = nodes_parts[node]
-                elif node.lower() in nodes_parts:
-                    color_indx = nodes_parts[node.lower()]
-                else:
-                    color_indx = 0
-                gvz_colors[dst_key] = devices_colors_gvz[int(
-                    color_indx)%8]
 
 
-comm_transfer_rate = 1000000 / (140 * 1024 * 1024 * 1024)
-comm_latency = 45
+comm_transfer_rate = 1000000 / (130 * 1000 * 1000 * 1000)
+comm_latency = 25
 tensors_sizes = {}
 # get tensors sizes
 with open(in5, 'r') as f:
@@ -425,52 +402,25 @@ with open(io_folder_path + '/vis/' + 'part_' + str(start_from_level) + '_' + str
     for src, dst in gvz.items():
         tensor_size = str(int(int(tensors_sizes[nodes_keys_mappig[src]]) * comm_transfer_rate +
                               comm_latency)) if nodes_keys_mappig[src] in tensors_sizes else '?'
+        fill_color = 'white'
+        if src in nodes_keys_mappig and nodes_keys_mappig[src] in nodes_parts and int(nodes_parts[nodes_keys_mappig[src]]) >= 0:
+          fill_color = (devices_colors_gvz[int(nodes_parts[nodes_keys_mappig[src]])%8])
         f.write(
-            '"' + src + '" [style=filled, fillcolor = ' + (gvz_colors[src] if src in nodes_res_memory else 'black') + ' tooltip="' + nodes_keys_mappig[src] + '"]\n')
+            '"' + src + '" [style=filled, shape = circle, fillcolor = ' + fill_color + ' tooltip="' + nodes_keys_mappig[src] + '"]\n')
         for dst_item in dst:
+          fill_color = 'white'
+          print(dst_item)
+          if dst_item in nodes_keys_mappig and nodes_keys_mappig[dst_item] in nodes_parts and int(nodes_parts[nodes_keys_mappig[dst_item]]) >= 0:
+            fill_color = (devices_colors_gvz[int(nodes_parts[nodes_keys_mappig[dst_item]])%8])
             f.write('"' + str(src) + '"' + ' -> ' +
                     '"' + str(dst_item) + '"' + ('[ label="' + tensor_size + '" ]\n' if with_tensors else '\n'))
             f.write(
-                '"' + dst_item + '" [style=filled, fillcolor = ' + (gvz_colors[dst_item] if dst_item in nodes_res_memory else 'black') + ' tooltip="' + nodes_keys_mappig[dst_item] + '"]\n')
+                '"' + dst_item + '" [style=filled, shape = circle, fillcolor = ' + fill_color + ' tooltip="' + nodes_keys_mappig[dst_item] + '"]\n')
     f.write("}")
 
 utils.write_dot_of_nodes_at_levels(start_from_level, end_at_level, nodes_levels, in4,
                                    io_folder_path + '/vis/txt_part_' + str(start_from_level) + '_' + str(end_at_level) + '.dot')
 
+#os.system("C:/Documents and Settings/flow_model/flow.exe")
 
-for i in range(0, 2 * len(devices_colors), 2):
-    color_rect = Rectangle(Point(graphics_window_width, graphics_window_height / 2 + i * color_legends_dim), Point(graphics_window_width + color_legends_dim,
-                                                                                                                   graphics_window_height / 2 + (i + 1) * color_legends_dim))
-    color_rect.setFill(devices_colors[int(i / 2)%5])
-    color_rect.draw(win4)
-    lable = Text(Point(graphics_window_width, graphics_window_height /
-                       2 + (i + 1.5) * color_legends_dim), devices[int(i / 2)])
-    lable.draw(win4)
-    color_sepaerator = Line(Point(graphics_window_width - 40, graphics_window_height / 2 + (i + 2) * color_legends_dim), Point(graphics_window_width + color_legends_dim,
-                                                                                                                               graphics_window_height / 2 + (i + 2) * color_legends_dim))
-    color_sepaerator.draw(win4)
-
-""" max_level = 800
-c = plt.figure(3)
-y_pos = np.arange(10, max_level)
-nodes_per_levels = []
-for i in range(0, max_level):
-    nodes_per_levels.append(levels[i].num_nodes)
-
-plt.bar(y_pos, nodes_per_levels[10:max_level], align='center',  width=0.9)
-# plt.yscale("log")
-plt.grid()
-plt.title("This chart Shows the number of nodes per layer.")
-plt.xlabel('Layer NO', fontsize=18)
-plt.ylabel('NO of nodes', fontsize=16)
-c.show()
-
-count = 0
-total_time = 0
-for node, node_properties in analysis_graph.items():
-    total_time = total_time + node_properties.duration
-    count = count + 1
-
-print(total_time / count) """
-
-input()
+#io_folder_path + '/vis/' + 'part_' + str(start_from_level) + '_' + str(end_at_level) + '.dot', 'w'

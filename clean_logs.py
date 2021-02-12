@@ -4,8 +4,10 @@ import utils
 io_folder_path = utils.io_folder_path
 
 in1 = io_folder_path + 'act_place.place'
+#in2 = io_folder_path + 'nodes_devices.txt'
 
 out = io_folder_path + 'vanilla_cleaned.place'
+#out2 = io_folder_path + 'cpu_nodes.txt'
 
 def clean_line(node_string):
     return (node_string.strip(';\n')).replace('"', '').replace('\t', '')
@@ -54,10 +56,25 @@ with open(in1, 'r', encoding="utf8") as f:
             elif device.endswith('gpu:15'):
                 device_n = '15'
             
-            if device_n != '' and (splits[0][:-1] not in actual_placement or device_n == '-1'):
+            if device_n != '' and (splits[0][:-1] not in actual_placement or actual_placement[splits[0][:-1]] == '-1'):
                 actual_placement[splits[0][:-1]] = device_n
 
+cpu_nodes = []
+""" with open(in2, 'r') as f:
+  for line in f:
+    line = utils.clean_line(line)
+    splits = line.split("::")
+    if(len(splits) > 1):
+      if len(splits) == 3 and "cpu" in splits[1].lower():
+        cpu_nodes.append(splits[0].lower()) """
+        
 with open(out, 'w') as f:
     for key, val in actual_placement.items():
         f.write(key + ' ' + val + '\n')
+        #if val == '-1' and key not in cpu_nodes:
+        #  print(key) 
 
+""" with open(out2, 'w') as f:
+    for key, val in actual_placement.items():
+        if val == '-1':
+            f.write(key + ' ' + val + '\n') """

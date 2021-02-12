@@ -7,7 +7,9 @@ in2 = io_folder_path + utils.network_app + '_src_sink_low.dot'
 in4 = io_folder_path + 'no_ops.txt'
 in5 = io_folder_path + 'operations_attributes.txt'
 in6 = io_folder_path + 'tensors_sz_32_low.txt'
+in7 = io_folder_path + 'var_nodes.txt'
 out1 = io_folder_path + 'memory.txt'
+out2 = io_folder_path + 'res_memory.txt'
 
 in10 = io_folder_path + 'ref_nodes.txt'
 
@@ -16,6 +18,11 @@ with open(in10, 'r') as f:
     for line in f:
         ref_nodes[utils.clean_line(line)] = 1
 
+var_nodes = {}
+with open(in7, 'r') as f:
+    for line in f:
+        var_nodes[utils.clean_line(line)] = 1
+        
 in11 = io_folder_path + 'var_nodes.txt'
 var_nodes = {}
 with open(in11, 'r') as f:
@@ -77,8 +84,8 @@ def text_to_bytes(mem_cons):
 
     return node_mem_cons
 
-nodes_memory = {}
-
+nodes_memories = {}
+nodes_res_memory = {}
 files = []
 for (dirpath, dirnames, filenames) in walk(io_folder_path):
     files.extend(filenames)
@@ -97,63 +104,72 @@ for _file in files:
                 if len(splits) > 1:
                     node_name = splits[0].lower()
                     node_name = utils.clean_line(node_name)
+                    
+                    mem_cons = utils.clean_line(splits[1]).split(',')
+                    if(len(mem_cons) != 4):
+                      continue
+
+                    mem_cons = mem_cons[2]
+                    mem_cons = mem_cons.split('/')[0]
+
+                    node_mem_cons = text_to_bytes(mem_cons)
+          
+                    if node_name in all_nodes:
+                      if node_name not in nodes_res_memory or nodes_res_memory[node_name] < node_mem_cons:
+                        nodes_res_memory[node_name] = node_mem_cons
 
                     mem_cons = utils.clean_line(splits[1]).split(',')
-
                     mem_cons = mem_cons[-1]
                     mem_cons = mem_cons.split('/')[0]
 
                     node_mem_cons = text_to_bytes(mem_cons)
-
-                    if node_name == 'gradients/unit_2_9/bn_2/moments/squareddifference_grad/sub':
-                      print(node_mem_cons)
           
                     if node_name in all_nodes:
-                      if node_name not in nodes_memory or nodes_memory[node_name] < node_mem_cons:
-                        nodes_memory[node_name] = node_mem_cons
-
+                      if node_name not in nodes_memories:
+                        nodes_memories[node_name] = []
+                      nodes_memories[node_name].append(node_mem_cons)
+                        
                     if node_name in all_nodes:
                         all_nodes[node_name] = 0
-
-                    #if node_name not in all_nodes:
-                    #    if node_name in nodes_memory and nodes_memory[node_name] > 0:
-                    #        print(node_name)
-                    #        sum_inits += nodes_memory[node_name]
-            
-#print(sum_inits/(1024*1024*1024))
+                        nodes_res_memory[node_name] = max(nodes_res_memory[node_name], max(nodes_memories[node_name]))
 
 for node, val in all_nodes.items():
     if val == 1:        
-        nodes_memory[node] = 0
-smm = 0
-
-"""for node, size in nodes_memory.items():
-  if node in tensors_sizes and size > tensors_sizes[node] and node not in ref_nodes:
-    print(node + '::' + str(size - (tensors_sizes[node] if node in tensors_sizes else size))) """
-
-""" for node, size in tensors_sizes.items():
-    if (node not in nodes_memory or size > nodes_memory[node]) and node not in ref_nodes and not 'control_dependency'in node and node not in no_op_nodes: #and not node.endswith('read'): 
-        smm += size - (nodes_memory[node] if node in nodes_memory else 0)
-        #print(node + '::' + str(size - (nodes_memory[node] if node in nodes_memory else 0)))
-        nodes_memory[node] = size
-
-print(smm/(1024*1024*1024)) """
+        nodes_res_memory[node] = 0
+        if node in var_nodes:
+          print(node, ' is a var node without memory!')
+          nodes_res_memory[node] = tensors_sizes[node]
+    #elif node in var_nodes:
+    #    print(node, nodes_res_memory[node])
 
 summ = 0
 with open(out1, 'w') as f:
-    for key, val in nodes_memory.items():
+    for key, val in nodes_res_memory.items():
         f.write(key + '::' + str(int(val)) + '\n')
         summ += val
+        
 print(summ/1000000000)
 
-smm = 0
-for node in nodes_memory:
-  if node.endswith(('reshape', 'reshape_1')):
-    smm += nodes_memory[node]
-  if node in tensors_sizes and nodes_memory[node] > tensors_sizes[node]:
-    if (nodes_memory[node] - tensors_sizes[node]) / 1000000 >= 1.0:
-      print('1-' + node + '::' + str( (nodes_memory[node] - tensors_sizes[node]) / 1000000))
-  elif node not in tensors_sizes and nodes_memory[node] > 0:
-      print('2-' + node + '::' + str( (nodes_memory[node]) / 1000000))
+frequent_memory_vals = {}
+for node, memories in nodes_memories.items():
+  freqs = {}
+  for memory in memories:
+    if memory not in freqs:
+      freqs[memory] = 0
+    freqs[memory] += 1
+    
+  max_freq = 0
+  most_frequent_mem = 0
+  for memory, freq in freqs.items():
+    if freq > max_freq:
+      max_freq = freq
+      most_frequent_mem = memory
+  
+  frequent_memory_vals[node] = most_frequent_mem 
 
-print('vars sum::'+str(smm / (1024*1024*1024)))
+with open(in6, 'w') as f:
+  for tensor, size in tensors_sizes.items():
+    if tensor in frequent_memory_vals and frequent_memory_vals[tensor] > 10 * size:
+      f.write(tensor + '::' + str(int(max(frequent_memory_vals[tensor], size) )) + "\n")
+    else:
+      f.write(tensor + '::' + str(size) + "\n")

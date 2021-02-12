@@ -267,7 +267,7 @@ print('********************')
 
 smm = 0
 for node, span in nodes_allocation_deallocation_span.items():
-  if span > 1000 and node not in ref_nodes and node not in var_nodes and nodes_levels[node] >= 4 and node not in forwarding_paths: 
+  if span > 300 and node not in ref_nodes and node not in var_nodes and nodes_levels[node] >= 4 and node not in forwarding_paths: 
     smm += res_nodes[node]
     print(node)
 
@@ -293,3 +293,37 @@ print(smm/1000000000)
 with open(in6, 'w') as f:
     for key, val in nodes_memory.items():
         f.write(key + '::' + str(int(val)) + '\n')
+
+print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+count = 0
+for node in allocated_nodes.keys():
+    if node not in deallocated_nodes and node in nodes_memory and node not in var_nodes and nodes_levels[node] > 4 and node not in ref_nodes:
+      strr = ""
+      for adj in graph[node]:
+        strr += str(adj) + "::" + str(nodes_levels[adj])
+      print(node + "::" + str(nodes_memory[node])+"::"+str(nodes_levels[node])+"::"+strr)
+      count += 1
+
+print(count)
+
+count = 0
+smm = 0
+smm_all = 0
+print('-------------------newnewnew--------------------------')
+analysis_graph = utils.read_profiling_file_v2(in2)
+for node in all_nodes:
+  if node in analysis_graph:
+    smm_all += analysis_graph[node].duration
+  cand = node not in ref_nodes and node not in var_nodes and 'read' not in node
+  if node == 'snk':
+    continue
+  for child in graph[node]:
+    if nodes_levels[child] - nodes_levels[node] < 100:
+      cand = False
+  if cand and node in analysis_graph:
+    count += 1
+    smm += analysis_graph[node].duration
+    print(node)
+
+print(count)
+print(smm / smm_all)

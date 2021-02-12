@@ -18,7 +18,7 @@ in2 = io_folder_path + 'operations_attributes.txt'
 in3 = io_folder_path + network_app + '_src_sink_nodes_levels_low.txt'
 in6 = io_folder_path + 'memory.txt'
 in6_b = io_folder_path + 'res_nodes_cleaned.txt'
-in7 = io_folder_path + 'placement.place'
+in7 = io_folder_path + 'vanilla_cleaned.place'
 
 graph = {}
 rev_graph = {}
@@ -113,66 +113,7 @@ for node, adjs in collocations.items():
     if adjs:
         print(node + '::' + str(adjs))
 
-""" ref_smm = 0
-non_ref_smm = 0
-ref_count = 0
-non_ref_count = 0
-collocations = {}
-used = {}
-for node in no_ops.keys():
-    if nodes_levels[node] > 15:
-        for rev_adj in rev_graph[node]:
-            if rev_adj not in used and nodes_groups[rev_adj] == 0:
-                if node not in collocations.keys():
-                    collocations[node] = []
-                collocations[node].append(str(rev_adj) + ':' + str(rev_adj in ref_ops))
-                if rev_adj in ref_ops:
-                    ref_smm += nodes_memory[rev_adj]
-                    ref_count += 1
-                else:
-                    non_ref_smm += nodes_memory[rev_adj]
-                    non_ref_count += 1
-
-            used[rev_adj] = 1
-
-print(ref_count)
-print(non_ref_count)
-
-print(ref_smm / (1024 * 1024 * 1024))
-print(non_ref_smm / (1024 * 1024 * 1024))
-
-var_ops_sums = [0] * 4
-for node in graph.keys():
-    add = False
-    if node not in ref_ops:
-        for adj in graph[node]:
-            if nodes_groups[adj] == nodes_groups[node]:
-                add = True
-                print(str(nodes_levels[node]) + '::' + str(nodes_levels[adj]) + '::' + str(nodes_memory[node]))
-        if add:
-            var_ops_sums[nodes_groups[node]] += nodes_memory[node]
-
-print('--------------------')
-for var_ops_sum in var_ops_sums:
-    print(var_ops_sum / (1024 * 1024 * 1024))
-
-print(len(ref_ops))
-smm = 0
-for op, op_type in ops_types.items():
-    if op_type.endswith(('variablev2', 'variable')) and nodes_groups[op] == 0: 
-        smm+= nodes_memory[op]"""
-
-""" count = 0
-non_ref_nodes_with_no_op_child = {}
-for node in nodes_res_memory.keys():
-    if node not in ref_ops:
-        print( node + '::' + str(nodes_res_memory[node]) + '::' + str(nodes_levels[node]) + '::' + str(ops_types[node]) )
-
-print(count)
-for node, count in non_ref_nodes_with_no_op_child.items():
-    print(node) """
-
-for g_no in range(0, 8):
+for g_no in range(0, 4):
   var_count = 0
   ref_count = 0
   res_count = 0
@@ -183,7 +124,7 @@ for g_no in range(0, 8):
   res_sum = 0
   norm_sum = 0
   for node, mem in nodes_memory.items():
-      if mem > 0 and node in nodes_groups and nodes_groups[node] == 1:# and nodes_levels[node] < 40000:
+      if mem > 0 and node in nodes_groups and nodes_groups[node] == g_no:# and nodes_levels[node] < 40000:
           if node in var_ops:
               var_count += 1
               var_sum += mem
